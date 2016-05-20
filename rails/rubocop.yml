@@ -1,5 +1,6 @@
 # target_version:
 # rubocop v0.40.0
+inherit_from: ../ruby/rubocop.yml
 
 # 自動生成されるものなどはチェック対象から除外する
 AllCops:
