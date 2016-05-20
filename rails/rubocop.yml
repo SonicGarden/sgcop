@@ -1,0 +1,29 @@
+# target_version:
+# rubocop v0.40.0
+
+# 自動生成されるものなどはチェック対象から除外する
+AllCops:
+  Exclude:
+    - "vendor/**/*" # rubocop config/default.yml
+    - 'bin/*'
+    - 'config/application.rb'
+    - 'config/environments/*'
+    - 'config/initializers/*'
+    - 'config/backup.rb'
+    - 'config/spring.rb'
+    - 'config.ru'
+    - 'db/migrate/*.rb'
+    - 'db/schema.rb'
+    - 'spec/spec_helper.rb'
+
+Rails:
+  Enabled: true
+
+# ============================================================
+# Style
+# ============================================================
+
+# メールの{|format| format.text}みたいなのはひっかけたくない
+Style/SymbolProc:
+  Exclude:
+    - 'app/mailers/**/*'
