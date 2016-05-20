@@ -16,6 +16,10 @@ Style/BlockDelimiters:
   Exclude:
     - "spec/**/*"
 
+# Hashをメソッドの引数にするときに {} を省略せず書いてもよい
+Style/BracesAroundHashParameters:
+  Enabled: false
+
 # namespace 付きのクラスはかなり頻繁に作るので簡単に書きたい。
 Style/ClassAndModuleChildren:
   Enabled: false
@@ -42,6 +46,10 @@ Style/Lambda:
 
 # ローカル変数とメソッド呼び出しの区別をつけた方が分かりやすい場合が多い
 Style/RedundantSelf:
+  Enabled: false
+
+# each(&:hoge)のような書き方強制するほどでもないような
+Style/SymbolProc:
   Enabled: false
 
 # ============================================================
