@@ -15,6 +15,7 @@ AllCops:
     - 'config/backup.rb'
     - 'config/spring.rb'
     - 'config.ru'
+    - 'config/unicorn.rb'
     - 'db/migrate/*.rb'
     - 'db/schema.rb'
     - 'spec/spec_helper.rb'
