@@ -1,1 +1,5 @@
 inherit_from: ruby/rubocop.yml
+
+AllCops:
+  Exclude:
+    - 'sgcop.gemspec'
