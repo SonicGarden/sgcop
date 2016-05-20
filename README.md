@@ -7,12 +7,9 @@ SonicGarden標準のrobocop設定支援をするツール
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'sgcop', group: :development, git: 'git@github.com:SonicGarden/sgcop.git'
+gem install specific_install
+gem specific_install git@github.com:SonicGarden/sgcop.git
 ```
-
-And then execute:
-
-    $ bundle
 
 ## Usage
 
@@ -28,6 +25,12 @@ If your project is a Rails project, you should use the instruction below, which 
 ```
 inherit_gem:
   sgcop: rails/rubocop.yml
+```
+
+And then execute:
+
+```
+rubocop <options...>
 ```
 
 ## Contributing
