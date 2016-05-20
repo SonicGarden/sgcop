@@ -18,7 +18,7 @@ inherit_gem:
   sgcop: ruby/rubocop.yml
 ```
 
-If your project is a Rails project, you should use the instruction below, which includes all the standard Ruby house styles, with Rails-specific cops:
+If your project is a Rails project, you should use the instruction below, which includes all the standard SonicGarden Ruby styles, with Rails-specific cops:
 
 ```
 inherit_gem:
