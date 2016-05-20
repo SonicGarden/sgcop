@@ -4,8 +4,6 @@ SonicGarden標準のrobocop設定支援をするツール
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
 ```ruby
 gem install specific_install
 gem specific_install git@github.com:SonicGarden/sgcop.git
