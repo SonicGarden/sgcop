@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{SonicGarden標準コーディングスタイル}
   spec.description   = %q{各プロジェクトのrobocopのデフォルト設定とすることを目的としている}
-  spec.homepage      = "none"
+  spec.homepage      = "https://github.com/SonicGarden/sgcop"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
