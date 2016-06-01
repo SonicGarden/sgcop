@@ -56,10 +56,6 @@ Style/SymbolProc:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# 複数行の場合はケツカンマを入れる
-Style/TrailingCommaInLiteral:
-  EnforcedStyleForMultiline: comma
-
 # 1_000_000 と区切り文字が 2 個以上必要になる場合のみ _ 区切りを必須にする
 Style/NumericLiterals:
   MinDigits: 7
@@ -84,7 +80,7 @@ Lint/UnusedMethodArgument:
 Metrics/AbcSize:
   Max: 30
 
-# 80では短すぎる制限なしでもいいかも
+# 80では短すぎる。制限なしでもいいかも
 Metrics/LineLength:
   Max: 160
 
