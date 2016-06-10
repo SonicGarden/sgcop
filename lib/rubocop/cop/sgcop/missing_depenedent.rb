@@ -1,6 +1,6 @@
 module RuboCop
   module Cop
-    module Rails
+    module Sgcop
       class MissingDependent < Cop
         def on_send(node)
           receiver, _method_name, *_args = *node
@@ -19,7 +19,7 @@ module RuboCop
         def hash_has_key?(node)
           node.child_nodes.any? do |pair|
             key = pair.child_nodes.first
-            key.type == :sym && key.children.first == :dependent
+            key.type == :sym && (sym = key.children.first) && (sym == :dependent || sym == :through)
           end
         end
 

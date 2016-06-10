@@ -5,4 +5,4 @@ require 'rubocop/sgcop/inject'
 
 RuboCop::Sgcop::Inject.defaults!
 
-require 'rubocop/cop/rails/missing_depenedent'
+require 'rubocop/cop/sgcop/missing_depenedent'

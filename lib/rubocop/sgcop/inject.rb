@@ -10,10 +10,6 @@ module RuboCop
         puts "configuration from #{DEFAULT_FILE}" if ConfigLoader.debug?
         config = ConfigLoader.merge_with_default(config, path)
         ConfigLoader.instance_variable_set(:@default_configuration, config)
-        #
-        # hash = YAML.load_file(DEFAULT_FILE)
-        # config = ConfigLoader.merge_with_default(hash, DEFAULT_FILE)
-        # ConfigLoader.instance_variable_set(:@default_configuration, config)
       end
     end
   end

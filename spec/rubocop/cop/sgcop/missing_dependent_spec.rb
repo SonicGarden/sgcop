@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe RuboCop::Cop::Rails::MissingDependent do
-  subject(:cop) { RuboCop::Cop::Rails::MissingDependent.new }
+describe RuboCop::Cop::Sgcop::MissingDependent do
+  subject(:cop) { RuboCop::Cop::Sgcop::MissingDependent.new }
 
   it 'has_manyでdependentがなかったら警告' do
     inspect_source(cop, 'has_many :users')
@@ -15,7 +15,12 @@ describe RuboCop::Cop::Rails::MissingDependent do
   end
 
   it 'has_manyでdependentとそれ以外のオプションがあった場合も警告なし' do
-    inspect_source(cop, 'has_many :comments, through: :foo, dependent: :destroy')
+    inspect_source(cop, 'has_many :comments, class_name: "Foo", dependent: :destroy')
+    expect(cop.offenses.size).to eq(0)
+  end
+
+  it 'has_manyでthroughオプションが指定されてればdependentがなくても警告なし' do
+    inspect_source(cop, 'has_many :comments, through: :foo')
     expect(cop.offenses.size).to eq(0)
   end
 
@@ -34,5 +39,4 @@ describe RuboCop::Cop::Rails::MissingDependent do
     inspect_source(cop, 'has_one :comment, class_name: "Hoge", dependent: :destroy')
     expect(cop.offenses.size).to eq(0)
   end
-
 end
