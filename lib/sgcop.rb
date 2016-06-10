@@ -1,5 +1,8 @@
-require "sgcop/version"
+require 'rubocop'
 
-module Sgcop
-  # Your code goes here...
-end
+require 'sgcop/version'
+require 'rubocop/sgcop/inject'
+
+RuboCop::Sgcop::Inject.defaults!
+
+require 'rubocop/cop/rails/missing_depenedent'
