@@ -1,3 +1,5 @@
+/.floo
+/.flooignore
 /.bundle/
 /.yardoc
 /Gemfile.lock
