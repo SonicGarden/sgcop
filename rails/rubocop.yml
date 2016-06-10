@@ -24,6 +24,10 @@ AllCops:
 Rails:
   Enabled: true
 
+# ARオブジェクトのuniqを取りたいわけでなく、特定の属性のuniqが取りたい場合でも警告が出るので
+Rails/UniqBeforePluck:
+  Enabled: false
+
 # ============================================================
 # Style
 # ============================================================
@@ -32,3 +36,19 @@ Rails:
 Style/SymbolProc:
   Exclude:
     - 'app/mailers/**/*'
+
+# ============================================================
+# RSpec
+# ============================================================
+# backgroundとかであるクラスの全インスタンスをstubしてるなど意図してやると思うので
+RSpec/AnyInstance:
+  Enabled: false
+
+# 以下のようなもので引っかかってしまって困るので
+# describe GuestTicket do
+#   describe '#save' do
+#     let!(:guest_ticket) {
+#       GuestTicket.new schedule, guest_ticket_params
+#     }
+RSpec/DescribedClass:
+  Enabled: false
