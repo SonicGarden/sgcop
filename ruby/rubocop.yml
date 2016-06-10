@@ -13,8 +13,6 @@ Style/AsciiComments:
 # spec 内は見た目が綺麗になるので許可
 Style/BlockDelimiters:
   AutoCorrect: false
-  Exclude:
-    - "spec/**/*"
 
 # Hashをメソッドの引数にするときに {} を省略せず書いてもよい
 Style/BracesAroundHashParameters:
@@ -24,6 +22,15 @@ Style/BracesAroundHashParameters:
 Style/ClassAndModuleChildren:
   Enabled: false
 
+#Style/CollectionMethods 自体は無効になっているのだが、
+# デフォルト値から変えたのは
+#   find -> detect
+#     ActiveRecord の find と間違えやすいため
+Style/CollectionMethods:
+  PreferredMethods:
+    detect: "detect"
+    find: "detect"
+
 # ドキュメントの無い public class を許可する
 Style/Documentation:
   Enabled: false
@@ -32,41 +39,74 @@ Style/Documentation:
 Style/DoubleNegation:
   Enabled: false
 
-# single でも doubleでもどっちでもよいと思うので
-Style/StringLiterals:
-  Enabled: false
+# elseの中に明示的にnilを書くのを許可する
+Style/EmptyElse:
+  EnforcedStyle: nil
 
-# if 文の中に 5 行程度のブロックを書くぐらいは許容した方が現実的かなぁと
-Style/GuardClause:
-  MinBodyLength: 5
-
-# scope 等は複数行でも lambda ではなく ->{} を使いたい
-Style/Lambda:
-  EnforcedStyle: literal
-
-# ローカル変数とメソッド呼び出しの区別をつけた方が分かりやすい場合が多い
-Style/RedundantSelf:
-  Enabled: false
-
-# each(&:hoge)のような書き方強制するほどでもないような
-Style/SymbolProc:
+# 別にsprintfでもformatでもString#%でもよいと思うので
+Style/FormatString:
   Enabled: false
 
 # まだ対応するには早い
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+# if 文の中に 5 行程度のブロックを書くぐらいは許容した方が現実的かなぁと
+Style/GuardClause:
+  MinBodyLength: 5
+
+# 条件式の方を意識させたい場合には後置の if/unless を使わない方が分かりやすい
+Style/IfUnlessModifier:
+  Enabled: false
+
+# special_inside_parentheses (default) と比べて
+# * 横に長くなりづらい
+# * メソッド名の長さが変わったときに diff が少ない
+Style/IndentArray:
+  EnforcedStyle: consistent
+
+# scope 等は複数行でも lambda ではなく ->{} を使いたい
+Style/Lambda:
+  EnforcedStyle: literal
+
 # 1_000_000 と区切り文字が 2 個以上必要になる場合のみ _ 区切りを必須にする
 Style/NumericLiterals:
   MinDigits: 7
 
+# 正規表現にマッチさせた時の特殊変数の置き換えは Regex.last_match ではなく
+# 名前付きキャプチャを使って参照したいので auto-correct しない
+Style/PerlBackrefs:
+  AutoCorrect: false
+
+# has_ から始まるメソッドは許可する
+Style/PredicateName:
+  NamePrefixBlacklist:
+    - "is_"
+    - "have_"
+  NamePrefix:
+    - "is_"
+    - "have_"
+
+# ローカル変数とメソッド呼び出しの区別をつけた方が分かりやすい場合が多い
+Style/RedundantSelf:
+  Enabled: false
+
+# いくらなんでも inject { |a, e| } は短すぎるので分かりやすい名前をつけたい
+Style/SingleLineBlockParams:
+  Enabled: false
+
+# each(&:hoge)のような書き方強制するほどでもないような
+Style/SymbolProc:
+  Enabled: false
+
 # ============================================================
 # Lint
 # ============================================================
-
-# 条件式と同時に変数代入は括弧で囲めば意図的なのでOKとする
-Lint/AssignmentInCondition:
-  AllowSafeAssignment: true
+# * 同名のメソッドがある場合にローカル変数に `_` を付ける
+# * 一時変数として `_` を付ける
+# というテクニックは頻出する
+Lint/UnderscorePrefixedVariableName:
+  Enabled: false
 
 # 子クラスで実装させるつもりのメソッドで引っかかるので
 Lint/UnusedMethodArgument:
