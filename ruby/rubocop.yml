@@ -39,9 +39,12 @@ Style/Documentation:
 Style/DoubleNegation:
   Enabled: false
 
-# elseの中に明示的にnilを書くのを許可する
-Style/EmptyElse:
-  EnforcedStyle: nil
+# これがあると
+# undefined method `begin_pos' for #<Parser::Source::Map::Condition:0x007f4ebf1974a8>
+# で落ちることがあるのでコメントアウト
+## elseの中に明示的にnilを書くのを許可する
+#Style/EmptyElse:
+#  EnforcedStyle: nil
 
 # 別にsprintfでもformatでもString#%でもよいと思うので
 Style/FormatString:
