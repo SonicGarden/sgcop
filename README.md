@@ -5,8 +5,7 @@ SonicGarden標準のrobocop設定支援をするツール
 ## Installation
 
 ```ruby
-gem install specific_install
-gem specific_install git@github.com:SonicGarden/sgcop.git
+gem 'sgcop', github: 'SonicGarden/sgcop'
 ```
 
 ## Usage
