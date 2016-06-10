@@ -2,8 +2,9 @@
 # rubocop v0.40.0
 inherit_from: ../ruby/rubocop.yml
 
-require: rubocop-rspec
-require: sgcop
+require:
+  - rubocop-rspec
+  - sgcop
 
 # 自動生成されるものなどはチェック対象から除外する
 AllCops:
