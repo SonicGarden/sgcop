@@ -31,9 +31,11 @@ rubocop <options...>
 ```
 
 ## しつけ方
+
 http://blog.onk.ninja/2015/10/27/rubocop-getting-started
 
-自動修正して楽したいならこちらを。
+自動修正して楽したいならこちら
+
 http://blog.onk.ninja/2015/10/27/rubocop-getting-started#治安の悪いアプリに-rubocop-を導入する
 
 ## Contributing
