@@ -30,6 +30,12 @@ And then execute:
 rubocop <options...>
 ```
 
+## しつけ方
+http://blog.onk.ninja/2015/10/27/rubocop-getting-started
+
+自動修正して楽したいならこちらを。
+http://blog.onk.ninja/2015/10/27/rubocop-getting-started#治安の悪いアプリに-rubocop-を導入する
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/SonicGarden/sgcop. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
