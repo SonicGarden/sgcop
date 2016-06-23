@@ -38,11 +38,9 @@ http://blog.onk.ninja/2015/10/27/rubocop-getting-started
 
 http://blog.onk.ninja/2015/10/27/rubocop-getting-started#治安の悪いアプリに-rubocop-を導入する
 
-Rubcop チートシート
-http://qiita.com/kitaro_tn/items/abb881c098b3df3f9871
-
-設定一覧(本家)
-https://github.com/bbatsov/rubocop/tree/master/config
+### その他参考サイト
+- Rubcop チートシート http://qiita.com/kitaro_tn/items/abb881c098b3df3f9871
+- 設定一覧(本家) https://github.com/bbatsov/rubocop/tree/master/config
 
 ## Contributing
 
