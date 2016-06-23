@@ -38,6 +38,12 @@ http://blog.onk.ninja/2015/10/27/rubocop-getting-started
 
 http://blog.onk.ninja/2015/10/27/rubocop-getting-started#治安の悪いアプリに-rubocop-を導入する
 
+Rubcop チートシート
+http://qiita.com/kitaro_tn/items/abb881c098b3df3f9871
+
+設定一覧(本家)
+https://github.com/bbatsov/rubocop/tree/master/config
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/SonicGarden/sgcop. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
