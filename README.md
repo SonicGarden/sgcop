@@ -8,6 +8,14 @@ SonicGarden標準のrobocop設定支援をするツール
 gem 'sgcop', github: 'SonicGarden/sgcop'
 ```
 
+#### Opsworks 案件の場合
+
+development の group に入れると、デプロイ時にgemを参照できないというエラーになる場合がある。development group にいれないで以下のように書くことで回避できる。
+
+````ruby
+gem 'sgcop', github: 'SonicGarden/sgcop', require: false
+````
+
 ## Usage
 
 For non-Rails projects, add the following to the top of your .rubocop.yml file:
