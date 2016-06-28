@@ -42,6 +42,16 @@ http://blog.onk.ninja/2015/10/27/rubocop-getting-started#治安の悪いアプ�
 - Rubcop チートシート http://qiita.com/kitaro_tn/items/abb881c098b3df3f9871
 - 設定一覧(本家) https://github.com/bbatsov/rubocop/tree/master/config
 
+### For atom editor user
+
+linter-rubocop https://atom.io/packages/linter-rubocop のパッケージをインストールする
+Setting 内で Command の設定を
+
+    bundle exec rubocop
+
+に変更する。
+上記の設定をしないと gem になっていないので、 gem が見つかりませんというエラーになる。
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/SonicGarden/sgcop. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
