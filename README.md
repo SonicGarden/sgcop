@@ -11,6 +11,7 @@ gem 'sgcop', github: 'SonicGarden/sgcop'
 #### Opsworks 案件の場合
 
 development の group に入れると、デプロイ時にgemを参照できないというエラーになる場合がある。development group にいれないで以下のように書くことで回避できる。
+理由は[こちら](https://www.remotty.net/groups/13/entries/119357)
 
 ````ruby
 gem 'sgcop', github: 'SonicGarden/sgcop', require: false
