@@ -1,6 +1,6 @@
 # Sgcop
 
-SonicGarden標準のrobocop設定支援をするツール
+SonicGarden標準のrubocop設定支援をするツール
 
 ## Installation
 
@@ -47,8 +47,8 @@ http://blog.onk.ninja/2015/10/27/rubocop-getting-started
 
 http://blog.onk.ninja/2015/10/27/rubocop-getting-started#治安の悪いアプリに-rubocop-を導入する
 
-### その他参考サイト
-- Rubcop チートシート http://qiita.com/kitaro_tn/items/abb881c098b3df3f9871
+### 参考サイト
+- Rubocop チートシート http://qiita.com/kitaro_tn/items/abb881c098b3df3f9871
 - 設定一覧(本家) https://github.com/bbatsov/rubocop/tree/master/config
 
 ### For atom editor user
@@ -60,6 +60,43 @@ Setting 内で Command の設定を
 
 に変更する。
 上記の設定をしないと gem になっていないので、 gem が見つかりませんというエラーになる。
+
+## werckerと組み合わせたプルリクエスト自動コメント
+
+werckerを利用している場合、wercker上でrubocopを実行して、その結果をプルリクエストにレビューコメントとして自動的に書き込むことができます。
+
+### werckerの設定方法
+
+1. Gemfile の `gem 'sgcop'` を test group に入れる
+
+2. このgemの [exe/run-rubocop.sh](https://github.com/SonicGarden/sgcop/tree/master/exe/run-rubocop.sh) をプロジェクトの bin/rubocop.sh にコピーし、実行権限を付加(`chmod +x`)
+（コピーしなくてもgem内のスクリプトを直接実行する方法があったら教えてください :pray:）
+3. .wercker.yml に以下の項目を追加
+
+**rubyのデフォルトエンコーディングをUTF-8に設定**
+（boxによってはいらないかも）
+```yml
+    - script:
+      name: set env
+      code: export RUBYOPT=-EUTF-8
+```
+
+**実行スクリプト**
+```yml
+    - script:
+      name: Run Rubocop and Report by Saddler
+      code: bin/run-rubocop.sh
+```
+
+4. GitHub の Personal Access Token でrepoのread/write権限をもったtokenを生成
+
+5. werckerの Application settings - Environment variables でそのtokenを `GITHUB_ACCESS_TOKEN` にprotectedでセット
+
+### サンプル(private repo)
+https://github.com/SonicGarden/ishuran/pull/57
+
+このように sg-bot にやらせたい場合はtokenを尋ねてください。
+
 
 ## Contributing
 
