@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["maedana@sonicgarden.jp"]
 
   spec.summary       = %q{SonicGarden標準コーディングスタイル}
-  spec.description   = %q{各プロジェクトのrobocopのデフォルト設定とすることを目的としている}
+  spec.description   = %q{各プロジェクトのrubocopのデフォルト設定とすることを目的としている}
   spec.homepage      = "https://github.com/SonicGarden/sgcop"
   spec.license       = "MIT"
 
@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", '~> 3.4'
-  spec.add_dependency 'rubocop', '~> 0.40.0'
+  spec.add_dependency 'rubocop', '~> 0.41.2'
   spec.add_dependency 'rubocop-rspec', '~> 1.5'
   spec.add_dependency 'rubocop-select'
   spec.add_dependency 'rubocop-checkstyle_formatter'
