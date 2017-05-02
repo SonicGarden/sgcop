@@ -54,3 +54,7 @@ RSpec/AnyInstance:
 #     }
 RSpec/DescribedClass:
   Enabled: false
+
+# 厳密にテストしたい場合に複数条件を入れるのはよいかと
+RSpec/MultipleExpectations:
+  Enabled: false

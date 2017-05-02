@@ -108,6 +108,10 @@ Style/SingleLineBlockParams:
 Style/SymbolProc:
   Enabled: false
 
+# %w[..] は許容して欲しいところ
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
 # ============================================================
 # Lint
 # ============================================================
