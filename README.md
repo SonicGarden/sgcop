@@ -17,6 +17,15 @@ development の group に入れると、デプロイ時にgemを参照できな�
 gem 'sgcop', github: 'SonicGarden/sgcop', require: false
 ````
 
+### RubyMine
+RubyMine 2017.1 から標準のコード解析機能で rubocop が使えるようになっているが、 bundler を使わずに実行されるため、 `gem 'sgcop', github: ...`  形式でインストールされた sgcop が使用できない。
+specific_install gem を使って、グローバルな gem として sgcop をインストールすれば使えるようになる。
+
+```
+$ gem install specific_install
+$ gem specific_install SonicGarden/sgcop
+```
+
 ## Usage
 
 For non-Rails projects, add the following to the top of your .rubocop.yml file:
