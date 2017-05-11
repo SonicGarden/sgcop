@@ -58,3 +58,7 @@ RSpec/DescribedClass:
 # 厳密にテストしたい場合に複数条件を入れるのはよいかと
 RSpec/MultipleExpectations:
   Enabled: false
+
+# feature specで長くなるので
+RSpec/ExampleLength:
+  Enabled: false
