@@ -21,7 +21,9 @@ AllCops:
     - 'db/migrate/*'
     - 'db/schema.rb'
     - 'deploy/*'
+    - 'node_modules/**/*' # .specというファイルがrpsecのチェックでヒットしてしまうので
     - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
 
 Rails:
   Enabled: true
@@ -31,6 +33,15 @@ Rails/UniqBeforePluck:
   Enabled: false
 
 # ============================================================
+# Metrics
+# ============================================================
+# rspecやroutes.rbは仕方ないよ
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'config/routes.rb'
+
+# ============================================================
 # Style
 # ============================================================
 
@@ -38,6 +49,10 @@ Rails/UniqBeforePluck:
 Style/SymbolProc:
   Exclude:
     - 'app/mailers/**/*'
+
+# def show;endって書き方読みやすいとは思わない
+Style/EmptyMethod:
+  Enabled: false
 
 # ============================================================
 # RSpec
@@ -61,4 +76,8 @@ RSpec/MultipleExpectations:
 
 # feature specで長くなるので
 RSpec/ExampleLength:
+  Enabled: false
+
+# 自動生成されて中身が空のままコミットすることはある
+RSpec/EmptyExampleGroup:
   Enabled: false
