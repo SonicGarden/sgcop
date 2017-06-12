@@ -133,9 +133,9 @@ Lint/UnusedMethodArgument:
 Metrics/AbcSize:
   Max: 30
 
-# 行の長さは4Kディスプレイとかいう時代だし制限する必要ないと思うので
+# 80では短すぎる。かといって長すぎてもgithub上のコードレビューがやり辛いという問題があるので制限は必要
 Metrics/LineLength:
-  Enabled: false
+  Max: 160
 
 # 20くらいは別によいと思う
 Metrics/MethodLength:
