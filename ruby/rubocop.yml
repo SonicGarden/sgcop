@@ -1,5 +1,5 @@
 # target_version:
-# rubocop v0.45.0
+# rubocop v0.49.1
 
 # Cop name を常に表示する
 # - 名前がわからないと rubocop の設定がしづらい
@@ -67,12 +67,6 @@ Style/GuardClause:
 # 条件式の方を意識させたい場合には後置の if/unless を使わない方が分かりやすい
 Style/IfUnlessModifier:
   Enabled: false
-
-# special_inside_parentheses (default) と比べて
-# * 横に長くなりづらい
-# * メソッド名の長さが変わったときに diff が少ない
-Style/IndentArray:
-  EnforcedStyle: consistent
 
 # scope 等は複数行でも lambda ではなく ->{} を使いたい
 Style/Lambda:
@@ -146,3 +140,13 @@ Metrics/LineLength:
 # 20くらいは別によいと思う
 Metrics/MethodLength:
   Max: 20
+
+# ============================================================
+# Layout
+# ============================================================
+
+# special_inside_parentheses (default) と比べて
+# * 横に長くなりづらい
+# * メソッド名の長さが変わったときに diff が少ない
+Layout/IndentArray:
+  EnforcedStyle: consistent
