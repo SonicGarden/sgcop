@@ -133,7 +133,7 @@ Lint/UnusedMethodArgument:
 Metrics/AbcSize:
   Max: 30
 
-# 80では短すぎる。制限なしでもいいかも
+# 80では短すぎる。かといって長すぎてもgithub上のコードレビューがやり辛いという問題があるので制限は必要
 Metrics/LineLength:
   Max: 160
 
