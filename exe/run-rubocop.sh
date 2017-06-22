@@ -16,14 +16,12 @@ report() {
    | xargs rubocop \
        --require rubocop/formatter/checkstyle_formatter \
        --format RuboCop::Formatter::CheckstyleFormatter \
-   | checkstyle_filter-git diff origin/master \
-   | xmllint --format -
+   | checkstyle_filter-git diff origin/master
 
   git diff -z --diff-filter=d --name-only origin/master \
    | grep -e '\.haml$' \
    | xargs haml-lint --reporter checkstyle \
-   | checkstyle_filter-git diff origin/master \
-   | xmllint --format -
+   | checkstyle_filter-git diff origin/master
 
   # Reporting
   git diff -z --name-only origin/master \
