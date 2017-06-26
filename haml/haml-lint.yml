@@ -1,0 +1,52 @@
+# target_version:
+# haml-lint v0.26.0
+
+linters:
+  # クラスとIDはどちらから書いてもよい
+  ClassesBeforeIds:
+    enabled: false
+
+  # コメントアウト時など、連続行のコメントは許可
+  ConsecutiveComments:
+    enabled: false
+
+  # エディタによってはコメントアウト時にスペースがつかないことがあるので
+  # コメント後のスペースはなくてもよい
+  LeadingCommentSpace:
+    enabled: false
+
+  # 1行の文字数
+  LineLength:
+    max: 160
+
+  # rubyコードはrubocopでチェックする
+  RuboCop:
+    enabled: true
+    # These cops are incredibly noisy when it comes to HAML templates, so we
+    # ignore them.
+    ignored_cops:
+      - Lint/BlockAlignment
+      - Lint/EndAlignment
+      - Lint/Void
+      - Layout/AlignParameters
+      - Layout/IndentationWidth
+      # エディタによってはコメントアウト時にスペースがつかないことがあるため
+      # コメント後のスペースは制限しない
+      - Layout/LeadingCommentSpace
+      - Layout/TrailingBlankLines
+      - Layout/TrailingWhitespace
+      - Metrics/BlockLength
+      - Metrics/LineLength
+      - Style/BlockNesting
+      - Style/ElseAlignment
+      - Style/EndOfLine
+      - Style/FileName
+      - Style/FinalNewline
+      - Style/FrozenStringLiteralComment
+      - Style/IfUnlessModifier
+      - Style/Next
+      - Style/WhileUntilModifier
+
+  # Hash属性の内側にスペースはなくてもよい
+  SpaceInsideHashAttributes:
+    enabled: false

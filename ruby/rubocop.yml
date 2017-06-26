@@ -6,6 +6,9 @@
 # - 名前がわからないと disable コメントも書けない
 AllCops:
   DisplayCopNames: true
+  DisplayStyleGuide: true
+  StyleGuideBaseURL: https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md
+  ExtraDetails: true
 
 # ============================================================
 # Style

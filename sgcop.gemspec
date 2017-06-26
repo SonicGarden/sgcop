@@ -24,9 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", '~> 3.4'
   spec.add_dependency 'rubocop', '~> 0.49.1'
   spec.add_dependency 'rubocop-rspec', '~> 1.15.1'
-  spec.add_dependency 'rubocop-select'
-  spec.add_dependency 'rubocop-checkstyle_formatter'
-  spec.add_dependency 'checkstyle_filter-git'
-  spec.add_dependency 'saddler'
-  spec.add_dependency 'saddler-reporter-github'
+  spec.add_dependency 'haml_lint', '~> 0.26.0'
 end
