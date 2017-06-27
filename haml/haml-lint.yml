@@ -22,6 +22,9 @@ linters:
   # rubyコードはrubocopでチェックする
   RuboCop:
     enabled: true
+    # kaminariが生成するviewはチェックしない
+    exclude:
+      - app/views/kaminari/**/*
     # These cops are incredibly noisy when it comes to HAML templates, so we
     # ignore them.
     ignored_cops:
