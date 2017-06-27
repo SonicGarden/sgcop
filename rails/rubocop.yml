@@ -36,7 +36,7 @@ Rails/UniqBeforePluck:
 # ============================================================
 # Metrics
 # ============================================================
-# routes, rake, rspecはブロックが致し方ない
+# routes, rake, rspecにおけるブロックの長さについては致し方ない
 Metrics/BlockLength:
   Exclude:
     - 'config/routes.rb'
