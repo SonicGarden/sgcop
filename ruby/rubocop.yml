@@ -85,13 +85,13 @@ Style/PerlBackrefs:
   AutoCorrect: false
 
 # has_ から始まるメソッドは許可する
-Style/PredicateName:
+Naming/PredicateName:
   NamePrefixBlacklist:
-    - "is_"
-    - "have_"
+    - is_
+    - have_
   NamePrefix:
-    - "is_"
-    - "have_"
+    - is_
+    - have_
 
 # ローカル変数とメソッド呼び出しの区別をつけた方が分かりやすい場合が多い
 Style/RedundantSelf:
