@@ -63,6 +63,10 @@ Style/EmptyMethod:
 RSpec/AnyInstance:
   Enabled: false
 
+# Contextの条件の説明を日本語でも書きたいので
+RSpec/ContextWording:
+ Enabled: false
+
 # 以下のようなもので引っかかってしまって困るので
 # describe GuestTicket do
 #   describe '#save' do
