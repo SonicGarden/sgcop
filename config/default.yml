@@ -1,3 +1,0 @@
-Sgcop/MissingDependent:
-  Description: 'has_one/has_many に dependent がないときに警告'
-  Enabled: true
