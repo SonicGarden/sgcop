@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 12.3"
   spec.add_development_dependency "rspec", '~> 3.7'
-  spec.add_dependency 'rubocop', '~> 0.52.0'
-  spec.add_dependency 'rubocop-rspec', '~> 1.20.1'
+  spec.add_dependency 'rubocop', '~> 0.52.1'
+  spec.add_dependency 'rubocop-rspec', '~> 1.22.2'
   spec.add_dependency 'haml_lint', '~> 0.27.0'
 end
