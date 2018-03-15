@@ -33,6 +33,14 @@ Rails:
 Rails/UniqBeforePluck:
   Enabled: false
 
+# デフォルトにstagingが含まれていない
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - staging
+
 # ============================================================
 # Metrics
 # ============================================================
