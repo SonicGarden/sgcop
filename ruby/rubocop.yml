@@ -1,5 +1,5 @@
 # target_version:
-# rubocop v0.49.1
+# rubocop v0.54.0
 
 # Cop name を常に表示する
 # - 名前がわからないと rubocop の設定がしづらい
