@@ -1,6 +1,8 @@
 #!/bin/bash
 
-if [ -z "${GITHUB_ACCESS_TOKEN}" ]; then
+if [ -n "${GITHUB_ACCESS_TOKEN}" ]; then
+  export GITHUB_TOKEN="${GITHUB_ACCESS_TOKEN}"
+else
   echo 'GITHUB_ACCESS_TOKEN env var required.'
   exit 1
 fi
