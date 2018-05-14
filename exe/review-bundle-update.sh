@@ -23,7 +23,7 @@ bundle --no-deployment --without nothing --jobs=4 --retry=3 --path vendor/bundle
 
 # bundle update
 bundle update
-BODY=$(bundle diffgems --escape-json -f md_table)
+BODY=$(bundle diffgems -f md_table)
 
 git add Gemfile.lock
 git commit -m "Bundle update ${HEAD_DATE}"
