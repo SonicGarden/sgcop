@@ -14,7 +14,7 @@ gem install --no-document bundler_diffgems git_httpsable-push pull_request-creat
 # TODO: Allow to customize user
 git config user.name sg-bot
 git config user.email sg-bot@sonicgarden.jp
-HEAD_DATE=$(date +%Y%m%d_%H-%M-%S)
+HEAD_DATE=$(date +%Y%m%dT%H%M%SZ)
 HEAD="bundle/update-${HEAD_DATE}"
 
 # checkout
