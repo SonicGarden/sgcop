@@ -80,50 +80,49 @@ Setting 内で Command の設定を
 に変更する。
 上記の設定をしないと gem になっていないので、 gem が見つかりませんというエラーになる。
 
-## CircleCI/Werckerと組み合わせたプルリクエスト自動レビューコメント
 
-CIを利用している場合、CI上でrubocopとhaml-lintを実行して、その結果をプルリクエストにレビューコメントとして自動的に書き込むことができます。
+## CircleCIと組み合わせたプルリクエスト自動レビュー
 
-### 実行スクリプトの設定
+CircleCI上で rubocop, haml-lint, brakeman を実行して、その結果をプルリクエストにレビューコメントとして自動的に書き込むことができます。
 
-このgemの [exe/run-rubocop.sh](https://github.com/SonicGarden/sgcop/tree/master/exe/run-rubocop.sh) をプロジェクトの bin/rubocop.sh にコピーし、実行権限を付加(`chmod +x`)します。
+### 共通の設定（セットアップ）
 
-CIの設定に以下の項目を追加します。
-
-#### CircleCIの場合
-設定ファイルは circle.yml
+CircleCIの設定 .circleci/config.yml に以下の項目を追加します。
 
 **実行スクリプト**
 ```yml
-test:
-  post:
-    - bin/run-rubocop.sh
+      - run:
+          name: Auto-review setup
+          command: gem install specific_install && gem specific_install SonicGarden/sgcop
+          when: always
 ```
-
-#### Werckerの場合
-設定ファイルは .wercker.yml
-
-**rubyのデフォルトエンコーディングをUTF-8に設定**
-（boxによってはいらないかも）
-```yml
-    - script:
-      name: set env
-      code: export RUBYOPT=-EUTF-8
-```
-
-**実行スクリプト**
-```yml
-    - script:
-      name: Run Rubocop and Report by Saddler
-      code: bin/run-rubocop.sh
-```
-
-### トークンの設定
 
 そして、 GitHub の Personal Access Token でrepoのread/write権限をもったtokenを生成して、
-CIの環境設定からそのtokenを `GITHUB_ACCESS_TOKEN` という名前でセットしてください。
+CircleCIの環境設定からそのtokenを `GITHUB_ACCESS_TOKEN` という名前でセットしてください。
 
-Werckerの場合、Protected Variables としてセットしてください。
+### rubocop, haml-lint を実行
+
+CircleCIの設定 .circleci/config.yml でセットアップより後に以下の項目を追加します。
+
+**実行スクリプト**
+```yml
+      - run:
+          name: Review by Rubocop
+          command: sgcop review rubocop
+          when: always
+```
+
+### brakeman を実行
+
+CircleCIの設定 .circleci/config.yml でセットアップより後に以下の項目を追加します。
+
+**実行スクリプト**
+```yml
+      - run:
+          name: Review by Brakeman
+          command: sgcop review brakeman
+          when: always
+```
 
 ### サンプル(private repo)
 https://github.com/SonicGarden/ishuran/pull/57

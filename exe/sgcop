@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+bin_dir = File.expand_path(File.dirname(__FILE__))
+if ARGV.size == 0
+  exec 'rubocop'
+elsif ARGV[0] != 'review'
+  puts 'Usage: sgcop review [script name]'
+  exit
+end
+script_name = ARGV[1]
+shell_script_path = File.join(bin_dir, "review-#{script_name}.sh")
+
+system shell_script_path
