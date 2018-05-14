@@ -32,6 +32,6 @@ git commit -m "Bundle update ${HEAD_DATE}"
 git httpsable-push origin "${HEAD}"
 
 # pull request
-pull-request-create create --title="Bundle update by sgcop ${HEAD_DATE}" --body="${BODY}"
+pull-request-create create --title "Bundle update by sgcop ${HEAD_DATE}" --body "${BODY}"
 
 exit 0
