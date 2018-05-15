@@ -20,11 +20,8 @@ HEAD="bundle/update-${HEAD_DATE}"
 # checkout
 git checkout -b "${HEAD}" origin/master
 
-# bundle install
-bundle --no-deployment --without nothing --jobs=4 --retry=3 --path vendor/bundle
-
 # bundle update
-bundle update
+bundle lock --update
 BODY=$(bundle diffgems -f md_table)
 
 git add Gemfile.lock
