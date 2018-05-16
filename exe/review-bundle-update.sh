@@ -8,7 +8,7 @@ else
 fi
 
 # gem prepare
-gem install --no-document bundler_diffgems git_httpsable-push pull_request-create
+gem install --no-document bundler-audit bundler_diffgems git_httpsable-push pull_request-create
 
 # git prepare
 # TODO: Allow to customize user
@@ -23,9 +23,13 @@ git checkout -b "${HEAD}" origin/master
 # bundle install
 bundle --no-deployment --without nothing --jobs=4 --retry=3 --path vendor/bundle
 
+# bundle audit
+bundle audit update
+AUDIT=$(bundle audit)
+
 # bundle update
 bundle update
-BODY=$(bundle diffgems -f md_table)
+TABLE=$(bundle diffgems -f md_table)
 
 git add Gemfile.lock
 git commit -m "Bundle update ${HEAD_DATE}"
@@ -34,6 +38,9 @@ git commit -m "Bundle update ${HEAD_DATE}"
 git httpsable-push origin "${HEAD}"
 
 # pull request
+BODY="${AUDIT}
+***
+${TABLE}"
 pull-request-create create --title "Bundle update by sgcop ${HEAD_DATE}" --body "${BODY}"
 
 exit 0
