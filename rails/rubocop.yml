@@ -18,7 +18,6 @@ AllCops:
     - 'config/spring.rb'
     - 'config/puma.rb'
     - 'config.ru'
-    - 'db/migrate/*'
     - 'db/schema.rb'
     - 'deploy/*'
     - 'node_modules/**/*' # .specというファイルがrpsecのチェックでヒットしてしまうので
