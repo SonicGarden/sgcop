@@ -5,6 +5,7 @@ module RuboCop
     module Sgcop
       class SimpleFormat < Cop
         MSG = 'simple_format does not escape HTML tags.'
+        ESCAPE_METHODS = %i[h html_escape].freeze
 
         def on_send(node)
           receiver, method_name, *args = *node
@@ -19,8 +20,8 @@ module RuboCop
           return false if args.first.nil?
           return true if args.first.child_nodes.empty?
 
-          receiver, *_args = *args.first
-          !receiver.nil?
+          _receiver, method_name, *_args = *args.first
+          !ESCAPE_METHODS.member?(method_name)
         end
       end
     end

@@ -21,11 +21,16 @@ describe RuboCop::Cop::Sgcop::SimpleFormat do
     RUBY
   end
 
-  it 'simple_formatにレシーバ無しのメソッドが渡されていたら警告なし' do
+  it 'simple_formatにエスケープメソッドの結果が渡されていたら警告なし' do
     expect_no_offenses(<<~RUBY)
-      def html_format(text)
-        simple_format(h(text))
-      end
+      simple_format(h(text))
+    RUBY
+  end
+
+  it 'simple_formatにエスケープメソッド以外の結果が渡されていたら警告' do
+    expect_offense(<<~RUBY)
+      simple_format(t(text))
+      ^^^^^^^^^^^^^^^^^^^^^^ simple_format does not escape HTML tags.
     RUBY
   end
 
