@@ -19,8 +19,8 @@ module RuboCop
           return false if args.first.nil?
           return true if args.first.child_nodes.empty?
 
-          receiver, *_args = *args.first.child_nodes.first
-          %i[object @object].member?(receiver)
+          receiver, *_args = *args.first
+          !receiver.nil?
         end
       end
     end
