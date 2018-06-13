@@ -43,12 +43,23 @@ Rails/UnknownEnv:
 # ============================================================
 # Metrics
 # ============================================================
-# routes, rake, rspecにおけるブロックの長さについては致し方ない
+# routes, rake, rspec, migrationにおけるブロックの長さについては致し方ない
 Metrics/BlockLength:
   Exclude:
     - 'config/routes.rb'
     - 'lib/tasks/**/*.rake'
     - 'spec/**/*'
+    - 'db/migrate/*'
+
+# migratonは致し方ない
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/*'
+
+# migratonは致し方ない
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/*'
 
 # ============================================================
 # Style
