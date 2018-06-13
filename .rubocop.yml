@@ -1,5 +1,6 @@
 inherit_from: ruby/rubocop.yml
 
 AllCops:
+  TargetRubyVersion: 2.4
   Exclude:
     - 'sgcop.gemspec'

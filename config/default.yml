@@ -1,0 +1,3 @@
+Sgcop/SimpleFormat:
+  Description: 'simple_formatでエスケープされていないときに警告'	
+  Enabled: true
