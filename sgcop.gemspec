@@ -22,8 +22,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 12.3"
   spec.add_development_dependency "rspec", '~> 3.8'
-  spec.add_dependency 'rubocop', '~> 0.58.0'
-  spec.add_dependency 'rubocop-rspec', '~> 1.28.0'
+  spec.add_dependency 'rubocop', '~> 0.60.0'
+  spec.add_dependency 'rubocop-rspec', '~> 1.30.1'
   spec.add_dependency 'haml_lint', '~> 0.28.0'
   spec.add_dependency 'brakeman'
   spec.add_dependency 'brakeman_translate_checkstyle_format'
