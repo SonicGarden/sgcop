@@ -4,6 +4,7 @@ inherit_from: ../ruby/rubocop.yml
 
 require:
   - rubocop-rspec
+  - rubocop-performance
   - sgcop
 
 # 自動生成されるものなどはチェック対象から除外する
