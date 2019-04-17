@@ -4,6 +4,7 @@ inherit_from: ../ruby/rubocop.yml
 
 require:
   - rubocop-rspec
+  - rubocop-performance
   - sgcop
 
 # 自動生成されるものなどはチェック対象から除外する
@@ -105,3 +106,11 @@ RSpec/ExampleLength:
 # 自動生成されて中身が空のままコミットすることはある
 RSpec/EmptyExampleGroup:
   Enabled: false
+
+# メールプレビュー画面をわかりやすくする為に日本語メソッド名を許可
+Naming/AsciiIdentifiers:
+  Exclude:
+    - 'spec/mailers/previews/*.rb'
+Naming/MethodName:
+  Exclude:
+    - 'spec/mailers/previews/*.rb'
