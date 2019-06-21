@@ -150,5 +150,5 @@ Metrics/MethodLength:
 # special_inside_parentheses (default) と比べて
 # * 横に長くなりづらい
 # * メソッド名の長さが変わったときに diff が少ない
-Layout/IndentArray:
+Layout/IndentFirstArrayElement:
   EnforcedStyle: consistent
