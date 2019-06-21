@@ -1,5 +1,5 @@
 #!/bin/bash
-reviewdog_version=0.9.12
+reviewdog_version=v0.9.12
 if [ -z "${REVIEWDOG_GITHUB_API_TOKEN}" ]; then
   export REVIEWDOG_GITHUB_API_TOKEN="${GITHUB_ACCESS_TOKEN}"
 fi
@@ -9,9 +9,9 @@ if [ ! -x /usr/local/bin/reviewdog ]; then
 fi
 
 # Reporting
-brakeman -A -qz -f json \
- | brakeman_translate_checkstyle_format translate \
- | reviewdog -f=checkstyle -name="brakeman" -reporter=github-pr-check
+bundle exec brakeman -A -qz -f json \
+ | bundle exec brakeman_translate_checkstyle_format translate \
+ | ./bin/reviewdog -f=checkstyle -name="brakeman" -reporter=github-pr-review
 
 # For display
-brakeman -A -qz
+bundle exec brakeman -A -qz

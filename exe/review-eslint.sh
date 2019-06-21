@@ -1,5 +1,5 @@
 #!/bin/bash
-reviewdog_version=0.9.12
+reviewdog_version=v0.9.12
 if [ -z "${REVIEWDOG_GITHUB_API_TOKEN}" ]; then
   export REVIEWDOG_GITHUB_API_TOKEN="${GITHUB_ACCESS_TOKEN}"
 fi
@@ -9,6 +9,6 @@ if [ ! -x /usr/local/bin/reviewdog ]; then
 fi
 
 # Reporting
-eslint -f checkstyle .
- | reviewdog -f=checkstyle -name=eslint -reporter=github-pr-check
+yarn run eslint -f checkstyle app
+ | ./bin/reviewdog -f=checkstyle -name=eslint -reporter=github-pr-review
 exit 0
