@@ -75,14 +75,7 @@ CircleCI の設定 .circleci/config.yml に以下の項目を追加します。
 
 **実行スクリプト**
 
-```yml
-- run:
-    name: Auto-review setup
-    command: gem install specific_install && gem specific_install SonicGarden/sgcop
-    when: always
-```
-
-そして、 GitHub の Personal Access Token で repo の read/write 権限をもった token を生成して、
+GitHub の Personal Access Token で repo の read/write 権限をもった token を生成して、
 CircleCI の環境設定からその token を `GITHUB_ACCESS_TOKEN` という名前でセットしてください。
 
 ### rubocop, haml-lint を実行
@@ -94,7 +87,20 @@ CircleCI の設定 .circleci/config.yml でセットアップより後に以下�
 ```yml
 - run:
     name: Review by Rubocop
-    command: sgcop review rubocop
+    command: bundle exec sgcop review rubocop
+    when: always
+```
+
+### eslint を実行
+
+CircleCI の設定 .circleci/config.yml でセットアップより後に以下の項目を追加します。
+
+**実行スクリプト**
+
+```yml
+- run:
+    name: Review by eslint
+    command: bundle exec sgcop review eslint
     when: always
 ```
 
@@ -107,7 +113,7 @@ CircleCI の設定 .circleci/config.yml でセットアップより後に以下�
 ```yml
 - run:
     name: Review by Brakeman
-    command: sgcop review brakeman
+    command: bundle exec sgcop review brakeman
     when: always
 ```
 
