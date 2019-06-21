@@ -9,6 +9,6 @@ if [ ! -x /usr/local/bin/reviewdog ]; then
 fi
 
 # Reporting
-yarn run eslint -f checkstyle app
+yarn run eslint -f checkstyle app \
  | ./bin/reviewdog -f=checkstyle -name=eslint -reporter=github-pr-review
 exit 0
