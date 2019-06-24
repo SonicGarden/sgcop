@@ -1,19 +1,17 @@
 #!/bin/bash
-reviewdog_version=0.9.8
+reviewdog_version=v0.9.12
 if [ -z "${REVIEWDOG_GITHUB_API_TOKEN}" ]; then
   export REVIEWDOG_GITHUB_API_TOKEN="${GITHUB_ACCESS_TOKEN}"
 fi
 
 if [ ! -x /usr/local/bin/reviewdog ]; then
-  sudo curl -fSL https://github.com/haya14busa/reviewdog/releases/download/${reviewdog_version}/reviewdog_linux_amd64 \
-    -o /usr/local/bin/reviewdog \
-    && sudo chmod +x /usr/local/bin/reviewdog
+  curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s ${reviewdog_version}
 fi
 
 # Reporting
-brakeman -A -qz -f json \
- | brakeman_translate_checkstyle_format translate \
- | reviewdog -f=checkstyle -name="brakeman" -ci="circle-ci"
+bundle exec brakeman -A -qz -f json \
+ | bundle exec brakeman_translate_checkstyle_format translate \
+ | ./bin/reviewdog -f=checkstyle -name="brakeman" -reporter=github-pr-review
 
 # For display
-brakeman -A -qz
+bundle exec brakeman -A -qz

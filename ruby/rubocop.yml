@@ -101,13 +101,12 @@ Style/RedundantSelf:
 Style/SingleLineBlockParams:
   Enabled: false
 
-# each(&:hoge)のような書き方強制するほどでもないような
-Style/SymbolProc:
-  Enabled: false
+# 複数行の場合はケツカンマを入れる
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
 
-# %w[..] は許容して欲しいところ
-Style/PercentLiteralDelimiters:
-  Enabled: false
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
 
 # ============================================================
 # Lint
@@ -151,5 +150,5 @@ Metrics/MethodLength:
 # special_inside_parentheses (default) と比べて
 # * 横に長くなりづらい
 # * メソッド名の長さが変わったときに diff が少ない
-Layout/IndentArray:
+Layout/IndentFirstArrayElement:
   EnforcedStyle: consistent
