@@ -4,8 +4,6 @@ SonicGarden 標準の rubocop, haml-lint 設定支援をするツール
 
 ## Installation
 
-RubyGems.org にリリースしていない gem のため、bundler を使ってインストールする。
-
 ```
 gem 'sgcop', github: 'SonicGarden/sgcop'
 ```
