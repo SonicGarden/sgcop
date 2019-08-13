@@ -3,6 +3,7 @@
 inherit_from: ../ruby/rubocop.yml
 
 require:
+  - rubocop-rails
   - rubocop-rspec
   - rubocop-performance
   - sgcop
@@ -10,20 +11,20 @@ require:
 # 自動生成されるものなどはチェック対象から除外する
 AllCops:
   Exclude:
-    - 'bin/*'
-    - 'config/application.rb'
-    - 'config/backup.rb'
-    - 'config/environments/*'
-    - 'config/initializers/*'
-    - 'config/unicorn.rb'
-    - 'config/spring.rb'
-    - 'config/puma.rb'
-    - 'config.ru'
-    - 'db/schema.rb'
-    - 'deploy/*'
-    - 'node_modules/**/*' # .specというファイルがrpsecのチェックでヒットしてしまうので
-    - 'spec/rails_helper.rb'
-    - 'spec/spec_helper.rb'
+    - "bin/*"
+    - "config/application.rb"
+    - "config/backup.rb"
+    - "config/environments/*"
+    - "config/initializers/*"
+    - "config/unicorn.rb"
+    - "config/spring.rb"
+    - "config/puma.rb"
+    - "config.ru"
+    - "db/schema.rb"
+    - "deploy/*"
+    - "node_modules/**/*" # .specというファイルがrpsecのチェックでヒットしてしまうので
+    - "spec/rails_helper.rb"
+    - "spec/spec_helper.rb"
     - "vendor/**/*"
 
 Rails:
@@ -47,20 +48,20 @@ Rails/UnknownEnv:
 # routes, rake, rspec, migrationにおけるブロックの長さについては致し方ない
 Metrics/BlockLength:
   Exclude:
-    - 'config/routes.rb'
-    - 'lib/tasks/**/*.rake'
-    - 'spec/**/*'
-    - 'db/migrate/*'
+    - "config/routes.rb"
+    - "lib/tasks/**/*.rake"
+    - "spec/**/*"
+    - "db/migrate/*"
 
 # migratonは致し方ない
 Metrics/MethodLength:
   Exclude:
-    - 'db/migrate/*'
+    - "db/migrate/*"
 
 # migratonは致し方ない
 Metrics/AbcSize:
   Exclude:
-    - 'db/migrate/*'
+    - "db/migrate/*"
 
 # ============================================================
 # Style
@@ -69,7 +70,7 @@ Metrics/AbcSize:
 # メールの{|format| format.text}みたいなのはひっかけたくない
 Style/SymbolProc:
   Exclude:
-    - 'app/mailers/**/*'
+    - "app/mailers/**/*"
 
 # def show;endって書き方読みやすいとは思わない
 Style/EmptyMethod:
@@ -84,7 +85,7 @@ RSpec/AnyInstance:
 
 # Contextの条件の説明を日本語でも書きたいので
 RSpec/ContextWording:
- Enabled: false
+  Enabled: false
 
 # 以下のようなもので引っかかってしまって困るので
 # describe GuestTicket do
@@ -110,7 +111,7 @@ RSpec/EmptyExampleGroup:
 # メールプレビュー画面をわかりやすくする為に日本語メソッド名を許可
 Naming/AsciiIdentifiers:
   Exclude:
-    - 'spec/mailers/previews/*.rb'
+    - "spec/mailers/previews/*.rb"
 Naming/MethodName:
   Exclude:
-    - 'spec/mailers/previews/*.rb'
+    - "spec/mailers/previews/*.rb"
