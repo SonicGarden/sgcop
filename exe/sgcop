@@ -9,4 +9,4 @@ end
 script_name = ARGV[1]
 shell_script_path = File.join(__dir__, "review-#{script_name}.sh")
 
-system(shell_script_path) || exit($?.exitstatus) # rubocop:disable Style/SpecialGlobalVars
+system(shell_script_path) || exit(Process.last_status.exitstatus)
