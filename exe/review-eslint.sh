@@ -1,5 +1,5 @@
 #!/bin/bash
-reviewdog_version=v0.9.12
+reviewdog_version=v0.9.13
 if [ -z "${REVIEWDOG_GITHUB_API_TOKEN}" ]; then
   export REVIEWDOG_GITHUB_API_TOKEN="${GITHUB_ACCESS_TOKEN}"
 fi
