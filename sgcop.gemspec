@@ -13,6 +13,15 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/SonicGarden/sgcop'
   spec.license       = 'MIT'
 
+  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
+  # to allow pushing to a single host or delete this section to allow pushing to any host.
+  if spec.respond_to?(:metadata)
+    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
+  else
+    raise "RubyGems 2.0 or newer is required to protect against " \
+      "public gem pushes."
+  end
+
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
@@ -24,7 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'brakeman'
   spec.add_dependency 'brakeman_translate_checkstyle_format'
   spec.add_dependency 'haml_lint', '~> 0.34.0'
-  spec.add_dependency 'rubocop', '~> 0.75.1'
+  spec.add_dependency 'rubocop', '~> 0.76.0'
   spec.add_dependency 'rubocop-performance', '~> 1.5.0'
   spec.add_dependency 'rubocop-rails', '~> 2.3.2'
   spec.add_dependency 'rubocop-rspec', '~> 1.36.0'
