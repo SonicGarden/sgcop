@@ -86,7 +86,7 @@ Style/PerlBackrefs:
 
 # has_ から始まるメソッドは許可する
 Naming/PredicateName:
-  NamePrefixBlacklist:
+  ForbiddenPrefixes:
     - is_
     - have_
   NamePrefix:
@@ -147,8 +147,8 @@ Metrics/MethodLength:
 # Layout
 # ============================================================
 
-# special_inside_parentheses (default) と比べて
+# 複数行にわたるメソッド呼び出しを行う場合は最初の引数の前に改行を入れる
 # * 横に長くなりづらい
 # * メソッド名の長さが変わったときに diff が少ない
-Layout/IndentFirstArrayElement:
+Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
