@@ -104,6 +104,14 @@ Style/TrailingCommaInHashLiteral:
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
 
+# rubocop 本体でまだデフォルト設定がPendingのルールを有効化
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
+
 # ============================================================
 # Lint
 # ============================================================
