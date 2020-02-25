@@ -23,10 +23,6 @@ Style/AsciiComments:
 Style/BlockDelimiters:
   AutoCorrect: false
 
-# Hashをメソッドの引数にするときに {} を省略せず書いてもよい
-Style/BracesAroundHashParameters:
-  Enabled: false
-
 # namespace 付きのクラスはかなり頻繁に作るので簡単に書きたい。
 Style/ClassAndModuleChildren:
   Enabled: false
