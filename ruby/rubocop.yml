@@ -23,10 +23,6 @@ Style/AsciiComments:
 Style/BlockDelimiters:
   AutoCorrect: false
 
-# Hashをメソッドの引数にするときに {} を省略せず書いてもよい
-Style/BracesAroundHashParameters:
-  Enabled: false
-
 # namespace 付きのクラスはかなり頻繁に作るので簡単に書きたい。
 Style/ClassAndModuleChildren:
   Enabled: false
@@ -108,6 +104,14 @@ Style/TrailingCommaInHashLiteral:
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
 
+# rubocop 本体でまだデフォルト設定がPendingのルールを有効化
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
+
 # ============================================================
 # Lint
 # ============================================================
@@ -135,10 +139,6 @@ Lint/UnusedMethodArgument:
 Metrics/AbcSize:
   Max: 30
 
-# 80では短すぎる。かといって長すぎてもgithub上のコードレビューがやり辛いという問題があるので制限は必要
-Metrics/LineLength:
-  Max: 160
-
 # 20くらいは別によいと思う
 Metrics/MethodLength:
   Max: 20
@@ -152,3 +152,7 @@ Metrics/MethodLength:
 # * メソッド名の長さが変わったときに diff が少ない
 Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
+
+# 80では短すぎる。かといって長すぎてもgithub上のコードレビューがやり辛いという問題があるので制限は必要
+Layout/LineLength:
+  Max: 160
