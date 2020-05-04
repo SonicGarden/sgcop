@@ -67,11 +67,6 @@ Metrics/AbcSize:
 # Style
 # ============================================================
 
-# メールの{|format| format.text}みたいなのはひっかけたくない
-Style/SymbolProc:
-  Exclude:
-    - "app/mailers/**/*"
-
 # def show;endって書き方読みやすいとは思わない
 Style/EmptyMethod:
   Enabled: false
