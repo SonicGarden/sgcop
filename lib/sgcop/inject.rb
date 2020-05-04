@@ -1,6 +1,6 @@
 module Sgcop
   module Inject
-    DEFAULT_FILE = File.expand_path('../../../config/default.yml', __FILE__)
+    DEFAULT_FILE = File.expand_path('../../config/default.yml', __dir__)
 
     def self.defaults!
       path = File.absolute_path(DEFAULT_FILE)
