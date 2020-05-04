@@ -10,8 +10,8 @@ fi
 
 # Reporting
 bundle exec rubocop \
- | ./bin/reviewdog -f=rubocop -reporter=github-pr-review
+ | ./bin/reviewdog -f=rubocop -name="Deprecated! Please use github actions." -reporter=github-pr-review
 bundle exec haml-lint --reporter checkstyle \
- | ./bin/reviewdog -f=checkstyle -name="haml-lint" -reporter=github-pr-review
+ | ./bin/reviewdog -f=checkstyle -name="Deprecated! Please use github actions." -reporter=github-pr-review
 
 exit 0

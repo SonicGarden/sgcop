@@ -13,7 +13,7 @@ fi
 # Reporting
 bundle exec brakeman ${BRAKEMAN_OPTIONS} -f json \
  | bundle exec brakeman_translate_checkstyle_format translate \
- | ./bin/reviewdog -f=checkstyle -name="brakeman" -reporter=github-pr-review
+ | ./bin/reviewdog -f=checkstyle -name="Deprecated! Please use github actions." -reporter=github-pr-review
 
 # For display
 bundle exec brakeman ${BRAKEMAN_OPTIONS}
