@@ -32,9 +32,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.9'
   spec.add_dependency 'brakeman'
   spec.add_dependency 'brakeman_translate_checkstyle_format'
-  spec.add_dependency 'haml_lint', '~> 0.34.0'
-  spec.add_dependency 'rubocop', '~> 0.81.0'
+  spec.add_dependency 'haml_lint', '~> 0.35.0'
+  spec.add_dependency 'rubocop', '~> 0.82.0'
   spec.add_dependency 'rubocop-performance', '~> 1.5.2'
   spec.add_dependency 'rubocop-rails', '~> 2.5.2'
-  spec.add_dependency 'rubocop-rspec', '~> 1.38.1'
+  spec.add_dependency 'rubocop-rspec', '~> 1.39.0'
 end
