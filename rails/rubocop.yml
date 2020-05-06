@@ -1,5 +1,3 @@
-# target_version:
-# rubocop v0.54.0
 inherit_from: ../ruby/rubocop.yml
 
 require:
