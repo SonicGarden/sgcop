@@ -11,5 +11,5 @@ fi
 # Reporting
 # FIXME: --extに関してはeslintの設定ファイル側で指定出来そうな気もする
 yarn run eslint -f checkstyle --ext .js,.vue,.ts,.tsx,.jsx app \
- | ./bin/reviewdog -f=checkstyle -name=eslint -reporter=github-pr-review
+ | ./bin/reviewdog -f=checkstyle -name="Deprecated! Please use github actions." -reporter=github-pr-review
 exit 0
