@@ -27,13 +27,13 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 2.0.2'
+  spec.add_development_dependency 'bundler', '~> 2.1.4'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.9'
   spec.add_dependency 'brakeman'
   spec.add_dependency 'brakeman_translate_checkstyle_format'
   spec.add_dependency 'haml_lint', '~> 0.35.0'
-  spec.add_dependency 'rubocop', '~> 0.82.0'
+  spec.add_dependency 'rubocop', '~> 0.83.0'
   spec.add_dependency 'rubocop-performance', '~> 1.5.2'
   spec.add_dependency 'rubocop-rails', '~> 2.5.2'
   spec.add_dependency 'rubocop-rspec', '~> 1.39.0'
