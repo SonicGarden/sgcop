@@ -1,3 +1,9 @@
 Sgcop/SimpleFormat:
-  Description: 'simple_formatでエスケープされていないときに警告'	
+  Description: "simple_formatでエスケープされていないときに警告"
   Enabled: true
+
+Sgcop/Sleep:
+  Description: "テストではsleep禁止"
+  Enabled: true
+  Include:
+    - "**/*_spec.rb"
