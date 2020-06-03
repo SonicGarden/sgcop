@@ -7,3 +7,6 @@ Sgcop/Sleep:
   Enabled: true
   Include:
     - "**/*_spec.rb"
+  Reference:
+    - https://qiita.com/syossan27/items/78c479a46dcf963f55ef
+    - https://katsulog.tech/i-do-not-recommend-using-sleep-when-waiting-for-elements/
