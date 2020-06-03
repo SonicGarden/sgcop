@@ -72,6 +72,11 @@ Metrics/AbcSize:
 Style/EmptyMethod:
   Enabled: false
 
+# Railsのパッチバージョンを誤判定するので
+Style/IpAddresses:
+  Exclude:
+    - "Gemfile"
+
 # ============================================================
 # RSpec
 # ============================================================
