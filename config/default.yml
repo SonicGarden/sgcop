@@ -3,10 +3,9 @@ Sgcop/SimpleFormat:
   Enabled: true
 
 Sgcop/Sleep:
-  Description: "テストではsleep禁止"
+  Description: "sleepに頼らない安定したspecを書こう"
   Enabled: true
   Include:
     - "**/*_spec.rb"
   Reference:
-    - https://qiita.com/syossan27/items/78c479a46dcf963f55ef
-    - https://katsulog.tech/i-do-not-recommend-using-sleep-when-waiting-for-elements/
+    - https://qiita.com/shunichi/items/1cb7f7cfca74438513d3
