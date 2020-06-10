@@ -6,3 +6,4 @@ Sgcop::Inject.defaults!
 
 require 'rubocop/cop/sgcop/simple_format'
 require 'rubocop/cop/sgcop/sleep'
+require 'rubocop/cop/sgcop/whenever'
