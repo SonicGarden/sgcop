@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe RuboCop::Cop::Sgcop::Sleep do
-  subject(:cop) { RuboCop::Cop::Sgcop::Sleep.new }
+describe RuboCop::Cop::Sgcop::Capybara::Sleep do
+  subject(:cop) { RuboCop::Cop::Sgcop::Capybara::Sleep.new }
 
   it 'registers an offense for an sleep call with no receiver' do
     expect_offense(<<~RUBY)

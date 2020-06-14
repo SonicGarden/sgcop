@@ -2,14 +2,6 @@ Sgcop/SimpleFormat:
   Description: "simple_formatでエスケープされていないときに警告"
   Enabled: true
 
-Sgcop/Sleep:
-  Description: "sleepに頼らない安定したspecを書こう"
-  Enabled: true
-  Include:
-    - "**/*_spec.rb"
-  Reference:
-    - https://qiita.com/shunichi/items/1cb7f7cfca74438513d3
-
 Sgcop/Whenever:
   Description: "24時間表記で書かないと意図しない時間でcrontab設定される可能性あるよ"
   Enabled: true
@@ -17,3 +9,12 @@ Sgcop/Whenever:
     - "config/schedule.rb"
   Reference:
     - https://github.com/javan/whenever#parsing-dates-and-times
+
+Capybara/Sleep:
+  Description: "sleepに頼らない安定したspecを書こう"
+  Enabled: true
+  Include:
+    - "features/**/*_spec.rb"
+    - "system/**/*_spec.rb"
+  Reference:
+    - https://qiita.com/shunichi/items/1cb7f7cfca74438513d3
