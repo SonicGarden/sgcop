@@ -14,7 +14,16 @@ Capybara/Sleep:
   Description: "sleepに頼らない安定したspecを書こう"
   Enabled: true
   Include:
-    - "features/**/*_spec.rb"
-    - "system/**/*_spec.rb"
+    - "spec/features/**/*_spec.rb"
+    - "spec/system/**/*_spec.rb"
   Reference:
     - https://qiita.com/shunichi/items/1cb7f7cfca74438513d3
+
+Capybara/Matchers:
+  Description: "マッチャーの書き方を統一"
+  Enabled: true
+  Include:
+    - "spec/features/**/*_spec.rb"
+    - "spec/system/**/*_spec.rb"
+  PreferredMethods:
+    have_text: "have_content"
