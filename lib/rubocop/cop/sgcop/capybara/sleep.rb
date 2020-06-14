@@ -4,7 +4,7 @@ module RuboCop
   module Cop
     module Sgcop
       module Capybara
-      # SEE: https://github.com/rubocop-hq/rubocop-rails/blob/master/lib/rubocop/cop/rails/exit.rb
+        # SEE: https://github.com/rubocop-hq/rubocop-rails/blob/master/lib/rubocop/cop/rails/exit.rb
         class Sleep < Cop
           MSG = 'Do not use `sleep` in spec.'
 
