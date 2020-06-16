@@ -33,7 +33,6 @@ Style/ClassAndModuleChildren:
 #     ActiveRecord の find と間違えやすいため
 Style/CollectionMethods:
   PreferredMethods:
-    detect: "detect"
     find: "detect"
 
 # ドキュメントの無い public class を許可する
