@@ -138,6 +138,22 @@ Layout/SpaceAroundMethodCallOperator:
   Enabled: true
 Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: true
+Performance/AncestorsInclude:
+  Enabled: false
+Performance/BigDecimalWithNumericArgument:
+  Enabled: true
+Performance/RedundantSortBlock:
+  Enabled: true
+Performance/RedundantStringChars:
+  Enabled: false
+Performance/ReverseFirst:
+  Enabled: true
+Performance/SortReverse:
+  Enabled: true
+Performance/Squeeze:
+  Enabled: true
+Performance/StringInclude:
+  Enabled: true
 
 # ============================================================
 # Lint
