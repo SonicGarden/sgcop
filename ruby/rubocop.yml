@@ -104,6 +104,10 @@ Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
 
 # rubocop 本体でまだデフォルト設定がPendingのルールの有効・無効設定
+Style/AccessorGrouping:
+  Enabled: true
+Style/BisectedAttrAccessor:
+  Enabled: true
 Style/HashEachMethods:
   Enabled: true
 Style/HashTransformKeys:
@@ -113,6 +117,8 @@ Style/HashTransformValues:
 Style/ExponentialNotation:
   Enabled: true
 Style/SlicingWithRange:
+  Enabled: true
+Style/RedundantAssignment:
   Enabled: true
 Style/RedundantRegexpCharacterClass:
   Enabled: true
