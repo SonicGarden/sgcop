@@ -116,3 +116,21 @@ Naming/AsciiIdentifiers:
 Naming/MethodName:
   Exclude:
     - "spec/mailers/previews/*.rb"
+
+# rubocop 本体でまだデフォルト設定がPendingのルールの有効・無効設定
+Performance/AncestorsInclude:
+  Enabled: false
+Performance/BigDecimalWithNumericArgument:
+  Enabled: true
+Performance/RedundantSortBlock:
+  Enabled: true
+Performance/RedundantStringChars:
+  Enabled: false
+Performance/ReverseFirst:
+  Enabled: true
+Performance/SortReverse:
+  Enabled: true
+Performance/Squeeze:
+  Enabled: true
+Performance/StringInclude:
+  Enabled: true

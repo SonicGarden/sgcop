@@ -126,6 +126,16 @@ Style/RedundantRegexpEscape:
   Enabled: true
 Style/RedundantFetchBlock:
   Enabled: true
+Style/ArrayCoercion:
+  Enabled: true
+Style/CaseLikeIf:
+  Enabled: true
+Style/HashAsLastArrayItem:
+  Enabled: true
+Style/HashLikeCase:
+  Enabled: true
+Style/RedundantFileExtensionInRequire:
+  Enabled: true
 Lint/RaiseException:
   Enabled: true
 Lint/StructNewOverride:
@@ -134,25 +144,11 @@ Lint/DeprecatedOpenSSLConstant:
   Enabled: true
 Lint/MixedRegexpCaptureTypes:
   Enabled: true
+Lint/DuplicateElsifCondition:
+  Enabled: true
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
 Layout/EmptyLinesAroundAttributeAccessor:
-  Enabled: true
-Performance/AncestorsInclude:
-  Enabled: false
-Performance/BigDecimalWithNumericArgument:
-  Enabled: true
-Performance/RedundantSortBlock:
-  Enabled: true
-Performance/RedundantStringChars:
-  Enabled: false
-Performance/ReverseFirst:
-  Enabled: true
-Performance/SortReverse:
-  Enabled: true
-Performance/Squeeze:
-  Enabled: true
-Performance/StringInclude:
   Enabled: true
 
 # ============================================================

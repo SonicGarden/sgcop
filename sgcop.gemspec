@@ -34,8 +34,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'brakeman'
   spec.add_dependency 'brakeman_translate_checkstyle_format'
   spec.add_dependency 'haml_lint', '~> 0.35.0'
-  spec.add_dependency 'rubocop', '~> 0.87.0'
+  spec.add_dependency 'rubocop', '~> 0.88.0'
   spec.add_dependency 'rubocop-performance', '~> 1.7.0'
   spec.add_dependency 'rubocop-rails', '~> 2.6.0'
-  spec.add_dependency 'rubocop-rspec', '~> 1.41.0'
+  spec.add_dependency 'rubocop-rspec', '~> 1.42.0'
 end
