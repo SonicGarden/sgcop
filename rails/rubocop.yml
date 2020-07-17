@@ -117,6 +117,10 @@ Naming/MethodName:
   Exclude:
     - "spec/mailers/previews/*.rb"
 
+# それほど差がある訳ではないので可読性重視で
+Performance/TimesMap:
+  Enabled: false
+
 # rubocop 本体でまだデフォルト設定がPendingのルールの有効・無効設定
 Performance/AncestorsInclude:
   Enabled: false
