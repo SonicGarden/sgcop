@@ -151,8 +151,9 @@ Rails/MatchRoute:
   Enabled: false
 Rails/NegateInclude:
   Enabled: true
+# NOTE: Active Record以外のケースでも誤判定して自動修正するケースがあるので危険
 Rails/Pluck:
-  Enabled: true
+  Enabled: false
 Rails/PluckInWhere:
   Enabled: true
 Rails/RenderInline:
