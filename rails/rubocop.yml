@@ -117,6 +117,10 @@ Naming/MethodName:
   Exclude:
     - "spec/mailers/previews/*.rb"
 
+# それほど差がある訳ではないので可読性重視で
+Performance/TimesMap:
+  Enabled: false
+
 # rubocop 本体でまだデフォルト設定がPendingのルールの有効・無効設定
 Performance/AncestorsInclude:
   Enabled: false
@@ -133,4 +137,30 @@ Performance/SortReverse:
 Performance/Squeeze:
   Enabled: true
 Performance/StringInclude:
+  Enabled: true
+
+Rails/ActiveRecordCallbacksOrder:
+  Enabled: true
+Rails/FindById:
+  Enabled: true
+Rails/Inquiry:
+  Enabled: false
+Rails/MailerName:
+  Enabled: true
+Rails/MatchRoute:
+  Enabled: false
+Rails/NegateInclude:
+  Enabled: true
+# NOTE: Active Record以外のケースでも誤判定して自動修正するケースがあるので危険
+Rails/Pluck:
+  Enabled: false
+Rails/PluckInWhere:
+  Enabled: true
+Rails/RenderInline:
+  Enabled: true
+Rails/RenderPlainText:
+  Enabled: true
+Rails/ShortI18n:
+  Enabled: true
+Rails/WhereExists:
   Enabled: true
