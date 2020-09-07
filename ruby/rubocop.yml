@@ -146,6 +146,14 @@ Style/SingleArgumentDig:
   Enabled: true
 Style/StringConcatenation:
   Enabled: true
+Style/CombinableLoops: # (new in 0.90)
+  Enabled: true
+Style/KeywordParametersOrder: # (new in 0.90)
+  Enabled: true
+Style/RedundantSelfAssignment: # (new in 0.90)
+  Enabled: true
+Style/SoleNestedConditional: # (new in 0.89)
+  Enabled: true
 Lint/RaiseException:
   Enabled: true
 Lint/StructNewOverride:
@@ -173,6 +181,14 @@ Lint/SelfAssignment:
 Lint/TopLevelReturnWithArgument:
   Enabled: true
 Lint/UnreachableLoop:
+  Enabled: true
+Lint/DuplicateRequire: # (new in 0.90)
+  Enabled: true
+Lint/EmptyFile: # (new in 0.90)
+  Enabled: true
+Lint/TrailingCommaInAttributeDeclaration: # (new in 0.90)
+  Enabled: true
+Lint/UselessMethodDefinition: # (new in 0.90)
   Enabled: true
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
