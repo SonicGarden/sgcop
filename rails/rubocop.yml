@@ -138,6 +138,8 @@ Performance/Squeeze:
   Enabled: true
 Performance/StringInclude:
   Enabled: true
+Performance/Sum: # (new in 1.8)
+  Enabled: true
 
 Rails/ActiveRecordCallbacksOrder:
   Enabled: true
@@ -163,4 +165,11 @@ Rails/RenderPlainText:
 Rails/ShortI18n:
   Enabled: true
 Rails/WhereExists:
+  Enabled: true
+Rails/AfterCommitOverride: # (new in 2.8)
+  Enabled: true
+# NOTE: 気になる人はプロジェクト毎に設定すれば良さそう
+Rails/SquishedSQLHeredocs: # (new in 2.8)
+  Enabled: false
+Rails/WhereNot: # (new in 2.8)
   Enabled: true
