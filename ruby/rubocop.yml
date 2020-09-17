@@ -33,7 +33,7 @@ Style/ClassAndModuleChildren:
 #     ActiveRecord の find と間違えやすいため
 Style/CollectionMethods:
   PreferredMethods:
-    find: "detect"
+    find: 'detect'
 
 # ドキュメントの無い public class を許可する
 Style/Documentation:
@@ -190,9 +190,17 @@ Lint/TrailingCommaInAttributeDeclaration: # (new in 0.90)
   Enabled: true
 Lint/UselessMethodDefinition: # (new in 0.90)
   Enabled: true
+Lint/ConstantDefinitionInBlock: # (new in 0.91)
+  Enabled: true
+Lint/IdentityComparison: # (new in 0.91)
+  Enabled: true
+Lint/UselessTimes: # (new in 0.91)
+  Enabled: true
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
 Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+Layout/BeginEndAlignment: # (new in 0.91)
   Enabled: true
 
 # ============================================================
