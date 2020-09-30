@@ -109,6 +109,10 @@ RSpec/ExampleLength:
 RSpec/EmptyExampleGroup:
   Enabled: false
 
+# デフォルトの5はさすがに厳しい
+RSpec/MultipleMemoizedHelpers:
+  Max: 8
+
 # メールプレビュー画面をわかりやすくする為に日本語メソッド名を許可
 Naming/AsciiIdentifiers:
   Exclude:
