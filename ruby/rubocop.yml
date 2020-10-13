@@ -154,6 +154,8 @@ Style/RedundantSelfAssignment: # (new in 0.90)
   Enabled: true
 Style/SoleNestedConditional: # (new in 0.89)
   Enabled: true
+Style/ClassEqualityComparison: # (new in 0.93)
+  Enabled: true
 Lint/RaiseException:
   Enabled: true
 Lint/StructNewOverride:
@@ -195,6 +197,10 @@ Lint/ConstantDefinitionInBlock: # (new in 0.91)
 Lint/IdentityComparison: # (new in 0.91)
   Enabled: true
 Lint/UselessTimes: # (new in 0.91)
+  Enabled: true
+Lint/HashCompareByIdentity: # (new in 0.93)
+  Enabled: true
+Lint/RedundantSafeNavigation: # (new in 0.93)
   Enabled: true
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
