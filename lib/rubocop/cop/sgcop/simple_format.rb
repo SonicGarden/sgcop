@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
-      class SimpleFormat < Cop
+      class SimpleFormat < Base
         MSG = 'simple_format does not escape HTML tags.'
         ESCAPE_METHODS = %i[h html_escape].freeze
 
