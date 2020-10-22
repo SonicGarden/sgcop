@@ -4,28 +4,23 @@ module RuboCop
   module Cop
     module Sgcop
       module Capybara
-        class Matchers < Cop
+        # SEE: https://github.com/rubocop-hq/rubocop/blob/v1.0.0/lib/rubocop/cop/style/string_methods.rb
+        class Matchers < Base
           include MethodPreference
+          extend AutoCorrector
 
           MSG = 'Prefer `%<prefer>s` over `%<current>s`.'
 
           def on_send(node)
-            return unless preferred_method(node.method_name)
+            return unless (preferred_method = preferred_method(node.method_name))
 
-            add_offense(node, location: :selector)
-          end
+            message = format(MSG, prefer: preferred_method, current: node.method_name)
 
-          def autocorrect(node)
-            ->(corrector) do
+            add_offense(node.loc.selector, message: message) do |corrector|
               corrector.replace(node.loc.selector, preferred_method(node.method_name))
             end
           end
-
-          private
-
-          def message(node)
-            format(MSG, prefer: preferred_method(node.method_name), current: node.method_name)
-          end
+          alias on_csend on_send
         end
       end
     end

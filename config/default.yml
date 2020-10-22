@@ -10,7 +10,7 @@ Sgcop/Whenever:
   Reference:
     - https://github.com/javan/whenever#parsing-dates-and-times
 
-Capybara/Sleep:
+Sgcop/Capybara/Sleep:
   Description: "sleepに頼らない安定したspecを書こう"
   Enabled: true
   Include:
@@ -19,7 +19,7 @@ Capybara/Sleep:
   Reference:
     - https://qiita.com/shunichi/items/1cb7f7cfca74438513d3
 
-Capybara/Matchers:
+Sgcop/Capybara/Matchers:
   Description: "マッチャーの書き方を統一"
   Enabled: true
   Include:
