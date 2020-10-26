@@ -177,3 +177,6 @@ Rails/SquishedSQLHeredocs: # (new in 2.8)
   Enabled: false
 Rails/WhereNot: # (new in 2.8)
   Enabled: true
+
+RSpec/StubbedMock: # (new in 1.44)
+  Enabled: false

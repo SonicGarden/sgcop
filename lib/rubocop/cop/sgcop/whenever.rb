@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
-      class Whenever < Cop
+      class Whenever < Base
         MSG = 'Use 24-hour clock to avoid errors.'
 
         def_node_matcher :twelve_hour?, <<~PATTERN
