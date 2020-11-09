@@ -29,26 +29,3 @@ linters:
     # kaminariが生成するviewはチェックしない
     exclude:
       - app/views/kaminari/**/*
-
-    # NOTE: haml-lintでの動作のおかしいルールを無効化
-    ignored_cops:
-      - Layout/AlignParameters
-      - Layout/IndentationWidth
-      - Layout/LineLength
-      - Layout/TrailingBlankLines
-      - Layout/TrailingEmptyLines
-      - Lint/BlockAlignment
-      - Lint/EndAlignment
-      - Lint/Void
-      - Metrics/BlockLength
-      - Style/BlockNesting
-      - Style/ElseAlignment
-      - Style/EndOfLine
-      - Style/FileName
-      - Style/FinalNewline
-      - Style/FormatStringToken
-      - Style/FrozenStringLiteralComment
-      - Style/IfUnlessModifier
-      - Style/MethodCallWithArgsParentheses
-      - Style/Next
-      - Style/WhileUntilModifier
