@@ -19,10 +19,6 @@ linters:
   LineLength:
     max: 160
 
-  # Hash属性の内側にスペースはなくてもよい
-  SpaceInsideHashAttributes:
-    enabled: false
-
   # rubyコードはrubocopでチェックする
   RuboCop:
     enabled: true
