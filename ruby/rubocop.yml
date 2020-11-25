@@ -130,6 +130,8 @@ Lint/EmptyClass: # (new in 1.3)
   Enabled: true
 Style/NilLambda: # (new in 1.3)
   Enabled: true
+Style/RedundantArgument: # (new in 1.4)
+  Enabled: false
 
 # ============================================================
 # Lint

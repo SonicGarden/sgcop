@@ -144,6 +144,16 @@ Performance/StringInclude:
   Enabled: true
 Performance/Sum: # (new in 1.8)
   Enabled: true
+Performance/ArraySemiInfiniteRangeSlice: # (new in 1.9)
+  Enabled: true
+Performance/BlockGivenWithExplicitBlock: # (new in 1.9)
+  Enabled: false
+Performance/CollectionLiteralInLoop: # (new in 1.8)
+  Enabled: true
+Performance/ConstantRegexp: # (new in 1.9)
+  Enabled: true
+Performance/MethodObjectAsBlock: # (new in 1.9)
+  Enabled: true
 
 Rails/ActiveRecordCallbacksOrder:
   Enabled: true
