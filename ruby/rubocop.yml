@@ -132,6 +132,8 @@ Style/NilLambda: # (new in 1.3)
   Enabled: true
 Style/RedundantArgument: # (new in 1.4)
   Enabled: false
+Lint/UnexpectedBlockArity: # (new in 1.5)
+  Enabled: true
 
 # ============================================================
 # Lint
