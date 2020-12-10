@@ -187,6 +187,10 @@ Rails/SquishedSQLHeredocs: # (new in 2.8)
   Enabled: false
 Rails/WhereNot: # (new in 2.8)
   Enabled: true
+Rails/AttributeDefaultBlockValue: # (new in 2.9)
+  Enabled: true
+Rails/WhereEquals: # (new in 2.9)
+  Enabled: true
 
 RSpec/StubbedMock: # (new in 1.44)
   Enabled: false
