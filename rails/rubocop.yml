@@ -45,7 +45,7 @@ Rails/UnknownEnv:
 # ============================================================
 # routes, rspec, migrationにおけるブロックの長さについては致し方ない
 Metrics/BlockLength:
-  ExcludedMethods:
+  IgnoredMethods:
     - refine
     - included
     - namespace
