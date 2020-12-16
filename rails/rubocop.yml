@@ -18,7 +18,7 @@ AllCops:
     - "config/spring.rb"
     - "config/puma.rb"
     - "config.ru"
-    - "db/schema.rb"
+    - "db/*schema.rb"
     - "deploy/*"
     - "node_modules/**/*" # .specというファイルがrpsecのチェックでヒットしてしまうので
     - "spec/rails_helper.rb"
