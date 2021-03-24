@@ -2,6 +2,10 @@ Sgcop/SimpleFormat:
   Description: "simple_formatでエスケープされていないときに警告"
   Enabled: true
 
+Sgcop/SimpleFormAssociation:
+  Description: "simple_formのassociationメソッドではcollectionを明示しよう"
+  Enabled: true
+
 Sgcop/Whenever:
   Description: "24時間表記で書かないと意図しない時間でcrontab設定される可能性あるよ"
   Enabled: true
