@@ -162,6 +162,8 @@ Gemspec/DateAssignment: # (new in 1.10)
   Enabled: true
 Style/HashConversion: # (new in 1.10)
   Enabled: true
+Style/StringChars: # (new in 1.12)
+  Enabled: true
 
 # ============================================================
 # Lint
