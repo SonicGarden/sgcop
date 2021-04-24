@@ -209,3 +209,10 @@ Layout/FirstArrayElementIndentation:
 # 80では短すぎる。かといって長すぎてもgithub上のコードレビューがやり辛いという問題があるので制限は必要
 Layout/LineLength:
   Max: 160
+
+Bundler/GemComment:
+  Enabled: true
+  IgnoredGems:
+    - rails
+  OnlyFor:
+    - version_specifiers
