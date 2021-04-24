@@ -4,6 +4,7 @@ require:
   - rubocop-rails
   - rubocop-rspec
   - rubocop-performance
+  - rubocop-rake
   - sgcop
 
 # 自動生成されるものなどはチェック対象から除外する

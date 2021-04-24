@@ -1,6 +1,3 @@
-# target_version:
-# rubocop v0.54.0
-
 # Cop name を常に表示する
 # - 名前がわからないと rubocop の設定がしづらい
 # - 名前がわからないと disable コメントも書けない
