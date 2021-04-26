@@ -1,6 +1,3 @@
-# target_version:
-# rubocop v0.54.0
-
 # Cop name を常に表示する
 # - 名前がわからないと rubocop の設定がしづらい
 # - 名前がわからないと disable コメントも書けない
@@ -206,6 +203,15 @@ Metrics/MethodLength:
 Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
 
-# 80では短すぎる。かといって長すぎてもgithub上のコードレビューがやり辛いという問題があるので制限は必要
+# 80では短すぎる。かといって長すぎてもgithub上のコードレビューがやり辛いし、無駄に長過ぎるよりも意味のある単位で区切られているほうがリーダブルなので。
 Layout/LineLength:
   Max: 160
+
+# gemのバージョンが固定されている場合はコメント必須。
+# TODO: `github: xx/xx`形式も制限したいが許可するパッケージのリストアップが面倒なので後回し
+Bundler/GemComment:
+  Enabled: true
+  IgnoredGems:
+    - rails
+  OnlyFor:
+    - version_specifiers
