@@ -48,9 +48,6 @@ Rails/LinkToBlank:
 # マイグレーションでchange or downメソッドが定義されているか確認
 Rails/ReversibleMigrationMethodDefinition:
   Enabled: true
-  # NOTE: 本体の設定がミスっている為、、（コメントしておいたので多分次で直りそう）
-  Include:
-    - db/migrate/*.rb
 
 # ============================================================
 # Metrics
