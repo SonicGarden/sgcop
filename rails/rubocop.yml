@@ -21,7 +21,7 @@ AllCops:
     - "config.ru"
     - "db/*schema.rb"
     - "deploy/*"
-    - "node_modules/**/*" # .specというファイルがrpsecのチェックでヒットしてしまうので
+    - "node_modules/**/*"
     - "spec/rails_helper.rb"
     - "spec/spec_helper.rb"
     - "vendor/**/*"
