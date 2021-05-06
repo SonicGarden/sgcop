@@ -21,7 +21,7 @@ AllCops:
     - "config.ru"
     - "db/*schema.rb"
     - "deploy/*"
-    - "node_modules/**/*" # .specというファイルがrpsecのチェックでヒットしてしまうので
+    - "node_modules/**/*"
     - "spec/rails_helper.rb"
     - "spec/spec_helper.rb"
     - "vendor/**/*"
@@ -44,6 +44,10 @@ Rails/UnknownEnv:
 # ブラウザの標準仕様でnoopenner扱いとなった
 Rails/LinkToBlank:
   Enabled: false
+
+# マイグレーションでchange or downメソッドが定義されているか確認
+Rails/ReversibleMigrationMethodDefinition:
+  Enabled: true
 
 # ============================================================
 # Metrics
@@ -201,6 +205,10 @@ Rails/WhereNot: # (new in 2.8)
 Rails/AttributeDefaultBlockValue: # (new in 2.9)
   Enabled: true
 Rails/WhereEquals: # (new in 2.9)
+  Enabled: true
+Rails/EnvironmentVariableAccess: # (new in 2.10)
+  Enabled: true
+Rails/TimeZoneAssignment: # (new in 2.10)
   Enabled: true
 
 RSpec/StubbedMock: # (new in 1.44)
