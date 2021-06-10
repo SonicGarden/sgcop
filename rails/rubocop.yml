@@ -211,5 +211,7 @@ Rails/EnvironmentVariableAccess: # (new in 2.10)
 Rails/TimeZoneAssignment: # (new in 2.10)
   Enabled: true
 
-RSpec/StubbedMock: # (new in 1.44)
-  Enabled: false
+RSpec/IdenticalEqualityAssertion: # (new in 2.4)
+  Enabled: true
+RSpec/Rails/AvoidSetupHook: # (new in 2.4)
+  Enabled: true
