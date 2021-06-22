@@ -49,6 +49,10 @@ Rails/LinkToBlank:
 Rails/ReversibleMigrationMethodDefinition:
   Enabled: true
 
+# default_scopeはデフォルト禁止
+Rails/DefaultScope:
+  Enabled: true
+
 # ============================================================
 # Metrics
 # ============================================================
