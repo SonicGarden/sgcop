@@ -193,6 +193,11 @@ Lint/UnderscorePrefixedVariableName:
 Lint/UnusedMethodArgument:
   Enabled: false
 
+# view_component gemがそういうコードを生成するので
+Lint/MissingSuper:
+  Exclude:
+    - 'app/components/**/*'
+
 # ============================================================
 # Metrics
 # ============================================================
