@@ -173,6 +173,10 @@ Layout/LineEndStringConcatenationIndentation: # (new in 1.18)
   Enabled: true
 Naming/InclusiveLanguage: # (new in 1.18)
   Enabled: false
+Lint/AmbiguousRange: # (new in 1.19)
+  Enabled: true
+Style/RedundantSelfAssignmentBranch: # (new in 1.19)
+  Enabled: true
 
 # ============================================================
 # Lint
