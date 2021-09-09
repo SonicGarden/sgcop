@@ -224,6 +224,8 @@ Rails/I18nLocaleAssignment: # (new in 2.11)
   Enabled: true
 Rails/UnusedIgnoredColumns: # (new in 2.11)
   Enabled: true
+Rails/RedundantTravelBack: # new in 2.12
+  Enabled: true
 
 RSpec/IdenticalEqualityAssertion: # (new in 2.4)
   Enabled: true
