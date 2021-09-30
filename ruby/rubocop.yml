@@ -181,6 +181,16 @@ Lint/AmbiguousOperatorPrecedence: # new in 1.21
   Enabled: true
 Lint/IncompatibleIoSelectWithFiberScheduler: # new in 1.21
   Enabled: true
+Lint/RequireRelativeSelfPath: # new in 1.22
+  Enabled: true
+Security/IoMethods: # new in 1.22
+  Enabled: true
+Style/NumberedParameters: # new in 1.22
+  Enabled: true
+Style/NumberedParametersLimit: # new in 1.22
+  Enabled: true
+Style/SelectByRegexp: # new in 1.22
+  Enabled: true
 
 # ============================================================
 # Lint
