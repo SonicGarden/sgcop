@@ -6,6 +6,12 @@ Sgcop/SimpleFormAssociation:
   Description: "simple_formのassociationメソッドではcollectionを明示しよう"
   Enabled: true
 
+Sgcop/RequestRemoteIp:
+  Description: "クライアントのIPを取得するならrequest.remote_ipの必要があるよ"
+  Enabled: true
+  Reference:
+    - https://api.rubyonrails.org/classes/ActionDispatch/Request.html#method-i-remote_ip-3D
+
 Sgcop/Whenever:
   Description: "24時間表記で書かないと意図しない時間でcrontab設定される可能性あるよ"
   Enabled: true
