@@ -191,6 +191,12 @@ Style/NumberedParametersLimit: # new in 1.22
   Enabled: true
 Style/SelectByRegexp: # new in 1.22
   Enabled: true
+Gemspec/RequireMFA: # new in 1.23
+  Enabled: true
+Lint/UselessRuby2Keywords: # new in 1.23
+  Enabled: true
+Style/OpenStructUse: # new in 1.23
+  Enabled: true
 
 # ============================================================
 # Lint
