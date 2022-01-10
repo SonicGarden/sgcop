@@ -37,3 +37,9 @@ Sgcop/Capybara/Matchers:
     - "spec/system/**/*_spec.rb"
   PreferredMethods:
     have_text: "have_content"
+
+Sgcop/CanCanCanResourceAuthorization:
+  Description: "リソースの authorize 漏れを警告"
+  Enabled: false
+  Include:
+    - "app/controllers/**/*_controller.rb"
