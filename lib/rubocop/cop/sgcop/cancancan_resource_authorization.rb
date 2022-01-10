@@ -4,7 +4,7 @@ module RuboCop
   module Cop
     module Sgcop
       class CanCanCanResourceAuthorization < Base
-        MSG = 'Missing resource authorization.'.freeze
+        MSG = 'Missing resource authorization.'
 
         def on_class(node)
           return if resource_authorized?(node)
