@@ -228,6 +228,15 @@ Rails/UnusedIgnoredColumns: # (new in 2.11)
   Enabled: true
 Rails/RedundantTravelBack: # new in 2.12
   Enabled: true
+Rails/CompactBlank: # new in 2.13
+  Enabled: true
+# NOTE: 気になる人はプロジェクト毎に設定すれば良さそう
+Rails/DurationArithmetic: # new in 2.13
+  Enabled: false
+Rails/RedundantPresenceValidationOnBelongsTo: # new in 2.13
+  Enabled: true
+Rails/RootJoinChain: # new in 2.13
+  Enabled: true
 
 RSpec/IdenticalEqualityAssertion: # (new in 2.4)
   Enabled: true
@@ -236,4 +245,14 @@ RSpec/Rails/AvoidSetupHook: # (new in 2.4)
 RSpec/ExcessiveDocstringSpacing: # new in 2.5
   Enabled: true
 RSpec/SubjectDeclaration: # new in 2.5
+  Enabled: true
+# NOTE: eqで駄目な理由がよくわからないので保留
+RSpec/BeEq: # new in 2.9.0
+  Enabled: false
+RSpec/BeNil: # new in 2.9.0
+  Enabled: true
+# NOTE: あえて付ける派も見かけるので
+RSpec/FactoryBot/SyntaxMethods: # new in 2.7
+  Enabled: false
+Performance/StringIdentifierArgument: # new in 1.13
   Enabled: true
