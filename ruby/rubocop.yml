@@ -205,6 +205,8 @@ Style/FileWrite: # new in 1.24
   Enabled: true
 Style/MapToHash: # new in 1.24
   Enabled: true
+Style/NestedFileDirname: # new in 1.26
+  Enabled: true
 
 # ============================================================
 # Lint
