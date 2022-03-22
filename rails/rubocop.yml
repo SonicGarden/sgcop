@@ -237,6 +237,24 @@ Rails/RedundantPresenceValidationOnBelongsTo: # new in 2.13
   Enabled: true
 Rails/RootJoinChain: # new in 2.13
   Enabled: true
+Rails/ActionControllerTestCase: # new in 2.14
+  Enabled: true
+Rails/DeprecatedActiveModelErrorsMethods: # new in 2.14
+  Enabled: true
+Rails/DuplicateAssociation: # new in 2.14
+  Enabled: true
+Rails/DuplicateScope: # new in 2.14
+  Enabled: true
+# NOTE: リファクタの妨げになるケースが多いので絶対キーで指定のほうが嬉しい
+Rails/I18nLazyLookup: # new in 2.14
+  Enabled: false
+# NOTE: 必要ならプロジェクト毎に設定すれば良さそう
+Rails/I18nLocaleTexts: # new in 2.14
+  Enabled: false
+Rails/MigrationClassName: # new in 2.14
+  Enabled: true
+Rails/TransactionExitStatement: # new in 2.14
+  Enabled: true
 
 RSpec/IdenticalEqualityAssertion: # (new in 2.4)
   Enabled: true
