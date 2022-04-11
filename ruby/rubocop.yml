@@ -207,6 +207,10 @@ Style/MapToHash: # new in 1.24
   Enabled: true
 Style/NestedFileDirname: # new in 1.26
   Enabled: true
+Lint/RefinementImportMethods: # new in 1.27
+  Enabled: true
+Style/RedundantInitialize: # new in 1.27
+  Enabled: true
 
 # ============================================================
 # Lint
