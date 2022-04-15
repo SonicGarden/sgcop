@@ -13,6 +13,7 @@ AllCops:
     - "bin/*"
     - "config/application.rb"
     - "config/backup.rb"
+    - "config/boot.rb"
     - "config/environments/*"
     - "config/initializers/*"
     - "config/unicorn.rb"
