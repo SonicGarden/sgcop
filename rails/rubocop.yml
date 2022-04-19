@@ -275,3 +275,5 @@ RSpec/FactoryBot/SyntaxMethods: # new in 2.7
   Enabled: false
 Performance/StringIdentifierArgument: # new in 1.13
   Enabled: true
+RSpec/VerifiedDoubleReference: # new in 2.10.0
+  Enabled: true
