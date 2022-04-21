@@ -13,6 +13,7 @@ AllCops:
     - "bin/*"
     - "config/application.rb"
     - "config/backup.rb"
+    - "config/boot.rb"
     - "config/environments/*"
     - "config/initializers/*"
     - "config/unicorn.rb"
@@ -273,4 +274,6 @@ RSpec/BeNil: # new in 2.9.0
 RSpec/FactoryBot/SyntaxMethods: # new in 2.7
   Enabled: false
 Performance/StringIdentifierArgument: # new in 1.13
+  Enabled: true
+RSpec/VerifiedDoubleReference: # new in 2.10.0
   Enabled: true
