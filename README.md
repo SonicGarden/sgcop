@@ -53,6 +53,22 @@ http://blog.onk.ninja/2015/10/27/rubocop-getting-started#治安の悪いアプ�
 - Rubocop チートシート http://qiita.com/kitaro_tn/items/abb881c098b3df3f9871
 - 設定一覧(本家) https://github.com/bbatsov/rubocop/tree/master/config
 
+## 設定ファイルにドキュメントのリンクを付加するスクリプト(sgcop 開発者向け)
+
+ruby/rubocop.yml, rails/rubocop.yml に新しい cop(ルール)設定を追加した後、以下のコマンドを実行すると、rubocop の cop のドキュメントへのリンクをコメントとして追加します。
+
+```
+ruby add_doc_links.rb
+```
+
+### 追加されるコメントの例
+
+```
+# https://docs.rubocop.org/rubocop/cops_style.html#styleasciicomments
+Style/AsciiComments:
+  Enabled: false
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/SonicGarden/sgcop. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
