@@ -294,6 +294,9 @@ Style/FetchEnvVar: # new in 1.28
 # https://docs.rubocop.org/rubocop/cops_style.html#styleobjectthen
 Style/ObjectThen: # new in 1.28
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleenvhome
+Style/EnvHome: # new in 1.29
+  Enabled: true
 
 # ============================================================
 # Lint
