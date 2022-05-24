@@ -361,3 +361,6 @@ Performance/StringIdentifierArgument: # new in 1.13
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecverifieddoublereference
 RSpec/VerifiedDoubleReference: # new in 2.10.0
   Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecchangebyzero
+RSpec/ChangeByZero: # new in 2.11.0
+  Enabled: true
