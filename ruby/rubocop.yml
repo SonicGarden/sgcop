@@ -297,6 +297,12 @@ Style/ObjectThen: # new in 1.28
 # https://docs.rubocop.org/rubocop/cops_style.html#styleenvhome
 Style/EnvHome: # new in 1.29
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_gemspec.html#gemspecdeprecatedattributeassignment
+Gemspec/DeprecatedAttributeAssignment: # new in 1.30
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylemapcompactwithconditionalblock
+Style/MapCompactWithConditionalBlock: # new in 1.30
+  Enabled: true
 
 # ============================================================
 # Lint
