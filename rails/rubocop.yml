@@ -331,6 +331,18 @@ Rails/MigrationClassName: # new in 2.14
 # https://docs.rubocop.org/rubocop-rails/cops_rails.html#railstransactionexitstatement
 Rails/TransactionExitStatement: # new in 2.14
   Enabled: true
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsdotseparatedkeys
+Rails/DotSeparatedKeys: # new in 2.15
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsrootpublicpath
+Rails/RootPublicPath: # new in 2.15
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsstripheredoc
+Rails/StripHeredoc: # new in 2.15
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railstoformatteds
+Rails/ToFormattedS: # new in 2.15
+  Enabled: true
 
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecidenticalequalityassertion
 RSpec/IdenticalEqualityAssertion: # (new in 2.4)
