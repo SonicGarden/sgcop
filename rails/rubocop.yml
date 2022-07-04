@@ -376,3 +376,9 @@ RSpec/VerifiedDoubleReference: # new in 2.10.0
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecchangebyzero
 RSpec/ChangeByZero: # new in 2.11.0
   Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec_capybara.html#rspeccapybaraspecificmatcher
+RSpec/Capybara/SpecificMatcher: # new in 2.12
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailshavehttpstatus
+RSpec/Rails/HaveHttpStatus: # new in 2.12
+  Enabled: true
