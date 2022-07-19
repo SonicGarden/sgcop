@@ -25,6 +25,11 @@ Sgcop/Whenever:
     - "config/schedule.rb"
   Reference:
     - https://github.com/javan/whenever#parsing-dates-and-times
+Sgcop/UjsOptions:
+  Description: "Rails UJS Attributesは非推奨となっているよ"
+  Enabled: true
+  Reference:
+    - https://edgeapi.rubyonrails.org/classes/ActionView/Helpers/UrlHelper.html#method-i-link_to-label-Deprecated-3A+Rails+UJS+Attributes
 
 Sgcop/Capybara/Sleep:
   Description: "sleepに頼らない安定したspecを書こう"
