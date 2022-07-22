@@ -312,6 +312,12 @@ Lint/ConstantOverwrittenInRescue: # new in 1.31
 # https://docs.rubocop.org/rubocop/cops_lint.html#lintnonatomicfileoperation
 Lint/NonAtomicFileOperation: # new in 1.31
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintrequirerangeparentheses
+Lint/RequireRangeParentheses: # new in 1.32
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleemptyheredoc
+Style/EmptyHeredoc: # new in 1.32
+  Enabled: true
 
 # ============================================================
 # Lint
