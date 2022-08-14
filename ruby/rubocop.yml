@@ -318,6 +318,9 @@ Lint/RequireRangeParentheses: # new in 1.32
 # https://docs.rubocop.org/rubocop/cops_style.html#styleemptyheredoc
 Style/EmptyHeredoc: # new in 1.32
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylemagiccommentformat
+Style/MagicCommentFormat: # new in 1.35
+  Enabled: true
 
 # ============================================================
 # Lint
