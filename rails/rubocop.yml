@@ -65,7 +65,7 @@ Rails/DefaultScope:
 # routes, rspec, migrationにおけるブロックの長さについては致し方ない
 # https://docs.rubocop.org/rubocop/cops_metrics.html#metricsblocklength
 Metrics/BlockLength:
-  IgnoredMethods:
+  AllowedMethods:
     - refine
     - included
     - namespace
