@@ -31,7 +31,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.9'
   spec.add_development_dependency 'byebug'
-  spec.add_dependency 'haml_lint', '~> 0.40.0'
   spec.add_dependency 'rubocop', '~> 1.35.0'
   spec.add_dependency 'rubocop-performance', '~> 1.14.0'
   spec.add_dependency 'rubocop-rails', '~> 2.15.0'
