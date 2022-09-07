@@ -15,13 +15,6 @@ AllCops:
 Style/AsciiComments:
   Enabled: false
 
-# do .. end から更にメソッドチェーンすると見づらいので
-# auto-correct せず、自分で修正する
-# spec 内は見た目が綺麗になるので許可
-# https://docs.rubocop.org/rubocop/cops_style.html#styleblockdelimiters
-Style/BlockDelimiters:
-  AutoCorrect: false
-
 # namespace 付きのクラスはかなり頻繁に作るので簡単に書きたい。
 # https://docs.rubocop.org/rubocop/cops_style.html#styleclassandmodulechildren
 Style/ClassAndModuleChildren:
