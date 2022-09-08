@@ -113,6 +113,7 @@ Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
 
 # 引数を伴うメソッド呼び出しの括弧は必要（デフォルト無効化で良いが、プロジェクト毎に各種設定をコピーしたくないので）
+# https://docs.rubocop.org/rubocop/cops_style.html#stylemethodcallwithargsparentheses
 Style/MethodCallWithArgsParentheses:
   Enabled: false
   AllowedPatterns:
@@ -401,6 +402,7 @@ Layout/LineLength:
   Max: 160
 
 # 複数行に渡る Hash では、一行に複数のキーを入れてはならない
+# https://docs.rubocop.org/rubocop/cops_layout.html#layoutmultilinehashkeylinebreaks
 Layout/MultilineHashKeyLineBreaks:
   Enabled: true
 
