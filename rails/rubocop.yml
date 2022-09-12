@@ -403,3 +403,12 @@ RSpec/Capybara/SpecificMatcher: # new in 2.12
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailshavehttpstatus
 RSpec/Rails/HaveHttpStatus: # new in 2.12
   Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecclasscheck
+RSpec/ClassCheck: # new in 2.13
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecnoexpectationexample
+RSpec/NoExpectationExample: # new in 2.13
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec_capybara.html#rspeccapybaraspecificfinders
+RSpec/Capybara/SpecificFinders: # new in 2.13
+  Enabled: true
