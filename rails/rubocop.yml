@@ -343,6 +343,27 @@ Rails/StripHeredoc: # new in 2.15
 # https://docs.rubocop.org/rubocop-rails/cops_rails.html#railstoformatteds
 Rails/ToFormattedS: # new in 2.15
   Enabled: true
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsactioncontrollerflashbeforerender
+Rails/ActionControllerFlashBeforeRender: # new in 2.16
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsactivesupportonload
+Rails/ActiveSupportOnLoad: # new in 2.16
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsfreezetime
+Rails/FreezeTime: # new in 2.16
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsrootpathnamemethods
+Rails/RootPathnameMethods: # new in 2.16
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railstoswithargument
+Rails/ToSWithArgument: # new in 2.16
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railstoplevelhashwithindifferentaccess
+Rails/TopLevelHashWithIndifferentAccess: # new in 2.16
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railswheremissing
+Rails/WhereMissing: # new in 2.16
+  Enabled: true
 
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecidenticalequalityassertion
 RSpec/IdenticalEqualityAssertion: # (new in 2.4)
