@@ -104,8 +104,20 @@ Style/IpAddresses:
 # ============================================================
 # RSpec
 # ============================================================
+RSpec:
+  Language:
+    # RSpec/NoExpectationExample ルールに影響する
+    # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecnoexpectationexample
+    Expectations:
+      - assert_emails
+      - assert_enqueued_emails
+      - assert_no_emails
+      - assert_enqueued_jobs
+      - assert_no_enqueued_jobs
+
 # backgroundとかであるクラスの全インスタンスをstubしてるなど意図してやると思うので
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecanyinstance
+
 RSpec/AnyInstance:
   Enabled: false
 
