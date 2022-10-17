@@ -1,6 +1,6 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'sgcop'
-require 'byebug'
+require 'debug'
 
 require 'rubocop/rspec/support'
 
