@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.9'
-  spec.add_development_dependency 'byebug'
+  spec.add_development_dependency 'debug'
   spec.add_dependency 'rubocop', '~> 1.36.0'
   spec.add_dependency 'rubocop-performance', '~> 1.15.0'
   spec.add_dependency 'rubocop-rails', '~> 2.16.0'

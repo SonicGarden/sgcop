@@ -23,6 +23,8 @@ module RuboCop
         end
 
         def warning_args?(args)
+          return false unless args.respond_to?(:value)
+
           value = args.value
           value.include?('am') || value.include?('pm')
         end

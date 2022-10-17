@@ -42,4 +42,15 @@ describe RuboCop::Cop::Sgcop::Whenever do
       end
     RUBY
   end
+
+  it '変数指定の場合は警告無し' do
+    expect_no_offenses(<<~RUBY)
+      set :chronic_options, hours24: true
+
+      start_time = '07:10'
+      every :saturday, at: start_time do
+        rake 'sgcop'
+      end
+    RUBY
+  end
 end
