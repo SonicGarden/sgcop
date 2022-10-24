@@ -118,6 +118,7 @@ RSpec:
 # backgroundとかであるクラスの全インスタンスをstubしてるなど意図してやると思うので
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecanyinstance
 
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecanyinstance
 RSpec/AnyInstance:
   Enabled: false
 
@@ -376,6 +377,15 @@ Rails/TopLevelHashWithIndifferentAccess: # new in 2.16
 # https://docs.rubocop.org/rubocop-rails/cops_rails.html#railswheremissing
 Rails/WhereMissing: # new in 2.16
   Enabled: true
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsactionorder
+Rails/ActionOrder: # new in 2.17
+  Enabled: false
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsignoredcolumnsassignment
+Rails/IgnoredColumnsAssignment: # new in 2.17
+  Enabled: false
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railswherenotwithmultipleconditions
+Rails/WhereNotWithMultipleConditions: # new in 2.17
+  Enabled: true
 
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecidenticalequalityassertion
 RSpec/IdenticalEqualityAssertion: # (new in 2.4)
@@ -424,3 +434,18 @@ RSpec/NoExpectationExample: # new in 2.13
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_capybara.html#rspeccapybaraspecificfinders
 RSpec/Capybara/SpecificFinders: # new in 2.13
   Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecsortmetadata
+RSpec/SortMetadata: # new in 2.14
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec_capybara.html#rspeccapybaranegationmatcher
+RSpec/Capybara/NegationMatcher: # new in 2.14
+  Enabled: false
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec_capybara.html#rspeccapybaraspecificactions
+RSpec/Capybara/SpecificActions: # new in 2.14
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec_factorybot.html#rspecfactorybotconsistentparenthesesstyle
+RSpec/FactoryBot/ConsistentParenthesesStyle: # new in 2.14
+  Enabled: false
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailsinferredspectype
+RSpec/Rails/InferredSpecType: # new in 2.14
+  Enabled: false
