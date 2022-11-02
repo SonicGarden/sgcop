@@ -351,6 +351,9 @@ Style/OperatorMethodCall: # new in 1.37
 # https://docs.rubocop.org/rubocop/cops_style.html#styleredundantstringescape
 Style/RedundantStringEscape: # new in 1.37
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleredundanteach
+Style/RedundantEach: # new in 1.38
+  Enabled: true
 
 # ============================================================
 # Lint
