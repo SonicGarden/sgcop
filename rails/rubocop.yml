@@ -73,12 +73,26 @@ Metrics/BlockLength:
     - "config/routes.rb"
     - "spec/**/*"
     - "db/migrate/*"
+  # 要素を縦に並べるのは可読性のためなので実行数が増えても許容する
+  CountAsOne: ['array', 'hash', 'method_call']
 
-# migratonは致し方ない
 # https://docs.rubocop.org/rubocop/cops_metrics.html#metricsmethodlength
 Metrics/MethodLength:
+  # migratonは致し方ない
   Exclude:
     - "db/migrate/*"
+  # 要素を縦に並べるのは可読性のためなので実行数が増えても許容する
+  CountAsOne: ['array', 'hash', 'method_call']
+
+# https://docs.rubocop.org/rubocop/cops_metrics.html#metricsclasslength
+Metrics/ClassLength:
+  # 要素を縦に並べるのは可読性のためなので実行数が増えても許容する
+  CountAsOne: ['array', 'hash', 'method_call']
+
+# https://docs.rubocop.org/rubocop/cops_metrics.html#metricsmodulelength
+Metrics/ModuleLength:
+  # 要素を縦に並べるのは可読性のためなので実行数が増えても許容する
+  CountAsOne: ['array', 'hash', 'method_call']
 
 # migratonは致し方ない
 # https://docs.rubocop.org/rubocop/cops_metrics.html#metricsabcsize
