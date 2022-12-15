@@ -449,3 +449,12 @@ RSpec/FactoryBot/ConsistentParenthesesStyle: # new in 2.14
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailsinferredspectype
 RSpec/Rails/InferredSpecType: # new in 2.14
   Enabled: false
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecduplicatedmetadata
+RSpec/DuplicatedMetadata: # new in 2.16
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecpendingwithoutreason
+RSpec/PendingWithoutReason: # new in 2.16
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec_factorybot.html#rspecfactorybotfactorynamestyle
+RSpec/FactoryBot/FactoryNameStyle: # new in 2.16
+  Enabled: true
