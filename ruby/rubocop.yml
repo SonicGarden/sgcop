@@ -360,6 +360,12 @@ Style/ArrayIntersect: # new in 1.40
 # https://docs.rubocop.org/rubocop/cops_style.html#styleredundantconstantbase
 Style/RedundantConstantBase: # new in 1.40
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleconcatarrayliterals
+Style/ConcatArrayLiterals: # new in 1.41
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleredundantdoublesplathashbraces
+Style/RedundantDoubleSplatHashBraces: # new in 1.41
+  Enabled: true
 
 # ============================================================
 # Lint
