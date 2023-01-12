@@ -366,6 +366,15 @@ Style/ConcatArrayLiterals: # new in 1.41
 # https://docs.rubocop.org/rubocop/cops_style.html#styleredundantdoublesplathashbraces
 Style/RedundantDoubleSplatHashBraces: # new in 1.41
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintuselessrescue
+Lint/UselessRescue: # new in 1.43
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylemaptoset
+Style/MapToSet: # new in 1.42
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleminmaxcomparison
+Style/MinMaxComparison: # new in 1.42
+  Enabled: true
 
 # ============================================================
 # Lint
