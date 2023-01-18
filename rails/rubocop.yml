@@ -3,6 +3,7 @@ inherit_from: ../ruby/rubocop.yml
 require:
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-capybara
   - rubocop-performance
   - rubocop-rake
   - sgcop
@@ -29,6 +30,11 @@ AllCops:
 
 Rails:
   Enabled: true
+
+# NOTE: rubocop-rspecとは分離されたので旧ネームスペースは無効化
+# SEE: https://github.com/rubocop/rubocop-rspec/issues/1561
+RSpec/Capybara:
+  Enabled: false
 
 # ARオブジェクトのuniqを取りたいわけでなく、特定の属性のuniqが取りたい場合でも警告が出るので
 # https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsuniqbeforepluck
@@ -434,7 +440,7 @@ RSpec/VerifiedDoubleReference: # new in 2.10.0
 RSpec/ChangeByZero: # new in 2.11.0
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_capybara.html#rspeccapybaraspecificmatcher
-RSpec/Capybara/SpecificMatcher: # new in 2.12
+Capybara/SpecificMatcher: # new in 2.12
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailshavehttpstatus
 RSpec/Rails/HaveHttpStatus: # new in 2.12
@@ -446,16 +452,16 @@ RSpec/ClassCheck: # new in 2.13
 RSpec/NoExpectationExample: # new in 2.13
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_capybara.html#rspeccapybaraspecificfinders
-RSpec/Capybara/SpecificFinders: # new in 2.13
+Capybara/SpecificFinders: # new in 2.13
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecsortmetadata
 RSpec/SortMetadata: # new in 2.14
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_capybara.html#rspeccapybaranegationmatcher
-RSpec/Capybara/NegationMatcher: # new in 2.14
+Capybara/NegationMatcher: # new in 2.14
   Enabled: false
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_capybara.html#rspeccapybaraspecificactions
-RSpec/Capybara/SpecificActions: # new in 2.14
+Capybara/SpecificActions: # new in 2.14
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_factorybot.html#rspecfactorybotconsistentparenthesesstyle
 RSpec/FactoryBot/ConsistentParenthesesStyle: # new in 2.14
@@ -473,7 +479,7 @@ RSpec/PendingWithoutReason: # new in 2.16
 RSpec/FactoryBot/FactoryNameStyle: # new in 2.16
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_capybara.html#rspeccapybaramatchstyle
-RSpec/Capybara/MatchStyle: # new in 2.17
+Capybara/MatchStyle: # new in 2.17
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailsminitestassertions
 RSpec/Rails/MinitestAssertions: # new in 2.17
