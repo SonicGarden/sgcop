@@ -33,6 +33,7 @@ Rails:
 
 # NOTE: rubocop-rspecとは分離されたので旧ネームスペースは無効化
 # SEE: https://github.com/rubocop/rubocop-rspec/issues/1561
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspeccapybara
 RSpec/Capybara:
   Enabled: false
 
@@ -440,6 +441,7 @@ RSpec/VerifiedDoubleReference: # new in 2.10.0
 RSpec/ChangeByZero: # new in 2.11.0
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_capybara.html#rspeccapybaraspecificmatcher
+# https://docs.rubocop.org/rubocop/cops_capybara.html#capybaraspecificmatcher
 Capybara/SpecificMatcher: # new in 2.12
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailshavehttpstatus
@@ -452,15 +454,18 @@ RSpec/ClassCheck: # new in 2.13
 RSpec/NoExpectationExample: # new in 2.13
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_capybara.html#rspeccapybaraspecificfinders
+# https://docs.rubocop.org/rubocop/cops_capybara.html#capybaraspecificfinders
 Capybara/SpecificFinders: # new in 2.13
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecsortmetadata
 RSpec/SortMetadata: # new in 2.14
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_capybara.html#rspeccapybaranegationmatcher
+# https://docs.rubocop.org/rubocop/cops_capybara.html#capybaranegationmatcher
 Capybara/NegationMatcher: # new in 2.14
   Enabled: false
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_capybara.html#rspeccapybaraspecificactions
+# https://docs.rubocop.org/rubocop/cops_capybara.html#capybaraspecificactions
 Capybara/SpecificActions: # new in 2.14
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_factorybot.html#rspecfactorybotconsistentparenthesesstyle
@@ -479,6 +484,7 @@ RSpec/PendingWithoutReason: # new in 2.16
 RSpec/FactoryBot/FactoryNameStyle: # new in 2.16
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_capybara.html#rspeccapybaramatchstyle
+# https://docs.rubocop.org/rubocop/cops_capybara.html#capybaramatchstyle
 Capybara/MatchStyle: # new in 2.17
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailsminitestassertions
