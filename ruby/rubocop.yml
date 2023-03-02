@@ -384,6 +384,9 @@ Style/ComparableClamp: # new in 1.44
 # https://docs.rubocop.org/rubocop/cops_style.html#styleredundantheredocdelimiterquotes
 Style/RedundantHeredocDelimiterQuotes: # new in 1.45
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_metrics.html#metricscollectionliterallength
+Metrics/CollectionLiteralLength: # new in 1.47
+  Enabled: true
 
 # ============================================================
 # Lint
