@@ -493,3 +493,12 @@ Capybara/MatchStyle: # new in 2.17
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailsminitestassertions
 RSpec/Rails/MinitestAssertions: # new in 2.17
   Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecredundantaround
+RSpec/RedundantAround: # new in 2.19
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecskipblockinsideexample
+RSpec/SkipBlockInsideExample: # new in 2.19
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailstravelaround
+RSpec/Rails/TravelAround: # new in 2.19
+  Enabled: true

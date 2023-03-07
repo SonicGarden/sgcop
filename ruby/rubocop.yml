@@ -387,6 +387,12 @@ Style/RedundantHeredocDelimiterQuotes: # new in 1.45
 # https://docs.rubocop.org/rubocop/cops_metrics.html#metricscollectionliterallength
 Metrics/CollectionLiteralLength: # new in 1.47
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styledirempty
+Style/DirEmpty: # new in 1.48
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylefileempty
+Style/FileEmpty: # new in 1.48
+  Enabled: true
 
 # ============================================================
 # Lint
