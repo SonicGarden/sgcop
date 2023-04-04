@@ -7,7 +7,7 @@ describe RuboCop::Cop::Sgcop::RequestRemoteIp do
     expect_offense(<<~RUBY)
       def log
         logger.info request.remote_addr
-                    ^^^^^^^^^^^^^^^^^^^ Use `request.remote_ip` instead of `request.remote_addr`.
+                    ^^^^^^^^^^^^^^^^^^^ Sgcop/RequestRemoteIp: Use `request.remote_ip` instead of `request.remote_addr`.
       end
     RUBY
   end

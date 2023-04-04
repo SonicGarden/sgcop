@@ -7,14 +7,14 @@ describe RuboCop::Cop::Sgcop::Whenever do
   it 'methodオプションは警告' do
     expect_offense(<<~RUBY)
       link_to 'title', url, method: :delete
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Deprecated: Rails UJS Attributes.
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/UjsOptions: Deprecated: Rails UJS Attributes.
     RUBY
   end
 
   it 'remoteオプションは警告' do
     expect_offense(<<~RUBY)
       link_to 'title', url, remote: true
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Deprecated: Rails UJS Attributes.
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/UjsOptions: Deprecated: Rails UJS Attributes.
     RUBY
   end
 
