@@ -393,6 +393,12 @@ Style/DirEmpty: # new in 1.48
 # https://docs.rubocop.org/rubocop/cops_style.html#stylefileempty
 Style/FileEmpty: # new in 1.48
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styledatainheritance
+Style/DataInheritance: # new in 1.49
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleredundantlinecontinuation
+Style/RedundantLineContinuation: # new in 1.49
+  Enabled: true
 
 # ============================================================
 # Lint

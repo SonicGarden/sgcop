@@ -8,7 +8,7 @@ describe RuboCop::Cop::Sgcop::Unscoped do
       class BooksController < ApplicationController
         def index
           @books = books.unscoped.default_order
-                   ^^^^^^^^^^^^^^ Do not use `unscoped`
+                   ^^^^^^^^^^^^^^ Sgcop/Unscoped: Do not use `unscoped`
         end
       end
     RUBY

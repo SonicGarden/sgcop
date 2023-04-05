@@ -8,7 +8,7 @@ describe RuboCop::Cop::Sgcop::SimpleFormAssociation do
       expect_offense(<<~RUBY)
         simple_form_for user do |f|
           f.association :group
-          ^^^^^^^^^^^^^^^^^^^^ Specify the `collection` option
+          ^^^^^^^^^^^^^^^^^^^^ Sgcop/SimpleFormAssociation: Specify the `collection` option
         end
       RUBY
     end
@@ -35,7 +35,7 @@ describe RuboCop::Cop::Sgcop::SimpleFormAssociation do
       expect_offense(<<~RUBY)
         simple_nested_form_for user do |f|
           f.association :group
-          ^^^^^^^^^^^^^^^^^^^^ Specify the `collection` option
+          ^^^^^^^^^^^^^^^^^^^^ Sgcop/SimpleFormAssociation: Specify the `collection` option
         end
       RUBY
     end
@@ -63,7 +63,7 @@ describe RuboCop::Cop::Sgcop::SimpleFormAssociation do
         simple_form_for user do |f|
           f.simple_fields_for :posts do |ff|
             ff.association :category
-            ^^^^^^^^^^^^^^^^^^^^^^^^ Specify the `collection` option
+            ^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/SimpleFormAssociation: Specify the `collection` option
           end
         end
       RUBY

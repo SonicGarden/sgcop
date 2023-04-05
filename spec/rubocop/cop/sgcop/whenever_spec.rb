@@ -9,7 +9,7 @@ describe RuboCop::Cop::Sgcop::Whenever do
       set :chronic_options, hours24: true
 
       every 1.day, at: '7:10 am' do
-                   ^^^^^^^^^^^^^ Use 24-hour clock to avoid errors.
+                   ^^^^^^^^^^^^^ Sgcop/Whenever: Use 24-hour clock to avoid errors.
       rake 'sgcop'
     end
     RUBY

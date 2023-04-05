@@ -7,7 +7,7 @@ describe RuboCop::Cop::Sgcop::SimpleFormat do
     expect_offense(<<~RUBY)
       def html_format(text)
         simple_format(text)
-        ^^^^^^^^^^^^^^^^^^^ simple_format does not escape HTML tags.
+        ^^^^^^^^^^^^^^^^^^^ Sgcop/SimpleFormat: simple_format does not escape HTML tags.
       end
     RUBY
   end
@@ -16,7 +16,7 @@ describe RuboCop::Cop::Sgcop::SimpleFormat do
     expect_offense(<<~RUBY)
       def html_format(object)
         simple_format(object.body)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^ simple_format does not escape HTML tags.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/SimpleFormat: simple_format does not escape HTML tags.
       end
     RUBY
   end
@@ -30,21 +30,21 @@ describe RuboCop::Cop::Sgcop::SimpleFormat do
   it 'simple_formatにエスケープメソッド以外の結果が渡されていたら警告' do
     expect_offense(<<~RUBY)
       simple_format(t(text))
-      ^^^^^^^^^^^^^^^^^^^^^^ simple_format does not escape HTML tags.
+      ^^^^^^^^^^^^^^^^^^^^^^ Sgcop/SimpleFormat: simple_format does not escape HTML tags.
     RUBY
   end
 
   it 'simple_formatにインスタンス変数が渡されていたら警告' do
     expect_offense(<<~RUBY)
       simple_format(@object)
-      ^^^^^^^^^^^^^^^^^^^^^^ simple_format does not escape HTML tags.
+      ^^^^^^^^^^^^^^^^^^^^^^ Sgcop/SimpleFormat: simple_format does not escape HTML tags.
     RUBY
   end
 
   it 'simple_formatにインスタンス変数のメソッドが渡されていたら警告' do
     expect_offense(<<~RUBY)
       simple_format(@object.body)
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^ simple_format does not escape HTML tags.
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/SimpleFormat: simple_format does not escape HTML tags.
     RUBY
   end
 end
