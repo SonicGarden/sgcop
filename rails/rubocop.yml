@@ -505,3 +505,15 @@ RSpec/SkipBlockInsideExample: # new in 2.19
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailstravelaround
 RSpec/Rails/TravelAround: # new in 2.19
   Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecbeempty
+RSpec/BeEmpty: # new in 2.20
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspeccontainexactly
+RSpec/ContainExactly: # new in 2.19
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecindexedlet
+RSpec/IndexedLet: # new in 2.20
+  Enabled: false
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecmatcharray
+RSpec/MatchArray: # new in 2.19
+  Enabled: true
