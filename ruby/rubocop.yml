@@ -402,6 +402,9 @@ Style/RedundantLineContinuation: # new in 1.49
 # https://docs.rubocop.org/rubocop/cops_lint.html#lintduplicatematchpattern
 Lint/DuplicateMatchPattern: # new in 1.50
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleexactregexpmatch
+Style/ExactRegexpMatch: # new in 1.51
+  Enabled: true
 
 # ============================================================
 # Lint

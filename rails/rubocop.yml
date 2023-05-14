@@ -435,6 +435,7 @@ RSpec/BeNil: # new in 2.9.0
   Enabled: true
 # NOTE: あえて付ける派も見かけるので
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_factorybot.html#rspecfactorybotsyntaxmethods
+# https://docs.rubocop.org/rubocop/cops_factorybot.html#factorybotsyntaxmethods
 FactoryBot/SyntaxMethods: # new in 2.7
   Enabled: false
 # https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancestringidentifierargument
@@ -475,6 +476,7 @@ Capybara/NegationMatcher: # new in 2.14
 Capybara/SpecificActions: # new in 2.14
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_factorybot.html#rspecfactorybotconsistentparenthesesstyle
+# https://docs.rubocop.org/rubocop/cops_factorybot.html#factorybotconsistentparenthesesstyle
 FactoryBot/ConsistentParenthesesStyle: # new in 2.14
   Enabled: false
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailsinferredspectype
@@ -487,6 +489,7 @@ RSpec/DuplicatedMetadata: # new in 2.16
 RSpec/PendingWithoutReason: # new in 2.16
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_factorybot.html#rspecfactorybotfactorynamestyle
+# https://docs.rubocop.org/rubocop/cops_factorybot.html#factorybotfactorynamestyle
 FactoryBot/FactoryNameStyle: # new in 2.16
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_capybara.html#rspeccapybaramatchstyle
