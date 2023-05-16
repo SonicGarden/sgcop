@@ -520,3 +520,13 @@ RSpec/IndexedLet: # new in 2.20
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecmatcharray
 RSpec/MatchArray: # new in 2.19
   Enabled: true
+
+# https://docs.rubocop.org/rubocop/cops_factorybot.html#factorybotassociationstyle
+FactoryBot/AssociationStyle: # new in 2.23
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_factorybot.html#factorybotfactoryassociationwithstrategy
+FactoryBot/FactoryAssociationWithStrategy: # new in 2.23
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_factorybot.html#factorybotredundantfactoryoption
+FactoryBot/RedundantFactoryOption: # new in 2.23
+  Enabled: true
