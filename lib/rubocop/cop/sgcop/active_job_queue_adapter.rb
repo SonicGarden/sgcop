@@ -16,7 +16,7 @@ module RuboCop
         private
 
         def in_initializers_directory?
-          processed_source.file_path.include?('/config/initializers/')
+          processed_source.file_path.include?('config/initializers/')
         end
 
         def active_job_adapter_set?(node)

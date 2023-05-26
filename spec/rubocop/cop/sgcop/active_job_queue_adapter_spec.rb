@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe RuboCop::Cop::Sgcop::ActiveJobQueueAdapter do
+describe RuboCop::Cop::Sgcop::ActiveJobQueueAdapter, :config do
   subject(:cop) { described_class.new }
 
 
   it 'registers an offense when setting config.active_job.queue_adapter in an initializer' do
-    expect_offense(<<~RUBY, '/config/initializers/activejob.rb')
+    expect_offense(<<~RUBY, 'config/initializers/activejob.rb')
       config.active_job.queue_adapter = :sidekiq
       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ActiveJobQueueAdapter: Do not set config.active_job.queue_adapter in config/initializers.
     RUBY
