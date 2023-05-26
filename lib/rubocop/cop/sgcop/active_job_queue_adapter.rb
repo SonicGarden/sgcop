@@ -23,7 +23,7 @@ module RuboCop
           return unless node.send_type?
           return unless node.method_name == :queue_adapter=
           return unless node.receiver&.method_name == :active_job
-          return unless node.receiver.receiver.method_name == :config
+          return unless node.receiver.receiver&.type == :lvar && node.receiver.receiver&.children&.first == :config
 
           true
         end

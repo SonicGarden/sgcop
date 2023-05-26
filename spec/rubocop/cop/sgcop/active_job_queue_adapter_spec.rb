@@ -6,14 +6,18 @@ describe RuboCop::Cop::Sgcop::ActiveJobQueueAdapter, :config do
 
   it 'registers an offense when setting config.active_job.queue_adapter in an initializer' do
     expect_offense(<<~RUBY, 'config/initializers/activejob.rb')
-      config.active_job.queue_adapter = :sidekiq
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ActiveJobQueueAdapter: Do not set config.active_job.queue_adapter in config/initializers.
+      Rails.application.configure do |config|
+        config.active_job.queue_adapter = :sidekiq
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ActiveJobQueueAdapter: Do not set config.active_job.queue_adapter in config/initializers.
+      end
     RUBY
   end
 
   it 'does not register an offense when setting config.active_job.queue_adapter in an config/application.rb' do
     expect_no_offenses(<<~RUBY, 'config/application.rb')
-      config.active_job.queue_adapter = :sidekiq
+      Rails.application.configure do |config|
+        config.active_job.queue_adapter = :sidekiq
+      end
     RUBY
   end
 
