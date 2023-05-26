@@ -31,6 +31,14 @@ Sgcop/UjsOptions:
   Reference:
     - https://edgeapi.rubyonrails.org/classes/ActionView/Helpers/UrlHelper.html#method-i-link_to-label-Deprecated-3A+Rails+UJS+Attributes
 
+Sgcop/ActiveJobQueueAdapter:
+  Description: "config/initializers以下で設定しても効かないよ"
+  Enabled: true
+  Include:
+    - "config/initializers/*.rb"
+  Reference:
+    - https://qiita.com/sukechannnn/items/6cf8933c78656f543d54
+
 Sgcop/Capybara/Sleep:
   Description: "sleepに頼らない安定したspecを書こう"
   Enabled: true
