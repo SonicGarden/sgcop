@@ -405,6 +405,15 @@ Lint/DuplicateMatchPattern: # new in 1.50
 # https://docs.rubocop.org/rubocop/cops_style.html#styleexactregexpmatch
 Style/ExactRegexpMatch: # new in 1.51
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleredundantarrayconstructor
+Style/RedundantArrayConstructor: # new in 1.52
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleredundantfilterchain
+Style/RedundantFilterChain: # new in 1.52
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleredundantregexpconstructor
+Style/RedundantRegexpConstructor: # new in 1.52
+  Enabled: true
 
 # ============================================================
 # Lint
