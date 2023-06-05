@@ -4,6 +4,7 @@ require:
   - rubocop-rails
   - rubocop-rspec
   - rubocop-capybara
+  - rubocop-factory_bot
   - rubocop-performance
   - rubocop-rake
   - sgcop
