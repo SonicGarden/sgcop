@@ -414,6 +414,24 @@ Style/RedundantFilterChain: # new in 1.52
 # https://docs.rubocop.org/rubocop/cops_style.html#styleredundantregexpconstructor
 Style/RedundantRegexpConstructor: # new in 1.52
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintmixedcaserange
+Lint/MixedCaseRange: # new in 1.53
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintredundantregexpquantifiers
+Lint/RedundantRegexpQuantifiers: # new in 1.53
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleredundantcurrentdirectoryinpath
+Style/RedundantCurrentDirectoryInPath: # new in 1.53
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleredundantregexpargument
+Style/RedundantRegexpArgument: # new in 1.53
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylereturnnilinpredicatemethoddefinition
+Style/ReturnNilInPredicateMethodDefinition: # new in 1.53
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleyamlfileread
+Style/YAMLFileRead: # new in 1.53
+  Enabled: true
 
 # ============================================================
 # Lint
