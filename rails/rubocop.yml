@@ -574,3 +574,16 @@ FactoryBot/FactoryAssociationWithStrategy: # new in 2.23
 # https://docs.rubocop.org/rubocop/cops_factorybot.html#factorybotredundantfactoryoption
 FactoryBot/RedundantFactoryOption: # new in 2.23
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_factorybot.html#factorybotidsequence
+FactoryBot/IdSequence: # new in <<next>>
+  Enabled: true
+
+# https://docs.rubocop.org/rubocop/cops_capybara.html#capybaraclicklinkorbuttonstyle
+Capybara/ClickLinkOrButtonStyle: # new in 2.19
+  Enabled: false
+# https://docs.rubocop.org/rubocop/cops_capybara_rspec.html#capybararspechaveselector
+Capybara/RSpec/HaveSelector: # new in 2.19
+  Enabled: false
+# https://docs.rubocop.org/rubocop/cops_capybara_rspec.html#capybararspecpredicatematcher
+Capybara/RSpec/PredicateMatcher: # new in 2.19
+  Enabled: true
