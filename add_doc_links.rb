@@ -2,29 +2,36 @@
 
 require 'fileutils'
 
+TOP_CATEGORY_MAP = {
+  'Rails' => 'rails',
+  'RSpec' => 'rspec',
+  'Performance' => 'performance',
+  'Capybara' => 'capybara',
+  'FactoryBot' => 'factory_bot'
+}
+DOC_COMMENT_REGEXP = %r{\A# https://docs\.rubocop\.org/}
+
 def add_doc_link_comments(filename)
-  prev_line = nil
   tmp_filename = filename + ".tmp"
   File.open(tmp_filename, 'w') do |io|
     IO.foreach(filename) do |line|
-      if (m = %r{^(.+/.+):}.match(line))
+      if DOC_COMMENT_REGEXP.match?(line)
+        next
+      elsif (m = %r{^(.+/.+):}.match(line))
         words = m[1].split('/')
-        top_category = words[0].downcase
+        top_category = words[0]
         category = words[0..-2].join('_').downcase
         name = words.join('').downcase
+        top_category_path_name = TOP_CATEGORY_MAP[top_category]
         comment =
-          case top_category
-          when 'rails', 'rspec', 'performance'
-            "# https://docs.rubocop.org/rubocop-#{top_category}/cops_#{category}.html##{name}"
+          if top_category_path_name
+            "# https://docs.rubocop.org/rubocop-#{top_category_path_name}/cops_#{category}.html##{name}"
           else
             "# https://docs.rubocop.org/rubocop/cops_#{category}.html##{name}"
           end
-        if prev_line.nil? || prev_line.chomp != comment
-          io.puts(comment)
-        end
+        io.puts(comment)
       end
       io.write(line)
-      prev_line = line
     end
   end
   FileUtils.mv(tmp_filename, filename)
