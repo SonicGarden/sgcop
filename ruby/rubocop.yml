@@ -432,6 +432,9 @@ Style/ReturnNilInPredicateMethodDefinition: # new in 1.53
 # https://docs.rubocop.org/rubocop/cops_style.html#styleyamlfileread
 Style/YAMLFileRead: # new in 1.53
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylesinglelinedoendblock
+Style/SingleLineDoEndBlock: # new in 1.57
+  Enabled: true
 
 # ============================================================
 # Lint

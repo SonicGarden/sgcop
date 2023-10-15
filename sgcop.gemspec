@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'rubocop', '~> 1.56.0'
+  spec.add_dependency 'rubocop', '~> 1.57.0'
   spec.add_dependency 'rubocop-capybara', '~> 2.19.0'
   spec.add_dependency 'rubocop-factory_bot', '~> 2.24.0'
   spec.add_dependency 'rubocop-performance', '~> 1.19.0'
