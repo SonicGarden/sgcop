@@ -493,6 +493,7 @@ Layout/FirstArrayElementIndentation:
 # https://docs.rubocop.org/rubocop/cops_layout.html#layoutlinelength
 Layout/LineLength:
   Max: 160
+  AllowedPatterns: ["^ *#"]
 
 # 複数行に渡る Hash では、一行に複数のキーを入れてはならない
 # https://docs.rubocop.org/rubocop/cops_layout.html#layoutmultilinehashkeylinebreaks
