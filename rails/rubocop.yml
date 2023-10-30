@@ -434,6 +434,9 @@ Rails/SelectMap: # new in 2.21
 # https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsunusedrendercontent
 Rails/UnusedRenderContent: # new in 2.21
   Enabled: true
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsenvlocal
+Rails/EnvLocal: # new in 2.22
+  Enabled: true
 
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecidenticalequalityassertion
 RSpec/IdenticalEqualityAssertion: # (new in 2.4)
