@@ -435,6 +435,12 @@ Style/YAMLFileRead: # new in 1.53
 # https://docs.rubocop.org/rubocop/cops_style.html#stylesinglelinedoendblock
 Style/SingleLineDoEndBlock: # new in 1.57
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintliteralassignmentincondition
+Lint/LiteralAssignmentInCondition: # new in 1.58
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylesuperwithargsparentheses
+Style/SuperWithArgsParentheses: # new in 1.58
+  Enabled: true
 
 # ============================================================
 # Lint
