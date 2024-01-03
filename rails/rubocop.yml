@@ -580,3 +580,6 @@ Capybara/RSpec/HaveSelector: # new in 2.19
 # https://docs.rubocop.org/rubocop-capybara/cops_capybara_rspec.html#capybararspecpredicatematcher
 Capybara/RSpec/PredicateMatcher: # new in 2.19
   Enabled: true
+# https://docs.rubocop.org/rubocop-capybara/cops_capybara.html#capybararedundantwithinfind
+Capybara/RedundantWithinFind: # new in 2.20
+  Enabled: true
