@@ -563,6 +563,12 @@ RSpec/RedundantPredicateMatcher: # new in 2.26
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecremoveconst
 RSpec/RemoveConst: # new in 2.26
   Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecisexpectedspecify
+RSpec/IsExpectedSpecify: # new in 2.27
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecrepeatedsubjectcall
+RSpec/RepeatedSubjectCall: # new in 2.27
+  Enabled: true
 
 # https://docs.rubocop.org/rubocop-factory_bot/cops_factorybot.html#factorybotassociationstyle
 FactoryBot/AssociationStyle: # new in 2.23
