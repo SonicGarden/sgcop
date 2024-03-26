@@ -39,6 +39,52 @@ Sgcop/ActiveJobQueueAdapter:
   Reference:
     - https://qiita.com/sukechannnn/items/6cf8933c78656f543d54
 
+Sgcop/OnLoadArguments:
+  Description: ActiveSupport.on_loadの引数が許可されていないnameだよ
+  Enabled: true
+  AllowedNames:
+    - action_cable
+    - action_cable_channel
+    - action_cable_connection
+    - action_cable_connection_test_case
+    - action_controller_api
+    - action_controller
+    - action_controller_base
+    - action_controller_test_case
+    - action_dispatch_integration_test
+    - action_dispatch_response
+    - action_dispatch_request
+    - action_dispatch_system_test_case
+    - action_mailbox
+    - action_mailbox_inbound_email
+    - action_mailbox_record
+    - action_mailbox_test_case
+    - action_mailer
+    - action_mailer_test_case
+    - action_text_content
+    - action_text_record
+    - action_text_rich_text
+    - action_text_encrypted_rich_text
+    - action_view
+    - action_view_test_case
+    - active_job
+    - active_job_test_case
+    - active_model
+    - active_record
+    - active_record_fixtures
+    - active_record_postgresqladapter
+    - active_record_mysql2adapter
+    - active_record_trilogyadapter
+    - active_record_sqlite3adapter
+    - active_storage_attachment
+    - active_storage_variant_record
+    - active_storage_blob
+    - active_storage_record
+    - active_support_test_case
+    - i18n
+  Reference:
+    - https://github.com/rails/rails/blob/e9b61852343c83365aa73db6abcfae1e5b31272f/guides/source/configuring.md?plain=1#L3591
+
 Sgcop/Capybara/Sleep:
   Description: "sleepに頼らない安定したspecを書こう"
   Enabled: true
