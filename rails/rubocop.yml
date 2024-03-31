@@ -442,7 +442,7 @@ Rails/EnvLocal: # new in 2.22
 RSpec/IdenticalEqualityAssertion: # (new in 2.4)
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailsavoidsetuphook
-RSpec/Rails/AvoidSetupHook: # (new in 2.4)
+RSpecRails/AvoidSetupHook: # (new in 2.4)
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecexcessivedocstringspacing
 RSpec/ExcessiveDocstringSpacing: # new in 2.5
@@ -474,7 +474,7 @@ RSpec/ChangeByZero: # new in 2.11.0
 Capybara/SpecificMatcher: # new in 2.12
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailshavehttpstatus
-RSpec/Rails/HaveHttpStatus: # new in 2.12
+RSpecRails/HaveHttpStatus: # new in 2.12
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecclasscheck
 RSpec/ClassCheck: # new in 2.13
@@ -498,7 +498,7 @@ Capybara/SpecificActions: # new in 2.14
 FactoryBot/ConsistentParenthesesStyle: # new in 2.14
   Enabled: false
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailsinferredspectype
-RSpec/Rails/InferredSpecType: # new in 2.14
+RSpecRails/InferredSpecType: # new in 2.14
   Enabled: false
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecduplicatedmetadata
 RSpec/DuplicatedMetadata: # new in 2.16
@@ -513,7 +513,7 @@ FactoryBot/FactoryNameStyle: # new in 2.16
 Capybara/MatchStyle: # new in 2.17
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailsminitestassertions
-RSpec/Rails/MinitestAssertions: # new in 2.17
+RSpecRails/MinitestAssertions: # new in 2.17
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecredundantaround
 RSpec/RedundantAround: # new in 2.19
@@ -522,7 +522,7 @@ RSpec/RedundantAround: # new in 2.19
 RSpec/SkipBlockInsideExample: # new in 2.19
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailstravelaround
-RSpec/Rails/TravelAround: # new in 2.19
+RSpecRails/TravelAround: # new in 2.19
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecbeempty
 RSpec/BeEmpty: # new in 2.20
@@ -540,7 +540,7 @@ RSpec/MatchArray: # new in 2.19
 RSpec/ReceiveMessages: # new in 2.23
   Enabled: false
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec_rails.html#rspecrailsnegationbevalid
-RSpec/Rails/NegationBeValid: # new in 2.23
+RSpecRails/NegationBeValid: # new in 2.23
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecemptymetadata
 RSpec/EmptyMetadata: # new in 2.24
