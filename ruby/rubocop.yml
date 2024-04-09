@@ -444,6 +444,9 @@ Style/SuperWithArgsParentheses: # new in 1.58
 # https://docs.rubocop.org/rubocop/cops_lint.html#lintitwithoutargumentsinblock
 Lint/ItWithoutArgumentsInBlock: # new in 1.59
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylemapintoarray
+Style/MapIntoArray: # new in 1.63
+  Enabled: true
 
 # ============================================================
 # Lint
