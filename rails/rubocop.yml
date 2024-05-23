@@ -437,6 +437,9 @@ Rails/UnusedRenderContent: # new in 2.21
 # https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsenvlocal
 Rails/EnvLocal: # new in 2.22
   Enabled: true
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railswhererange
+Rails/WhereRange: # new in 2.25
+  Enabled: false
 
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecidenticalequalityassertion
 RSpec/IdenticalEqualityAssertion: # (new in 2.4)
@@ -569,6 +572,12 @@ RSpec/IsExpectedSpecify: # new in 2.27
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecrepeatedsubjectcall
 RSpec/RepeatedSubjectCall: # new in 2.27
   Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecemptyoutput
+RSpec/EmptyOutput: # new in 2.29
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecundescriptiveliteralsdescription
+RSpec/UndescriptiveLiteralsDescription: # new in 2.29
+  Enabled: false
 
 # https://docs.rubocop.org/rubocop-factory_bot/cops_factorybot.html#factorybotassociationstyle
 FactoryBot/AssociationStyle: # new in 2.23
