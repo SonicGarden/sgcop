@@ -439,7 +439,7 @@ Rails/EnvLocal: # new in 2.22
   Enabled: true
 # https://docs.rubocop.org/rubocop-rails/cops_rails.html#railswhererange
 Rails/WhereRange: # new in 2.25
-  Enabled: true
+  Enabled: false
 
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecidenticalequalityassertion
 RSpec/IdenticalEqualityAssertion: # (new in 2.4)
