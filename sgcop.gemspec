@@ -28,11 +28,11 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'rubocop', '~> 1.64.0'
-  spec.add_dependency 'rubocop-capybara', '~> 2.20.0'
-  spec.add_dependency 'rubocop-factory_bot', '~> 2.25.0'
+  spec.add_dependency 'rubocop-capybara', '~> 2.21.0'
+  spec.add_dependency 'rubocop-factory_bot', '~> 2.26.0'
   spec.add_dependency 'rubocop-performance', '~> 1.21.0'
   spec.add_dependency 'rubocop-rails', '~> 2.25.0'
   spec.add_dependency 'rubocop-rake', '~> 0.6.0'
-  spec.add_dependency 'rubocop-rspec', '~> 2.30.0'
-  spec.add_dependency 'rubocop-rspec_rails', '~> 2.28.2'
+  spec.add_dependency 'rubocop-rspec', '~> 2.31.0'
+  spec.add_dependency 'rubocop-rspec_rails', '~> 2.29.0'
 end
