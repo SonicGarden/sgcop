@@ -32,12 +32,6 @@ AllCops:
 Rails:
   Enabled: true
 
-# NOTE: rubocop-rspecとは分離されたので旧ネームスペースは無効化
-# SEE: https://github.com/rubocop/rubocop-rspec/issues/1561
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspeccapybara
-RSpec/Capybara:
-  Enabled: false
-
 # ARオブジェクトのuniqを取りたいわけでなく、特定の属性のuniqが取りたい場合でも警告が出るので
 # https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsuniqbeforepluck
 Rails/UniqBeforePluck:
