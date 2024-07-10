@@ -14,3 +14,5 @@ require 'rubocop/cop/sgcop/active_job_queue_adapter'
 require 'rubocop/cop/sgcop/on_load_arguments'
 require 'rubocop/cop/sgcop/capybara/sleep'
 require 'rubocop/cop/sgcop/capybara/matchers'
+
+warn("Please switch to the main branch to install sgcop. Example: `gem 'sgcop', github: 'SonicGarden/sgcop', branch: 'main`")
