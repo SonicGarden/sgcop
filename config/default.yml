@@ -85,6 +85,12 @@ Sgcop/OnLoadArguments:
   Reference:
     - https://github.com/rails/rails/blob/e9b61852343c83365aa73db6abcfae1e5b31272f/guides/source/configuring.md?plain=1#L3591
 
+Sgcop/TransactionRequiresNew:
+  Description: "`requires_new: true`オプションを付けないとネストしたトランザクションでロールバックされない可能性があるよ"
+  Enabled: true
+  Reference:
+    - https://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html#module-ActiveRecord::Transactions::ClassMethods-label-Nested+transactions
+
 Sgcop/Capybara/Sleep:
   Description: "sleepに頼らない安定したspecを書こう"
   Enabled: true
