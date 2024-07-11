@@ -453,6 +453,9 @@ Style/SendWithLiteralMethodName: # new in 1.64
 # https://docs.rubocop.org/rubocop/cops_style.html#stylesuperarguments
 Style/SuperArguments: # new in 1.64
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_gemspec.html#gemspecaddruntimedependency
+Gemspec/AddRuntimeDependency: # new in 1.65
+  Enabled: true
 
 # ============================================================
 # Lint

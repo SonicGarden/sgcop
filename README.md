@@ -5,7 +5,7 @@ SonicGarden 標準の rubocop, haml-lint 設定支援をするツール
 ## Installation
 
 ```
-gem 'sgcop', github: 'SonicGarden/sgcop'
+gem 'sgcop', github: 'SonicGarden/sgcop', branch: 'main'
 ```
 
 ## Usage
