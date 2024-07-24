@@ -91,6 +91,12 @@ Sgcop/TransactionRequiresNew:
   Reference:
     - https://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html#module-ActiveRecord::Transactions::ClassMethods-label-Nested+transactions
 
+Sgcop/LoadDefaultsVersionMatch:
+  Description: "Railsのバージョンとload_defaultsのバージョンが揃っていないよ"
+  Enabled: true
+  Include:
+    - "config/application.rb"
+
 Sgcop/Capybara/Sleep:
   Description: "sleepに頼らない安定したspecを書こう"
   Enabled: true
