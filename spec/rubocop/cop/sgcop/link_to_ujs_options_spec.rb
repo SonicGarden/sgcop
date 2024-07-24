@@ -1,8 +1,7 @@
 require 'spec_helper'
 
-describe RuboCop::Cop::Sgcop::Whenever do
-  subject(:cop) { RuboCop::Cop::Sgcop::UjsOptions.new }
-
+describe RuboCop::Cop::Sgcop::UjsOptions do
+  subject(:cop) { described_class.new }
 
   it 'methodオプションは警告' do
     expect_offense(<<~RUBY)
