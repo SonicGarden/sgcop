@@ -14,7 +14,6 @@ require:
 AllCops:
   Exclude:
     - "bin/*"
-    - "config/application.rb"
     - "config/backup.rb"
     - "config/boot.rb"
     - "config/environments/*"
@@ -108,6 +107,7 @@ Metrics/AbcSize:
 
 Style:
   Exclude:
+    - "config/application.rb"
     - "config/initializers/*"
 
 # def show;endって書き方読みやすいとは思わない
