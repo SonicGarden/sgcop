@@ -97,6 +97,13 @@ Sgcop/LoadDefaultsVersionMatch:
   Include:
     - "config/application.rb"
 
+Sgcop/RetryOnInfiniteAttempts:
+  Description: "永遠にリトライする可能性があって危険だよ"
+  Enabled: true
+  Include:
+    - "app/jobs/*.rb"
+    - "config/initializers/*.rb"
+
 Sgcop/Capybara/Sleep:
   Description: "sleepに頼らない安定したspecを書こう"
   Enabled: true
