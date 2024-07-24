@@ -18,13 +18,6 @@ Sgcop/RequestRemoteIp:
   Reference:
     - https://api.rubyonrails.org/classes/ActionDispatch/Request.html#method-i-remote_ip-3D
 
-Sgcop/Whenever:
-  Description: "24時間表記で書かないと意図しない時間でcrontab設定される可能性あるよ"
-  Enabled: true
-  Include:
-    - "config/schedule.rb"
-  Reference:
-    - https://github.com/javan/whenever#parsing-dates-and-times
 Sgcop/UjsOptions:
   Description: "Rails UJS Attributesは非推奨となっているよ"
   Enabled: true

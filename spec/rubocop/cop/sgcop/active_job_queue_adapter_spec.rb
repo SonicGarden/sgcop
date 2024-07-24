@@ -3,7 +3,6 @@ require 'spec_helper'
 describe RuboCop::Cop::Sgcop::ActiveJobQueueAdapter, :config do
   subject(:cop) { described_class.new }
 
-
   it 'registers an offense when setting config.active_job.queue_adapter in an initializer' do
     expect_offense(<<~RUBY, 'config/initializers/activejob.rb')
       Rails.application.configure do |config|
