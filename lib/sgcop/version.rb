@@ -1,3 +1,3 @@
 module Sgcop
-  VERSION = '1.1.0'.freeze
+  VERSION = '1.1.1b'.freeze
 end
