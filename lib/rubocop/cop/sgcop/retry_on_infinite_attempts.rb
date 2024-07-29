@@ -7,7 +7,7 @@ module RuboCop
         MSG = 'Avoid using `Float::INFINITY` or `:unlimited` for attempts in `retry_on` method.'
 
         def_node_matcher :retry_on_with_infinite_attempts?, <<~PATTERN
-          (send _ :retry_on _ (hash $...))
+          (send _ :retry_on ... (hash $...))
         PATTERN
 
         def on_send(node)
