@@ -461,6 +461,12 @@ Style/SuperArguments: # new in 1.64
 # https://docs.rubocop.org/rubocop/cops_gemspec.html#gemspecaddruntimedependency
 Gemspec/AddRuntimeDependency: # new in 1.65
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintuselessnumericoperation
+Lint/UselessNumericOperation: # new in 1.66
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleredundantinterpolationunfreeze
+Style/RedundantInterpolationUnfreeze: # new in 1.66
+  Enabled: true
 
 # ============================================================
 # Lint
