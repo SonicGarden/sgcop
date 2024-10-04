@@ -303,6 +303,10 @@ Rails/WhereNot: # (new in 2.8)
 # https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsattributedefaultblockvalue
 Rails/AttributeDefaultBlockValue: # (new in 2.9)
   Enabled: true
+  Include:
+    - app/models/**/*
+    - app/forms/**/*
+
 # https://docs.rubocop.org/rubocop-rails/cops_rails.html#railswhereequals
 Rails/WhereEquals: # (new in 2.9)
   Enabled: true
