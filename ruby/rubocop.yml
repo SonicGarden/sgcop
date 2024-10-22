@@ -467,6 +467,8 @@ Lint/UselessNumericOperation: # new in 1.66
 # https://docs.rubocop.org/rubocop/cops_style.html#styleredundantinterpolationunfreeze
 Style/RedundantInterpolationUnfreeze: # new in 1.66
   Enabled: true
+Lint/DuplicateSetElement: # new in 1.67
+  Enabled: true
 
 # ============================================================
 # Lint
