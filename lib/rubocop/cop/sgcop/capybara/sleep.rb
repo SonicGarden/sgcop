@@ -9,7 +9,7 @@ module RuboCop
           MSG = 'Do not use `sleep` in spec.'
 
           def on_send(node)
-            add_offense(node, location: :selector) if offending_node?(node)
+            add_offense(node) if offending_node?(node)
           end
 
           private
