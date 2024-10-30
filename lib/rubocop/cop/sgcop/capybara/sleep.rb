@@ -5,11 +5,11 @@ module RuboCop
     module Sgcop
       module Capybara
         # SEE: https://github.com/rubocop-hq/rubocop-rails/blob/master/lib/rubocop/cop/rails/exit.rb
-        class Sleep < Cop
+        class Sleep < Base
           MSG = 'Do not use `sleep` in spec.'
 
           def on_send(node)
-            add_offense(node, location: :selector) if offending_node?(node)
+            add_offense(node) if offending_node?(node)
           end
 
           private

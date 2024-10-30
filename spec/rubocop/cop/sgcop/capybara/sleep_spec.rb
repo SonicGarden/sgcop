@@ -8,7 +8,7 @@ describe RuboCop::Cop::Sgcop::Capybara::Sleep do
       it do
         click_on 'button'
         sleep 10
-        ^^^^^ Sgcop/Capybara/Sleep: Do not use `sleep` in spec.
+        ^^^^^^^^ Sgcop/Capybara/Sleep: Do not use `sleep` in spec.
       end
     RUBY
   end
@@ -18,7 +18,7 @@ describe RuboCop::Cop::Sgcop::Capybara::Sleep do
       it do
         click_on 'button'
         Kernel.sleep 10
-               ^^^^^ Sgcop/Capybara/Sleep: Do not use `sleep` in spec.
+        ^^^^^^^^^^^^^^^ Sgcop/Capybara/Sleep: Do not use `sleep` in spec.
       end
     RUBY
   end
