@@ -467,8 +467,27 @@ Lint/UselessNumericOperation: # new in 1.66
 # https://docs.rubocop.org/rubocop/cops_style.html#styleredundantinterpolationunfreeze
 Style/RedundantInterpolationUnfreeze: # new in 1.66
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintduplicatesetelement
 Lint/DuplicateSetElement: # new in 1.67
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintunescapedbracketinregexp
+Lint/UnescapedBracketInRegexp: # new in 1.68
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleambiguousendlessmethoddefinition
+Style/AmbiguousEndlessMethodDefinition: # new in 1.68
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylebitwisepredicate
+Style/BitwisePredicate: # new in 1.68
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylecombinabledefined
+Style/CombinableDefined: # new in 1.68
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylekeywordargumentsmerging
+Style/KeywordArgumentsMerging: # new in 1.68
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylesafenavigationchainlength
+Style/SafeNavigationChainLength: # new in 1.68
+  Enabled: false
 
 # ============================================================
 # Lint
