@@ -583,6 +583,7 @@ RSpec/UndescriptiveLiteralsDescription: # new in 2.29
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecexpectinlet
 RSpec/ExpectInLet: # new in 2.30
   Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecstringasinstancedoubleconstant
 RSpec/StringAsInstanceDoubleConstant: # new in 3.1
   Enabled: true
 
