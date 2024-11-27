@@ -488,6 +488,24 @@ Style/KeywordArgumentsMerging: # new in 1.68
 # https://docs.rubocop.org/rubocop/cops_style.html#stylesafenavigationchainlength
 Style/SafeNavigationChainLength: # new in 1.68
   Enabled: false
+# https://docs.rubocop.org/rubocop/cops_lint.html#linthashnewwithkeywordargumentsasdefault
+Lint/HashNewWithKeywordArgumentsAsDefault: # new in 1.69
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintnumericoperationwithconstantresult
+Lint/NumericOperationWithConstantResult: # new in 1.69
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintuselessdefined
+Lint/UselessDefined: # new in 1.69
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styledigchain
+Style/DigChain: # new in 1.69
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylefilenull
+Style/FileNull: # new in 1.69
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylefiletouch
+Style/FileTouch: # new in 1.69
+  Enabled: true
 
 # ============================================================
 # Lint
