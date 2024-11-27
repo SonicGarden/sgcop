@@ -252,6 +252,9 @@ Performance/ConcurrentMonotonicTime: # new in 1.12
 # https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancemapmethodchain
 Performance/MapMethodChain: # new in 1.19
   Enabled: true
+# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancestringbytesize
+Performance/StringBytesize: # new in 1.23
+  Enabled: true
 
 # https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsactiverecordcallbacksorder
 Rails/ActiveRecordCallbacksOrder:
