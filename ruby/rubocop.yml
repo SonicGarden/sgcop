@@ -506,6 +506,15 @@ Style/FileNull: # new in 1.69
 # https://docs.rubocop.org/rubocop/cops_style.html#stylefiletouch
 Style/FileTouch: # new in 1.69
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintconstantreassignment
+Lint/ConstantReassignment: # new in 1.70
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintsharedmutabledefault
+Lint/SharedMutableDefault: # new in 1.70
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleitassignment
+Style/ItAssignment: # new in 1.70
+  Enabled: true
 
 # ============================================================
 # Lint
