@@ -607,6 +607,9 @@ FactoryBot/IdSequence: # new in <<next>>
 # https://docs.rubocop.org/rubocop-factory_bot/cops_factorybot.html#factorybotexcessivecreatelist
 FactoryBot/ExcessiveCreateList: # new in 2.25
   Enabled: true
+# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancezipwithoutblock
+Performance/ZipWithoutBlock: # new in 1.24
+  Enabled: true
 
 # https://docs.rubocop.org/rubocop-capybara/cops_capybara.html#capybaraclicklinkorbuttonstyle
 Capybara/ClickLinkOrButtonStyle: # new in 2.19

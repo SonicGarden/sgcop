@@ -515,6 +515,27 @@ Lint/SharedMutableDefault: # new in 1.70
 # https://docs.rubocop.org/rubocop/cops_style.html#styleitassignment
 Style/ItAssignment: # new in 1.70
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintarrayliteralinregexp
+Lint/ArrayLiteralInRegexp: # new in 1.71
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintcopdirectivesyntax
+Lint/CopDirectiveSyntax: # new in 1.72
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintredundanttypeconversion
+Lint/RedundantTypeConversion: # new in 1.72
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintsuppressedexceptioninnumberconversion
+Lint/SuppressedExceptionInNumberConversion: # new in 1.72
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintuselessconstantscoping
+Lint/UselessConstantScoping: # new in 1.72
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylehashslice
+Style/HashSlice: # new in 1.71
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleredundantformat
+Style/RedundantFormat: # new in 1.72
+  Enabled: true
 
 # ============================================================
 # Lint
