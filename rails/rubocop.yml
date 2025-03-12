@@ -5,11 +5,11 @@ plugins:
   - rubocop-rspec
   - rubocop-performance
   - rubocop-rake
+  - rubocop-capybara
+  - rubocop-factory_bot
 
 require:
   - rubocop-rspec_rails
-  - rubocop-capybara
-  - rubocop-factory_bot
   - sgcop
 
 # 自動生成されるものなどはチェック対象から除外する
@@ -624,4 +624,10 @@ Capybara/RSpec/PredicateMatcher: # new in 2.19
   Enabled: true
 # https://docs.rubocop.org/rubocop-capybara/cops_capybara.html#capybararedundantwithinfind
 Capybara/RedundantWithinFind: # new in 2.20
+  Enabled: true
+# https://docs.rubocop.org/rubocop-capybara/cops_capybara.html#capybarafindallfirst
+Capybara/FindAllFirst: # new in 2.22
+  Enabled: true
+# https://docs.rubocop.org/rubocop-capybara/cops_capybara.html#capybaranegationmatcheraftervisit
+Capybara/NegationMatcherAfterVisit: # new in 2.22
   Enabled: true
