@@ -7,9 +7,9 @@ plugins:
   - rubocop-rake
   - rubocop-capybara
   - rubocop-factory_bot
+  - rubocop-rspec_rails
 
 require:
-  - rubocop-rspec_rails
   - sgcop
 
 # 自動生成されるものなどはチェック対象から除外する

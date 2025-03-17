@@ -536,6 +536,9 @@ Style/HashSlice: # new in 1.71
 # https://docs.rubocop.org/rubocop/cops_style.html#styleredundantformat
 Style/RedundantFormat: # new in 1.72
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylecomparablebetween
+Style/ComparableBetween: # new in 1.74
+  Enabled: true
 
 # ============================================================
 # Lint
