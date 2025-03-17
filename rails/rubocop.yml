@@ -224,9 +224,6 @@ Performance/StringInclude:
 # https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancesum
 Performance/Sum: # (new in 1.8)
   Enabled: true
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancearraysemiinfiniterangeslice
-Performance/ArraySemiInfiniteRangeSlice: # (new in 1.9)
-  Enabled: true
 # https://docs.rubocop.org/rubocop-performance/cops_performance.html#performanceblockgivenwithexplicitblock
 Performance/BlockGivenWithExplicitBlock: # (new in 1.9)
   Enabled: false
