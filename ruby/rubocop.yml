@@ -539,6 +539,12 @@ Style/RedundantFormat: # new in 1.72
 # https://docs.rubocop.org/rubocop/cops_style.html#stylecomparablebetween
 Style/ComparableBetween: # new in 1.74
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylehashfetchchain
+Style/HashFetchChain: # new in 1.75
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleitblockparameter
+Style/ItBlockParameter: # new in 1.75
+  Enabled: false
 
 # ============================================================
 # Lint
