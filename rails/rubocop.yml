@@ -591,6 +591,10 @@ RSpec/UndescriptiveLiteralsDescription: # new in 2.29
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecexpectinlet
 RSpec/ExpectInLet: # new in 2.30
   Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecincludeexamples
+RSpec/IncludeExamples: # new in 3.6
+  Enabled: true
+
 # https://docs.rubocop.org/rubocop-factory_bot/cops_factorybot.html#factorybotassociationstyle
 FactoryBot/AssociationStyle: # new in 2.23
   Enabled: true
