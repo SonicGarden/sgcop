@@ -84,8 +84,8 @@ Style/PerlBackrefs:
   AutoCorrect: false
 
 # has_ から始まるメソッドは許可する
-# https://docs.rubocop.org/rubocop/cops_naming.html#namingpredicatename
-Naming/PredicateName:
+# https://docs.rubocop.org/rubocop/cops_naming.html#namingpredicateprefix
+Naming/PredicatePrefix:
   ForbiddenPrefixes:
     - is_
     - have_
@@ -545,6 +545,21 @@ Style/HashFetchChain: # new in 1.75
 # https://docs.rubocop.org/rubocop/cops_style.html#styleitblockparameter
 Style/ItBlockParameter: # new in 1.75
   Enabled: false
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintuselessdefaultvalueargument
+Lint/UselessDefaultValueArgument: # new in 1.76
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_lint.html#lintuselessor
+Lint/UselessOr: # new in 1.76
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleemptystringinsideinterpolation
+Style/EmptyStringInsideInterpolation: # new in 1.76
+  Enabled: false
+# https://docs.rubocop.org/rubocop/cops_style.html#styleredundantarrayflatten
+Style/RedundantArrayFlatten: # new in 1.76
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_naming.html#namingpredicatemethod
+Naming/PredicateMethod: # new in 1.76
+  Enabled: true
 
 # ============================================================
 # Lint
