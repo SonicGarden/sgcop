@@ -107,6 +107,11 @@ Metrics/AbcSize:
 # Style
 # ============================================================
 
+Style:
+  Exclude:
+    - "config/application.rb"
+    - "config/initializers/*"
+
 # def show;endって書き方読みやすいとは思わない
 # https://docs.rubocop.org/rubocop/cops_style.html#styleemptymethod
 Style/EmptyMethod:
@@ -117,6 +122,10 @@ Style/EmptyMethod:
 Style/IpAddresses:
   Exclude:
     - "Gemfile"
+
+Layout:
+  Exclude:
+    - "config/initializers/*"
 
 # ============================================================
 # RSpec

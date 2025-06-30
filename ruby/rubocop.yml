@@ -560,6 +560,14 @@ Style/RedundantArrayFlatten: # new in 1.76
 # https://docs.rubocop.org/rubocop/cops_naming.html#namingpredicatemethod
 Naming/PredicateMethod: # new in 1.76
   Enabled: true
+  AllowedPatterns:
+    - save
+# https://docs.rubocop.org/rubocop/cops_gemspec.html#gemspecattributeassignment
+Gemspec/AttributeAssignment: # new in 1.77
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylecollectionquerying
+Style/CollectionQuerying: # new in 1.77
+  Enabled: false
 
 # ============================================================
 # Lint
