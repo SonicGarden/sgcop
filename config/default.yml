@@ -114,3 +114,9 @@ Sgcop/Capybara/Matchers:
     - "spec/system/**/*_spec.rb"
   PreferredMethods:
     have_text: "have_content"
+
+Sgcop/ActionOrder:
+  Description: "Railsコントローラのアクション順序をチェック"
+  Enabled: true
+  Include:
+    - "app/controllers/**/*_controller.rb"
