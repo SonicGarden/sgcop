@@ -114,3 +114,10 @@ Sgcop/Capybara/Matchers:
     - "spec/system/**/*_spec.rb"
   PreferredMethods:
     have_text: "have_content"
+
+Sgcop/ResourceActionOrder:
+  Description: "routes.rbでのresource/resources内のaction順序をRails/ActionOrderと同じ順序に統一"
+  Enabled: true
+  Include:
+    - "config/routes.rb"
+    - "config/routes/*.rb"
