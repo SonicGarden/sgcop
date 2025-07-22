@@ -121,3 +121,10 @@ Sgcop/ResourceActionOrder:
   Include:
     - "config/routes.rb"
     - "config/routes/*.rb"
+
+Sgcop/ResourcesWithoutOnly:
+  Description: "resourcesルーティングには`only:`オプションを使用しよう"
+  Enabled: true
+  Include:
+    - "config/routes.rb"
+    - "config/routes/*.rb"
