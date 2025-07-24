@@ -107,7 +107,6 @@ describe RuboCop::Cop::Sgcop::ResourcesWithoutOnly do
     end
   end
 
-
   context 'nested resources' do
     it 'registers offense for both parent and child resources without only' do
       expect_offense(<<~RUBY, 'config/routes.rb')
