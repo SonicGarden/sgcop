@@ -142,4 +142,120 @@ describe RuboCop::Cop::Sgcop::ResourcesWithoutOnly do
       RUBY
     end
   end
+
+  context 'autocorrect' do
+    context 'resources without options' do
+      it 'adds only option with all default actions' do
+        expect_offense(<<~RUBY, 'config/routes.rb')
+          resources :users
+          ^^^^^^^^^^^^^^^^ Sgcop/ResourcesWithoutOnly: Use `only:` option in resource/resources routing.
+        RUBY
+
+        expect_correction(<<~RUBY)
+          resources :users, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+        RUBY
+      end
+    end
+
+    context 'resources with other options' do
+      it 'adds only option to existing options' do
+        expect_offense(<<~RUBY, 'config/routes.rb')
+          resources :users, path: 'members'
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ResourcesWithoutOnly: Use `only:` option in resource/resources routing.
+        RUBY
+
+        expect_correction(<<~RUBY)
+          resources :users, path: 'members', only: [:index, :show, :new, :create, :edit, :update, :destroy]
+        RUBY
+      end
+    end
+
+    context 'resource (singular)' do
+      it 'adds only option with default actions (no index)' do
+        expect_offense(<<~RUBY, 'config/routes.rb')
+          resource :profile
+          ^^^^^^^^^^^^^^^^^ Sgcop/ResourcesWithoutOnly: Use `only:` option in resource/resources routing.
+        RUBY
+
+        expect_correction(<<~RUBY)
+          resource :profile, only: [:show, :new, :create, :edit, :update, :destroy]
+        RUBY
+      end
+    end
+
+    context 'with except option' do
+      it 'converts except to only with remaining actions' do
+        expect_offense(<<~RUBY, 'config/routes.rb')
+          resources :users, except: [:destroy]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ResourcesWithoutOnly: Use `only:` option in resource/resources routing.
+        RUBY
+
+        expect_correction(<<~RUBY)
+          resources :users, only: [:index, :show, :new, :create, :edit, :update]
+        RUBY
+      end
+
+      it 'converts except with multiple actions' do
+        expect_offense(<<~RUBY, 'config/routes.rb')
+          resources :users, except: [:edit, :update, :destroy]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ResourcesWithoutOnly: Use `only:` option in resource/resources routing.
+        RUBY
+
+        expect_correction(<<~RUBY)
+          resources :users, only: [:index, :show, :new, :create]
+        RUBY
+      end
+
+      it 'converts except with single action (no array)' do
+        expect_offense(<<~RUBY, 'config/routes.rb')
+          resources :users, except: :destroy
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ResourcesWithoutOnly: Use `only:` option in resource/resources routing.
+        RUBY
+
+        expect_correction(<<~RUBY)
+          resources :users, only: [:index, :show, :new, :create, :edit, :update]
+        RUBY
+      end
+
+      it 'converts except with other options present' do
+        expect_offense(<<~RUBY, 'config/routes.rb')
+          resources :users, path: 'members', except: [:destroy]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ResourcesWithoutOnly: Use `only:` option in resource/resources routing.
+        RUBY
+
+        expect_correction(<<~RUBY)
+          resources :users, path: 'members', only: [:index, :show, :new, :create, :edit, :update]
+        RUBY
+      end
+
+      it 'converts except for singular resource' do
+        expect_offense(<<~RUBY, 'config/routes.rb')
+          resource :profile, except: [:destroy]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ResourcesWithoutOnly: Use `only:` option in resource/resources routing.
+        RUBY
+
+        expect_correction(<<~RUBY)
+          resource :profile, only: [:show, :new, :create, :edit, :update]
+        RUBY
+      end
+    end
+
+    context 'nested resources' do
+      it 'corrects both parent and child resources' do
+        expect_offense(<<~RUBY, 'config/routes.rb')
+          resources :users do
+          ^^^^^^^^^^^^^^^^ Sgcop/ResourcesWithoutOnly: Use `only:` option in resource/resources routing.
+            resources :posts
+            ^^^^^^^^^^^^^^^^ Sgcop/ResourcesWithoutOnly: Use `only:` option in resource/resources routing.
+          end
+        RUBY
+
+        expect_correction(<<~RUBY)
+          resources :users, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+            resources :posts, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+          end
+        RUBY
+      end
+    end
+  end
 end
