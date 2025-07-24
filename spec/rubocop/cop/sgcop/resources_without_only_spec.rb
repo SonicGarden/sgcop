@@ -152,7 +152,7 @@ describe RuboCop::Cop::Sgcop::ResourcesWithoutOnly do
         RUBY
 
         expect_correction(<<~RUBY)
-          resources :users, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+          resources :users, only: [:index, :show, :new, :edit, :create, :update, :destroy]
         RUBY
       end
     end
@@ -165,7 +165,7 @@ describe RuboCop::Cop::Sgcop::ResourcesWithoutOnly do
         RUBY
 
         expect_correction(<<~RUBY)
-          resources :users, path: 'members', only: [:index, :show, :new, :create, :edit, :update, :destroy]
+          resources :users, path: 'members', only: [:index, :show, :new, :edit, :create, :update, :destroy]
         RUBY
       end
     end
@@ -178,7 +178,7 @@ describe RuboCop::Cop::Sgcop::ResourcesWithoutOnly do
         RUBY
 
         expect_correction(<<~RUBY)
-          resource :profile, only: [:show, :new, :create, :edit, :update, :destroy]
+          resource :profile, only: [:show, :new, :edit, :create, :update, :destroy]
         RUBY
       end
     end
@@ -191,7 +191,7 @@ describe RuboCop::Cop::Sgcop::ResourcesWithoutOnly do
         RUBY
 
         expect_correction(<<~RUBY)
-          resources :users, only: [:index, :show, :new, :create, :edit, :update]
+          resources :users, only: [:index, :show, :new, :edit, :create, :update]
         RUBY
       end
 
@@ -213,7 +213,7 @@ describe RuboCop::Cop::Sgcop::ResourcesWithoutOnly do
         RUBY
 
         expect_correction(<<~RUBY)
-          resources :users, only: [:index, :show, :new, :create, :edit, :update]
+          resources :users, only: [:index, :show, :new, :edit, :create, :update]
         RUBY
       end
 
@@ -224,7 +224,7 @@ describe RuboCop::Cop::Sgcop::ResourcesWithoutOnly do
         RUBY
 
         expect_correction(<<~RUBY)
-          resources :users, path: 'members', only: [:index, :show, :new, :create, :edit, :update]
+          resources :users, path: 'members', only: [:index, :show, :new, :edit, :create, :update]
         RUBY
       end
 
@@ -235,7 +235,7 @@ describe RuboCop::Cop::Sgcop::ResourcesWithoutOnly do
         RUBY
 
         expect_correction(<<~RUBY)
-          resource :profile, only: [:show, :new, :create, :edit, :update]
+          resource :profile, only: [:show, :new, :edit, :create, :update]
         RUBY
       end
     end
@@ -251,8 +251,8 @@ describe RuboCop::Cop::Sgcop::ResourcesWithoutOnly do
         RUBY
 
         expect_correction(<<~RUBY)
-          resources :users, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-            resources :posts, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+          resources :users, only: [:index, :show, :new, :edit, :create, :update, :destroy] do
+            resources :posts, only: [:index, :show, :new, :edit, :create, :update, :destroy]
           end
         RUBY
       end

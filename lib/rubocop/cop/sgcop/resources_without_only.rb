@@ -119,9 +119,9 @@ module RuboCop
         def default_actions_for(method_name)
           case method_name
           when :resources
-            %i[index show new create edit update destroy]
+            %i[index show new edit create update destroy]
           when :resource
-            %i[show new create edit update destroy]
+            %i[show new edit create update destroy]
           end
         end
 
