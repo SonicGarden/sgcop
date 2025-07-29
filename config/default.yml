@@ -128,3 +128,12 @@ Sgcop/ResourcesWithoutOnly:
   Include:
     - "config/routes.rb"
     - "config/routes/*.rb"
+
+Sgcop/StrictLoadingRequired:
+  Description: "includesやpreloadを使用して変数代入する場合はstrict_loadingを追加することで仕組みでN+1を防ごう"
+  Enabled: false
+  Reference:
+    - https://guides.rubyonrails.org/active_record_querying.html#strict-loading
+  Include:
+    - "app/controllers/*.rb"
+    - "app/components/*.rb"
