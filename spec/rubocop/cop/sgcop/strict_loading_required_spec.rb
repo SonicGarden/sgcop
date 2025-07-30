@@ -40,7 +40,7 @@ describe RuboCop::Cop::Sgcop::StrictLoadingRequired do
   end
 
   context '複雑なメソッドチェーンの場合' do
-    it 'includesとstrict_loadingが別の場所にある場合も警告されない' do
+    it 'includesとstrict_loadingが一緒に呼ばれている場合は警告されない' do
       expect_no_offenses(<<~RUBY)
         users = User.where(active: true).includes(:posts).strict_loading.order(:name)
       RUBY
