@@ -137,3 +137,9 @@ Sgcop/StrictLoadingRequired:
   Include:
     - "app/controllers/*.rb"
     - "app/components/*.rb"
+
+Sgcop/EnumerizeDefaultOption:
+  Description: "enumerizeのdefaultオプションは予測しない挙動を引き起こすため使用を避けてデータベースレベルでデフォルト値を設定しよう"
+  Enabled: false
+  Include:
+    - "app/models/*.rb"
