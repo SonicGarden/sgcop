@@ -143,3 +143,9 @@ Sgcop/EnumerizeDefaultOption:
   Enabled: false
   Include:
     - "app/models/*.rb"
+
+Sgcop/HashFetchDefault:
+  Description: "Hash#fetchを使用してデフォルト値を扱うことでfalseyな値を保持しよう"
+  Enabled: true
+  Reference:
+    - https://rubystyle.guide/#hash-fetch-defaults
