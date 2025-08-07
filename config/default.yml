@@ -149,3 +149,11 @@ Sgcop/HashFetchDefault:
   Enabled: true
   Reference:
     - https://rubystyle.guide/#hash-fetch-defaults
+
+Sgcop/Rspec/ActionMailerTestHelper:
+  Description: "ActionMailer::Base.deliveriesの代わりにActionMailer::TestHelperのメソッドを使用しよう"
+  Enabled: false
+  Include:
+    - "spec/**/*_spec.rb"
+  Reference:
+    - https://api.rubyonrails.org/classes/ActionMailer/TestHelper.html
