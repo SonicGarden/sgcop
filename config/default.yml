@@ -135,8 +135,8 @@ Sgcop/StrictLoadingRequired:
   Reference:
     - https://guides.rubyonrails.org/active_record_querying.html#strict-loading
   Include:
-    - "app/controllers/*.rb"
-    - "app/components/*.rb"
+    - "app/controllers/**/*.rb"
+    - "app/components/**/*.rb"
 
 Sgcop/EnumerizeDefaultOption:
   Description: "enumerizeのdefaultオプションは予測しない挙動を引き起こすため使用を避けてデータベースレベルでデフォルト値を設定しよう"
