@@ -12,7 +12,6 @@ module RuboCop
 
         def on_send(node)
           return unless resource_method?(node)
-          return unless routes_file?(processed_source.file_path)
 
           actions = extract_actions(node)
           return if actions.empty?
@@ -32,10 +31,6 @@ module RuboCop
 
         def resource_method?(node)
           node.method?(:resource) || node.method?(:resources)
-        end
-
-        def routes_file?(file_path)
-          file_path&.end_with?('routes.rb')
         end
 
         def extract_actions(node)
