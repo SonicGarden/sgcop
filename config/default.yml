@@ -115,6 +115,12 @@ Sgcop/Capybara/Matchers:
   PreferredMethods:
     have_text: "have_content"
 
+Sgcop/Capybara/FragileSelector:
+  Description: "スタイル変更やマークアップ変更で壊れやすいセレクタの使用を避けよう"
+  Enabled: false
+  Include:
+    - "spec/system/**/*_spec.rb"
+
 Sgcop/ResourceActionOrder:
   Description: "routes.rbでのresource/resources内のaction順序をRails/ActionOrderと同じ順序に統一"
   Enabled: true
