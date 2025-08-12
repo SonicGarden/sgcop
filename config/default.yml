@@ -166,3 +166,10 @@ Sgcop/NoAcceptsNestedAttributesFor:
   Reference:
     - https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html
     - https://github.com/rails/rails/issues/41419
+
+Sgcop/NestedResourcesWithoutModule:
+  Description: "ネストしたresourcesルーティングには`module:`オプションを使用しよう"
+  Enabled: false
+  Include:
+    - "config/routes.rb"
+    - "config/routes/*.rb"
