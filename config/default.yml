@@ -157,3 +157,12 @@ Sgcop/Rspec/ActionMailerTestHelper:
     - "spec/**/*_spec.rb"
   Reference:
     - https://api.rubyonrails.org/classes/ActionMailer/TestHelper.html
+
+Sgcop/NoAcceptsNestedAttributesFor:
+  Description: "accepts_nested_attributes_forの使用を避けよう。DHHはこの機能をRailsから削除したがっている。Form Objectsの使用を検討しよう"
+  Enabled: false
+  Include:
+    - "app/models/**/*.rb"
+  Reference:
+    - https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html
+    - https://github.com/rails/rails/issues/41419
