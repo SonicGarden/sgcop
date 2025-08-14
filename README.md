@@ -1,6 +1,6 @@
 # Sgcop
 
-SonicGarden 標準の rubocop, haml-lint 設定支援をするツール
+SonicGarden 標準の rubocop設定支援をするツール
 
 ## Installation
 
@@ -30,14 +30,6 @@ inherit_gem:
 
 ```
 rubocop <options...>
-```
-
-haml-lint は inherit_gem に相当する機能がないため、プロジェクトルートに .haml-lint.yml ファイルをつくり、この gem の [haml/haml-lint.yml](https://github.com/SonicGarden/sgcop/tree/master/haml/haml-lint.yml) をコピーする。
-
-そして実行。
-
-```
-haml-lint app/views/
 ```
 
 ## しつけ方
