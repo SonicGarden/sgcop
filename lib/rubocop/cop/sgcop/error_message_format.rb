@@ -3,8 +3,8 @@
 module RuboCop
   module Cop
     module Sgcop
-      class NoHardcodedErrorMessage < Base
-        MSG = 'Avoid hardcoded error messages. Use I18n instead.'
+      class ErrorMessageFormat < Base
+        MSG = 'Error message should be a symbol.'
 
         def on_send(node)
           check_validates_message(node)
@@ -38,7 +38,7 @@ module RuboCop
         def check_message_option(node, options_hash)
           options_hash.each_pair do |opt_key, opt_value|
             next unless message_key?(opt_key)
-            next unless string_value?(opt_value)
+            next if opt_value.sym_type?
 
             add_offense(node)
           end
@@ -48,15 +48,11 @@ module RuboCop
           key_node.sym_type? && key_node.value == :message
         end
 
-        def string_value?(value_node)
-          value_node.str_type? || value_node.dstr_type?
-        end
-
         def check_errors_add(node)
           return unless errors_add_call?(node)
 
           message_arg = node.arguments[1]
-          add_offense(node) if message_arg && string_value?(message_arg)
+          add_offense(node) if message_arg && !message_arg.sym_type?
         end
 
         def errors_add_call?(node)

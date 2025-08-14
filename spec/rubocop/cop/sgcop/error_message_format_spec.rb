@@ -1,40 +1,40 @@
 require 'spec_helper'
 
-describe RuboCop::Cop::Sgcop::NoHardcodedErrorMessage do
-  subject(:cop) { RuboCop::Cop::Sgcop::NoHardcodedErrorMessage.new }
+describe RuboCop::Cop::Sgcop::ErrorMessageFormat do
+  subject(:cop) { RuboCop::Cop::Sgcop::ErrorMessageFormat.new }
 
   it 'registers an offense for validates with hardcoded message string' do
     expect_offense(<<~RUBY)
       validates :terms_of_service, acceptance: { message: "must be agreed to" }
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/NoHardcodedErrorMessage: Avoid hardcoded error messages. Use I18n instead.
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ErrorMessageFormat: Error message should be a symbol.
     RUBY
   end
 
   it 'registers an offense for validates with Japanese hardcoded message' do
     expect_offense(<<~RUBY)
       validates :name, presence: { message: "は必須です" }
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/NoHardcodedErrorMessage: Avoid hardcoded error messages. Use I18n instead.
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ErrorMessageFormat: Error message should be a symbol.
     RUBY
   end
 
   it 'registers an offense for errors.add with hardcoded string' do
     expect_offense(<<~RUBY)
       errors.add(:name, 'は不正な文字列です。')
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/NoHardcodedErrorMessage: Avoid hardcoded error messages. Use I18n instead.
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ErrorMessageFormat: Error message should be a symbol.
     RUBY
   end
 
   it 'registers an offense for errors.add with English message' do
     expect_offense(<<~RUBY)
       errors.add(:email, "is invalid")
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/NoHardcodedErrorMessage: Avoid hardcoded error messages. Use I18n instead.
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ErrorMessageFormat: Error message should be a symbol.
     RUBY
   end
 
   it 'registers an offense for errors.add with interpolated string' do
     expect_offense(<<~'RUBY')
       errors.add(:base, "#{field} is required")
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/NoHardcodedErrorMessage: Avoid hardcoded error messages. Use I18n instead.
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ErrorMessageFormat: Error message should be a symbol.
     RUBY
   end
 
@@ -56,21 +56,24 @@ describe RuboCop::Cop::Sgcop::NoHardcodedErrorMessage do
     RUBY
   end
 
-  it 'does not register an offense for errors.add with I18n.t' do
-    expect_no_offenses(<<~RUBY)
+  it 'registers an offense for errors.add with I18n.t' do
+    expect_offense(<<~RUBY)
       errors.add(:name, I18n.t('errors.messages.invalid'))
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ErrorMessageFormat: Error message should be a symbol.
     RUBY
   end
 
-  it 'does not register an offense for validates with I18n.t message' do
-    expect_no_offenses(<<~RUBY)
+  it 'registers an offense for validates with I18n.t message' do
+    expect_offense(<<~RUBY)
       validates :name, presence: { message: I18n.t('errors.messages.blank') }
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ErrorMessageFormat: Error message should be a symbol.
     RUBY
   end
 
-  it 'does not register an offense for validates with proc message' do
-    expect_no_offenses(<<~RUBY)
+  it 'registers an offense for validates with proc message' do
+    expect_offense(<<~RUBY)
       validates :name, presence: { message: -> { I18n.t('errors.messages.blank') } }
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ErrorMessageFormat: Error message should be a symbol.
     RUBY
   end
 end
