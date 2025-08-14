@@ -638,3 +638,8 @@ Capybara/FindAllFirst: # new in 2.22
 # https://docs.rubocop.org/rubocop-capybara/cops_capybara.html#capybaranegationmatcheraftervisit
 Capybara/NegationMatcherAfterVisit: # new in 2.22
   Enabled: true
+
+Sgcop/DuplicateIndexInSchema:
+  Include:
+    - "db/schema.rb"
+    - "db/*_schema.rb"

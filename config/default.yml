@@ -189,3 +189,12 @@ Sgcop/NestedResourcesWithoutModule:
   Include:
     - "config/routes.rb"
     - "config/routes/*.rb"
+
+Sgcop/DuplicateIndexInSchema:
+  Description: "schema.rb内で包含関係にある重複インデックスを検出します"
+  Enabled: true
+  Include:
+    - "db/schema.rb"
+    - "db/*_schema.rb"
+  Reference:
+    - https://use-the-index-luke.com/sql/where-clause/the-equals-operator/concatenated-keys
