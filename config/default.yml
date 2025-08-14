@@ -179,3 +179,13 @@ Sgcop/NestedResourcesWithoutModule:
   Include:
     - "config/routes.rb"
     - "config/routes/*.rb"
+
+Sgcop/NoHardcodedErrorMessage:
+  Description: "エラーメッセージを直接文字列で指定せずI18nを使用しよう。エラーの種別で検証することで壊れにくいテストが書けます。"
+  Enabled: false
+  Include:
+    - "app/models/**/*.rb"
+    - "app/forms/**/*.rb"
+    - "app/validators/**/*.rb"
+  Reference:
+    - https://guides.rubyonrails.org/i18n.html#translations-for-active-record-models
