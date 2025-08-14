@@ -150,6 +150,16 @@ Sgcop/EnumerizeDefaultOption:
   Include:
     - "app/models/*.rb"
 
+Sgcop/ErrorMessageFormat:
+  Description: "エラーメッセージはシンボルで指定しよう。エラーの種別で検証することで壊れにくいテストが書けます。"
+  Enabled: false
+  Include:
+    - "app/models/**/*.rb"
+    - "app/forms/**/*.rb"
+    - "app/validators/**/*.rb"
+  Reference:
+    - https://guides.rubyonrails.org/i18n.html#translations-for-active-record-models
+
 Sgcop/HashFetchDefault:
   Description: "Hash#fetchを使用してデフォルト値を扱うことでfalseyな値を保持しよう"
   Enabled: true
