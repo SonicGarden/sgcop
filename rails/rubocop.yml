@@ -450,6 +450,12 @@ Rails/MultipleRoutePaths: # new in 2.29
 # https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsstrongparametersexpect
 Rails/StrongParametersExpect: # new in 2.29
   Enabled: false # rails8以前で作られたプロジェクトだと大量に引っかかるはずなので、もうしばらく様子を見てから検討が良さそう
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsfindbyorassignmentmemoization
+Rails/FindByOrAssignmentMemoization: # new in 2.33
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsorderarguments
+Rails/OrderArguments: # new in 2.33
+  Enabled: true
 
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecidenticalequalityassertion
 RSpec/IdenticalEqualityAssertion: # (new in 2.4)
