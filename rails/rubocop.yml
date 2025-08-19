@@ -76,6 +76,7 @@ Metrics/BlockLength:
     - "config/routes.rb"
     - "spec/**/*"
     - "db/migrate/*"
+    - "db/seeds/**/*"
   # 要素を縦に並べるのは可読性のためなので実行数が増えても許容する
   CountAsOne: ["array", "hash", "method_call"]
 
@@ -84,6 +85,7 @@ Metrics/MethodLength:
   # migratonは致し方ない
   Exclude:
     - "db/migrate/*"
+    - "db/seeds/**/*"
   # 要素を縦に並べるのは可読性のためなので実行数が増えても許容する
   CountAsOne: ["array", "hash", "method_call"]
 
@@ -102,6 +104,7 @@ Metrics/ModuleLength:
 Metrics/AbcSize:
   Exclude:
     - "db/migrate/*"
+    - "db/seeds/**/*"
 
 # ============================================================
 # Style
