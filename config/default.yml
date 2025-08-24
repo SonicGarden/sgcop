@@ -189,3 +189,12 @@ Sgcop/NestedResourcesWithoutModule:
   Include:
     - "config/routes.rb"
     - "config/routes/*.rb"
+
+Sgcop/RestrictedViewHelpers:
+  Description: "特定のビューヘルパーメソッドの使用を制限"
+  Enabled: true
+  Include:
+    - "app/views/**/*.erb"
+    - "app/helpers/**/*.rb"
+    - "app/components/**/*.rb"
+  RestrictedMethods: []
