@@ -97,19 +97,10 @@ describe RuboCop::Cop::Sgcop::StrftimeRestriction do
     RUBY
   end
 
-  it '日付オブジェクト以外でstrftimeが使用されても警告されない' do
-    expect_no_offenses(<<~RUBY)
+  it '日付オブジェクト以外でもstrftimeが使用された場合は警告される' do
+    expect_offense(<<~RUBY)
       some_object.strftime('%Y-%m-%d')
-    RUBY
-  end
-
-  it 'Stringクラスのstrftimeメソッドは警告されない' do
-    expect_no_offenses(<<~RUBY)
-      class String
-        def strftime(format)
-          # カスタムメソッド
-        end
-      end
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/StrftimeRestriction: strftimeではなくI18n.lを使用してローカライズしてください。
     RUBY
   end
 
