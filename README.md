@@ -77,6 +77,7 @@ sgcopが提供するカスタムCopの一覧です。
 |-------|------|:----------:|
 | [`Sgcop/EnumerizeDefaultOption`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/enumerize_default_option.rb) | Enumerizeのdefaultオプションの使用をチェック | ❌ |
 | [`Sgcop/HashFetchDefault`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/hash_fetch_default.rb) | Hash#fetchのデフォルト値の適切な使用を確認 | ✅ |
+| [`Sgcop/RestrictedViewHelpers`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/restricted_view_helpers.rb) | 特定のビューヘルパーメソッドの使用を制限（設定でカスタマイズ可能） | ✅ |
 
 ## しつけ方
 
