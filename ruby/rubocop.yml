@@ -15,10 +15,14 @@ AllCops:
 Style/AsciiComments:
   Enabled: false
 
-# namespace 付きのクラスはかなり頻繁に作るので簡単に書きたい。
+# generatorで作られる際のスタイルに統一したい
 # https://docs.rubocop.org/rubocop/cops_style.html#styleclassandmodulechildren
 Style/ClassAndModuleChildren:
-  Enabled: false
+  Enabled: true
+  EnforcedStyle: compact
+  Include:
+    - app/controllers/**/*.rb
+    - app/components/**/*.rb
 
 #Style/CollectionMethods 自体は無効になっているのだが、
 # デフォルト値から変えたのは
