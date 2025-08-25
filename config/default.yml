@@ -198,3 +198,9 @@ Sgcop/RestrictedViewHelpers:
     - "app/helpers/**/*.rb"
     - "app/components/**/*.rb"
   RestrictedMethods: []
+
+Sgcop/StrftimeRestriction:
+  Description: "strftimeではなくI18n.lを使用してローカライズしてください"
+  Enabled: true
+  Reference:
+    - https://guides.rubyonrails.org/i18n.html#adding-date-time-formats
