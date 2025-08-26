@@ -28,7 +28,7 @@ module RuboCop
 
         def form_helper_matcher?(method_name)
           method_name.to_s.end_with?('_form_with', '_form_for') ||
-            %i[form_with form_for].include?(method_name)
+            %i[form_with form_for button_to].include?(method_name)
         end
 
         def deprecated_link_args?(args)

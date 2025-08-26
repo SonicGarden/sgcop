@@ -107,16 +107,24 @@ describe RuboCop::Cop::Sgcop::UjsOptions do
     end
   end
 
-  context 'other methods' do
-    it 'button_toに対するmethodオプションは警告無し' do
-      expect_no_offenses(<<~RUBY)
-        button_to 'Delete', url, method: :delete
+  context 'button_to' do
+    it 'remoteオプションは警告' do
+      expect_offense(<<~RUBY)
+        button_to 'Submit', url, remote: true
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/UjsOptions: Deprecated: Rails UJS Attributes.
       RUBY
     end
 
-    it 'button_toに対するremoteオプションは警告無し' do
+    it 'localオプションは警告' do
+      expect_offense(<<~RUBY)
+        button_to 'Submit', url, local: false
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/UjsOptions: Deprecated: Rails UJS Attributes.
+      RUBY
+    end
+
+    it 'methodオプションは警告なし' do
       expect_no_offenses(<<~RUBY)
-        button_to 'Submit', url, remote: true
+        button_to 'Delete', url, method: :delete
       RUBY
     end
   end
