@@ -103,4 +103,65 @@ describe RuboCop::Cop::Sgcop::Capybara::FragileSelector, :config do
       find(some_variable).click
     RUBY
   end
+
+  context 'with have_css matcher' do
+    it 'registers an offense for CSS class selector' do
+      expect_offense(<<~RUBY)
+        expect(page).to have_css('.btn-primary')
+                                 ^^^^^^^^^^^^^^ Avoid using CSS class selectors as they are fragile and break when styles change. Use data attributes or accessible attributes instead.
+      RUBY
+    end
+
+    it 'registers an offense for ID selector' do
+      expect_offense(<<~RUBY)
+        expect(page).to have_css('#user_email')
+                                 ^^^^^^^^^^^^^ Avoid using ID selectors as they are fragile and break when markup changes. Use data attributes or accessible attributes instead.
+      RUBY
+    end
+
+    it 'registers an offense for element with class selector' do
+      expect_offense(<<~RUBY)
+        expect(page).to have_css('div.container')
+                                 ^^^^^^^^^^^^^^^ Avoid using CSS class selectors as they are fragile and break when styles change. Use data attributes or accessible attributes instead.
+      RUBY
+    end
+
+    it 'registers an offense for partial href matching' do
+      expect_offense(<<~RUBY)
+        expect(page).to have_css('a[href*="edit"]')
+                                 ^^^^^^^^^^^^^^^^^ Avoid using partial href matching as it is fragile. Use data attributes or accessible attributes instead.
+      RUBY
+    end
+
+    it 'registers an offense for xpath selector' do
+      expect_offense(<<~RUBY)
+        expect(page).to have_css(:xpath, '//button[@type="submit"]')
+                                 ^^^^^^ Avoid using XPath selectors as they are fragile and break when markup changes. Use data attributes or accessible attributes instead.
+      RUBY
+    end
+
+    it 'does not register an offense for data attribute selector' do
+      expect_no_offenses(<<~RUBY)
+        expect(page).to have_css('[data-test="submit-button"]')
+      RUBY
+    end
+
+    it 'does not register an offense for role attribute selector' do
+      expect_no_offenses(<<~RUBY)
+        expect(page).to have_css('[role="button"]')
+      RUBY
+    end
+
+    it 'does not register an offense for aria-label selector' do
+      expect_no_offenses(<<~RUBY)
+        expect(page).to have_css('[aria-label="Close"]')
+      RUBY
+    end
+
+    it 'does not register an offense for exact href matching' do
+      expect_no_offenses(<<~RUBY)
+        expect(page).to have_css('a[href="/users/edit"]')
+      RUBY
+    end
+  end
 end

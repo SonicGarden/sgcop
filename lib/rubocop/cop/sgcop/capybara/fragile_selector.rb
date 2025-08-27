@@ -11,7 +11,7 @@ module RuboCop
           MSG_WITHIN_CLASS = 'Avoid using CSS class selectors in within blocks. Use data attributes or accessible attributes instead.'
           MSG_XPATH = 'Avoid using XPath selectors as they are fragile and break when markup changes. Use data attributes or accessible attributes instead.'
 
-          CAPYBARA_METHODS = %i[find find_all all first click_on within].freeze
+          CAPYBARA_METHODS = %i[find find_all all first click_on within have_css].freeze
 
           def on_send(node)
             return unless capybara_method?(node)
