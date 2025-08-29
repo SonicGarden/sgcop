@@ -70,6 +70,7 @@ sgcopが提供するカスタムCopの一覧です。
 | Cop名 | 説明 | デフォルト |
 |-------|------|:----------:|
 | [`Sgcop/RSpec/ActionMailerTestHelper`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/action_mailer_test_helper.rb) | ActionMailerテストヘルパーの適切な使用を確認 | ❌ |
+| [`Sgcop/RSpec/RedundantPerformEnqueuedJobs`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/redundant_perform_enqueued_jobs.rb) | ActionMailer::TestHelperメソッドとperform_enqueued_jobsの冗長な使用を防止 | ✅ |
 
 ### その他
 
