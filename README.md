@@ -76,6 +76,7 @@ sgcopが提供するカスタムCopの一覧です。
 | Cop名 | 説明 | デフォルト |
 |-------|------|:----------:|
 | [`Sgcop/EnumerizeDefaultOption`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/enumerize_default_option.rb) | Enumerizeのdefaultオプションの使用をチェック | ❌ |
+| [`Sgcop/EnumerizePredicatesOption`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/enumerize_predicates_option.rb) | Enumerizeのpredicatesオプションの使用を制限（メソッド名コンフリクトを防止） | ❌ |
 | [`Sgcop/HashFetchDefault`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/hash_fetch_default.rb) | Hash#fetchのデフォルト値の適切な使用を確認 | ✅ |
 | [`Sgcop/RestrictedViewHelpers`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/restricted_view_helpers.rb) | 特定のビューヘルパーメソッドの使用を制限（設定でカスタマイズ可能） | ✅ |
 | [`Sgcop/StrftimeRestriction`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/strftime_restriction.rb) | strftimeメソッドの使用を制限し、I18n.lの使用を推奨 | ✅ |

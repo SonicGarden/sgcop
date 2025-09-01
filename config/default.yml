@@ -150,6 +150,13 @@ Sgcop/EnumerizeDefaultOption:
   Include:
     - "app/models/*.rb"
 
+Sgcop/EnumerizePredicatesOption:
+  Description: "enumerizeのpredicatesオプションの使用を制限する（メソッド名がコンフリクトしやすく、定義を追いにくくなるため）"
+  Enabled: false
+  AllowWithPrefix: false # trueにすると predicates: { prefix: true } の場合は許可
+  Include:
+    - "app/models/**/*.rb"
+
 Sgcop/ErrorMessageFormat:
   Description: "エラーメッセージはシンボルで指定しよう。エラーの種別で検証することで壊れにくいテストが書けます。"
   Enabled: false
