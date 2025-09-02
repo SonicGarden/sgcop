@@ -220,3 +220,10 @@ Sgcop/StrftimeRestriction:
   Enabled: true
   Reference:
     - https://guides.rubyonrails.org/i18n.html#adding-date-time-formats
+
+Sgcop/PreferAbsolutePathPartial:
+  Description: "パーシャルファイルのrenderは絶対パスで指定しよう"
+  Enabled: true
+  Include:
+    - "app/views/**/*"
+    - "app/components/**/*"
