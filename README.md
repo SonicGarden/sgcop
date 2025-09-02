@@ -46,6 +46,7 @@ sgcopが提供するカスタムCopの一覧です。
 | [`Sgcop/NoAcceptsNestedAttributesFor`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/no_accepts_nested_attributes_for.rb) | accepts_nested_attributes_forの使用を制限 | ❌ |
 | [`Sgcop/ErrorMessageFormat`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/error_message_format.rb) | エラーメッセージはシンボルを使用することを強制 | ❌ |
 | [`Sgcop/OnLoadArguments`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/on_load_arguments.rb) | on_loadブロックの引数使用をチェック | ✅ |
+| [`Sgcop/PreferAbsolutePathPartial`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/prefer_absolute_path_partial.rb) | パーシャルファイルのrenderは絶対パスで指定（autocorrect対応） | ✅ |
 | [`Sgcop/RequestRemoteIp`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/request_remote_ip.rb) | request.remote_ipの適切な使用を確認 | ✅ |
 | [`Sgcop/ResourceActionOrder`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/resource_action_order.rb) | resourcesルーティングのアクション順序を統一 | ✅ |
 | [`Sgcop/ResourcesWithoutOnly`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/resources_without_only.rb) | resourcesルーティングでonlyオプションの使用を推奨 | ✅ |
