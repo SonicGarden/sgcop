@@ -220,3 +220,11 @@ Sgcop/StrftimeRestriction:
   Enabled: true
   Reference:
     - https://guides.rubyonrails.org/i18n.html#adding-date-time-formats
+
+Sgcop/PreferButtonTo:
+  Description: "単一のボタンのみを含むフォームには`button_to`を使用しよう"
+  Enabled: false
+  Include:
+    - "app/views/**/*"
+    - "app/components/**/*"
+    - "app/helpers/**/*.rb"
