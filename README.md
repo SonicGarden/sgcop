@@ -65,6 +65,7 @@ sgcopが提供するカスタムCopの一覧です。
 | [`Sgcop/Capybara/FragileSelector`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/capybara/fragile_selector.rb) | 脆弱なCSSセレクタの使用を防止（data属性の使用を推奨） | ❌ |
 | [`Sgcop/Capybara/Matchers`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/capybara/matchers.rb) | Capybaraマッチャーの適切な使用をチェック | ✅ |
 | [`Sgcop/Capybara/Sleep`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/capybara/sleep.rb) | テストでのsleepの使用を制限 | ✅ |
+| [`Sgcop/Capybara/SpecStabilityCheck`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/capybara/spec_stability_check.rb) | 非同期処理テストで適切な待機マッチャーの使用を強制してテストを安定化 | ✅ |
 
 ### RSpec関連
 

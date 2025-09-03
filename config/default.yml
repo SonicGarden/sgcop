@@ -227,3 +227,20 @@ Sgcop/PreferAbsolutePathPartial:
   Include:
     - "app/views/**/*"
     - "app/components/**/*"
+
+Sgcop/Capybara/SpecStabilityCheck:
+  Description: "非同期処理を伴うテストでは適切な待機処理を追加してテストを安定させよう"
+  Enabled: true
+  Include:
+    - "spec/system/**/*_spec.rb"
+  WatchedMethods:
+    - assert_enqueued_emails
+    - assert_emails
+    - assert_no_emails
+    - assert_enqueued_jobs
+    - capture_emails
+  WaitMatchers:
+    - have_content
+    - have_text
+    - have_css
+    - have_selector
