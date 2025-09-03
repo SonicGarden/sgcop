@@ -72,6 +72,7 @@ sgcopが提供するカスタムCopの一覧です。
 |-------|------|:----------:|
 | [`Sgcop/RSpec/ActionMailerTestHelper`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/action_mailer_test_helper.rb) | ActionMailerテストヘルパーの適切な使用を確認 | ❌ |
 | [`Sgcop/RSpec/RedundantPerformEnqueuedJobs`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/redundant_perform_enqueued_jobs.rb) | ActionMailer::TestHelperメソッドとperform_enqueued_jobsの冗長な使用を防止 | ✅ |
+| [`Sgcop/RSpec/SpecStabilityCheck`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/spec_stability_check.rb) | 非同期処理テストで適切な待機マッチャーの使用を強制してテストを安定化 | ✅ |
 
 ### その他
 
