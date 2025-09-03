@@ -244,3 +244,10 @@ Sgcop/Capybara/SpecStabilityCheck:
     - have_text
     - have_css
     - have_selector
+
+Sgcop/RestrictedFilePaths:
+  Description: "指定したファイルパスパターンにマッチするファイルの作成を制限"
+  Enabled: true
+  RestrictedPatterns:
+    'spec/controllers/**/*_spec.rb': 'コントローラスペックの作成は禁止されています。system specを使用してください。'
+    'spec/views/**/*_spec.rb': 'ビュースペックの作成は禁止されています。system specを使用してください。'
