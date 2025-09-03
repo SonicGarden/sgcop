@@ -228,7 +228,7 @@ Sgcop/PreferAbsolutePathPartial:
     - "app/views/**/*"
     - "app/components/**/*"
 
-Sgcop/Rspec/SpecStabilityCheck:
+Sgcop/Capybara/SpecStabilityCheck:
   Description: "非同期処理を伴うテストでは適切な待機処理を追加してテストを安定させよう"
   Enabled: true
   Include:

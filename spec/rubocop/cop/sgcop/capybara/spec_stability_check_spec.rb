@@ -2,14 +2,14 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::Sgcop::Rspec::SpecStabilityCheck do
-  subject(:cop) { RuboCop::Cop::Sgcop::Rspec::SpecStabilityCheck.new }
+describe RuboCop::Cop::Sgcop::Capybara::SpecStabilityCheck do
+  subject(:cop) { RuboCop::Cop::Sgcop::Capybara::SpecStabilityCheck.new }
 
   context 'with default configuration' do
     it 'registers an offense when assert_enqueued_emails block lacks wait matcher' do
       expect_offense(<<~RUBY)
         assert_enqueued_emails 1 do
-        ^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/Rspec/SpecStabilityCheck: ページの変化を伴う非同期処理後には、適切な待機処理（例: expect(page).to have_content('更新しました。')）を追加してテストを安定させましょう
+        ^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/Capybara/SpecStabilityCheck: ページの変化を伴う非同期処理後には、適切な待機処理（例: expect(page).to have_content('更新しました。')）を追加してテストを安定させましょう
           within('tbody tr', text: '第2希望') do
             click_button '確定する'
           end
@@ -31,7 +31,7 @@ describe RuboCop::Cop::Sgcop::Rspec::SpecStabilityCheck do
     it 'registers an offense for form submission without wait matcher' do
       expect_offense(<<~RUBY)
         assert_enqueued_emails 1 do
-        ^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/Rspec/SpecStabilityCheck: ページの変化を伴う非同期処理後には、適切な待機処理（例: expect(page).to have_content('更新しました。')）を追加してテストを安定させましょう
+        ^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/Capybara/SpecStabilityCheck: ページの変化を伴う非同期処理後には、適切な待機処理（例: expect(page).to have_content('更新しました。')）を追加してテストを安定させましょう
           fill_in 'Email', with: 'user@example.com'
           click_button '送信'
         end
@@ -51,7 +51,7 @@ describe RuboCop::Cop::Sgcop::Rspec::SpecStabilityCheck do
     it 'registers an offense for cancellation action without wait matcher' do
       expect_offense(<<~RUBY)
         assert_no_emails do
-        ^^^^^^^^^^^^^^^^ Sgcop/Rspec/SpecStabilityCheck: ページの変化を伴う非同期処理後には、適切な待機処理（例: expect(page).to have_content('更新しました。')）を追加してテストを安定させましょう
+        ^^^^^^^^^^^^^^^^ Sgcop/Capybara/SpecStabilityCheck: ページの変化を伴う非同期処理後には、適切な待機処理（例: expect(page).to have_content('更新しました。')）を追加してテストを安定させましょう
           click_button 'キャンセル'
         end
       RUBY
@@ -88,12 +88,12 @@ describe RuboCop::Cop::Sgcop::Rspec::SpecStabilityCheck do
   context 'with custom configuration' do
     subject(:cop) do
       config = RuboCop::Config.new(
-        'Sgcop/Rspec/SpecStabilityCheck' => {
+        'Sgcop/Capybara/SpecStabilityCheck' => {
           'WatchedMethods' => %w[assert_enqueued_jobs],
           'WaitMatchers' => %w[have_text custom_matcher],
         }
       )
-      RuboCop::Cop::Sgcop::Rspec::SpecStabilityCheck.new(config)
+      RuboCop::Cop::Sgcop::Capybara::SpecStabilityCheck.new(config)
     end
 
     it 'works with custom watched methods for background jobs' do
