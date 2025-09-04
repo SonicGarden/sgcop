@@ -190,6 +190,12 @@ Sgcop/Rspec/RedundantPerformEnqueuedJobs:
     - https://api.rubyonrails.org/classes/ActionMailer/TestHelper.html
     - https://github.com/rails/rails/blob/main/actionmailer/lib/action_mailer/test_helper.rb
 
+Sgcop/Rspec/RedundantLetReference:
+  Description: "letを参照するだけの無意味な処理を検出し、let!の使用や直接セットアップを推奨"
+  Enabled: true
+  Include:
+    - "spec/**/*_spec.rb"
+
 Sgcop/NoAcceptsNestedAttributesFor:
   Description: "accepts_nested_attributes_forの使用を避けよう。DHHはこの機能をRailsから削除したがっている。Form Objectsの使用を検討しよう"
   Enabled: false
