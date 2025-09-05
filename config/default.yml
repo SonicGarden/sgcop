@@ -224,6 +224,10 @@ Sgcop/RestrictedViewHelpers:
 Sgcop/StrftimeRestriction:
   Description: "strftimeではなくI18n.lを使用してローカライズしてください"
   Enabled: true
+  AllowedPatterns:
+    - "%a"  # 曜日の省略名 (Sun, Mon, etc.)
+    - "%A"  # 曜日の完全名 (Sunday, Monday, etc.)
+    - "%w"  # 曜日の数字 (0=Sunday, 1=Monday, etc.)
   Reference:
     - https://guides.rubyonrails.org/i18n.html#adding-date-time-formats
 
