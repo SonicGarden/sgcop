@@ -249,6 +249,7 @@ Sgcop/Capybara/SpecStabilityCheck:
     - assert_no_emails
     - assert_enqueued_jobs
     - capture_emails
+    - expect
   WaitMatchers:
     - have_content
     - have_text

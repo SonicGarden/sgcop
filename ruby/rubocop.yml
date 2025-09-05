@@ -149,6 +149,10 @@ Style/MethodCallWithArgsParentheses:
 Style/Send:
   Enabled: true
 
+Style/BlockDelimiters:
+  AutoCorrect: true
+  EnforcedStyle: braces_for_chaining
+
 # rubocop 本体でまだデフォルト設定がPendingのルールの有効・無効設定
 # https://docs.rubocop.org/rubocop/cops_lint.html#lintduplicateregexpcharacterclasselement
 Lint/DuplicateRegexpCharacterClassElement: # (new in 1.1)
