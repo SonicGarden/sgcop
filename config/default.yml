@@ -231,6 +231,12 @@ Sgcop/StrftimeRestriction:
   Reference:
     - https://guides.rubyonrails.org/i18n.html#adding-date-time-formats
 
+Sgcop/I18nLocalizeFormatString:
+  Description: "I18n.lのformatオプションには文字列ではなくシンボルを使用してください。ロケールファイルに定義してシンボルで参照することで、ロケールごとの切り替えが可能になります"
+  Enabled: true
+  Reference:
+    - https://guides.rubyonrails.org/i18n.html#adding-date-time-formats
+
 Sgcop/PreferAbsolutePathPartial:
   Description: "パーシャルファイルのrenderは絶対パスで指定しよう"
   Enabled: true
