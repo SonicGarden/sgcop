@@ -8,9 +8,9 @@ module RuboCop
 
         def on_send(node)
           return unless resources_method?(node)
+          return if inside_member_or_collection_block?(node)
           return unless inside_resources_block?(node)
           return if has_module_option?(node)
-          return if node.parent&.block_type? && node.parent.send_node == node
 
           add_offense(node)
         end
@@ -20,6 +20,13 @@ module RuboCop
         def inside_resources_block?(node)
           parent = node.parent
           while parent
+            # Skip the immediate parent if the node has a block
+            # and the parent is that block
+            if parent.block_type? && parent.send_node == node
+              parent = parent.parent
+              next
+            end
+
             if parent.block_type? && resources_method?(parent.send_node)
               return true
             end
@@ -44,6 +51,19 @@ module RuboCop
             end
           end
 
+          false
+        end
+
+        def inside_member_or_collection_block?(node)
+          parent = node.parent
+          while parent
+            if parent.block_type?
+              send_node = parent.send_node
+              return true if send_node&.method?(:member) || send_node&.method?(:collection)
+            end
+
+            parent = parent.parent
+          end
           false
         end
       end
