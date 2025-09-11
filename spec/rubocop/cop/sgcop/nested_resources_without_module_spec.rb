@@ -140,4 +140,67 @@ describe RuboCop::Cop::Sgcop::NestedResourcesWithoutModule do
       RUBY
     end
   end
+
+  context 'resources with member block' do
+    it 'does not register offense for member actions' do
+      expect_no_offenses(<<~RUBY, 'config/routes.rb')
+        Rails.application.routes.draw do
+          resources :posts, only: %i[index show new edit create update destroy] do
+            member do
+              get :preview
+              patch :publish
+            end
+          end
+        end
+      RUBY
+    end
+
+    it 'does not register offense for nested resources with member block' do
+      expect_no_offenses(<<~RUBY, 'config/routes.rb')
+        Rails.application.routes.draw do
+          resources :posts do
+            resources :comments, only: %i[create destroy], module: :posts do
+              member do
+                patch :approve
+                patch :reject
+              end
+            end
+          end
+        end
+      RUBY
+    end
+  end
+
+  context 'resources with collection block' do
+    it 'does not register offense for collection actions' do
+      expect_no_offenses(<<~RUBY, 'config/routes.rb')
+        Rails.application.routes.draw do
+          resources :posts, only: %i[index show new edit create update destroy] do
+            collection do
+              get :search
+              post :bulk_update
+            end
+          end
+        end
+      RUBY
+    end
+  end
+
+  context 'nested resources with member block without module' do
+    it 'registers offense for resources without module even with member block' do
+      expect_offense(<<~RUBY, 'config/routes.rb')
+        Rails.application.routes.draw do
+          resources :posts do
+            resources :comments, only: %i[create destroy] do
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/NestedResourcesWithoutModule: Use `module:` option in nested resource/resources routing.
+              member do
+                patch :approve
+                patch :reject
+              end
+            end
+          end
+        end
+      RUBY
+    end
+  end
 end
