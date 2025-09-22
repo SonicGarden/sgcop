@@ -56,17 +56,15 @@ describe RuboCop::Cop::Sgcop::ErrorMessageFormat do
     RUBY
   end
 
-  it 'registers an offense for errors.add with I18n.t' do
-    expect_offense(<<~RUBY)
+  it 'does not register an offense for errors.add with I18n.t' do
+    expect_no_offenses(<<~RUBY)
       errors.add(:name, I18n.t('errors.messages.invalid'))
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ErrorMessageFormat: Error message should be a symbol.
     RUBY
   end
 
-  it 'registers an offense for validates with I18n.t message' do
-    expect_offense(<<~RUBY)
+  it 'does not register an offense for validates with I18n.t message' do
+    expect_no_offenses(<<~RUBY)
       validates :name, presence: { message: I18n.t('errors.messages.blank') }
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ErrorMessageFormat: Error message should be a symbol.
     RUBY
   end
 
@@ -74,6 +72,43 @@ describe RuboCop::Cop::Sgcop::ErrorMessageFormat do
     expect_offense(<<~RUBY)
       validates :name, presence: { message: -> { I18n.t('errors.messages.blank') } }
       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/ErrorMessageFormat: Error message should be a symbol.
+    RUBY
+  end
+
+  it 'does not register an offense for errors.add with local variable' do
+    expect_no_offenses(<<~RUBY)
+      message = calculate_message
+      errors.add(:name, message)
+    RUBY
+  end
+
+  it 'does not register an offense for errors.add with instance variable' do
+    expect_no_offenses(<<~RUBY)
+      errors.add(:name, @message)
+    RUBY
+  end
+
+  it 'does not register an offense for errors.add with class variable' do
+    expect_no_offenses(<<~RUBY)
+      errors.add(:name, @@message)
+    RUBY
+  end
+
+  it 'does not register an offense for errors.add with global variable' do
+    expect_no_offenses(<<~RUBY)
+      errors.add(:name, $message)
+    RUBY
+  end
+
+  it 'does not register an offense for errors.add with method call' do
+    expect_no_offenses(<<~RUBY)
+      errors.add(:name, generate_message)
+    RUBY
+  end
+
+  it 'does not register an offense for errors.add with method call with arguments' do
+    expect_no_offenses(<<~RUBY)
+      errors.add(:name, format_message(:invalid))
     RUBY
   end
 end

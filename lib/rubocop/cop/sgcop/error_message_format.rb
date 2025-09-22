@@ -38,7 +38,7 @@ module RuboCop
         def check_message_option(node, options_hash)
           options_hash.each_pair do |opt_key, opt_value|
             next unless message_key?(opt_key)
-            next if opt_value.sym_type?
+            next if opt_value.sym_type? || variable_type?(opt_value)
 
             add_offense(node)
           end
@@ -52,7 +52,14 @@ module RuboCop
           return unless errors_add_call?(node)
 
           message_arg = node.arguments[1]
-          add_offense(node) if message_arg && !message_arg.sym_type?
+          return unless message_arg
+          return if message_arg.sym_type? || variable_type?(message_arg)
+
+          add_offense(node)
+        end
+
+        def variable_type?(node)
+          node.lvar_type? || node.ivar_type? || node.cvar_type? || node.gvar_type? || node.send_type?
         end
 
         def errors_add_call?(node)
