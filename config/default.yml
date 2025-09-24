@@ -202,6 +202,26 @@ Sgcop/Rspec/ConditionalExample:
   Include:
     - "spec/**/*_spec.rb"
 
+Sgcop/Rspec/NoVariableExpectation:
+  Description: "期待値は変数ではなくリテラル値で指定しよう"
+  Enabled: false
+  Include:
+    - "spec/**/*_spec.rb"
+  TargetMatchers:
+    - have_content
+    - have_text
+    - have_css
+    - have_selector
+    - have_title
+    - eq
+    - eql
+    - equal
+    - include
+    - match
+  AllowedMethods:
+    - I18n.t
+    - I18n.l
+
 Sgcop/NoAcceptsNestedAttributesFor:
   Description: "accepts_nested_attributes_forの使用を避けよう。DHHはこの機能をRailsから削除したがっている。Form Objectsの使用を検討しよう"
   Enabled: false
