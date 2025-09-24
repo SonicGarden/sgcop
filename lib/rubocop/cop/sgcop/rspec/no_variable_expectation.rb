@@ -71,7 +71,7 @@ module RuboCop
             return false unless node.send_type?
 
             method_name = build_method_call_string(node)
-            allowed_methods.include?(method_name)
+            allowed_patterns.any? { |pattern| method_name.match?(pattern) }
           end
 
           def build_method_call_string(node)
@@ -90,8 +90,9 @@ module RuboCop
             cop_config['TargetMatchers'] || []
           end
 
-          def allowed_methods
-            cop_config['AllowedMethods'] || []
+          def allowed_patterns
+            patterns = cop_config['AllowedPatterns'] || []
+            patterns.map { |pattern| Regexp.new(pattern) }
           end
         end
       end

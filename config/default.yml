@@ -218,9 +218,11 @@ Sgcop/Rspec/NoVariableExpectation:
     - equal
     - include
     - match
-  AllowedMethods:
-    - I18n.t
-    - I18n.l
+  AllowedPatterns:
+    - "_path$"
+    - "_url$"
+    - "^I18n\\.t$"
+    - "^I18n\\.l$"
 
 Sgcop/NoAcceptsNestedAttributesFor:
   Description: "accepts_nested_attributes_forの使用を避けよう。DHHはこの機能をRailsから削除したがっている。Form Objectsの使用を検討しよう"

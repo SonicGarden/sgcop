@@ -6,7 +6,7 @@ describe RuboCop::Cop::Sgcop::Rspec::NoVariableExpectation do
     RuboCop::Config.new(
       'Sgcop/Rspec/NoVariableExpectation' => {
         'TargetMatchers' => %w[have_content have_text have_css have_selector eq include],
-        'AllowedMethods' => %w[I18n.t I18n.l],
+        'AllowedPatterns' => ['^I18n\.t$', '^I18n\.l$'],
       }
     )
   end
@@ -146,6 +146,31 @@ describe RuboCop::Cop::Sgcop::Rspec::NoVariableExpectation do
     end
   end
 
+  context 'when using URL helpers' do
+    let(:config) do
+      RuboCop::Config.new(
+        'Sgcop/Rspec/NoVariableExpectation' => {
+          'TargetMatchers' => %w[have_content eq],
+          'AllowedPatterns' => ['_path$', '_url$'],
+        }
+      )
+    end
+
+    it 'does not register an offense for _path helpers' do
+      expect_no_offenses(<<~RUBY)
+        expect(page).to have_content(root_path)
+        expect(current_path).to eq(users_path)
+      RUBY
+    end
+
+    it 'does not register an offense for _url helpers' do
+      expect_no_offenses(<<~RUBY)
+        expect(page).to have_content(root_url)
+        expect(location).to eq(users_url)
+      RUBY
+    end
+  end
+
   context 'when using non-configured matcher' do
     it 'does not register an offense' do
       expect_no_offenses(<<~RUBY)
@@ -169,7 +194,7 @@ describe RuboCop::Cop::Sgcop::Rspec::NoVariableExpectation do
       RuboCop::Config.new(
         'Sgcop/Rspec/NoVariableExpectation' => {
           'TargetMatchers' => %w[eq],
-          'AllowedMethods' => %w[helper_method],
+          'AllowedPatterns' => ['^helper_method$'],
         }
       )
     end
