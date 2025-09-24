@@ -196,6 +196,12 @@ Sgcop/Rspec/RedundantLetReference:
   Include:
     - "spec/**/*_spec.rb"
 
+Sgcop/Rspec/ConditionalExample:
+  Description: "条件付きexpectを避け、常に無条件でアサーションを行うことを推奨"
+  Enabled: true
+  Include:
+    - "spec/**/*_spec.rb"
+
 Sgcop/NoAcceptsNestedAttributesFor:
   Description: "accepts_nested_attributes_forの使用を避けよう。DHHはこの機能をRailsから削除したがっている。Form Objectsの使用を検討しよう"
   Enabled: false
