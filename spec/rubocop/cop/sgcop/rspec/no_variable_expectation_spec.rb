@@ -136,6 +136,12 @@ describe RuboCop::Cop::Sgcop::Rspec::NoVariableExpectation do
         expect(page).to have_content(I18n.t('projects.title'))
       RUBY
     end
+
+    it 'does not register an offense with have_selector text option' do
+      expect_no_offenses(<<~RUBY)
+        expect(page).to have_selector 'h1', text: I18n.t('text.title')
+      RUBY
+    end
   end
 
   context 'when using I18n.l' do

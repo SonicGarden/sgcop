@@ -64,7 +64,8 @@ module RuboCop
 
           def all_hash_pairs_literal?(node)
             node.children.all? do |pair|
-              pair.children.all? { |child| literal_value?(child) }
+              key, value = pair.children
+              literal_value?(key) && (literal_value?(value) || allowed_method?(value))
             end
           end
 
