@@ -5,7 +5,7 @@ module RuboCop
     module Sgcop
       module Rspec
         class NoMethodCallInExpectation < Base
-          MSG = 'Use literal values or variables instead of method calls in expectations. Use "%<matcher>s" with literal values or variables.'
+          MSG = 'Use literal values instead of method calls in expectations. Use "%<matcher>s" with literal values.'
 
           def on_send(node)
             return unless expectation_call?(node)

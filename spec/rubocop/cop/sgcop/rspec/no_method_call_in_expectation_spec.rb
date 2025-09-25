@@ -15,7 +15,7 @@ describe RuboCop::Cop::Sgcop::Rspec::NoMethodCallInExpectation do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         expect(page).to have_content(project.title)
-                                     ^^^^^^^^^^^^^ Use literal values or variables instead of method calls in expectations. Use "have_content" with literal values or variables.
+                                     ^^^^^^^^^^^^^ Use literal values instead of method calls in expectations. Use "have_content" with literal values.
       RUBY
     end
   end
@@ -24,7 +24,7 @@ describe RuboCop::Cop::Sgcop::Rspec::NoMethodCallInExpectation do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         expect(page).to have_text(user.name)
-                                  ^^^^^^^^^ Use literal values or variables instead of method calls in expectations. Use "have_text" with literal values or variables.
+                                  ^^^^^^^^^ Use literal values instead of method calls in expectations. Use "have_text" with literal values.
       RUBY
     end
   end
@@ -33,7 +33,7 @@ describe RuboCop::Cop::Sgcop::Rspec::NoMethodCallInExpectation do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         expect(result).to eq(calculate_value())
-                             ^^^^^^^^^^^^^^^^^ Use literal values or variables instead of method calls in expectations. Use "eq" with literal values or variables.
+                             ^^^^^^^^^^^^^^^^^ Use literal values instead of method calls in expectations. Use "eq" with literal values.
       RUBY
     end
   end
@@ -42,7 +42,7 @@ describe RuboCop::Cop::Sgcop::Rspec::NoMethodCallInExpectation do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         expect(array).to include(item.value)
-                                 ^^^^^^^^^^ Use literal values or variables instead of method calls in expectations. Use "include" with literal values or variables.
+                                 ^^^^^^^^^^ Use literal values instead of method calls in expectations. Use "include" with literal values.
       RUBY
     end
   end
@@ -51,7 +51,7 @@ describe RuboCop::Cop::Sgcop::Rspec::NoMethodCallInExpectation do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         expect(page).to have_content(@project.title)
-                                     ^^^^^^^^^^^^^^ Use literal values or variables instead of method calls in expectations. Use "have_content" with literal values or variables.
+                                     ^^^^^^^^^^^^^^ Use literal values instead of method calls in expectations. Use "have_content" with literal values.
       RUBY
     end
   end
@@ -228,7 +228,7 @@ describe RuboCop::Cop::Sgcop::Rspec::NoMethodCallInExpectation do
     it 'registers an offense for method calls in string interpolation' do
       expect_offense(<<~RUBY)
         expect(page).to have_selector "a[href='\#{user.path}']"
-                                      ^^^^^^^^^^^^^^^^^^^^^^^^ Use literal values or variables instead of method calls in expectations. Use "have_selector" with literal values or variables.
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^ Use literal values instead of method calls in expectations. Use "have_selector" with literal values.
       RUBY
     end
   end
@@ -246,7 +246,7 @@ describe RuboCop::Cop::Sgcop::Rspec::NoMethodCallInExpectation do
     it 'registers offenses for method call arguments only' do
       expect_offense(<<~RUBY)
         expect(page).to have_content("Fixed Text", user.name)
-                                                   ^^^^^^^^^ Use literal values or variables instead of method calls in expectations. Use "have_content" with literal values or variables.
+                                                   ^^^^^^^^^ Use literal values instead of method calls in expectations. Use "have_content" with literal values.
       RUBY
     end
 
@@ -274,7 +274,7 @@ describe RuboCop::Cop::Sgcop::Rspec::NoMethodCallInExpectation do
 
       expect_offense(<<~RUBY)
         expect(result).to eq(user.value)
-                             ^^^^^^^^^^ Use literal values or variables instead of method calls in expectations. Use "eq" with literal values or variables.
+                             ^^^^^^^^^^ Use literal values instead of method calls in expectations. Use "eq" with literal values.
       RUBY
     end
 
