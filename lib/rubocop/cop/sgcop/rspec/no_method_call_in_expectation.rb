@@ -1,0 +1,139 @@
+# frozen_string_literal: true
+
+module RuboCop
+  module Cop
+    module Sgcop
+      module Rspec
+        class NoMethodCallInExpectation < Base
+          MSG = 'Use literal values instead of method calls in expectations. Use "%<matcher>s" with literal values.'
+
+          def on_send(node)
+            return unless expectation_call?(node)
+
+            matcher_node = node.arguments.first
+            return unless matcher_node&.send_type?
+
+            matcher_name = matcher_node.method_name.to_s
+            return unless target_matchers.include?(matcher_name)
+
+            check_matcher_arguments(matcher_node, matcher_name)
+          end
+
+          private
+
+          def check_matcher_arguments(matcher_node, matcher_name)
+            matcher_node.arguments.each do |arg|
+              next if literal_value?(arg)
+              next if variable_reference?(arg)
+              next if allowed_method?(arg)
+              next if allowed_interpolation?(arg)
+
+              add_offense(arg, message: format(MSG, matcher: matcher_name))
+            end
+          end
+
+          def expectation_call?(node)
+            %i[to not_to to_not].include?(node.method_name) &&
+              node.receiver&.send_type? &&
+              node.receiver.method_name == :expect
+          end
+
+          def literal_value?(node)
+            return true if node.nil?
+
+            simple_literal?(node) || complex_literal?(node)
+          end
+
+          def simple_literal?(node)
+            %i[str sym int float true false nil regexp].include?(node.type)
+          end
+
+          def complex_literal?(node)
+            case node.type
+            when :array
+              all_children_literal?(node)
+            when :hash
+              all_hash_pairs_literal?(node)
+            else
+              false
+            end
+          end
+
+          def all_children_literal?(node)
+            node.children.all? { |child| literal_value?(child) || variable_reference?(child) }
+          end
+
+          def all_hash_pairs_literal?(node)
+            node.children.all? do |pair|
+              key, value = pair.children
+              (literal_value?(key) || variable_reference?(key)) &&
+                (literal_value?(value) || variable_reference?(value) || allowed_method?(value))
+            end
+          end
+
+          def variable_reference?(node)
+            return false unless node
+
+            case node.type
+            when :lvar, :ivar, :cvar, :gvar, :const
+              # ローカル変数、インスタンス変数、クラス変数、グローバル変数、定数
+              true
+            when :send
+              # レシーバーがなく、引数もないsendノードは変数参照の可能性が高い
+              # ただし、カッコがある場合（()付き）はメソッド呼び出しとして扱う
+              # node.loc.selectorはメソッド名の位置、node.loc.beginはカッコの開始位置
+              node.receiver.nil? && node.arguments.empty? && !node.loc.begin
+            else
+              false
+            end
+          end
+
+          def allowed_method?(node)
+            return false unless node.send_type?
+
+            method_name = build_method_call_string(node)
+            allowed_patterns.any? { |pattern| method_name.match?(pattern) }
+          end
+
+          def build_method_call_string(node)
+            return node.method_name.to_s if node.receiver.nil?
+
+            if node.receiver.const_type?
+              "#{node.receiver.const_name}.#{node.method_name}"
+            elsif node.receiver.send_type?
+              "#{build_method_call_string(node.receiver)}.#{node.method_name}"
+            else
+              node.method_name.to_s
+            end
+          end
+
+          def target_matchers
+            cop_config['TargetMatchers'] || []
+          end
+
+          def allowed_patterns
+            patterns = cop_config['AllowedPatterns'] || []
+            patterns.map { |pattern| Regexp.new(pattern) }
+          end
+
+          def allowed_interpolation?(node)
+            return false unless node.dstr_type?
+
+            node.children.all? do |child|
+              # str type nodes are literal strings in interpolation
+              next true if child.str_type?
+
+              # Check if the interpolated content is an allowed method
+              if child.begin_type? && child.children.size == 1
+                interpolated_node = child.children.first
+                variable_reference?(interpolated_node) || allowed_method?(interpolated_node)
+              else
+                false
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end
