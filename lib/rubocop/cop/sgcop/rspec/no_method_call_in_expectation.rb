@@ -4,8 +4,8 @@ module RuboCop
   module Cop
     module Sgcop
       module Rspec
-        class NoVariableExpectation < Base
-          MSG = 'Use literal values instead of variables in expectations. Use "%<matcher>s" with literal values.'
+        class NoMethodCallInExpectation < Base
+          MSG = 'Use literal values or variables instead of method calls in expectations. Use "%<matcher>s" with literal values or variables.'
 
           def on_send(node)
             return unless expectation_call?(node)
@@ -24,6 +24,7 @@ module RuboCop
           def check_matcher_arguments(matcher_node, matcher_name)
             matcher_node.arguments.each do |arg|
               next if literal_value?(arg)
+              next if variable_reference?(arg)
               next if allowed_method?(arg)
               next if allowed_interpolation?(arg)
 
@@ -59,13 +60,31 @@ module RuboCop
           end
 
           def all_children_literal?(node)
-            node.children.all? { |child| literal_value?(child) }
+            node.children.all? { |child| literal_value?(child) || variable_reference?(child) }
           end
 
           def all_hash_pairs_literal?(node)
             node.children.all? do |pair|
               key, value = pair.children
-              literal_value?(key) && (literal_value?(value) || allowed_method?(value))
+              (literal_value?(key) || variable_reference?(key)) &&
+                (literal_value?(value) || variable_reference?(value) || allowed_method?(value))
+            end
+          end
+
+          def variable_reference?(node)
+            return false unless node
+
+            case node.type
+            when :lvar, :ivar, :cvar, :gvar, :const
+              # ローカル変数、インスタンス変数、クラス変数、グローバル変数、定数
+              true
+            when :send
+              # レシーバーがなく、引数もないsendノードは変数参照の可能性が高い
+              # ただし、カッコがある場合（()付き）はメソッド呼び出しとして扱う
+              # node.loc.selectorはメソッド名の位置、node.loc.beginはカッコの開始位置
+              node.receiver.nil? && node.arguments.empty? && !node.loc.begin
+            else
+              false
             end
           end
 
@@ -106,7 +125,8 @@ module RuboCop
 
               # Check if the interpolated content is an allowed method
               if child.begin_type? && child.children.size == 1
-                allowed_method?(child.children.first)
+                interpolated_node = child.children.first
+                variable_reference?(interpolated_node) || allowed_method?(interpolated_node)
               else
                 false
               end

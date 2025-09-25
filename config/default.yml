@@ -202,8 +202,8 @@ Sgcop/Rspec/ConditionalExample:
   Include:
     - "spec/**/*_spec.rb"
 
-Sgcop/Rspec/NoVariableExpectation:
-  Description: "期待値は変数ではなくリテラル値で指定しよう"
+Sgcop/Rspec/NoMethodCallInExpectation:
+  Description: "期待値でメソッド呼び出しではなくリテラル値や変数を使用しよう"
   Enabled: false
   Include:
     - "spec/**/*_spec.rb"
