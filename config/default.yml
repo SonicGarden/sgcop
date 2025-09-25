@@ -112,6 +112,7 @@ Sgcop/Capybara/Matchers:
   Include:
     - "spec/features/**/*_spec.rb"
     - "spec/system/**/*_spec.rb"
+    - "spec/components/**/*_spec.rb"
   PreferredMethods:
     have_text: "have_content"
 
