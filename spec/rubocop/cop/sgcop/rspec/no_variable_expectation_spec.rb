@@ -150,7 +150,7 @@ describe RuboCop::Cop::Sgcop::Rspec::NoVariableExpectation do
     let(:config) do
       RuboCop::Config.new(
         'Sgcop/Rspec/NoVariableExpectation' => {
-          'TargetMatchers' => %w[have_content eq],
+          'TargetMatchers' => %w[have_content eq have_selector],
           'AllowedPatterns' => ['_path$', '_url$'],
         }
       )
@@ -167,6 +167,25 @@ describe RuboCop::Cop::Sgcop::Rspec::NoVariableExpectation do
       expect_no_offenses(<<~RUBY)
         expect(page).to have_content(root_url)
         expect(location).to eq(users_url)
+      RUBY
+    end
+
+    it 'does not register an offense for URL helpers inside string interpolation' do
+      expect_no_offenses(<<~RUBY)
+        expect(page).to have_selector "a[href='\#{root_path}']"
+      RUBY
+    end
+
+    it 'does not register an offense for multiple URL helpers inside string interpolation' do
+      expect_no_offenses(<<~RUBY)
+        expect(page).to have_selector "a[href='\#{user_path(1)}'][data-id='\#{item_path(2)}']"
+      RUBY
+    end
+
+    it 'registers an offense for mixed URL helpers and variables in string interpolation' do
+      expect_offense(<<~RUBY)
+        expect(page).to have_selector "a[href='\#{root_path}'][data-value='\#{value}']"
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Use literal values instead of variables in expectations. Use "have_selector" with literal values.
       RUBY
     end
   end

@@ -25,6 +25,7 @@ module RuboCop
             matcher_node.arguments.each do |arg|
               next if literal_value?(arg)
               next if allowed_method?(arg)
+              next if allowed_interpolation?(arg)
 
               add_offense(arg, message: format(MSG, matcher: matcher_name))
             end
@@ -93,6 +94,22 @@ module RuboCop
           def allowed_patterns
             patterns = cop_config['AllowedPatterns'] || []
             patterns.map { |pattern| Regexp.new(pattern) }
+          end
+
+          def allowed_interpolation?(node)
+            return false unless node.dstr_type?
+
+            node.children.all? do |child|
+              # str type nodes are literal strings in interpolation
+              next true if child.str_type?
+
+              # Check if the interpolated content is an allowed method
+              if child.begin_type? && child.children.size == 1
+                allowed_method?(child.children.first)
+              else
+                false
+              end
+            end
           end
         end
       end
