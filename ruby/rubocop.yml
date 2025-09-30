@@ -149,6 +149,7 @@ Style/MethodCallWithArgsParentheses:
 Style/Send:
   Enabled: true
 
+# https://docs.rubocop.org/rubocop/cops_style.html#styleblockdelimiters
 Style/BlockDelimiters:
   AutoCorrect: true
   EnforcedStyle: braces_for_chaining
@@ -578,6 +579,9 @@ Style/CollectionQuerying: # new in 1.77
   Enabled: false
 # https://docs.rubocop.org/rubocop/cops_layout.html#layoutemptylinesaftermoduleinclusion
 Layout/EmptyLinesAfterModuleInclusion: # new in 1.79
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylearrayintersectwithsingleelement
+Style/ArrayIntersectWithSingleElement: # new in 1.81
   Enabled: true
 
 # ============================================================
