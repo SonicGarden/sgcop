@@ -253,6 +253,8 @@ Sgcop/RestrictedViewHelpers:
 Sgcop/StrftimeRestriction:
   Description: "strftimeではなくI18n.lを使用してローカライズしてください"
   Enabled: true
+  Include:
+    - "app/**/*"
   AllowedPatterns:
     - "%a"  # 曜日の省略名 (Sun, Mon, etc.)
     - "%A"  # 曜日の完全名 (Sunday, Monday, etc.)
