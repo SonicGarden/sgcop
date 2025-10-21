@@ -26,21 +26,24 @@ module RuboCop
           def contains_wait_matcher?(node)
             return false unless node
 
-            wait_matchers = cop_config.fetch('WaitMatchers', %w[have_content have_text have_css have_selector])
+            wait_matcher_patterns = cop_config.fetch('WaitMatcherPatterns', ['^have_'])
 
             node.each_descendant(:send) do |send_node|
-              return true if expect_to_matcher?(send_node, wait_matchers)
+              return true if expect_to_matcher?(send_node, wait_matcher_patterns)
             end
 
             false
           end
 
-          def expect_to_matcher?(send_node, wait_matchers)
+          def expect_to_matcher?(send_node, wait_matcher_patterns)
             return false unless send_node.method_name == :to
             return false unless send_node.receiver&.method_name == :expect
 
             send_node.arguments.any? do |arg|
-              arg.send_type? && wait_matchers.include?(arg.method_name.to_s)
+              next false unless arg.send_type?
+
+              method_name = arg.method_name.to_s
+              wait_matcher_patterns.any? { |pattern| method_name.match?(/#{pattern}/) }
             end
           end
         end

@@ -90,7 +90,7 @@ describe RuboCop::Cop::Sgcop::Capybara::SpecStabilityCheck do
       config = RuboCop::Config.new(
         'Sgcop/Capybara/SpecStabilityCheck' => {
           'WatchedMethods' => %w[assert_enqueued_jobs],
-          'WaitMatchers' => %w[have_text custom_matcher],
+          'WaitMatcherPatterns' => ['^have_text$', '^custom_matcher$'],
         }
       )
       RuboCop::Cop::Sgcop::Capybara::SpecStabilityCheck.new(config)

@@ -291,8 +291,5 @@ Sgcop/Capybara/SpecStabilityCheck:
     - assert_enqueued_jobs
     - capture_emails
     - expect
-  WaitMatchers:
-    - have_content
-    - have_text
-    - have_css
-    - have_selector
+  WaitMatcherPatterns:
+    - "^have_"
