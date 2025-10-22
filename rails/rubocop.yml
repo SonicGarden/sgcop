@@ -113,6 +113,7 @@ Metrics/AbcSize:
 Style:
   Exclude:
     - "config/application.rb"
+    - "config/ci.rb"
     - "config/initializers/*"
 
 # def show;endって書き方読みやすいとは思わない
