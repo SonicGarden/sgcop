@@ -182,6 +182,14 @@ Sgcop/Rspec/ActionMailerTestHelper:
   Reference:
     - https://api.rubyonrails.org/classes/ActionMailer/TestHelper.html
 
+Sgcop/Rspec/ActiveJobTestHelper:
+  Description: "RSpecのActiveJobマッチャーの代わりにActiveJob::TestHelperのメソッドを使用しよう"
+  Enabled: false
+  Include:
+    - "spec/**/*_spec.rb"
+  Reference:
+    - https://api.rubyonrails.org/classes/ActiveJob/TestHelper.html
+
 Sgcop/Rspec/RedundantPerformEnqueuedJobs:
   Description: "ActionMailer::TestHelperのメソッドは内部でperform_enqueued_jobsを使用しているため、外側のperform_enqueued_jobsは冗長だよ"
   Enabled: true
