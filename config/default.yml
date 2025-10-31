@@ -280,6 +280,20 @@ Sgcop/I18nLocalizeFormatString:
   Reference:
     - https://guides.rubyonrails.org/i18n.html#adding-date-time-formats
 
+Sgcop/I18nLazyLookup:
+  Description: "I18nのlazy lookupの代わりに明示的なキーを使用してください。明示的なキーを使用することで、メンテナンス性が向上します"
+  Enabled: true
+  EnforcedStyle: explicit
+  SupportedStyles:
+    - lazy
+    - explicit
+  Include:
+    - "app/controllers/**/*.rb"
+    - "app/views/**/*"
+    - "app/components/**/*.rb"
+  Reference:
+    - https://guides.rubyonrails.org/i18n.html#lazy-lookup
+
 Sgcop/PreferAbsolutePathPartial:
   Description: "パーシャルファイルのrenderは絶対パスで指定しよう"
   Enabled: true

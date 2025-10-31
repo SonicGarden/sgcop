@@ -85,6 +85,7 @@ sgcopが提供するカスタムCopの一覧です。
 | [`Sgcop/EnumerizeDefaultOption`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/enumerize_default_option.rb) | Enumerizeのdefaultオプションの使用をチェック | ❌ |
 | [`Sgcop/EnumerizePredicatesOption`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/enumerize_predicates_option.rb) | Enumerizeのpredicatesオプションの使用を制限（メソッド名コンフリクトを防止） | ❌ |
 | [`Sgcop/HashFetchDefault`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/hash_fetch_default.rb) | Hash#fetchのデフォルト値の適切な使用を確認 | ✅ |
+| [`Sgcop/I18nLazyLookup`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/i18n_lazy_lookup.rb) | I18nで明示的なキーの使用を強制（コントローラー、ビュー、コンポーネント対応、autocorrect対応） | ✅ |
 | [`Sgcop/I18nLocalizeFormatString`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/i18n_localize_format_string.rb) | I18n.lのformatオプションで文字列使用を制限し、シンボル使用を推奨 | ✅ |
 | [`Sgcop/RestrictedViewHelpers`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/restricted_view_helpers.rb) | 特定のビューヘルパーメソッドの使用を制限（設定でカスタマイズ可能） | ✅ |
 | [`Sgcop/StrftimeRestriction`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/strftime_restriction.rb) | strftimeメソッドの使用を制限し、I18n.lの使用を推奨 | ✅ |
