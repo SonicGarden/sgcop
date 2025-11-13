@@ -604,6 +604,12 @@ RSpec/ExpectInLet: # new in 2.30
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecincludeexamples
 RSpec/IncludeExamples: # new in 3.6
   Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecleakylocalvariable
+RSpec/LeakyLocalVariable: # new in 3.8
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_rspecrails.html#rspecrailshttpstatusnameconsistency
+RSpecRails/HttpStatusNameConsistency: # new in 2.32
+  Enabled: true
 
 # https://docs.rubocop.org/rubocop-factory_bot/cops_factorybot.html#factorybotassociationstyle
 FactoryBot/AssociationStyle: # new in 2.23
