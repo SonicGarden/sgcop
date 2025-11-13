@@ -464,7 +464,7 @@ Rails/OrderArguments: # new in 2.33
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecidenticalequalityassertion
 RSpec/IdenticalEqualityAssertion: # (new in 2.4)
   Enabled: true
-# https://docs.rubocop.org/rubocop/cops_rspecrails.html#rspecrailsavoidsetuphook
+# https://docs.rubocop.org/rubocop-rspec_rails/cops_rspecrails.html#rspecrailsavoidsetuphook
 RSpecRails/AvoidSetupHook: # (new in 2.4)
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecexcessivedocstringspacing
@@ -496,7 +496,7 @@ RSpec/ChangeByZero: # new in 2.11.0
 # https://docs.rubocop.org/rubocop-capybara/cops_capybara.html#capybaraspecificmatcher
 Capybara/SpecificMatcher: # new in 2.12
   Enabled: true
-# https://docs.rubocop.org/rubocop/cops_rspecrails.html#rspecrailshavehttpstatus
+# https://docs.rubocop.org/rubocop-rspec_rails/cops_rspecrails.html#rspecrailshavehttpstatus
 RSpecRails/HaveHttpStatus: # new in 2.12
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecclasscheck
@@ -520,7 +520,7 @@ Capybara/SpecificActions: # new in 2.14
 # https://docs.rubocop.org/rubocop-factory_bot/cops_factorybot.html#factorybotconsistentparenthesesstyle
 FactoryBot/ConsistentParenthesesStyle: # new in 2.14
   Enabled: false
-# https://docs.rubocop.org/rubocop/cops_rspecrails.html#rspecrailsinferredspectype
+# https://docs.rubocop.org/rubocop-rspec_rails/cops_rspecrails.html#rspecrailsinferredspectype
 RSpecRails/InferredSpecType: # new in 2.14
   Enabled: false
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecduplicatedmetadata
@@ -535,7 +535,7 @@ FactoryBot/FactoryNameStyle: # new in 2.16
 # https://docs.rubocop.org/rubocop-capybara/cops_capybara.html#capybaramatchstyle
 Capybara/MatchStyle: # new in 2.17
   Enabled: true
-# https://docs.rubocop.org/rubocop/cops_rspecrails.html#rspecrailsminitestassertions
+# https://docs.rubocop.org/rubocop-rspec_rails/cops_rspecrails.html#rspecrailsminitestassertions
 RSpecRails/MinitestAssertions: # new in 2.17
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecredundantaround
@@ -544,7 +544,7 @@ RSpec/RedundantAround: # new in 2.19
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecskipblockinsideexample
 RSpec/SkipBlockInsideExample: # new in 2.19
   Enabled: true
-# https://docs.rubocop.org/rubocop/cops_rspecrails.html#rspecrailstravelaround
+# https://docs.rubocop.org/rubocop-rspec_rails/cops_rspecrails.html#rspecrailstravelaround
 RSpecRails/TravelAround: # new in 2.19
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecbeempty
@@ -562,7 +562,7 @@ RSpec/MatchArray: # new in 2.19
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecreceivemessages
 RSpec/ReceiveMessages: # new in 2.23
   Enabled: false
-# https://docs.rubocop.org/rubocop/cops_rspecrails.html#rspecrailsnegationbevalid
+# https://docs.rubocop.org/rubocop-rspec_rails/cops_rspecrails.html#rspecrailsnegationbevalid
 RSpecRails/NegationBeValid: # new in 2.23
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecemptymetadata
@@ -607,7 +607,7 @@ RSpec/IncludeExamples: # new in 3.6
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecleakylocalvariable
 RSpec/LeakyLocalVariable: # new in 3.8
   Enabled: true
-# https://docs.rubocop.org/rubocop/cops_rspecrails.html#rspecrailshttpstatusnameconsistency
+# https://docs.rubocop.org/rubocop-rspec_rails/cops_rspecrails.html#rspecrailshttpstatusnameconsistency
 RSpecRails/HttpStatusNameConsistency: # new in 2.32
   Enabled: true
 
