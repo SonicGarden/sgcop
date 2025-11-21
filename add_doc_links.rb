@@ -5,16 +5,17 @@ require 'fileutils'
 TOP_CATEGORY_MAP = {
   'Rails' => 'rails',
   'RSpec' => 'rspec',
+  'RSpecRails' => 'rspec_rails',
   'Performance' => 'performance',
   'Capybara' => 'capybara',
-  'FactoryBot' => 'factory_bot'
-}
-DOC_COMMENT_REGEXP = %r{\A# https://docs\.rubocop\.org/}
+  'FactoryBot' => 'factory_bot',
+}.freeze
+DOC_COMMENT_REGEXP = %r{\A# https://docs\.rubocop\.org/}.freeze
 
 def add_doc_link_comments(filename)
-  tmp_filename = filename + ".tmp"
+  tmp_filename = "#{filename}.tmp"
   File.open(tmp_filename, 'w') do |io|
-    IO.foreach(filename) do |line|
+    File.foreach(filename) do |line|
       if DOC_COMMENT_REGEXP.match?(line)
         next
       elsif (m = %r{^(.+/.+):}.match(line))
@@ -31,6 +32,7 @@ def add_doc_link_comments(filename)
           end
         io.puts(comment)
       end
+
       io.write(line)
     end
   end
@@ -40,7 +42,7 @@ end
 FILES = %w[
   ruby/rubocop.yml
   rails/rubocop.yml
-]
+].freeze
 
 FILES.each do |filename|
   add_doc_link_comments(filename)
