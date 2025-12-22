@@ -460,6 +460,12 @@ Rails/FindByOrAssignmentMemoization: # new in 2.33
 # https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsorderarguments
 Rails/OrderArguments: # new in 2.33
   Enabled: true
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railshttpstatusnameconsistency
+Rails/HttpStatusNameConsistency: # new in 2.34
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsredirectbackorto
+Rails/RedirectBackOrTo: # new in 2.34
+  Enabled: true
 
 # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecidenticalequalityassertion
 RSpec/IdenticalEqualityAssertion: # (new in 2.4)
