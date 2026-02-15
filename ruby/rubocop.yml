@@ -586,6 +586,15 @@ Style/ArrayIntersectWithSingleElement: # new in 1.81
 # https://docs.rubocop.org/rubocop/cops_style.html#stylemodulememberexistencecheck
 Style/ModuleMemberExistenceCheck: # new in 1.82
   Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#styleemptyclassdefinition
+Style/EmptyClassDefinition: # new in 1.84
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylenegativearrayindex
+Style/NegativeArrayIndex: # new in 1.84
+  Enabled: true
+# https://docs.rubocop.org/rubocop/cops_style.html#stylereversefind
+Style/ReverseFind: # new in 1.84
+  Enabled: true
 
 # ============================================================
 # Lint
