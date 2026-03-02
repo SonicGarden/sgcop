@@ -28,7 +28,7 @@ def add_doc_link_comments(filename)
           if top_category_path_name
             "# https://docs.rubocop.org/rubocop-#{top_category_path_name}/cops_#{category}.html##{name}"
           else
-            "# https://docs.rubocop.org/rubocop/cops_#{category}.html##{name}"
+            "# https://docs.rubocop.org/rubocop/latest/cops_#{category}.html##{name}"
           end
         io.puts(comment)
       end
