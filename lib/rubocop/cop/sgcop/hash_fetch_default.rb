@@ -9,7 +9,7 @@ module RuboCop
         MSG = 'Use `Hash#fetch` with a default value instead of `||` to preserve falsey values.'
 
         def_node_matcher :hash_element_access, <<~PATTERN
-          (send $_ :[] $_)
+          (send $_ :[] ${sym str nil true false})
         PATTERN
 
         def on_or(node)

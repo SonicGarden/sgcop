@@ -171,6 +171,7 @@ Sgcop/ErrorMessageFormat:
 Sgcop/HashFetchDefault:
   Description: "Hash#fetchを使用してデフォルト値を扱うことでfalseyな値を保持しよう"
   Enabled: true
+  SafeAutoCorrect: false
   Reference:
     - https://rubystyle.guide/#hash-fetch-defaults
 

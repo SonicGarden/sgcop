@@ -64,4 +64,34 @@ describe RuboCop::Cop::Sgcop::HashFetchDefault do
       batman.fetch(:is_evil, true)
     RUBY
   end
+
+  it 'does not register an offense for integer index access (likely Array/String)' do
+    expect_no_offenses(<<~RUBY)
+      array[0] || "default"
+    RUBY
+  end
+
+  it 'does not register an offense for range access (likely String/Array slice)' do
+    expect_no_offenses(<<~RUBY)
+      str[0..3] || "default"
+    RUBY
+  end
+
+  it 'does not register an offense for multi-argument access (likely String#[])' do
+    expect_no_offenses(<<~RUBY)
+      str[0, 3] || "default"
+    RUBY
+  end
+
+  it 'does not register an offense for variable key access (cannot tell if it is a Hash)' do
+    expect_no_offenses(<<~RUBY)
+      obj[index] || "default"
+    RUBY
+  end
+
+  it 'does not register an offense for method call key access' do
+    expect_no_offenses(<<~RUBY)
+      obj[key_method] || "default"
+    RUBY
+  end
 end
