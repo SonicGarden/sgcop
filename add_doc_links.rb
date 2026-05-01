@@ -12,25 +12,28 @@ TOP_CATEGORY_MAP = {
 }.freeze
 DOC_COMMENT_REGEXP = %r{\A# https://docs\.rubocop\.org/}.freeze
 
+def doc_url(cop_name)
+  words = cop_name.split('/')
+  top_category = words[0]
+  category = words[0..-2].join('_').downcase
+  name = words.join('').downcase
+  top_category_path_name = TOP_CATEGORY_MAP[top_category]
+  if top_category_path_name
+    "# https://docs.rubocop.org/rubocop-#{top_category_path_name}/latest/cops_#{category}.html##{name}"
+  else
+    "# https://docs.rubocop.org/rubocop/latest/cops_#{category}.html##{name}"
+  end
+end
+
 def add_doc_link_comments(filename)
   tmp_filename = "#{filename}.tmp"
   File.open(tmp_filename, 'w') do |io|
     File.foreach(filename) do |line|
       if DOC_COMMENT_REGEXP.match?(line)
         next
+
       elsif (m = %r{^(.+/.+):}.match(line))
-        words = m[1].split('/')
-        top_category = words[0]
-        category = words[0..-2].join('_').downcase
-        name = words.join('').downcase
-        top_category_path_name = TOP_CATEGORY_MAP[top_category]
-        comment =
-          if top_category_path_name
-            "# https://docs.rubocop.org/rubocop-#{top_category_path_name}/cops_#{category}.html##{name}"
-          else
-            "# https://docs.rubocop.org/rubocop/latest/cops_#{category}.html##{name}"
-          end
-        io.puts(comment)
+        io.puts(doc_url(m[1]))
       end
 
       io.write(line)
