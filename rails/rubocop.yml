@@ -34,12 +34,12 @@ Rails:
   Enabled: true
 
 # ARオブジェクトのuniqを取りたいわけでなく、特定の属性のuniqが取りたい場合でも警告が出るので
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsuniqbeforepluck
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsuniqbeforepluck
 Rails/UniqBeforePluck:
   Enabled: false
 
 # デフォルトにstagingが含まれていない
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsunknownenv
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsunknownenv
 Rails/UnknownEnv:
   Environments:
     - production
@@ -48,17 +48,17 @@ Rails/UnknownEnv:
     - staging
 
 # ブラウザの標準仕様でnoopenner扱いとなった
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railslinktoblank
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railslinktoblank
 Rails/LinkToBlank:
   Enabled: false
 
 # マイグレーションでchange or downメソッドが定義されているか確認
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsreversiblemigrationmethoddefinition
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsreversiblemigrationmethoddefinition
 Rails/ReversibleMigrationMethodDefinition:
   Enabled: true
 
 # default_scopeはデフォルト禁止
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsdefaultscope
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsdefaultscope
 Rails/DefaultScope:
   Enabled: true
 
@@ -146,12 +146,12 @@ RSpec:
       - assert_no_enqueued_jobs
 
 # backgroundとかであるクラスの全インスタンスをstubしてるなど意図してやると思うので
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecanyinstance
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecanyinstance
 RSpec/AnyInstance:
   Enabled: false
 
 # Contextの条件の説明を日本語でも書きたいので
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspeccontextwording
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspeccontextwording
 RSpec/ContextWording:
   Enabled: false
 
@@ -161,27 +161,27 @@ RSpec/ContextWording:
 #     let!(:guest_ticket) {
 #       GuestTicket.new schedule, guest_ticket_params
 #     }
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecdescribedclass
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecdescribedclass
 RSpec/DescribedClass:
   Enabled: false
 
 # 厳密にテストしたい場合に複数条件を入れるのはよいかと
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecmultipleexpectations
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecmultipleexpectations
 RSpec/MultipleExpectations:
   Enabled: false
 
 # feature specで長くなるので
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecexamplelength
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecexamplelength
 RSpec/ExampleLength:
   Enabled: false
 
 # 自動生成されて中身が空のままコミットすることはある
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecemptyexamplegroup
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecemptyexamplegroup
 RSpec/EmptyExampleGroup:
   Enabled: false
 
 # デフォルトの5はさすがに厳しい
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecmultiplememoizedhelpers
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecmultiplememoizedhelpers
 RSpec/MultipleMemoizedHelpers:
   Max: 8
 
@@ -196,461 +196,473 @@ Naming/MethodName:
     - "spec/mailers/previews/*.rb"
 
 # それほど差がある訳ではないので可読性重視で
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancetimesmap
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performancetimesmap
 Performance/TimesMap:
   Enabled: false
 
 # rubocop 本体でまだデフォルト設定がPendingのルールの有効・無効設定
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performanceancestorsinclude
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performanceancestorsinclude
 Performance/AncestorsInclude:
   Enabled: false
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancebigdecimalwithnumericargument
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performancebigdecimalwithnumericargument
 Performance/BigDecimalWithNumericArgument:
   Enabled: true
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performanceredundantsortblock
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performanceredundantsortblock
 Performance/RedundantSortBlock:
   Enabled: true
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performanceredundantstringchars
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performanceredundantstringchars
 Performance/RedundantStringChars:
   Enabled: false
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancereversefirst
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performancereversefirst
 Performance/ReverseFirst:
   Enabled: true
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancesortreverse
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performancesortreverse
 Performance/SortReverse:
   Enabled: true
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancesqueeze
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performancesqueeze
 Performance/Squeeze:
   Enabled: true
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancestringinclude
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performancestringinclude
 Performance/StringInclude:
   Enabled: true
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancesum
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performancesum
 Performance/Sum: # (new in 1.8)
   Enabled: true
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performanceblockgivenwithexplicitblock
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performanceblockgivenwithexplicitblock
 Performance/BlockGivenWithExplicitBlock: # (new in 1.9)
   Enabled: false
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancecollectionliteralinloop
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performancecollectionliteralinloop
 Performance/CollectionLiteralInLoop: # (new in 1.8)
   Enabled: true
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performanceconstantregexp
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performanceconstantregexp
 Performance/ConstantRegexp: # (new in 1.9)
   Enabled: true
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancemethodobjectasblock
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performancemethodobjectasblock
 Performance/MethodObjectAsBlock: # (new in 1.9)
   Enabled: true
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performanceredundantequalitycomparisonblock
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performanceredundantequalitycomparisonblock
 Performance/RedundantEqualityComparisonBlock: # (new in 1.10)
   Enabled: true
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performanceredundantsplitregexpargument
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performanceredundantsplitregexpargument
 Performance/RedundantSplitRegexpArgument: # (new in 1.10)
   Enabled: true
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancemapcompact
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performancemapcompact
 Performance/MapCompact: # (new in 1.11)
   Enabled: true
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performanceconcurrentmonotonictime
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performanceconcurrentmonotonictime
 Performance/ConcurrentMonotonicTime: # new in 1.12
   Enabled: true
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancemapmethodchain
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performancemapmethodchain
 Performance/MapMethodChain: # new in 1.19
   Enabled: true
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancestringbytesize
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performancestringbytesize
 Performance/StringBytesize: # new in 1.23
   Enabled: true
 
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsactiverecordcallbacksorder
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsactiverecordcallbacksorder
 Rails/ActiveRecordCallbacksOrder:
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsfindbyid
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsfindbyid
 Rails/FindById:
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsinquiry
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsinquiry
 Rails/Inquiry:
   Enabled: false
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsmailername
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsmailername
 Rails/MailerName:
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsmatchroute
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsmatchroute
 Rails/MatchRoute:
   Enabled: false
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsnegateinclude
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsnegateinclude
 Rails/NegateInclude:
   Enabled: true
 # NOTE: Active Record以外のケースでも誤判定して自動修正するケースがあるので危険
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railspluck
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railspluck
 Rails/Pluck:
   Enabled: false
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railspluckinwhere
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railspluckinwhere
 Rails/PluckInWhere:
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsrenderinline
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsrenderinline
 Rails/RenderInline:
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsrenderplaintext
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsrenderplaintext
 Rails/RenderPlainText:
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsshorti18n
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsshorti18n
 Rails/ShortI18n:
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railswhereexists
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railswhereexists
 Rails/WhereExists:
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsaftercommitoverride
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsaftercommitoverride
 Rails/AfterCommitOverride: # (new in 2.8)
   Enabled: true
 # NOTE: 気になる人はプロジェクト毎に設定すれば良さそう
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railssquishedsqlheredocs
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railssquishedsqlheredocs
 Rails/SquishedSQLHeredocs: # (new in 2.8)
   Enabled: false
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railswherenot
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railswherenot
 Rails/WhereNot: # (new in 2.8)
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsattributedefaultblockvalue
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsattributedefaultblockvalue
 Rails/AttributeDefaultBlockValue: # (new in 2.9)
   Enabled: true
   Include:
     - app/models/**/*
     - app/forms/**/*
 
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railswhereequals
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railswhereequals
 Rails/WhereEquals: # (new in 2.9)
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsenvironmentvariableaccess
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsenvironmentvariableaccess
 Rails/EnvironmentVariableAccess: # (new in 2.10)
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railstimezoneassignment
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railstimezoneassignment
 Rails/TimeZoneAssignment: # (new in 2.10)
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsaddcolumnindex
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsaddcolumnindex
 Rails/AddColumnIndex: # (new in 2.11)
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railseagerevaluationlogmessage
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railseagerevaluationlogmessage
 Rails/EagerEvaluationLogMessage: # (new in 2.11)
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsexpandeddaterange
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsexpandeddaterange
 Rails/ExpandedDateRange: # (new in 2.11)
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsi18nlocaleassignment
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsi18nlocaleassignment
 Rails/I18nLocaleAssignment: # (new in 2.11)
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsunusedignoredcolumns
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsunusedignoredcolumns
 Rails/UnusedIgnoredColumns: # (new in 2.11)
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsredundanttravelback
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsredundanttravelback
 Rails/RedundantTravelBack: # new in 2.12
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railscompactblank
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railscompactblank
 Rails/CompactBlank: # new in 2.13
   Enabled: true
 # NOTE: 気になる人はプロジェクト毎に設定すれば良さそう
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsdurationarithmetic
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsdurationarithmetic
 Rails/DurationArithmetic: # new in 2.13
   Enabled: false
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsredundantpresencevalidationonbelongsto
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsredundantpresencevalidationonbelongsto
 Rails/RedundantPresenceValidationOnBelongsTo: # new in 2.13
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsrootjoinchain
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsrootjoinchain
 Rails/RootJoinChain: # new in 2.13
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsactioncontrollertestcase
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsactioncontrollertestcase
 Rails/ActionControllerTestCase: # new in 2.14
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsdeprecatedactivemodelerrorsmethods
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsdeprecatedactivemodelerrorsmethods
 Rails/DeprecatedActiveModelErrorsMethods: # new in 2.14
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsduplicateassociation
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsduplicateassociation
 Rails/DuplicateAssociation: # new in 2.14
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsduplicatescope
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsduplicatescope
 Rails/DuplicateScope: # new in 2.14
   Enabled: true
 # NOTE: リファクタの妨げになるケースが多いので絶対キーで指定のほうが嬉しい
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsi18nlazylookup
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsi18nlazylookup
 Rails/I18nLazyLookup: # new in 2.14
   Enabled: false
 # NOTE: 必要ならプロジェクト毎に設定すれば良さそう
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsi18nlocaletexts
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsi18nlocaletexts
 Rails/I18nLocaleTexts: # new in 2.14
   Enabled: false
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsmigrationclassname
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsmigrationclassname
 Rails/MigrationClassName: # new in 2.14
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railstransactionexitstatement
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railstransactionexitstatement
 Rails/TransactionExitStatement: # new in 2.14
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsdotseparatedkeys
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsdotseparatedkeys
 Rails/DotSeparatedKeys: # new in 2.15
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsrootpublicpath
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsrootpublicpath
 Rails/RootPublicPath: # new in 2.15
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsstripheredoc
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsstripheredoc
 Rails/StripHeredoc: # new in 2.15
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railstoformatteds
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railstoformatteds
 Rails/ToFormattedS: # new in 2.15
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsactioncontrollerflashbeforerender
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsactioncontrollerflashbeforerender
 Rails/ActionControllerFlashBeforeRender: # new in 2.16
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsactivesupportonload
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsactivesupportonload
 Rails/ActiveSupportOnLoad: # new in 2.16
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsfreezetime
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsfreezetime
 Rails/FreezeTime: # new in 2.16
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsrootpathnamemethods
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsrootpathnamemethods
 Rails/RootPathnameMethods: # new in 2.16
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railstoswithargument
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railstoswithargument
 Rails/ToSWithArgument: # new in 2.16
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railstoplevelhashwithindifferentaccess
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railstoplevelhashwithindifferentaccess
 Rails/TopLevelHashWithIndifferentAccess: # new in 2.16
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railswheremissing
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railswheremissing
 Rails/WhereMissing: # new in 2.16
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsactionorder
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsactionorder
 Rails/ActionOrder: # new in 2.17
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsignoredcolumnsassignment
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsignoredcolumnsassignment
 Rails/IgnoredColumnsAssignment: # new in 2.17
   Enabled: false
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railswherenotwithmultipleconditions
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railswherenotwithmultipleconditions
 Rails/WhereNotWithMultipleConditions: # new in 2.17
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsresponseparsedbody
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsresponseparsedbody
 Rails/ResponseParsedBody: # new in 2.18
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsthreestatebooleancolumn
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsthreestatebooleancolumn
 Rails/ThreeStateBooleanColumn: # new in 2.19
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsdangerouscolumnnames
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsdangerouscolumnnames
 Rails/DangerousColumnNames: # new in 2.21
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsredundantactiverecordallmethod
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsredundantactiverecordallmethod
 Rails/RedundantActiveRecordAllMethod: # new in 2.21
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsselectmap
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsselectmap
 Rails/SelectMap: # new in 2.21
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsunusedrendercontent
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsunusedrendercontent
 Rails/UnusedRenderContent: # new in 2.21
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsenvlocal
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsenvlocal
 Rails/EnvLocal: # new in 2.22
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railswhererange
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railswhererange
 Rails/WhereRange: # new in 2.25
   Enabled: false
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsenumsyntax
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsenumsyntax
 Rails/EnumSyntax:
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsmultipleroutepaths
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsmultipleroutepaths
 Rails/MultipleRoutePaths: # new in 2.29
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsstrongparametersexpect
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsstrongparametersexpect
 Rails/StrongParametersExpect: # new in 2.29
   Enabled: false # rails8以前で作られたプロジェクトだと大量に引っかかるはずなので、もうしばらく様子を見てから検討が良さそう
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsfindbyorassignmentmemoization
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsfindbyorassignmentmemoization
 Rails/FindByOrAssignmentMemoization: # new in 2.33
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsorderarguments
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsorderarguments
 Rails/OrderArguments: # new in 2.33
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railshttpstatusnameconsistency
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railshttpstatusnameconsistency
 Rails/HttpStatusNameConsistency: # new in 2.34
   Enabled: true
-# https://docs.rubocop.org/rubocop-rails/cops_rails.html#railsredirectbackorto
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsredirectbackorto
 Rails/RedirectBackOrTo: # new in 2.34
   Enabled: true
 
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecidenticalequalityassertion
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecidenticalequalityassertion
 RSpec/IdenticalEqualityAssertion: # (new in 2.4)
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec_rails/cops_rspecrails.html#rspecrailsavoidsetuphook
+# https://docs.rubocop.org/rubocop-rspec_rails/latest/cops_rspecrails.html#rspecrailsavoidsetuphook
 RSpecRails/AvoidSetupHook: # (new in 2.4)
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecexcessivedocstringspacing
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecexcessivedocstringspacing
 RSpec/ExcessiveDocstringSpacing: # new in 2.5
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecsubjectdeclaration
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecsubjectdeclaration
 RSpec/SubjectDeclaration: # new in 2.5
   Enabled: true
 # NOTE: eqで駄目な理由がよくわからないので保留
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecbeeq
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecbeeq
 RSpec/BeEq: # new in 2.9.0
   Enabled: false
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecbenil
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecbenil
 RSpec/BeNil: # new in 2.9.0
   Enabled: true
 # NOTE: あえて付ける派も見かけるので
-# https://docs.rubocop.org/rubocop-factory_bot/cops_factorybot.html#factorybotsyntaxmethods
+# https://docs.rubocop.org/rubocop-factory_bot/latest/cops_factorybot.html#factorybotsyntaxmethods
 FactoryBot/SyntaxMethods: # new in 2.7
   Enabled: false
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancestringidentifierargument
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performancestringidentifierargument
 Performance/StringIdentifierArgument: # new in 1.13
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecverifieddoublereference
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecverifieddoublereference
 RSpec/VerifiedDoubleReference: # new in 2.10.0
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecchangebyzero
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecchangebyzero
 RSpec/ChangeByZero: # new in 2.11.0
   Enabled: true
-# https://docs.rubocop.org/rubocop-capybara/cops_capybara.html#capybaraspecificmatcher
-Capybara/SpecificMatcher: # new in 2.12
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara_rspec.html#capybararspecspecificmatcher
+Capybara/RSpec/SpecificMatcher: # new in 2.12
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec_rails/cops_rspecrails.html#rspecrailshavehttpstatus
+# https://docs.rubocop.org/rubocop-rspec_rails/latest/cops_rspecrails.html#rspecrailshavehttpstatus
 RSpecRails/HaveHttpStatus: # new in 2.12
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecclasscheck
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecclasscheck
 RSpec/ClassCheck: # new in 2.13
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecnoexpectationexample
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecnoexpectationexample
 RSpec/NoExpectationExample: # new in 2.13
   Enabled: true
-# https://docs.rubocop.org/rubocop-capybara/cops_capybara.html#capybaraspecificfinders
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara.html#capybaraspecificfinders
 Capybara/SpecificFinders: # new in 2.13
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecsortmetadata
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecsortmetadata
 RSpec/SortMetadata: # new in 2.14
   Enabled: true
-# https://docs.rubocop.org/rubocop-capybara/cops_capybara.html#capybaranegationmatcher
-Capybara/NegationMatcher: # new in 2.14
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara_rspec.html#capybararspecnegationmatcher
+Capybara/RSpec/NegationMatcher: # new in 2.14
   Enabled: false
-# https://docs.rubocop.org/rubocop-capybara/cops_capybara.html#capybaraspecificactions
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara.html#capybaraspecificactions
 Capybara/SpecificActions: # new in 2.14
   Enabled: true
-# https://docs.rubocop.org/rubocop-factory_bot/cops_factorybot.html#factorybotconsistentparenthesesstyle
+# https://docs.rubocop.org/rubocop-factory_bot/latest/cops_factorybot.html#factorybotconsistentparenthesesstyle
 FactoryBot/ConsistentParenthesesStyle: # new in 2.14
   Enabled: false
-# https://docs.rubocop.org/rubocop-rspec_rails/cops_rspecrails.html#rspecrailsinferredspectype
+# https://docs.rubocop.org/rubocop-rspec_rails/latest/cops_rspecrails.html#rspecrailsinferredspectype
 RSpecRails/InferredSpecType: # new in 2.14
   Enabled: false
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecduplicatedmetadata
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecduplicatedmetadata
 RSpec/DuplicatedMetadata: # new in 2.16
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecpendingwithoutreason
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecpendingwithoutreason
 RSpec/PendingWithoutReason: # new in 2.16
   Enabled: true
-# https://docs.rubocop.org/rubocop-factory_bot/cops_factorybot.html#factorybotfactorynamestyle
+# https://docs.rubocop.org/rubocop-factory_bot/latest/cops_factorybot.html#factorybotfactorynamestyle
 FactoryBot/FactoryNameStyle: # new in 2.16
   Enabled: true
-# https://docs.rubocop.org/rubocop-capybara/cops_capybara.html#capybaramatchstyle
-Capybara/MatchStyle: # new in 2.17
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara.html#capybaraassertstyle
+Capybara/AssertStyle: # new in 2.17
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec_rails/cops_rspecrails.html#rspecrailsminitestassertions
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara_rspec.html#capybararspecmatchstyle
+Capybara/RSpec/MatchStyle: # new in 2.17
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rspec_rails/latest/cops_rspecrails.html#rspecrailsminitestassertions
 RSpecRails/MinitestAssertions: # new in 2.17
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecredundantaround
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecredundantaround
 RSpec/RedundantAround: # new in 2.19
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecskipblockinsideexample
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecskipblockinsideexample
 RSpec/SkipBlockInsideExample: # new in 2.19
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec_rails/cops_rspecrails.html#rspecrailstravelaround
+# https://docs.rubocop.org/rubocop-rspec_rails/latest/cops_rspecrails.html#rspecrailstravelaround
 RSpecRails/TravelAround: # new in 2.19
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecbeempty
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecbeempty
 RSpec/BeEmpty: # new in 2.20
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspeccontainexactly
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspeccontainexactly
 RSpec/ContainExactly: # new in 2.19
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecindexedlet
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecindexedlet
 RSpec/IndexedLet: # new in 2.20
   Enabled: false
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecmatcharray
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecmatcharray
 RSpec/MatchArray: # new in 2.19
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecreceivemessages
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecreceivemessages
 RSpec/ReceiveMessages: # new in 2.23
   Enabled: false
-# https://docs.rubocop.org/rubocop-rspec_rails/cops_rspecrails.html#rspecrailsnegationbevalid
+# https://docs.rubocop.org/rubocop-rspec_rails/latest/cops_rspecrails.html#rspecrailsnegationbevalid
 RSpecRails/NegationBeValid: # new in 2.23
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecemptymetadata
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecemptymetadata
 RSpec/EmptyMetadata: # new in 2.24
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspeceq
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspeceq
 RSpec/Eq: # new in 2.24
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecmetadatastyle
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecmetadatastyle
 RSpec/MetadataStyle: # new in 2.24
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecspecfilepathformat
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecspecfilepathformat
 RSpec/SpecFilePathFormat: # new in 2.24
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecspecfilepathsuffix
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecspecfilepathsuffix
 RSpec/SpecFilePathSuffix: # new in 2.24
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecredundantpredicatematcher
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecredundantpredicatematcher
 RSpec/RedundantPredicateMatcher: # new in 2.26
   Enabled: false
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecremoveconst
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecremoveconst
 RSpec/RemoveConst: # new in 2.26
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecisexpectedspecify
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecisexpectedspecify
 RSpec/IsExpectedSpecify: # new in 2.27
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecrepeatedsubjectcall
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecrepeatedsubjectcall
 RSpec/RepeatedSubjectCall: # new in 2.27
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecemptyoutput
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecemptyoutput
 RSpec/EmptyOutput: # new in 2.29
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecundescriptiveliteralsdescription
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecundescriptiveliteralsdescription
 RSpec/UndescriptiveLiteralsDescription: # new in 2.29
   Enabled: false
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecexpectinlet
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecexpectinlet
 RSpec/ExpectInLet: # new in 2.30
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecincludeexamples
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecincludeexamples
 RSpec/IncludeExamples: # new in 3.6
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecleakylocalvariable
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecleakylocalvariable
 RSpec/LeakyLocalVariable: # new in 3.8
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec_rails/cops_rspecrails.html#rspecrailshttpstatusnameconsistency
+# https://docs.rubocop.org/rubocop-rspec_rails/latest/cops_rspecrails.html#rspecrailshttpstatusnameconsistency
 RSpecRails/HttpStatusNameConsistency: # new in 2.32
   Enabled: true
 
-# https://docs.rubocop.org/rubocop-factory_bot/cops_factorybot.html#factorybotassociationstyle
+# https://docs.rubocop.org/rubocop-factory_bot/latest/cops_factorybot.html#factorybotassociationstyle
 FactoryBot/AssociationStyle: # new in 2.23
   Enabled: true
-# https://docs.rubocop.org/rubocop-factory_bot/cops_factorybot.html#factorybotfactoryassociationwithstrategy
+# https://docs.rubocop.org/rubocop-factory_bot/latest/cops_factorybot.html#factorybotfactoryassociationwithstrategy
 FactoryBot/FactoryAssociationWithStrategy: # new in 2.23
   Enabled: true
-# https://docs.rubocop.org/rubocop-factory_bot/cops_factorybot.html#factorybotredundantfactoryoption
+# https://docs.rubocop.org/rubocop-factory_bot/latest/cops_factorybot.html#factorybotredundantfactoryoption
 FactoryBot/RedundantFactoryOption: # new in 2.23
   Enabled: true
-# https://docs.rubocop.org/rubocop-factory_bot/cops_factorybot.html#factorybotidsequence
+# https://docs.rubocop.org/rubocop-factory_bot/latest/cops_factorybot.html#factorybotidsequence
 FactoryBot/IdSequence: # new in <<next>>
   Enabled: true
-# https://docs.rubocop.org/rubocop-factory_bot/cops_factorybot.html#factorybotexcessivecreatelist
+# https://docs.rubocop.org/rubocop-factory_bot/latest/cops_factorybot.html#factorybotexcessivecreatelist
 FactoryBot/ExcessiveCreateList: # new in 2.25
   Enabled: true
-# https://docs.rubocop.org/rubocop-performance/cops_performance.html#performancezipwithoutblock
+# https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performancezipwithoutblock
 Performance/ZipWithoutBlock: # new in 1.24
   Enabled: true
 
-# https://docs.rubocop.org/rubocop-capybara/cops_capybara.html#capybaraclicklinkorbuttonstyle
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara.html#capybaraclicklinkorbuttonstyle
 Capybara/ClickLinkOrButtonStyle: # new in 2.19
   Enabled: false
-# https://docs.rubocop.org/rubocop-capybara/cops_capybara_rspec.html#capybararspechaveselector
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara_rspec.html#capybararspeccurrentpathexpectation
+Capybara/RSpec/CurrentPathExpectation: # new in 1.18
+  Enabled: true
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara_rspec.html#capybararspechavecontent
+Capybara/RSpec/HaveContent: # new in 2.23
+  Enabled: false # NOTE: 統一されればどちらでもいいが、Sgcop/Capybara/Matchersが存在していたために無効化
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara_rspec.html#capybararspecvisibilitymatcher
+Capybara/RSpec/VisibilityMatcher: # new in 1.39
+  Enabled: true
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara_rspec.html#capybararspechaveselector
 Capybara/RSpec/HaveSelector: # new in 2.19
   Enabled: false
-# https://docs.rubocop.org/rubocop-capybara/cops_capybara_rspec.html#capybararspecpredicatematcher
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara_rspec.html#capybararspecpredicatematcher
 Capybara/RSpec/PredicateMatcher: # new in 2.19
   Enabled: true
-# https://docs.rubocop.org/rubocop-capybara/cops_capybara.html#capybararedundantwithinfind
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara.html#capybararedundantwithinfind
 Capybara/RedundantWithinFind: # new in 2.20
   Enabled: true
-# https://docs.rubocop.org/rubocop-capybara/cops_capybara.html#capybarafindallfirst
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara.html#capybarafindallfirst
 Capybara/FindAllFirst: # new in 2.22
   Enabled: true
-# https://docs.rubocop.org/rubocop-capybara/cops_capybara.html#capybaranegationmatcheraftervisit
-Capybara/NegationMatcherAfterVisit: # new in 2.22
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara_rspec.html#capybararspecnegationmatcheraftervisit
+Capybara/RSpec/NegationMatcherAfterVisit: # new in 2.22
   Enabled: true
