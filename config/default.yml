@@ -176,12 +176,13 @@ Sgcop/HashFetchDefault:
     - https://rubystyle.guide/#hash-fetch-defaults
 
 Sgcop/Rspec/ActionMailerTestHelper:
-  Description: "ActionMailer::Base.deliveriesの代わりにActionMailer::TestHelperのメソッドを使用しよう"
+  Description: "ActionMailer::Base.deliveriesやhave_enqueued_mailの代わりにActionMailer::TestHelperのメソッドを使用しよう"
   Enabled: false
   Include:
     - "spec/**/*_spec.rb"
   Reference:
     - https://api.rubyonrails.org/classes/ActionMailer/TestHelper.html
+    - https://rspec.info/features/6-0/rspec-rails/matchers/have-enqueued-mail-matcher/
 
 Sgcop/Rspec/ActiveJobTestHelper:
   Description: "RSpecのActiveJobマッチャーの代わりにActiveJob::TestHelperのメソッドを使用しよう"

@@ -10,6 +10,8 @@ module RuboCop
           MSG_EMPTY = 'Use `assert_no_emails` instead of ActionMailer::Base.deliveries.empty?.'
           MSG_ANY = 'Use `assert_emails` to verify emails were sent instead of ActionMailer::Base.deliveries.any?.'
           MSG_ACCESS = 'Use `capture_emails { ... }` to access sent emails instead of ActionMailer::Base.deliveries.%<method>s.'
+          MSG_HAVE_ENQUEUED_MAIL = 'Use `assert_enqueued_email_with`, `assert_enqueued_emails(count)`, ' \
+                                   'or `assert_no_enqueued_emails` instead of `have_enqueued_mail`.'
 
           def_node_matcher :deliveries_call?, <<~PATTERN
             (send
@@ -31,11 +33,17 @@ module RuboCop
                   (const nil? :ActionMailer) :Base) :deliveries) :[] ...)
           PATTERN
 
+          def_node_matcher :have_enqueued_mail_matcher?, <<~PATTERN
+            (send nil? :have_enqueued_mail ...)
+          PATTERN
+
           def on_send(node)
             if deliveries_call?(node) && !node.parent&.send_type?
               add_offense(node, message: MSG)
             elsif deliveries_method_call?(node)
               check_deliveries_method(node)
+            elsif have_enqueued_mail_matcher?(node)
+              add_offense(node, message: MSG_HAVE_ENQUEUED_MAIL)
             end
           end
 

@@ -73,5 +73,39 @@ describe RuboCop::Cop::Sgcop::Rspec::ActionMailerTestHelper do
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/Rspec/ActionMailerTestHelper: Use ActionMailer::TestHelper methods instead of ActionMailer::Base.deliveries.
       RUBY
     end
+
+    it 'registers an offense for have_enqueued_mail matcher' do
+      expect_offense(<<~RUBY, 'spec/models/user_spec.rb')
+        expect { User.create }.to have_enqueued_mail(UserMailer, :welcome)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/Rspec/ActionMailerTestHelper: Use `assert_enqueued_email_with`, `assert_enqueued_emails(count)`, or `assert_no_enqueued_emails` instead of `have_enqueued_mail`.
+      RUBY
+    end
+
+    it 'registers an offense for have_enqueued_mail with chained .with' do
+      expect_offense(<<~RUBY, 'spec/models/user_spec.rb')
+        expect { User.create }.to have_enqueued_mail(UserMailer, :welcome).with(user_id: 1)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/Rspec/ActionMailerTestHelper: Use `assert_enqueued_email_with`, `assert_enqueued_emails(count)`, or `assert_no_enqueued_emails` instead of `have_enqueued_mail`.
+      RUBY
+    end
+
+    it 'registers an offense for have_enqueued_mail with not_to' do
+      expect_offense(<<~RUBY, 'spec/models/user_spec.rb')
+        expect { User.create }.not_to have_enqueued_mail(UserMailer, :welcome)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/Rspec/ActionMailerTestHelper: Use `assert_enqueued_email_with`, `assert_enqueued_emails(count)`, or `assert_no_enqueued_emails` instead of `have_enqueued_mail`.
+      RUBY
+    end
+
+    it 'registers an offense for have_enqueued_mail with to_not' do
+      expect_offense(<<~RUBY, 'spec/models/user_spec.rb')
+        expect { User.create }.to_not have_enqueued_mail(UserMailer, :welcome)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/Rspec/ActionMailerTestHelper: Use `assert_enqueued_email_with`, `assert_enqueued_emails(count)`, or `assert_no_enqueued_emails` instead of `have_enqueued_mail`.
+      RUBY
+    end
+
+    it 'does not register an offense for assert_enqueued_email_with' do
+      expect_no_offenses(<<~RUBY, 'spec/models/user_spec.rb')
+        assert_enqueued_email_with(UserMailer, :welcome) { User.create }
+      RUBY
+    end
   end
 end
