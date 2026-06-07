@@ -72,6 +72,7 @@ Metrics/BlockLength:
     - refine
     - included
     - namespace
+    - configure
   Exclude:
     - "config/routes.rb"
     - "spec/**/*"
