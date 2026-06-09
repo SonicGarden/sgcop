@@ -101,7 +101,7 @@ module RuboCop
 
           # Check for components
           if file_path.include?('app/components/')
-            return detect_component_context(node)
+            return detect_component_context(node, file_path)
           end
 
           # Check for controllers
@@ -120,15 +120,17 @@ module RuboCop
 
         def detect_view_context(_node, file_path)
           # Extract view path like "books/index" from "app/views/books/index.html.erb"
-          match = file_path.match(%r{app/views/(.+?)(?:\.[^/]+)*$})
-          return unless match
-
-          view_path = match[1]
+          view_path = extract_path_after(file_path, 'app/views/')
+          return unless view_path
 
           { type: :view, view_path: view_path }
         end
 
-        def detect_component_context(node)
+        def detect_component_context(node, file_path)
+          # Template files (e.g. erb) have no class/def AST nodes, so derive the
+          # scope from the file path like detect_view_context does.
+          return detect_component_template_context(file_path) unless file_path.end_with?('.rb')
+
           # Find the class definition
           class_node = node.each_ancestor(:class).first
           return unless class_node
@@ -138,6 +140,22 @@ module RuboCop
           return unless method_node
 
           { type: :component, class_node: class_node, method_node: method_node }
+        end
+
+        def detect_component_template_context(file_path)
+          # Extract component path like "book_component" from
+          # "app/components/book_component.html.erb"
+          component_path = extract_path_after(file_path, 'app/components/')
+          return unless component_path
+
+          { type: :component_template, component_path: component_path }
+        end
+
+        # Extract the extension-less path that follows +prefix+, e.g.
+        # ("app/views/books/index.html.erb", "app/views/") => "books/index"
+        def extract_path_after(file_path, prefix)
+          match = file_path.match(%r{#{Regexp.escape(prefix)}(.+?)(?:\.[^/]+)*$})
+          match && match[1]
         end
 
         def get_scoped_key(key_node, context)
@@ -156,6 +174,8 @@ module RuboCop
           when :component
             path = component_path(context[:class_node])
             "#{path}.#{key}"
+          when :component_template
+            "#{context[:component_path].tr('/', '.')}.#{key}"
           end
         end
 
