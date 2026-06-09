@@ -120,6 +120,36 @@ describe RuboCop::Cop::Sgcop::I18nLazyLookup do
       end
     end
 
+    context 'コンポーネントのerbテンプレート' do
+      it 'lazy lookupを使用している場合は警告される' do
+        expect_offense(<<~RUBY, 'app/components/book_component.html.erb')
+          t('.title')
+            ^^^^^^^^ Use explicit key for better maintainability.
+        RUBY
+
+        expect_correction(<<~RUBY)
+          t('book_component.title')
+        RUBY
+      end
+
+      it '明示的なキーを使用している場合は警告されない' do
+        expect_no_offenses(<<~RUBY, 'app/components/book_component.html.erb')
+          t('book_component.title')
+        RUBY
+      end
+
+      it 'ネストしたコンポーネントのerbでも正しく動作する' do
+        expect_offense(<<~RUBY, 'app/components/admin/user_card_component.html.erb')
+          t('.header')
+            ^^^^^^^^^ Use explicit key for better maintainability.
+        RUBY
+
+        expect_correction(<<~RUBY)
+          t('admin.user_card_component.header')
+        RUBY
+      end
+    end
+
     context 'translateメソッド' do
       it 'translateでも警告される' do
         expect_offense(<<~RUBY, 'app/controllers/books_controller.rb')

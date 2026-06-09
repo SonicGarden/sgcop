@@ -292,7 +292,7 @@ Sgcop/I18nLazyLookup:
   Include:
     - "app/controllers/**/*.rb"
     - "app/views/**/*"
-    - "app/components/**/*.rb"
+    - "app/components/**/*"
   Reference:
     - https://guides.rubyonrails.org/i18n.html#lazy-lookup
 
