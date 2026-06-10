@@ -467,6 +467,9 @@ Rails/HttpStatusNameConsistency: # new in 2.34
 # https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railsredirectbackorto
 Rails/RedirectBackOrTo: # new in 2.34
   Enabled: true
+# https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railssavebang
+Rails/SaveBang:
+  Enabled: true
 
 # https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecidenticalequalityassertion
 RSpec/IdenticalEqualityAssertion: # (new in 2.4)
