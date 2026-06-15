@@ -317,3 +317,7 @@ Sgcop/Capybara/SpecStabilityCheck:
     - expect
   WaitMatcherPatterns:
     - "^have_"
+
+Sgcop/MethodArgumentNameDuplication:
+  Description: "メソッド名と完全一致する引数名は紛らわしいので避けよう"
+  Enabled: true
