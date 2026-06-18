@@ -89,7 +89,7 @@ sgcopが提供するカスタムCopの一覧です。
 | [`Sgcop/I18nLocalizeFormatString`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/i18n_localize_format_string.rb) | I18n.lのformatオプションで文字列使用を制限し、シンボル使用を推奨 | ✅ |
 | [`Sgcop/MethodArgumentNameDuplication`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/method_argument_name_duplication.rb) | メソッド名と完全一致する引数名を禁止（紛らわしさを防止） | ✅ |
 | [`Sgcop/RestrictedViewHelpers`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/restricted_view_helpers.rb) | 特定のビューヘルパーメソッドの使用を制限（設定でカスタマイズ可能） | ✅ |
-| [`Sgcop/StrftimeRestriction`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/strftime_restriction.rb) | strftimeメソッドの使用を制限し、I18n.lの使用を推奨 | ✅ |
+| [`Sgcop/StrftimeRestriction`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/strftime_restriction.rb) | リテラル単語を含むstrftimeの使用を制限し、I18n.lの使用を推奨（指定子と区切り記号 `- / : . 空白` のみのフォーマットは許容） | ✅ |
 
 ## しつけ方
 
