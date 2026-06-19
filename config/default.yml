@@ -265,14 +265,13 @@ Sgcop/RestrictedViewHelpers:
   RestrictedMethods: []
 
 Sgcop/StrftimeRestriction:
-  Description: "strftimeではなくI18n.lを使用してローカライズしてください"
+  Description: "リテラル単語を含むstrftimeではなくI18n.lを使用してローカライズしてください。指定子と区切り記号(- / : . 空白)のみの場合は許容します"
   Enabled: true
   Include:
     - "app/**/*"
-  AllowedPatterns:
-    - "%a"  # 曜日の省略名 (Sun, Mon, etc.)
-    - "%A"  # 曜日の完全名 (Sunday, Monday, etc.)
-    - "%w"  # 曜日の数字 (0=Sunday, 1=Monday, etc.)
+  # 指定子(%Y 等)と区切り記号(- / : . 空白)のみで構成されるフォーマットはデフォルトで許容されます。
+  # ここに完全一致の文字列を追加すると、リテラルを含むフォーマットも例外的に許容できます。
+  AllowedPatterns: []
   Reference:
     - https://guides.rubyonrails.org/i18n.html#adding-date-time-formats
 
