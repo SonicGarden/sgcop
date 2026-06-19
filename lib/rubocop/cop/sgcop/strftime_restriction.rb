@@ -6,6 +6,21 @@ module RuboCop
       class StrftimeRestriction < Base
         MSG = 'strftimeではなくI18n.lを使用してローカライズしてください。'
 
+        # 指定子(%Y, %-d, %3N, %EY, %::z, %% 等)と区切り記号(- / : . 空白)のみで
+        # 構成されるフォーマットは許容する。年・月・日などのリテラル単語が混ざる場合は
+        # ロケール対応のため I18n.l を使うべきなので警告する。
+        ALLOWED_FORMAT_REGEXP = %r{
+          \A
+          (?:
+            %%
+            |
+            %[-_0^#+]*(?::{1,3})?\d*[EO]?[A-Za-z]
+            |
+            [-/:.\s]
+          )*
+          \z
+        }x.freeze
+
         def on_send(node)
           return unless node.method_name == :strftime
           return if allowed_pattern?(node)
@@ -22,7 +37,7 @@ module RuboCop
           return false unless first_argument.str_type?
 
           pattern = first_argument.value
-          allowed_patterns.include?(pattern)
+          ALLOWED_FORMAT_REGEXP.match?(pattern) || allowed_patterns.include?(pattern)
         end
 
         def allowed_patterns

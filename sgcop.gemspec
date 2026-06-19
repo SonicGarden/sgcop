@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 3.3'
 
-  spec.add_dependency 'rubocop', '~> 1.87.0'
+  spec.add_dependency 'rubocop', '~> 1.88.0'
   spec.add_dependency 'rubocop-capybara', '~> 2.23.0'
   spec.add_dependency 'rubocop-factory_bot', '~> 2.28.0'
   spec.add_dependency 'rubocop-performance', '~> 1.26.0'
