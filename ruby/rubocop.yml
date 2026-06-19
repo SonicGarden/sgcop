@@ -634,6 +634,10 @@ Style/SelectByRange: # new in 1.85
 # https://docs.rubocop.org/rubocop/latest/cops_style.html#styletallymethod
 Style/TallyMethod: # new in 1.85
   Enabled: true
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#stylemutableconstant
+Style/MutableConstant:
+  Enabled: true
+  Recursive: true
 
 # ============================================================
 # Lint
@@ -704,7 +708,7 @@ Layout/MultilineHashKeyLineBreaks:
 # https://docs.rubocop.org/rubocop/latest/cops_bundler.html#bundlergemcomment
 Bundler/GemComment:
   Enabled: true
-  IgnoredGems:
+  AllowedGems:
     - rails
   OnlyFor:
     - version_specifiers
