@@ -18,7 +18,6 @@ AllCops:
     - "bin/*"
     - "config/backup.rb"
     - "config/boot.rb"
-    - "config/environments/*"
     - "config/unicorn.rb"
     - "config/spring.rb"
     - "config/puma.rb"
@@ -116,6 +115,7 @@ Style:
     - "config/application.rb"
     - "config/ci.rb"
     - "config/initializers/*"
+    - "config/environments/*"
 
 # def show;endって書き方読みやすいとは思わない
 # https://docs.rubocop.org/rubocop/latest/cops_style.html#styleemptymethod
@@ -131,6 +131,7 @@ Style/IpAddresses:
 Layout:
   Exclude:
     - "config/initializers/*"
+    - "config/environments/*"
 
 # ============================================================
 # RSpec
