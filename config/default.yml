@@ -320,3 +320,9 @@ Sgcop/Capybara/SpecStabilityCheck:
 Sgcop/MethodArgumentNameDuplication:
   Description: "メソッド名と完全一致する引数名は紛らわしいので避けよう"
   Enabled: true
+
+Sgcop/ActiveStorageServiceConfiguration:
+  Description: "Active Storageを使うなら本番のservice設定を:local以外にしよう"
+  Enabled: true
+  Include:
+    - "config/environments/production.rb"
