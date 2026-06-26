@@ -82,6 +82,7 @@ sgcopが提供するカスタムCopの一覧です。
 
 | Cop名 | 説明 | デフォルト |
 |-------|------|:----------:|
+| [`Sgcop/ActiveStorageServiceConfiguration`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/active_storage_service_configuration.rb) | Active Storageでクラウドストレージを使う場合、本番のservice設定が無い・`:local`のままになっていないか確認 | ✅ |
 | [`Sgcop/EnumerizeDefaultOption`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/enumerize_default_option.rb) | Enumerizeのdefaultオプションの使用をチェック | ❌ |
 | [`Sgcop/EnumerizePredicatesOption`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/enumerize_predicates_option.rb) | Enumerizeのpredicatesオプションの使用を制限（メソッド名コンフリクトを防止） | ❌ |
 | [`Sgcop/HashFetchDefault`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/hash_fetch_default.rb) | Hash#fetchのデフォルト値の適切な使用を確認 | ✅ |
