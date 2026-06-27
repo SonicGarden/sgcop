@@ -8,19 +8,21 @@ module RuboCop
       # モデルに依存すると、後から DB を新規構築する際にエラーになる。
       #
       # 定数レシーバへのメソッド呼び出しを検出するが、以下は除外する:
-      # - ActiveRecord 等のフレームワーク定数（ActiveRecord::Migration[x.y] 宣言など）
-      # - そのファイル内でローカル定義された定数（配列/ハッシュ定数や一時クラスなど）
+      # - ActiveRecord / ActiveStorage のフレームワーク定数（ActiveRecord::Migration[x.y] 宣言など）
+      # - そのファイル内で定数代入された定数（配列/ハッシュ定数や一時クラス TempUser = Class.new(...) など）
       # - AllowedConstants で許可された定数
       class NoModelMethodsInMigration < Base
         MSG = 'Do not call model methods in migrations. Models change over time; use raw SQL or a rake task instead.'
 
-        # レシーバ先頭がこれらの定数なら除外する。
-        # Rails フレームワーク由来の定数と、マイグレーションで一時クラスを組み立てる際に
-        # 使われる Ruby 組み込みクラス（Class.new など）。
+        # レシーバ先頭がこれらの定数（の名前空間）なら除外する。
+        # - ActiveRecord: ActiveRecord::Migration[x.y] 継承宣言や ActiveRecord::Base.connection など、
+        #   全マイグレーションの根幹となるため無視必須。
+        # - ActiveStorage: Rails 標準の active_storage マイグレーション（ActiveStorage::Blob など）で使われる。
+        # その他の Rails 定数・Ruby 組み込みクラス（Time, Date など）はデフォルトでは無視せず、
+        # 必要なプロジェクトは AllowedConstants で許可する。
         IGNORED_CONSTANTS = %w[
-          ActiveRecord ActiveStorage ActiveSupport ActiveJob
-          ActionController ActionMailer ActionView ActionCable
-          Class Module Struct Hash Array String Integer Float Time Date DateTime
+          ActiveRecord
+          ActiveStorage
         ].freeze
 
         def on_new_investigation

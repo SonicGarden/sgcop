@@ -40,6 +40,19 @@ describe RuboCop::Cop::Sgcop::NoModelMethodsInMigration do
     RUBY
   end
 
+  it 'does not register an offense for ActiveStorage framework constants' do
+    expect_no_offenses(<<~RUBY)
+      ActiveStorage::Blob.service
+    RUBY
+  end
+
+  it 'registers an offense for a constant merely prefixed with an ignored name' do
+    expect_offense(<<~RUBY)
+      ActiveRecordModel.delete_all
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not call model methods in migrations. Models change over time; use raw SQL or a rake task instead.
+    RUBY
+  end
+
   it 'does not register an offense for method calls on a locally defined constant' do
     expect_no_offenses(<<~RUBY)
       KIND_LIST = %w[a b c]
@@ -49,10 +62,10 @@ describe RuboCop::Cop::Sgcop::NoModelMethodsInMigration do
     RUBY
   end
 
-  it 'does not register an offense for method calls on a locally defined CamelCase constant' do
-    expect_no_offenses(<<~RUBY)
-      Tmp = Class.new(ActiveRecord::Base)
-      Tmp.create(name: 'x')
+  it 'registers an offense for Ruby built-in class method calls' do
+    expect_offense(<<~RUBY)
+      Time.current
+      ^^^^^^^^^^^^ Do not call model methods in migrations. Models change over time; use raw SQL or a rake task instead.
     RUBY
   end
 
