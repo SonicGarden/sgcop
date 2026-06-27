@@ -69,6 +69,28 @@ describe RuboCop::Cop::Sgcop::NoModelMethodsInMigration do
     RUBY
   end
 
+  it 'registers an offense for a safe-navigation chained model method call' do
+    expect_offense(<<~RUBY)
+      User.find_by(id: 1)&.update(x: 1)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not call model methods in migrations. Models change over time; use raw SQL or a rake task instead.
+    RUBY
+  end
+
+  it 'registers an offense for a safe-navigation receiver chain' do
+    expect_offense(<<~RUBY)
+      User&.find_by(id: 1).update(x: 1)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Do not call model methods in migrations. Models change over time; use raw SQL or a rake task instead.
+    RUBY
+  end
+
+  it 'registers an offense for a namespaced constant sharing a last segment with a local constant' do
+    expect_offense(<<~RUBY)
+      User = []
+      Admin::User.delete_all
+      ^^^^^^^^^^^^^^^^^^^^^^ Do not call model methods in migrations. Models change over time; use raw SQL or a rake task instead.
+    RUBY
+  end
+
   context 'when the constant is allowed via AllowedConstants' do
     let(:allowed_constants) { ['User'] }
 

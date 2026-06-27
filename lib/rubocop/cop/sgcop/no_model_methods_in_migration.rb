@@ -9,7 +9,9 @@ module RuboCop
       #
       # 定数レシーバへのメソッド呼び出しを検出するが、以下は除外する:
       # - ActiveRecord / ActiveStorage のフレームワーク定数（ActiveRecord::Migration[x.y] 宣言など）
-      # - そのファイル内で定数代入された定数（配列/ハッシュ定数や一時クラス TempUser = Class.new(...) など）
+      # - そのファイル内で定数代入された定数への後続呼び出し（例: KIND_LIST = %w[...] の KIND_LIST.each、
+      #   TempUser = Class.new(...) の TempUser.delete_all）。
+      #   ただし代入右辺の呼び出し（Class.new(...) など）自体は検出対象に含まれる。
       # - AllowedConstants で許可された定数
       class NoModelMethodsInMigration < Base
         MSG = 'Do not call model methods in migrations. Models change over time; use raw SQL or a rake task instead.'
@@ -30,11 +32,22 @@ module RuboCop
           return unless ast
 
           @local_constants = collect_local_constants(ast)
-
-          ast.each_node(:send) do |node|
-            check_send(node)
-          end
+          @allowed_constants = Array(cop_config['AllowedConstants'])
         end
+
+        # send（通常呼び出し）と csend（&. 呼び出し）を同等に扱う。
+        def on_send(node)
+          # チェーンの内側ノード（例: Post.where(...) の where）は最外ノードから辿るので、
+          # 二重に offense を出さないよう、レシーバ位置にあるものはスキップする。
+          return if chained_receiver?(node)
+
+          base = const_receiver(node)
+          return unless base
+          return if excluded_constant?(base.const_name)
+
+          add_offense(node)
+        end
+        alias on_csend on_send
 
         private
 
@@ -43,48 +56,23 @@ module RuboCop
           ast.each_node(:casgn).to_set { |casgn| casgn.children[1].to_s }
         end
 
-        def check_send(node)
-          # チェーンの内側 send（例: Post.where(...) の where）は最外 send から辿るので
-          # 二重に offense を出さないよう、レシーバ位置にある send はスキップする。
-          return if chained_receiver?(node)
-
-          base = const_receiver(node)
-          return unless base
-
-          const_name = base.const_name
-          return if ignored_constant?(const_name)
-          return if local_constant?(const_name)
-          return if allowed_constant?(const_name)
-
-          add_offense(node)
-        end
-
         def chained_receiver?(node)
-          node.parent&.send_type? && node.parent.receiver == node
+          node.parent&.call_type? && node.parent.receiver == node
         end
 
         # チェーンを辿って先頭の const ノードを返す（無ければ nil）。
+        # call_type? は send / csend の両方で true。
         def const_receiver(node)
           receiver = node.receiver
-          receiver = receiver.receiver while receiver&.send_type?
+          receiver = receiver.receiver while receiver&.call_type?
           receiver if receiver&.const_type?
         end
 
-        def ignored_constant?(const_name)
-          IGNORED_CONSTANTS.include?(const_name.split('::').first)
-        end
-
-        def local_constant?(const_name)
-          segments = const_name.split('::')
-          @local_constants.include?(segments.first) || @local_constants.include?(segments.last)
-        end
-
-        def allowed_constant?(const_name)
-          allowed_constants.include?(const_name)
-        end
-
-        def allowed_constants
-          Array(cop_config['AllowedConstants'])
+        def excluded_constant?(const_name)
+          prefix = const_name.split('::').first
+          IGNORED_CONSTANTS.include?(prefix) ||
+            @local_constants.include?(prefix) ||
+            @allowed_constants.include?(const_name)
         end
       end
     end
