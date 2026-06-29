@@ -35,13 +35,17 @@ jobs:
           git add sgcop.gemspec
           git commit -m "chore: update gem version constraints"
           git push --force origin "$branch"
-          # 既存の未マージPRがあれば作り直さない（常に1本に保つ）
-          if [ -z "$(gh pr list --head "$branch" --state open --json number --jq '.[].number')" ]; then
+          # 常に1本のPRに保つ。既存の未マージPRがあれば本文を更新し、無ければ新規作成する
+          # （force push で diff だけ更新され本文が古いまま乖離するのを防ぐ）
+          pr_number="$(gh pr list --head "$branch" --state open --json number --jq '.[].number')"
+          if [ -z "$pr_number" ]; then
             gh pr create \
               --title "chore: update gem version constraints" \
               --body-file pr_body.md \
               --base main \
               --head "$branch"
+          else
+            gh pr edit "$pr_number" --body-file pr_body.md
           fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
