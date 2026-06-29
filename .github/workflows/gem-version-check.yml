@@ -12,11 +12,11 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3'
+          ruby-version: '4.0'
 
       - name: Check and update gem versions
         run: ruby .github/scripts/check_gem_versions.rb
