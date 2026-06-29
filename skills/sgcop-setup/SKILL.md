@@ -1,6 +1,8 @@
 ---
 name: sgcop-setup
-description: sgcop の RuboCop 設定を、導入先プロジェクトの .rubocop.yml にセットアップ・更新する。inherit_gem の基本導入を整えたうえで、sgcop のデフォルト無効カスタム Cop（Sgcop/*）を 1 つずつ趣旨説明・推奨つきで確認しながら有効化する。ユーザーが明示的に呼び出したときのみ実行する。
+description: sgcop の RuboCop 設定を、導入先プロジェクトの .rubocop.yml にセットアップ・更新する。inherit_gem の基本導入を整えたうえで、sgcop のデフォルト無効カスタム Cop（Sgcop/*）を 1 つずつ趣旨説明・推奨つきで確認しながら有効化する。
+disable-model-invocation: true
+license: MIT
 ---
 
 # sgcop-setup
