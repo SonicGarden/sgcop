@@ -1,0 +1,47 @@
+name: Gem Version Check
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # 毎週月曜 09:00 UTC
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Check and update gem versions
+        run: ruby .github/scripts/check_gem_versions.rb
+
+      - name: Create PR if updated
+        run: |
+          # スクリプトが pr_body.md を生成した場合のみ更新あり（判定の単一ソース）
+          if [ ! -f pr_body.md ]; then
+            echo "No updates found."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          branch="gem-version-update"
+          git checkout -B "$branch"
+          git add sgcop.gemspec
+          git commit -m "chore: update gem version constraints"
+          git push --force origin "$branch"
+          # 既存の未マージPRがあれば作り直さない（常に1本に保つ）
+          if [ -z "$(gh pr list --head "$branch" --state open --json number --jq '.[].number')" ]; then
+            gh pr create \
+              --title "chore: update gem version constraints" \
+              --body-file pr_body.md \
+              --base main \
+              --head "$branch"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
