@@ -62,6 +62,7 @@ sgcopが提供するカスタムCopの一覧です。
 
 | Cop名 | 説明 | デフォルト |
 |-------|------|:----------:|
+| [`Sgcop/Capybara/FillInArgument`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/capybara/fill_in_argument.rb) | fill_inの第1引数をラベルまたはname属性のどちらかに統一 | ❌ |
 | [`Sgcop/Capybara/FragileSelector`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/capybara/fragile_selector.rb) | 脆弱なCSSセレクタの使用を防止（data属性の使用を推奨） | ❌ |
 | [`Sgcop/Capybara/Matchers`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/capybara/matchers.rb) | Capybaraマッチャーの適切な使用をチェック | ✅ |
 | [`Sgcop/Capybara/Sleep`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/capybara/sleep.rb) | テストでのsleepの使用を制限 | ✅ |

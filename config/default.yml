@@ -317,6 +317,18 @@ Sgcop/Capybara/SpecStabilityCheck:
   WaitMatcherPatterns:
     - "^have_"
 
+Sgcop/Capybara/FillInArgument:
+  Description: "fill_inの第1引数をラベルまたはname属性のどちらかに統一しよう"
+  Enabled: false
+  EnforcedStyle: label
+  SupportedStyles:
+    - label
+    - name
+  Include:
+    - "spec/features/**/*_spec.rb"
+    - "spec/system/**/*_spec.rb"
+    - "spec/components/**/*_spec.rb"
+
 Sgcop/MethodArgumentNameDuplication:
   Description: "メソッド名と完全一致する引数名は紛らわしいので避けよう"
   Enabled: true
