@@ -649,10 +649,6 @@ FactoryBot/ExcessiveCreateList: # new in 2.25
 # https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performancezipwithoutblock
 Performance/ZipWithoutBlock: # new in 1.24
   Enabled: true
-
-# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara.html#capybaraclicklinkorbuttonstyle
-Capybara/ClickLinkOrButtonStyle: # new in 2.19
-  Enabled: false
 # https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara_rspec.html#capybararspeccurrentpathexpectation
 Capybara/RSpec/CurrentPathExpectation: # new in 1.18
   Enabled: true
