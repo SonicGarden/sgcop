@@ -338,3 +338,10 @@ Sgcop/ActiveStorageServiceConfiguration:
   Enabled: true
   Include:
     - "config/environments/production.rb"
+
+Sgcop/NoModelMethodsInMigration:
+  Description: "マイグレーションでモデルのメソッドを使わない。モデルは変わるのでraw SQLやrake taskを使おう"
+  Enabled: true
+  AllowedConstants: []
+  Include:
+    - "db/migrate/*.rb"

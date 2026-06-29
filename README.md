@@ -44,6 +44,7 @@ sgcopが提供するカスタムCopの一覧です。
 | [`Sgcop/LoadDefaultsVersionMatch`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/load_defaults_version_match.rb) | config.load_defaultsのバージョンがRailsバージョンと一致することを確認 | ✅ |
 | [`Sgcop/NestedResourcesWithoutModule`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/nested_resources_without_module.rb) | ネストされたルーティングでmoduleオプションの使用を推奨 | ❌ |
 | [`Sgcop/NoAcceptsNestedAttributesFor`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/no_accepts_nested_attributes_for.rb) | accepts_nested_attributes_forの使用を制限 | ❌ |
+| [`Sgcop/NoModelMethodsInMigration`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/no_model_methods_in_migration.rb) | マイグレーションでモデルのメソッド呼び出しを検出 | ✅ |
 | [`Sgcop/ErrorMessageFormat`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/error_message_format.rb) | エラーメッセージはシンボルを使用することを強制 | ❌ |
 | [`Sgcop/OnLoadArguments`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/on_load_arguments.rb) | on_loadブロックの引数使用をチェック | ✅ |
 | [`Sgcop/PreferAbsolutePathPartial`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/prefer_absolute_path_partial.rb) | パーシャルファイルのrenderは絶対パスで指定（autocorrect対応） | ✅ |
