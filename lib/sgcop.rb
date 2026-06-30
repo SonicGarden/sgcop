@@ -7,6 +7,7 @@ Sgcop::Inject.defaults!
 require 'rubocop/cop/sgcop/simple_format'
 require 'rubocop/cop/sgcop/request_remote_ip'
 require 'rubocop/cop/sgcop/simple_form_association'
+require 'rubocop/cop/sgcop/form_label_first_argument'
 require 'rubocop/cop/sgcop/unscoped'
 require 'rubocop/cop/sgcop/ujs_options'
 require 'rubocop/cop/sgcop/active_job_queue_adapter'
