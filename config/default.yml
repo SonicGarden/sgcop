@@ -15,6 +15,10 @@ Sgcop/SimpleFormAssociation:
 Sgcop/FormLabelFirstArgument:
   Description: "f.labelの第一引数にテキストを渡すと属性名としてhumanizeされてしまうよ。第一引数は属性名(Symbol)にして、テキストは第二引数に渡そう"
   Enabled: true
+  Include:
+    - "app/views/**/*"
+    - "app/helpers/**/*.rb"
+    - "app/components/**/*"
   Reference:
     - https://github.com/SonicGarden/copy-tuner-ruby-client/pull/131
 
