@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # yaml の各ルールにドキュメントのリンクを付加するスクリプト
 
 require 'fileutils'
@@ -10,7 +12,7 @@ TOP_CATEGORY_MAP = {
   'Capybara' => 'capybara',
   'FactoryBot' => 'factory_bot',
 }.freeze
-DOC_COMMENT_REGEXP = %r{\A# https://docs\.rubocop\.org/}.freeze
+DOC_COMMENT_REGEXP = %r{\A# https://docs\.rubocop\.org/}
 
 def doc_url(cop_name)
   words = cop_name.split('/')
@@ -45,6 +47,8 @@ end
 FILES = %w[
   ruby/rubocop.yml
   rails/rubocop.yml
+  ruby/rubocop_strict.yml
+  rails/rubocop_strict.yml
 ].freeze
 
 FILES.each do |filename|
