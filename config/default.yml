@@ -12,6 +12,16 @@ Sgcop/SimpleFormAssociation:
   Description: "simple_formのassociationメソッドではcollectionを明示しよう"
   Enabled: true
 
+Sgcop/FormLabelFirstArgument:
+  Description: "f.labelの第一引数にテキストを渡すと属性名としてhumanizeされてしまうよ。第一引数は属性名(Symbol)にして、テキストは第二引数に渡そう"
+  Enabled: true
+  Include:
+    - "app/views/**/*"
+    - "app/helpers/**/*.rb"
+    - "app/components/**/*"
+  Reference:
+    - https://github.com/SonicGarden/copy-tuner-ruby-client/pull/131
+
 Sgcop/RequestRemoteIp:
   Description: "クライアントのIPを取得するならrequest.remote_ipの必要があるよ"
   Enabled: true
