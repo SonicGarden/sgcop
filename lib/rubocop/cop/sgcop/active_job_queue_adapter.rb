@@ -20,10 +20,10 @@ module RuboCop
         end
 
         def active_job_adapter_set?(node)
-          return unless node.send_type?
-          return unless node.method_name == :queue_adapter=
-          return unless node.receiver&.method_name == :active_job
-          return unless node.receiver.receiver&.type == :lvar && node.receiver.receiver&.children&.first == :config
+          return false unless node.send_type?
+          return false unless node.method_name == :queue_adapter=
+          return false unless node.receiver&.method_name == :active_job
+          return false unless node.receiver.receiver&.type == :lvar && node.receiver.receiver&.children&.first == :config
 
           true
         end
