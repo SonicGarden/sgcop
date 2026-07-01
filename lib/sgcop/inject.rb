@@ -4,7 +4,7 @@ module Sgcop
 
     def self.defaults!
       path = File.absolute_path(DEFAULT_FILE)
-      hash = RuboCop::ConfigLoader.send(:load_yaml_configuration, path)
+      hash = RuboCop::ConfigLoader.__send__(:load_yaml_configuration, path)
       config = RuboCop::Config.new(hash, path)
       puts "configuration from #{DEFAULT_FILE}" if RuboCop::ConfigLoader.debug?
       config = RuboCop::ConfigLoader.merge_with_default(config, path)

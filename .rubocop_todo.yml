@@ -63,8 +63,3 @@ Style/Documentation:
 Style/ReturnNilInPredicateMethodDefinition:
   Exclude:
     - 'lib/rubocop/cop/sgcop/active_job_queue_adapter.rb'
-
-# Offense count: 1
-Style/Send:
-  Exclude:
-    - 'lib/sgcop/inject.rb'
