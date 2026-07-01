@@ -5,6 +5,7 @@ module RuboCop
     module Sgcop
       class ResourcesWithoutOnly < Base
         extend AutoCorrector
+
         MSG = 'Use `only:` option in resource/resources routing.'
 
         def on_send(node)
@@ -34,16 +35,17 @@ module RuboCop
           false
         end
 
-        def autocorrect(corrector, node) # rubocop:disable Metrics/PerceivedComplexity
+        def autocorrect(corrector, node)
           method_name = node.method_name
           default_actions = default_actions_for(method_name)
 
           except_values = extract_except_values(node)
-          only_actions = if except_values
-                           default_actions - except_values
-                         else
-                           default_actions
-                         end
+          only_actions =
+            if except_values
+              default_actions - except_values
+            else
+              default_actions
+            end
 
           if node.arguments.any?(&:hash_type?)
             # 既存のハッシュオプションがある場合
@@ -78,9 +80,9 @@ module RuboCop
           when :sym
             [value_node.value]
           when :array
-            value_node.children.map do |child|
+            value_node.children.map { |child|
               child.value if child.sym_type?
-            end.compact
+            }.compact
           else
             []
           end

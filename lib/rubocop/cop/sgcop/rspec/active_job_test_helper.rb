@@ -20,7 +20,7 @@ module RuboCop
           def on_send(node)
             active_job_matcher?(node) do |matcher_name|
               message = message_for_matcher(matcher_name)
-              add_offense(node, message: message)
+              add_offense(node, message:)
             end
           end
 

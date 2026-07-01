@@ -56,16 +56,14 @@ module RuboCop
             variable_name = node.method_name
             return unless let_variable_defined?(variable_name, block_node)
 
-            add_offense(node, message: message)
+            add_offense(node, message:)
           end
 
           def let_variable_defined?(variable_name, block_node)
             parent_node = block_node.parent
             while parent_node
               parent_node.each_child_node do |child|
-                if let_definition?(child) == variable_name
-                  return true
-                end
+                return true if let_definition?(child) == variable_name
               end
               parent_node = parent_node.parent
             end

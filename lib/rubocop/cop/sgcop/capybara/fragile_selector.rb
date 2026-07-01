@@ -72,7 +72,7 @@ module RuboCop
 
           def css_class_selector?(selector)
             selector.match?(/^\.[\w-]+/) || selector.match?(/\s+\.[\w-]+/) ||
-              selector.match?(/^[\w]+\.[\w\\:_-]+/)
+              selector.match?(/^\w+\.[\w\\:_-]+/)
           end
 
           def id_selector?(selector)

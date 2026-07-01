@@ -4,8 +4,8 @@ describe RuboCop::Cop::Sgcop::Capybara::Matchers, :config do
   let(:cop_config) do
     {
       'PreferredMethods' => {
-        'have_text' => 'have_content'
-      }
+        'have_text' => 'have_content',
+      },
     }
   end
 

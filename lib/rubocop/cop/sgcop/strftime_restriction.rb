@@ -19,7 +19,7 @@ module RuboCop
             [-/:.\s]
           )*
           \z
-        }x.freeze
+        }x
 
         def on_send(node)
           return unless node.method_name == :strftime

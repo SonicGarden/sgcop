@@ -16,7 +16,7 @@ module RuboCop
 
             message = format(MSG, prefer: preferred_method, current: node.method_name)
 
-            add_offense(node.loc.selector, message: message) do |corrector|
+            add_offense(node.loc.selector, message:) do |corrector|
               corrector.replace(node.loc.selector, preferred_method(node.method_name))
             end
           end

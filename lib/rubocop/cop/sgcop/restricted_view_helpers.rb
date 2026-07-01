@@ -12,7 +12,7 @@ module RuboCop
           return unless restricted_methods.key?(method_name)
 
           message = restricted_methods[method_name]
-          add_offense(node, message: message)
+          add_offense(node, message:)
         end
 
         private

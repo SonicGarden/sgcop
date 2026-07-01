@@ -27,9 +27,7 @@ module RuboCop
               next
             end
 
-            if parent.block_type? && resources_method?(parent.send_node)
-              return true
-            end
+            return true if parent.block_type? && resources_method?(parent.send_node)
 
             parent = parent.parent
           end

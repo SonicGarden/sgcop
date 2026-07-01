@@ -9,9 +9,7 @@ module RuboCop
 
         def on_send(node)
           receiver, method_name, *args = *node
-          if receiver.nil? && method_name == :simple_format && warning_args?(args)
-            add_offense(node)
-          end
+          add_offense(node) if receiver.nil? && method_name == :simple_format && warning_args?(args)
         end
 
         private

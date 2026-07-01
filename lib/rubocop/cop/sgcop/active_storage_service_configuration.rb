@@ -42,9 +42,10 @@ module RuboCop
         # 欠如時の offense は Rails.application.configure の呼び出し部分を指す。
         # configure ブロックが無ければ AST 全体にフォールバックする。
         def missing_offense_range(ast)
-          configure_node = ast.each_node(:block).find do |block|
-            block.send_node.method?(:configure)
-          end
+          configure_node =
+            ast.each_node(:block).find do |block|
+              block.send_node.method?(:configure)
+            end
           (configure_node&.send_node || ast).source_range
         end
 

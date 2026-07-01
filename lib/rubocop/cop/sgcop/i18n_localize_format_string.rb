@@ -13,9 +13,7 @@ module RuboCop
           return unless format_arg
 
           # 文字列でフォーマットが指定されている場合は警告
-          if format_arg.str_type?
-            add_offense(format_arg)
-          end
+          add_offense(format_arg) if format_arg.str_type?
         end
 
         private

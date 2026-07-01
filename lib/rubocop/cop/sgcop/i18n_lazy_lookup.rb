@@ -95,14 +95,10 @@ module RuboCop
           file_path = processed_source.name
 
           # Check for views
-          if file_path.include?('app/views/')
-            return detect_view_context(node, file_path)
-          end
+          return detect_view_context(node, file_path) if file_path.include?('app/views/')
 
           # Check for components
-          if file_path.include?('app/components/')
-            return detect_component_context(node, file_path)
-          end
+          return detect_component_context(node, file_path) if file_path.include?('app/components/')
 
           # Check for controllers
           detect_controller_context(node)
@@ -123,7 +119,7 @@ module RuboCop
           view_path = extract_path_after(file_path, 'app/views/')
           return unless view_path
 
-          { type: :view, view_path: view_path }
+          { type: :view, view_path: }
         end
 
         def detect_component_context(node, file_path)
@@ -139,7 +135,7 @@ module RuboCop
           method_node = node.each_ancestor(:def).first
           return unless method_node
 
-          { type: :component, class_node: class_node, method_node: method_node }
+          { type: :component, class_node:, method_node: }
         end
 
         def detect_component_template_context(file_path)
@@ -148,7 +144,7 @@ module RuboCop
           component_path = extract_path_after(file_path, 'app/components/')
           return unless component_path
 
-          { type: :component_template, component_path: component_path }
+          { type: :component_template, component_path: }
         end
 
         # Extract the extension-less path that follows +prefix+, e.g.
@@ -183,11 +179,12 @@ module RuboCop
           controller_name = controller_node.identifier.source
           module_name = controller_node.parent_module_name
 
-          path = if module_name == 'Object'
-                   controller_name
-                 else
-                   "#{module_name}::#{controller_name}"
-                 end
+          path =
+            if module_name == 'Object'
+              controller_name
+            else
+              "#{module_name}::#{controller_name}"
+            end
           path.delete_suffix('Controller').underscore
         end
 

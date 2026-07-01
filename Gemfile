@@ -4,6 +4,6 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'bundler'
+gem 'debug'
 gem 'rake', '~> 13.0'
 gem 'rspec', '~> 3.9'
-gem 'debug'

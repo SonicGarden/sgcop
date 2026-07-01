@@ -14,9 +14,7 @@ module RuboCop
           enumerize_with_default?(node) do |pairs|
             pairs.each do |pair|
               key, _value = *pair
-              if key.sym_type? && key.value == :default
-                add_offense(pair)
-              end
+              add_offense(pair) if key.sym_type? && key.value == :default
             end
           end
         end

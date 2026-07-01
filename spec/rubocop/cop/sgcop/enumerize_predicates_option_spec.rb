@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe RuboCop::Cop::Sgcop::EnumerizePredicatesOption do
   subject(:cop) { described_class.new(config) }
+
   let(:config) { RuboCop::Config.new(cop_config) }
   let(:cop_config) { { 'Sgcop/EnumerizePredicatesOption' => { 'AllowWithPrefix' => allow_with_prefix } } }
   let(:allow_with_prefix) { false }

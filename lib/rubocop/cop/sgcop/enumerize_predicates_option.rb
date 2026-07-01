@@ -19,7 +19,7 @@ module RuboCop
 
               if should_register_offense?(value)
                 message = offense_message(value)
-                add_offense(pair, message: message)
+                add_offense(pair, message:)
               end
             end
           end
