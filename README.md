@@ -113,18 +113,28 @@ sgcopが提供するカスタムCopの一覧です。
 | [`Sgcop/RestrictedViewHelpers`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/restricted_view_helpers.rb) | 特定のビューヘルパーメソッドの使用を制限（設定でカスタマイズ可能） | ✅ |
 | [`Sgcop/StrftimeRestriction`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/strftime_restriction.rb) | リテラル単語を含むstrftimeの使用を制限し、I18n.lの使用を推奨（指定子と区切り記号 `- / : . 空白` のみのフォーマットは許容） | ✅ |
 
-## しつけ方
+## Agent Skill
 
-http://blog.onk.ninja/2015/10/27/rubocop-getting-started
+sgcop は Claude Code 向けの Agent Skill を同梱しています。導入や `.rubocop_todo.yml` の解消を対話的に進められます。
 
-自動修正して楽したいならこちら
+| スキル名 | 説明 |
+|----------|------|
+| [`sgcop-setup`](skills/sgcop-setup/SKILL.md) | 導入先プロジェクトの `.rubocop.yml` に sgcop をセットアップ・更新する。標準/厳格版の方針決定、既存設定との重複整理、`.rubocop_todo.yml` の生成までを支援 |
+| [`rubocop-todo-fix`](skills/rubocop-todo-fix/SKILL.md) | `.rubocop_todo.yml` に残った違反を、Cop 単位で1つずつ段階的に潰す |
 
-http://blog.onk.ninja/2015/10/27/rubocop-getting-started#治安の悪いアプリに-rubocop-を導入する
+### インストール方法
 
-### 参考サイト
+GitHub CLI で導入先プロジェクトにインストールする。
 
-- Rubocop チートシート http://qiita.com/kitaro_tn/items/abb881c098b3df3f9871
-- 設定一覧(本家) https://github.com/bbatsov/rubocop/tree/master/config
+```sh
+gh skill install SonicGarden/sgcop
+```
+
+> `gh skill` は GitHub CLI のプレビュー機能。
+
+また、[bundler-skills](https://github.com/aki77/bundler-skills) gem を使うと、sgcop を更新するたびに `bundle install` でスキルを自動同期できる。
+
+いずれのスキルも自動発火はしないため、Claude Code 上で `/sgcop-setup` や `/rubocop-todo-fix` のように明示的に呼び出す。
 
 ## 設定ファイルにドキュメントのリンクを付加するスクリプト(sgcop 開発者向け)
 
