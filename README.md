@@ -138,7 +138,7 @@ sgcop は Claude Code 向けの Agent Skill を同梱しています。導入や
 | スキル名 | 説明 |
 |----------|------|
 | [`sgcop-setup`](skills/sgcop-setup/SKILL.md) | 導入先プロジェクトの `.rubocop.yml` に sgcop をセットアップ・更新する。標準/厳格版の方針決定、既存設定との重複整理、`.rubocop_todo.yml` の生成までを支援 |
-| [`rubocop-todo-fix`](skills/rubocop-todo-fix/SKILL.md) | `.rubocop_todo.yml` に残った違反を、Cop 単位で1つずつ段階的に潰す |
+| [`rubocop-todo-fix`](skills/rubocop-todo-fix/SKILL.md) | `.rubocop_todo.yml` に残った違反を段階的に潰す。safe autocorrect だけで完結する Cop はまとめてバッチ、それ以外は1つずつ |
 
 ### インストール方法
 

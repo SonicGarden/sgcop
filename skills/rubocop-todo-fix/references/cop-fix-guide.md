@@ -1,8 +1,9 @@
 # Cop 修正ガイド
 
-`.rubocop_todo.yml` の違反を Tier 順に潰すときの補助資料。SKILL.md 本体を肥大化させないため、
-判断材料や具体的な書き方はここに切り出す。実行コマンド・コーディング規約・コミット記法は
-**そのプロジェクトの流儀を優先**し、ここに書いた一般論で上書きしない。
+`.rubocop_todo.yml` の違反を潰すときの補助資料。safe autocorrect だけで完結する Cop の
+バッチ処理（経路A）と、それ以外の Cop を Tier 順に潰す進め方（経路B）を扱う。SKILL.md 本体を
+肥大化させないため、判断材料や具体的な書き方はここに切り出す。実行コマンド・コーディング規約・
+コミット記法は **そのプロジェクトの流儀を優先**し、ここに書いた一般論で上書きしない。
 
 ## autocorrect 対応の見分け方
 
@@ -26,7 +27,37 @@ Style/StringLiterals:
 
 → `# Offense count: 12` が違反件数、`safe autocorrecting` なので Tier 1 で潰せる、と読む。
 
-## Tier 別の進め方
+## safe バッチの組み方（経路A）
+
+見出しが `# This cop supports safe autocorrecting...` で `unsafe autocorrecting` の記載が無い
+Cop（= safe autocorrect だけで完結する Cop）は、複数まとめてバッチとして1サイクルで処理できる
+（SKILL.md 手順2〜4）。
+
+- **選定**: `# Offense count` を Cop ごとに積み上げ、**合計件数がしきい値（目安100件）に収まる
+  範囲**でバッチにする。しきい値を超える手前の Cop で打ち切り、1 Cop の途中では割らない
+  （1 Cop は差分の由来を追跡できる最小単位なので、バッチの中でも分割しない）。
+- **混在**: 系統の異なる Cop（`Style/*` と `Layout/*` など）を混ぜてよい。全て `-a` だけで
+  挙動を変えずに完結するため、混在させても切り分けの支障が少ない。
+- **実行と判定を1回で済ませる**: `-a` の実行結果（残った offense の一覧）がそのまま
+  Cop 別の残違反判定になる。同じ `--only` 指定での再実行や、SKILL.md 手順 6 の検証のための
+  別実行は不要——バッチが1コマンドで選定〜検証まで完結するのが、1 Cop ずつ処理するより
+  サイクル数を減らせる理由でもある。
+- **一部残った場合**: 上記の結果、違反ゼロにならなかった Cop があれば、**その Cop だけ
+  バッチから切り離し**、経路B（Tier 2 → Tier 3）の通常フローに回す。バッチ自体は safe で
+  完結した Cop だけでサイクルを完了させる。
+
+```bash
+bundle exec rubocop --only Style/StringLiterals,Layout/TrailingWhitespace,Style/FrozenStringLiteralComment -a
+```
+
+不安なら実行前に対象 Cop 一覧と合計件数をユーザーに提示して合意を取ってから適用する。
+
+実行結果を読むときは `Offenses:` の一覧と、末尾の `X files inspected, Y offenses detected/corrected`
+というサマリ行に着目する。rubocop のバージョンと `.rubocop_todo.yml` 生成時のバージョンがずれていると
+「新しい Cop が未設定」といった無関係な警告がまとまって出力されることがあるが、これは offense 報告
+ではないので無視してよい。
+
+## Tier 別の進め方（経路B: 従来の1 Cop）
 
 対象 Cop を todo から削除したあと（SKILL.md 手順 3）、その Cop に絞って実行するのが基本。
 **`--only <Cop>` を付ける**と、まだ todo に残した他 Cop の出力が混ざらず進捗が見やすい。
@@ -41,6 +72,8 @@ Style/StringLiterals:
 
 「unsafe autocorrect 対応」でも Tier 1（`-a`）を最初に試すのは、一部の違反は safe で直せる場合があるため。
 `rubocop_todo.yml` の `unsafe` 表記は「最高品質の Tier」を示すだけで、safe が使えないという意味ではない。
+なお「safe autocorrecting のみ」の Cop は経路Aのバッチ対象になるので、ここで単体処理するのは
+主に unsafe・autocorrect 非対応の Cop（経路B）になる。
 
 ### Tier 1: safe autocorrect
 
