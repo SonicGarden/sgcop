@@ -1,0 +1,26 @@
+# sgcop RSpec 厳格版（strict）設定
+#
+# 通常版 (rubocop_rspec.yml) に加え、RSpec 関連のおすすめ Cop（Sgcop カスタム Cop 含む）を
+# 有効化する。Rails ではない純 Ruby プロジェクトでも
+# `inherit_gem: sgcop: [ruby/rubocop_strict.yml, ruby/rubocop_rspec_strict.yml]` として単体で取り込める。
+inherit_from: rubocop_rspec.yml
+
+# 中身のない example group を禁止する
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecemptyexamplegroup
+RSpec/EmptyExampleGroup:
+  Enabled: true
+
+# ActionMailer::Base.deliveries 等の代わりに ActionMailer::TestHelper の使用を推奨
+# https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/action_mailer_test_helper.rb
+Sgcop/Rspec/ActionMailerTestHelper:
+  Enabled: true
+
+# RSpec の ActiveJob マッチャーの代わりに ActiveJob::TestHelper のメソッド使用を推奨
+# https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/active_job_test_helper.rb
+Sgcop/Rspec/ActiveJobTestHelper:
+  Enabled: true
+
+# RSpec の expectation ではメソッド呼び出しではなくリテラル値の使用を推奨
+# https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/no_method_call_in_expectation.rb
+Sgcop/Rspec/NoMethodCallInExpectation:
+  Enabled: true

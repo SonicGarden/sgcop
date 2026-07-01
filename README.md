@@ -26,6 +26,18 @@ inherit_gem:
   sgcop: rails/rubocop.yml
 ```
 
+RSpec を使うが Rails ではないプロジェクトの場合は、`ruby/rubocop.yml` に加えて RSpec 関連の推奨設定
+（`RSpec/*`, `Sgcop/Rspec/*`）を取り込む `ruby/rubocop_rspec.yml` も併せて指定する。`rails/rubocop.yml`
+はこの `ruby/rubocop_rspec.yml` を内部で継承しているため、Rails プロジェクトでは何もしなくても RSpec
+関連設定が適用される。
+
+```
+inherit_gem:
+  sgcop:
+    - ruby/rubocop.yml
+    - ruby/rubocop_rspec.yml
+```
+
 ### 厳格版（strict）設定
 
 標準設定ではデフォルト無効にしている汎用 Cop のうち、コードの一貫性をより高めるためにおすすめの Cop（`Layout/ClassStructure`, `Style/MethodCallWithArgsParentheses`, `Style/ClassMethodsDefinitions`, `Rails/WhereRange` など）をまとめて有効化する「厳格版」設定を用意しています。新規プロジェクトや、より統一感を重視したいプロジェクトにおすすめです。
@@ -36,6 +48,12 @@ inherit_gem:
 # Rails ではないプロジェクト
 inherit_gem:
   sgcop: ruby/rubocop_strict.yml
+
+# RSpec を使うが Rails ではないプロジェクト
+inherit_gem:
+  sgcop:
+    - ruby/rubocop_strict.yml
+    - ruby/rubocop_rspec_strict.yml
 
 # Rails プロジェクト
 inherit_gem:
@@ -138,7 +156,7 @@ gh skill install SonicGarden/sgcop
 
 ## 設定ファイルにドキュメントのリンクを付加するスクリプト(sgcop 開発者向け)
 
-ruby/rubocop.yml, rails/rubocop.yml, ruby/rubocop_strict.yml, rails/rubocop_strict.yml に新しい cop(ルール)設定を追加した後、以下のコマンドを実行すると、rubocop の cop のドキュメントへのリンクをコメントとして追加します。
+ruby/rubocop.yml, ruby/rubocop_rspec.yml, rails/rubocop.yml, ruby/rubocop_strict.yml, ruby/rubocop_rspec_strict.yml, rails/rubocop_strict.yml に新しい cop(ルール)設定を追加した後、以下のコマンドを実行すると、rubocop の cop のドキュメントへのリンクをコメントとして追加します。
 
 ```
 ruby add_doc_links.rb

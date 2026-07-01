@@ -53,8 +53,10 @@ end
 
 FILES = %w[
   ruby/rubocop.yml
+  ruby/rubocop_rspec.yml
   rails/rubocop.yml
   ruby/rubocop_strict.yml
+  ruby/rubocop_rspec_strict.yml
   rails/rubocop_strict.yml
 ].freeze
 

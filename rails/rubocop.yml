@@ -1,8 +1,9 @@
-inherit_from: ../ruby/rubocop.yml
+inherit_from:
+  - ../ruby/rubocop.yml
+  - ../ruby/rubocop_rspec.yml
 
 plugins:
   - rubocop-rails
-  - rubocop-rspec
   - rubocop-performance
   - rubocop-rake
   - rubocop-capybara
@@ -132,60 +133,6 @@ Layout:
   Exclude:
     - "config/initializers/*"
     - "config/environments/*"
-
-# ============================================================
-# RSpec
-# ============================================================
-RSpec:
-  Language:
-    # RSpec/NoExpectationExample ルールに影響する
-    # https://docs.rubocop.org/rubocop-rspec/cops_rspec.html#rspecnoexpectationexample
-    Expectations:
-      - assert_emails
-      - assert_enqueued_emails
-      - assert_no_emails
-      - assert_enqueued_jobs
-      - assert_no_enqueued_jobs
-
-# backgroundとかであるクラスの全インスタンスをstubしてるなど意図してやると思うので
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecanyinstance
-RSpec/AnyInstance:
-  Enabled: false
-
-# Contextの条件の説明を日本語でも書きたいので
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspeccontextwording
-RSpec/ContextWording:
-  Enabled: false
-
-# 以下のようなもので引っかかってしまって困るので
-# describe GuestTicket do
-#   describe '#save' do
-#     let!(:guest_ticket) {
-#       GuestTicket.new schedule, guest_ticket_params
-#     }
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecdescribedclass
-RSpec/DescribedClass:
-  Enabled: false
-
-# 厳密にテストしたい場合に複数条件を入れるのはよいかと
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecmultipleexpectations
-RSpec/MultipleExpectations:
-  Enabled: false
-
-# feature specで長くなるので
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecexamplelength
-RSpec/ExampleLength:
-  Enabled: false
-
-# 自動生成されて中身が空のままコミットすることはある
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecemptyexamplegroup
-RSpec/EmptyExampleGroup:
-  Enabled: false
-
-# デフォルトの5はさすがに厳しい
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecmultiplememoizedhelpers
-RSpec/MultipleMemoizedHelpers:
-  Max: 8
 
 # メールプレビュー画面をわかりやすくする為に日本語メソッド名を許可
 # https://docs.rubocop.org/rubocop/latest/cops_naming.html#namingasciiidentifiers
@@ -472,24 +419,8 @@ Rails/RedirectBackOrTo: # new in 2.34
 Rails/SaveBang:
   Enabled: true
 
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecidenticalequalityassertion
-RSpec/IdenticalEqualityAssertion: # (new in 2.4)
-  Enabled: true
 # https://docs.rubocop.org/rubocop-rspec_rails/latest/cops_rspecrails.html#rspecrailsavoidsetuphook
 RSpecRails/AvoidSetupHook: # (new in 2.4)
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecexcessivedocstringspacing
-RSpec/ExcessiveDocstringSpacing: # new in 2.5
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecsubjectdeclaration
-RSpec/SubjectDeclaration: # new in 2.5
-  Enabled: true
-# NOTE: eqで駄目な理由がよくわからないので保留
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecbeeq
-RSpec/BeEq: # new in 2.9.0
-  Enabled: false
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecbenil
-RSpec/BeNil: # new in 2.9.0
   Enabled: true
 # NOTE: あえて付ける派も見かけるので
 # https://docs.rubocop.org/rubocop-factory_bot/latest/cops_factorybot.html#factorybotsyntaxmethods
@@ -498,29 +429,14 @@ FactoryBot/SyntaxMethods: # new in 2.7
 # https://docs.rubocop.org/rubocop-performance/latest/cops_performance.html#performancestringidentifierargument
 Performance/StringIdentifierArgument: # new in 1.13
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecverifieddoublereference
-RSpec/VerifiedDoubleReference: # new in 2.10.0
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecchangebyzero
-RSpec/ChangeByZero: # new in 2.11.0
-  Enabled: true
 # https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara_rspec.html#capybararspecspecificmatcher
 Capybara/RSpec/SpecificMatcher: # new in 2.12
   Enabled: true
 # https://docs.rubocop.org/rubocop-rspec_rails/latest/cops_rspecrails.html#rspecrailshavehttpstatus
 RSpecRails/HaveHttpStatus: # new in 2.12
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecclasscheck
-RSpec/ClassCheck: # new in 2.13
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecnoexpectationexample
-RSpec/NoExpectationExample: # new in 2.13
-  Enabled: true
 # https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara.html#capybaraspecificfinders
 Capybara/SpecificFinders: # new in 2.13
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecsortmetadata
-RSpec/SortMetadata: # new in 2.14
   Enabled: true
 # https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara_rspec.html#capybararspecnegationmatcher
 Capybara/RSpec/NegationMatcher: # new in 2.14
@@ -534,12 +450,6 @@ FactoryBot/ConsistentParenthesesStyle: # new in 2.14
 # https://docs.rubocop.org/rubocop-rspec_rails/latest/cops_rspecrails.html#rspecrailsinferredspectype
 RSpecRails/InferredSpecType: # new in 2.14
   Enabled: false
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecduplicatedmetadata
-RSpec/DuplicatedMetadata: # new in 2.16
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecpendingwithoutreason
-RSpec/PendingWithoutReason: # new in 2.16
-  Enabled: true
 # https://docs.rubocop.org/rubocop-factory_bot/latest/cops_factorybot.html#factorybotfactorynamestyle
 FactoryBot/FactoryNameStyle: # new in 2.16
   Enabled: true
@@ -552,83 +462,14 @@ Capybara/RSpec/MatchStyle: # new in 2.17
 # https://docs.rubocop.org/rubocop-rspec_rails/latest/cops_rspecrails.html#rspecrailsminitestassertions
 RSpecRails/MinitestAssertions: # new in 2.17
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecredundantaround
-RSpec/RedundantAround: # new in 2.19
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecskipblockinsideexample
-RSpec/SkipBlockInsideExample: # new in 2.19
-  Enabled: true
 # https://docs.rubocop.org/rubocop-rspec_rails/latest/cops_rspecrails.html#rspecrailstravelaround
 RSpecRails/TravelAround: # new in 2.19
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecbeempty
-RSpec/BeEmpty: # new in 2.20
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspeccontainexactly
-RSpec/ContainExactly: # new in 2.19
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecindexedlet
-RSpec/IndexedLet: # new in 2.20
-  Enabled: false
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecmatcharray
-RSpec/MatchArray: # new in 2.19
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecreceivemessages
-RSpec/ReceiveMessages: # new in 2.23
-  Enabled: false
 # https://docs.rubocop.org/rubocop-rspec_rails/latest/cops_rspecrails.html#rspecrailsnegationbevalid
 RSpecRails/NegationBeValid: # new in 2.23
   Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecemptymetadata
-RSpec/EmptyMetadata: # new in 2.24
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspeceq
-RSpec/Eq: # new in 2.24
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecmetadatastyle
-RSpec/MetadataStyle: # new in 2.24
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecspecfilepathformat
-RSpec/SpecFilePathFormat: # new in 2.24
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecspecfilepathsuffix
-RSpec/SpecFilePathSuffix: # new in 2.24
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecredundantpredicatematcher
-RSpec/RedundantPredicateMatcher: # new in 2.26
-  Enabled: false
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecremoveconst
-RSpec/RemoveConst: # new in 2.26
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecisexpectedspecify
-RSpec/IsExpectedSpecify: # new in 2.27
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecrepeatedsubjectcall
-RSpec/RepeatedSubjectCall: # new in 2.27
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecemptyoutput
-RSpec/EmptyOutput: # new in 2.29
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecundescriptiveliteralsdescription
-RSpec/UndescriptiveLiteralsDescription: # new in 2.29
-  Enabled: false
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecexpectinlet
-RSpec/ExpectInLet: # new in 2.30
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecincludeexamples
-RSpec/IncludeExamples: # new in 3.6
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecleakylocalvariable
-RSpec/LeakyLocalVariable: # new in 3.8
-  Enabled: true
 # https://docs.rubocop.org/rubocop-rspec_rails/latest/cops_rspecrails.html#rspecrailshttpstatusnameconsistency
 RSpecRails/HttpStatusNameConsistency: # new in 2.32
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecdiscardedmatcher
-RSpec/DiscardedMatcher: # new in 3.10
-  Enabled: true
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecmatchwithsimpleregex
-RSpec/MatchWithSimpleRegex: # new in 3.10
   Enabled: true
 
 # https://docs.rubocop.org/rubocop-factory_bot/latest/cops_factorybot.html#factorybotassociationstyle

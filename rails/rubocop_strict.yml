@@ -1,17 +1,19 @@
 # sgcop 厳格版（strict）設定 — Rails プロジェクト向け
 #
-# 通常版 (rails/rubocop.yml) に加え、純 Ruby 系の strict 設定 (ruby/rubocop_strict.yml) を
-# 取り込んだうえで、Rails 系のおすすめ汎用 Cop を有効化する。
+# 通常版 (rails/rubocop.yml) に加え、純 Ruby 系の strict 設定 (ruby/rubocop_strict.yml) と
+# RSpec 系の strict 設定 (ruby/rubocop_rspec_strict.yml) を取り込んだうえで、
+# Rails 系のおすすめ汎用 Cop を有効化する。
 #
 # inherit_from は後勝ち。rails 通常版（Rails 系の標準設定）→ ruby strict（純 Ruby 系の推奨 Cop）
-# の順に取り込む。ruby strict を後に置くことで、rails 通常版が引き継ぐ ruby/rubocop.yml の
-# 明示無効化（例 Style MethodCallWithArgsParentheses を false にしている設定）が、
+# → rspec strict（RSpec 系の推奨 Cop）の順に取り込む。ruby strict を後に置くことで、rails 通常版が
+# 引き継ぐ ruby/rubocop.yml の明示無効化（例 Style MethodCallWithArgsParentheses を false にしている設定）が、
 # strict の有効化を打ち消さないようにしている。
 # （ruby/rubocop_strict.yml は ruby/rubocop.yml しか継承しないため、Rails 系の標準設定は上書きしない）
 # Rails プロジェクトは `inherit_gem: sgcop: rails/rubocop_strict.yml` で一括適用できる。
 inherit_from:
   - rubocop.yml
   - ../ruby/rubocop_strict.yml
+  - ../ruby/rubocop_rspec_strict.yml
 
 # SQL ヒアドキュメントは squish して整形する
 # https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railssquishedsqlheredocs
@@ -21,11 +23,6 @@ Rails/SquishedSQLHeredocs:
 # 範囲指定の where は where(col: a..b) 形式に統一する
 # https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railswhererange
 Rails/WhereRange:
-  Enabled: true
-
-# 中身のない example group を禁止する
-# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecemptyexamplegroup
-RSpec/EmptyExampleGroup:
   Enabled: true
 
 # FactoryBot は build / create などを直接呼ぶ記法に統一する
@@ -70,21 +67,6 @@ Sgcop/Capybara/FillInArgument:
 # 脆弱な CSS セレクタの使用を防止（data 属性の使用を推奨）
 # https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/capybara/fragile_selector.rb
 Sgcop/Capybara/FragileSelector:
-  Enabled: true
-
-# ActionMailer::Base.deliveries 等の代わりに ActionMailer::TestHelper の使用を推奨
-# https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/action_mailer_test_helper.rb
-Sgcop/Rspec/ActionMailerTestHelper:
-  Enabled: true
-
-# RSpec の ActiveJob マッチャーの代わりに ActiveJob::TestHelper のメソッド使用を推奨
-# https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/active_job_test_helper.rb
-Sgcop/Rspec/ActiveJobTestHelper:
-  Enabled: true
-
-# RSpec の expectation ではメソッド呼び出しではなくリテラル値の使用を推奨
-# https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/no_method_call_in_expectation.rb
-Sgcop/Rspec/NoMethodCallInExpectation:
   Enabled: true
 
 # ============================================================
