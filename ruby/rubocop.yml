@@ -143,6 +143,7 @@ Style/MethodCallWithArgsParentheses:
     - "spec/**/*"
     - "config/**/*"
     - "db/migrate/*"
+    - "*.gemspec"
 
 # ライブラリの開発とかでない限り、大半のケースではpublic_sendで問題がない
 # https://docs.rubocop.org/rubocop/latest/cops_style.html#stylesend
