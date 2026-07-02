@@ -6,11 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 2
-RSpec/RepeatedExample:
-  Exclude:
-    - 'spec/rubocop/cop/sgcop/enumerize_default_option_spec.rb'
-
 # Offense count: 34
 # Configuration parameters: AllowedConstants.
 Style/Documentation:
