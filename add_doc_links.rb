@@ -13,6 +13,10 @@ TOP_CATEGORY_MAP = {
   'FactoryBot' => 'factory_bot',
 }.freeze
 DOC_COMMENT_REGEXP = %r{\A# https://docs\.rubocop\.org/}
+# Cop 定義行（`Department/CopName:` や `Department/Sub/CopName:`）だけにマッチさせる。
+# Cop 名は英数字のみで、行頭（インデントなし）から始まる。以前は `^(.+/.+):` という
+# 緩いパターンだったため `# そのため bin/rails app:...` のようなコメント行にも誤爆していた。
+COP_NAME_REGEXP = %r{\A([A-Za-z0-9]+(?:/[A-Za-z0-9]+)+):}
 
 def doc_url(cop_name)
   words = cop_name.split('/')
@@ -41,7 +45,7 @@ def add_doc_link_comments(filename)
       if DOC_COMMENT_REGEXP.match?(line)
         next
 
-      elsif (m = %r{^(.+/.+):}.match(line)) && !custom_cop?(m[1])
+      elsif (m = COP_NAME_REGEXP.match(line)) && !custom_cop?(m[1])
         io.puts(doc_url(m[1]))
       end
 
