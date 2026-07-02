@@ -10,6 +10,11 @@ inherit_from: rubocop_rspec.yml
 RSpec/EmptyExampleGroup:
   Enabled: true
 
+# 通常版では Max: 8 に緩和しているが、strict では rubocop-rspec 本来のデフォルト(5)に戻す
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecmultiplememoizedhelpers
+RSpec/MultipleMemoizedHelpers:
+  Max: 5
+
 # ActionMailer::Base.deliveries 等の代わりに ActionMailer::TestHelper の使用を推奨
 # https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/action_mailer_test_helper.rb
 Sgcop/Rspec/ActionMailerTestHelper:
