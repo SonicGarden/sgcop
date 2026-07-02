@@ -116,6 +116,7 @@ sgcopが提供するカスタムCopの一覧です。
 | [`Sgcop/Rspec/RedundantLetReference`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/redundant_let_reference.rb) | letを参照するだけの無意味な処理を検出し、let!の使用や直接セットアップを推奨 | ✅ |
 | [`Sgcop/Rspec/RedundantPerformEnqueuedJobs`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/redundant_perform_enqueued_jobs.rb) | ActionMailer::TestHelperメソッドとperform_enqueued_jobsの冗長な使用を防止 | ✅ |
 | [`Sgcop/Rspec/NoMethodCallInExpectation`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/no_method_call_in_expectation.rb) | RSpecのexpectationでメソッド呼び出しではなくリテラル値の使用を推奨 | ❌ |
+| [`Sgcop/Rspec/NoLetOverride`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/no_let_override.rb) | 子コンテキストで親のlet/let!/subjectをオーバーライドせず独立定義を推奨 | ❌ |
 
 ### その他
 
