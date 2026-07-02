@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe RuboCop::Cop::Sgcop::RestrictedViewHelpers do
   subject(:cop) { described_class.new(config) }
+
   let(:config) do
     RuboCop::Config.new(
       'Sgcop/RestrictedViewHelpers' => {

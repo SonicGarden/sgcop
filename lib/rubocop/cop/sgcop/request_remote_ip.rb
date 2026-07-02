@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # request.remote_ipの適切な使用を確認する。
       class RequestRemoteIp < Base
         MSG = 'Use `request.remote_ip` instead of ' \
               '`request.remote_addr`.'

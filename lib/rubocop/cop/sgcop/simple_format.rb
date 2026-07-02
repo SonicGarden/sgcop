@@ -3,15 +3,14 @@
 module RuboCop
   module Cop
     module Sgcop
+      # simple_formatメソッドの安全な使用を確認する。
       class SimpleFormat < Base
         MSG = 'simple_format does not escape HTML tags.'
         ESCAPE_METHODS = %i[h html_escape].freeze
 
         def on_send(node)
           receiver, method_name, *args = *node
-          if receiver.nil? && method_name == :simple_format && warning_args?(args)
-            add_offense(node)
-          end
+          add_offense(node) if receiver.nil? && method_name == :simple_format && warning_args?(args)
         end
 
         private

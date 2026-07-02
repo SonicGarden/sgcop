@@ -4,6 +4,7 @@ module RuboCop
   module Cop
     module Sgcop
       module Rspec
+        # RSpecのexpectationでメソッド呼び出しではなくリテラル値の使用を推奨する。
         class NoMethodCallInExpectation < Base
           MSG = 'Use literal values instead of method calls in expectations. Use "%<matcher>s" with literal values.'
 
@@ -108,11 +109,11 @@ module RuboCop
           end
 
           def target_matchers
-            cop_config['TargetMatchers'] || []
+            cop_config.fetch('TargetMatchers', [])
           end
 
           def allowed_patterns
-            patterns = cop_config['AllowedPatterns'] || []
+            patterns = cop_config.fetch('AllowedPatterns', [])
             patterns.map { |pattern| Regexp.new(pattern) }
           end
 

@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # エラーメッセージはシンボルを使用することを強制する。
       class ErrorMessageFormat < Base
         MSG = 'Error message should be a symbol.'
 

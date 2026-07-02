@@ -1,7 +1,6 @@
 inherit_from:
   - ruby/rubocop_strict.yml
   - ruby/rubocop_rspec_strict.yml
-  - .rubocop_todo.yml
 
 AllCops:
   Exclude:

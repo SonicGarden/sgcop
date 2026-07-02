@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # SimpleFormのassociationメソッドの適切な使用をチェックする。
       class SimpleFormAssociation < Base
         MSG = 'Specify the `collection` option'
 
