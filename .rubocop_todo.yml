@@ -17,11 +17,6 @@ Metrics/PerceivedComplexity:
   Max: 10
 
 # Offense count: 2
-RSpec/RepeatedDescription:
-  Exclude:
-    - 'spec/rubocop/cop/sgcop/retry_on_infinite_attempts_spec.rb'
-
-# Offense count: 2
 RSpec/RepeatedExample:
   Exclude:
     - 'spec/rubocop/cop/sgcop/enumerize_default_option_spec.rb'
