@@ -11,3 +11,8 @@
 /tmp/
 /vendor/bundle
 .byebug_history
+
+# >>> bundler-skills managed >>>
+.claude/skills/gem-*
+.agents/skills/gem-*
+# <<< bundler-skills managed <<<
