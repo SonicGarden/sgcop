@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # N+1問題を防ぐstrict_loadingの使用を推奨する。
       class StrictLoadingRequired < Base
         MSG = 'Add `.strict_loading` when using `includes` or `preload` with variable assignment'
 

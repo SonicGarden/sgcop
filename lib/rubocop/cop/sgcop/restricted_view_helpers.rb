@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # 特定のビューヘルパーメソッドの使用を制限する（設定でカスタマイズ可能）。
       class RestrictedViewHelpers < Base
         def on_send(node)
           return if restricted_methods.empty?
@@ -18,7 +19,7 @@ module RuboCop
         private
 
         def restricted_methods
-          @restricted_methods ||= cop_config['RestrictedMethods'] || {}
+          @restricted_methods ||= cop_config.fetch('RestrictedMethods', {})
         end
       end
     end

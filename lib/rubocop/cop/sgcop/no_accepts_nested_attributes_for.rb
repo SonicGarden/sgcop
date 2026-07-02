@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # accepts_nested_attributes_forの使用を制限する。
       class NoAcceptsNestedAttributesFor < Base
         MSG = 'Avoid using `accepts_nested_attributes_for`. Consider using Form Objects instead.'
 

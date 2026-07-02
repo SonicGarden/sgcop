@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # リテラル単語を含むstrftimeの使用を制限し、I18n.lの使用を推奨する。
       class StrftimeRestriction < Base
         MSG = 'strftimeではなくI18n.lを使用してローカライズしてください。'
 
@@ -41,7 +42,7 @@ module RuboCop
         end
 
         def allowed_patterns
-          @allowed_patterns ||= cop_config['AllowedPatterns'] || []
+          @allowed_patterns ||= cop_config.fetch('AllowedPatterns', [])
         end
       end
     end

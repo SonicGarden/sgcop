@@ -4,6 +4,7 @@ module RuboCop
   module Cop
     module Sgcop
       module Rspec
+        # ActionMailer::TestHelperの使用を推奨する。
         class ActionMailerTestHelper < Base
           MSG = 'Use ActionMailer::TestHelper methods instead of ActionMailer::Base.deliveries.'
           MSG_SIZE_COUNT = 'Use `assert_emails(count)` instead of ActionMailer::Base.deliveries.%<method>s.'

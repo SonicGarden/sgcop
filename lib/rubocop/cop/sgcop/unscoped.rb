@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # unscopedメソッドの使用を制限する。
       class Unscoped < Base
         MSG = 'Do not use `unscoped`'
 

@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # パーシャルファイルのrenderは絶対パスで指定する（autocorrect対応）。
       class PreferAbsolutePathPartial < Base
         extend AutoCorrector
 

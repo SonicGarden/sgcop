@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # retry_onでの無限リトライを防止する。
       class RetryOnInfiniteAttempts < Base
         MSG = 'Avoid using `Float::INFINITY` or `:unlimited` for attempts in `retry_on` method.'
 

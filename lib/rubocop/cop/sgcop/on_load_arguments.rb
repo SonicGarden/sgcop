@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # on_loadブロックの引数使用をチェックする。
       class OnLoadArguments < Base
         MSG = 'Do not use unpermitted name as arguments for `ActiveSupport.on_load`'
 

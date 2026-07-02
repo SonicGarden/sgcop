@@ -50,7 +50,8 @@ Cop（= safe autocorrect だけで完結する Cop）は、複数まとめてバ
 bundle exec rubocop --only Style/StringLiterals,Layout/TrailingWhitespace,Style/FrozenStringLiteralComment -a
 ```
 
-不安なら実行前に対象 Cop 一覧と合計件数をユーザーに提示して合意を取ってから適用する。
+不安なら実行前に対象 Cop 一覧と合計件数をユーザーに提示して合意を取ってから適用する。ただし
+`--auto` 時は提示のみで合意を待たず適用する（SKILL.md の `## 引数` 参照）。
 
 実行結果を読むときは `Offenses:` の一覧と、末尾の `X files inspected, Y offenses detected/corrected`
 というサマリ行に着目する。rubocop のバージョンと `.rubocop_todo.yml` 生成時のバージョンがずれていると
@@ -106,11 +107,21 @@ bundle exec rubocop --only Lint/SomeCop -A
 
 ## Exclude vs 無効化の使い分け
 
-修正がアプリ仕様上不適切な違反だけ、`.rubocop.yml` で対応する（SKILL.md 手順 5）。範囲は狭い順に
-選ぶ。
+修正がアプリ仕様上不適切な違反だけ、`.rubocop.yml` または該当行のインライン `# rubocop:disable`
+で対応する（SKILL.md 手順 5）。範囲は狭い順に選ぶ。
 
-1. **特定ファイル/ディレクトリの `Exclude`**（第一候補）— 「この箇所だけは事情があって違反のまま
-   にする」ケース。Cop 自体はプロジェクトに有効なまま残せる。
+1. **該当行だけのインライン `# rubocop:disable`**（違反が1〜数行に限られるなら第一候補）—
+   「この行・このブロックだけは事情があって違反のままにする」ケース。設定ファイルを触らず、
+   違反箇所のすぐそばに理由を残せる。
+
+   ```ruby
+   # デバッグ時に値をすぐ確認できるよう意図的に残す代入
+   result = calculate(items) # rubocop:disable Lint/UselessAssignment
+   ```
+
+2. **特定ファイル/ディレクトリの `Exclude`**（ファイル単位・多数行にまたがるなら第一候補）—
+   「このファイル全体は事情があって違反のままにする」ケース。Cop 自体はプロジェクトに有効なまま
+   残せる。
 
    ```yaml
    # 自動生成ファイルのため整形しない（手で直すと再生成で戻る）
@@ -119,7 +130,7 @@ bundle exec rubocop --only Lint/SomeCop -A
        - 'db/schema.rb'
    ```
 
-2. **Cop 全体の `Enabled: false`**（最後の手段）— その Cop の方針自体がプロジェクトに合わないと
+3. **Cop 全体の `Enabled: false`**（最後の手段）— その Cop の方針自体がプロジェクトに合わないと
    判断したときだけ。一部の箇所のためだけに全体を切らない。
 
    ```yaml
@@ -128,10 +139,15 @@ bundle exec rubocop --only Lint/SomeCop -A
      Enabled: false
    ```
 
+インライン disable と `Exclude` のどちらを選ぶかは範囲の広さで判断する。1〜数行ならインライン、
+ファイル全体・多数箇所に散っているなら `Exclude`。
+
 ### 理由コメントは必ず残す
 
-`Exclude` も `Enabled: false` も、**なぜそうしたか**を1行コメントで添える（記法はプロジェクト規約に
-従う）。「あえてチェックを外した」判断はコードにも差分にも現れにくく、理由が無いと後から対応漏れと
-誤認されて蒸し返されたり、漫然と放置されたりする。判断の根拠を設定の隣に残しておくことが要。
+インライン `# rubocop:disable` も `Exclude` も `Enabled: false` も、**なぜそうしたか**を1行コメントで
+添える（記法はプロジェクト規約に従う）。「あえてチェックを外した」判断はコードにも差分にも現れにくく、
+理由が無いと後から対応漏れと誤認されて蒸し返されたり、漫然と放置されたりする。判断の根拠を設定の隣に
+残しておくことが要。
 
 判断が割れるもの（直せるのか無効化が妥当か迷うもの）は、勝手に決めずユーザーに相談してから倒す。
+`--auto` 時に人に残す場合の todo への戻し方は SKILL.md 手順 7 を参照。

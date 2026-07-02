@@ -17,7 +17,7 @@ describe RuboCop::Cop::Sgcop::RetryOnInfiniteAttempts do
     RUBY
   end
 
-  it 'registers an offense when using :unlimited for attempts' do
+  it 'registers an offense when using :unlimited for attempts with multiple error classes' do
     expect_offense(<<~RUBY)
       TestJob.retry_on TestError, DummyError, wait: :polynomially_longer, attempts: :unlimited
                                                                           ^^^^^^^^^^^^^^^^^^^^ Sgcop/RetryOnInfiniteAttempts: Avoid using `Float::INFINITY` or `:unlimited` for attempts in `retry_on` method.

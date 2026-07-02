@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # Enumerizeのpredicatesオプションの使用を制限する（メソッド名コンフリクトを防止）。
       class EnumerizePredicatesOption < Base
         MSG = 'Do not use `predicates` option in `enumerize`.'
         MSG_WITH_PREFIX = 'Use `predicates: { prefix: true }` instead of `predicates: %<value>s`.'

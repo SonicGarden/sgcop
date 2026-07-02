@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # resourcesルーティングのアクション順序を統一する。
       class ResourceActionOrder < Base
         extend AutoCorrector
 

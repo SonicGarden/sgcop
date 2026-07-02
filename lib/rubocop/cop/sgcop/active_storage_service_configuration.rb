@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # Active Storageでクラウドストレージを使う場合、本番のservice設定が無い・`:local`のままになっていないか確認する。
       class ActiveStorageServiceConfiguration < Base
         MSG_MISSING = 'Set config.active_storage.service for production. Active Storage uses local disk by default.'
         MSG_LOCAL = 'Do not use :local for config.active_storage.service in production.'
