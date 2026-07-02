@@ -28,12 +28,6 @@ Metrics/CyclomaticComplexity:
 Metrics/PerceivedComplexity:
   Max: 10
 
-# Offense count: 1
-# This cop supports unsafe autocorrection (--autocorrect-all).
-RSpec/EmptyExampleGroup:
-  Exclude:
-    - 'spec/sgcop_spec.rb'
-
 # Offense count: 2
 RSpec/RepeatedDescription:
   Exclude:
