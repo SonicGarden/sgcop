@@ -4,6 +4,7 @@ module RuboCop
   module Cop
     module Sgcop
       module Rspec
+        # RSpecのexpectationでメソッド呼び出しではなくリテラル値の使用を推奨する。
         class NoMethodCallInExpectation < Base
           MSG = 'Use literal values instead of method calls in expectations. Use "%<matcher>s" with literal values.'
 

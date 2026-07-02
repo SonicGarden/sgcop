@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # ネストされたルーティングでmoduleオプションの使用を推奨する。
       class NestedResourcesWithoutModule < Base
         MSG = 'Use `module:` option in nested resource/resources routing.'
 

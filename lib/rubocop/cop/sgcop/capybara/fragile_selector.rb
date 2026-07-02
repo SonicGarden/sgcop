@@ -4,6 +4,7 @@ module RuboCop
   module Cop
     module Sgcop
       module Capybara
+        # 脆弱なCSSセレクタの使用を防止する（data属性の使用を推奨）。
         class FragileSelector < Base
           MSG_CLASS = 'Avoid using CSS class selectors as they are fragile and break when styles change. Use data attributes or accessible attributes instead.'
           MSG_ID = 'Avoid using ID selectors as they are fragile and break when markup changes. Use data attributes or accessible attributes instead.'

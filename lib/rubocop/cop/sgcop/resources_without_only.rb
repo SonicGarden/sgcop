@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # resourcesルーティングでonlyオプションの使用を推奨する。
       class ResourcesWithoutOnly < Base
         extend AutoCorrector
 

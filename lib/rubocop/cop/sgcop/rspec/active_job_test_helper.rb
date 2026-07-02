@@ -4,6 +4,7 @@ module RuboCop
   module Cop
     module Sgcop
       module Rspec
+        # RSpecのActiveJobマッチャーの代わりにActiveJob::TestHelperのメソッド使用を推奨する。
         class ActiveJobTestHelper < Base
           MSG_HAVE_ENQUEUED_JOB = 'Use `assert_enqueued_jobs(count)` or `assert_enqueued_with` instead of `have_enqueued_job`.'
           MSG_HAVE_BEEN_ENQUEUED = 'Use `assert_enqueued_with` instead of `have_been_enqueued`.'

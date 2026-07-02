@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # config.load_defaultsのバージョンがRailsバージョンと一致することを確認する。
       class LoadDefaultsVersionMatch < Base
         MSG = 'The load_defaults version (%<version>s) does not match the Rails version (%<gemfile_version>s) specified in the Gemfile.'
 

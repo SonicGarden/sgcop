@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # Enumerizeのdefaultオプションの使用をチェックする。
       class EnumerizeDefaultOption < Base
         MSG = 'Do not use `default` option in `enumerize`. Use database-level default values instead.'
 

@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # ActiveJobのキューアダプタ設定をチェックする。
       class ActiveJobQueueAdapter < Base
         MSG = 'Do not set config.active_job.queue_adapter in config/initializers.'
 

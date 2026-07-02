@@ -1,4 +1,5 @@
 module Sgcop
+  # sgcopのデフォルト設定をRuboCopの設定にマージする。
   module Inject
     DEFAULT_FILE = File.expand_path('../../config/default.yml', __dir__)
 

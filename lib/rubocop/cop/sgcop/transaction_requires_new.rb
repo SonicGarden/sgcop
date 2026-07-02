@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # requires_new: trueを使用したトランザクションをチェックする。
       class TransactionRequiresNew < Base
         MSG = 'Use `requires_new: true` with `transaction` when `ActiveRecord::Rollback` is raised inside the block.'
 
