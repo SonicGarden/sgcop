@@ -118,6 +118,55 @@ Style:
     - "config/initializers/*"
     - "config/environments/*"
 
+# NOTE: 上の department 単位 Exclude は、利用側が個別 Cop（例 Style/StringLiterals）に
+# Exclude を持つと RuboCop の仕様（rubocop#9983, not planned）で打ち消される。
+# そのため bin/rails app:update が生成・上書きする定型ファイルで実際に発火する代表 Cop については、
+# 個別 Cop 単位でも Exclude を併記し、利用側 .rubocop_todo.yml の Exclude と
+# inherit_mode: merge で合流させる（department が打ち消されても効くようにする）。
+# https://github.com/rubocop/rubocop/issues/9983
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#stylestringliterals
+Style/StringLiterals:
+  Exclude:
+    - "config/application.rb"
+    - "config/ci.rb"
+    - "config/initializers/*"
+    - "config/environments/*"
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#styledocumentation
+Style/Documentation:
+  Exclude:
+    - "config/application.rb"
+    - "config/ci.rb"
+    - "config/initializers/*"
+    - "config/environments/*"
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#styleglobalstdstream
+Style/GlobalStdStream:
+  Exclude:
+    - "config/application.rb"
+    - "config/ci.rb"
+    - "config/initializers/*"
+    - "config/environments/*"
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#stylesymbolarray
+Style/SymbolArray:
+  Exclude:
+    - "config/application.rb"
+    - "config/ci.rb"
+    - "config/initializers/*"
+    - "config/environments/*"
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#styletrailingcommainhashliteral
+Style/TrailingCommaInHashLiteral:
+  Exclude:
+    - "config/application.rb"
+    - "config/ci.rb"
+    - "config/initializers/*"
+    - "config/environments/*"
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#stylepercentliteraldelimiters
+Style/PercentLiteralDelimiters:
+  Exclude:
+    - "config/application.rb"
+    - "config/ci.rb"
+    - "config/initializers/*"
+    - "config/environments/*"
+
 # def show;endって書き方読みやすいとは思わない
 # https://docs.rubocop.org/rubocop/latest/cops_style.html#styleemptymethod
 Style/EmptyMethod:
@@ -130,6 +179,29 @@ Style/IpAddresses:
     - "Gemfile"
 
 Layout:
+  Exclude:
+    - "config/initializers/*"
+    - "config/environments/*"
+
+# NOTE: Style と同じく、利用側の個別 Cop Exclude で上の department Exclude が打ち消される
+# （rubocop#9983）ため、app:update 管理下の定型ファイルで発火する代表 Cop を個別に併記する。
+# https://docs.rubocop.org/rubocop/latest/cops_layout.html#layoutspaceinsidearrayliteralbrackets
+Layout/SpaceInsideArrayLiteralBrackets:
+  Exclude:
+    - "config/initializers/*"
+    - "config/environments/*"
+# https://docs.rubocop.org/rubocop/latest/cops_layout.html#layoutcommentindentation
+Layout/CommentIndentation:
+  Exclude:
+    - "config/initializers/*"
+    - "config/environments/*"
+# https://docs.rubocop.org/rubocop/latest/cops_layout.html#layoutemptylineaftermagiccomment
+Layout/EmptyLineAfterMagicComment:
+  Exclude:
+    - "config/initializers/*"
+    - "config/environments/*"
+# https://docs.rubocop.org/rubocop/latest/cops_layout.html#layoutmultilineassignmentlayout
+Layout/MultilineAssignmentLayout:
   Exclude:
     - "config/initializers/*"
     - "config/environments/*"
