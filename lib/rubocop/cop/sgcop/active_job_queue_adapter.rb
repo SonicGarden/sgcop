@@ -6,6 +6,10 @@ module RuboCop
       class ActiveJobQueueAdapter < Base
         MSG = 'Do not set config.active_job.queue_adapter in config/initializers.'
 
+        def_node_matcher :active_job_adapter_set?, <<~PATTERN
+          (send (send (lvar :config) :active_job) :queue_adapter= ...)
+        PATTERN
+
         def on_send(node)
           return unless in_initializers_directory?
           return unless active_job_adapter_set?(node)
@@ -17,15 +21,6 @@ module RuboCop
 
         def in_initializers_directory?
           processed_source.file_path.include?('config/initializers/')
-        end
-
-        def active_job_adapter_set?(node)
-          return false unless node.send_type?
-          return false unless node.method_name == :queue_adapter=
-          return false unless node.receiver&.method_name == :active_job
-          return false unless node.receiver.receiver&.type == :lvar && node.receiver.receiver&.children&.first == :config
-
-          true
         end
       end
     end
