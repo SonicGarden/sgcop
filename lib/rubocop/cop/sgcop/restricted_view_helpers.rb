@@ -18,7 +18,7 @@ module RuboCop
         private
 
         def restricted_methods
-          @restricted_methods ||= cop_config['RestrictedMethods'] || {}
+          @restricted_methods ||= cop_config.fetch('RestrictedMethods', {})
         end
       end
     end

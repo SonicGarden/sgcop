@@ -38,14 +38,6 @@ RSpec/RepeatedExample:
   Exclude:
     - 'spec/rubocop/cop/sgcop/enumerize_default_option_spec.rb'
 
-# Offense count: 4
-# This cop supports unsafe autocorrection (--autocorrect-all).
-Sgcop/HashFetchDefault:
-  Exclude:
-    - 'lib/rubocop/cop/sgcop/restricted_view_helpers.rb'
-    - 'lib/rubocop/cop/sgcop/rspec/no_method_call_in_expectation.rb'
-    - 'lib/rubocop/cop/sgcop/strftime_restriction.rb'
-
 # Offense count: 34
 # Configuration parameters: AllowedConstants.
 Style/Documentation:

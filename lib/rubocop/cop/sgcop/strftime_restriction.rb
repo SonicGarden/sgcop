@@ -41,7 +41,7 @@ module RuboCop
         end
 
         def allowed_patterns
-          @allowed_patterns ||= cop_config['AllowedPatterns'] || []
+          @allowed_patterns ||= cop_config.fetch('AllowedPatterns', [])
         end
       end
     end
