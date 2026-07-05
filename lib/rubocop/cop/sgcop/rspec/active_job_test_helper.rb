@@ -6,10 +6,12 @@ module RuboCop
       module Rspec
         # RSpecのActiveJobマッチャーの代わりにActiveJob::TestHelperのメソッド使用を推奨する。
         class ActiveJobTestHelper < Base
-          MSG_HAVE_ENQUEUED_JOB = 'Use `assert_enqueued_jobs(count)` or `assert_enqueued_with` instead of `have_enqueued_job`.'
+          MSG_HAVE_ENQUEUED_JOB = 'Use `assert_enqueued_jobs(count)` or `assert_enqueued_with` ' \
+                                  'instead of `have_enqueued_job`.'
           MSG_HAVE_BEEN_ENQUEUED = 'Use `assert_enqueued_with` instead of `have_been_enqueued`.'
           MSG_ENQUEUE_JOB = 'Use `assert_enqueued_jobs` with a block instead of `enqueue_job`.'
-          MSG_HAVE_PERFORMED_JOB = 'Use `assert_performed_jobs(count)` or `assert_performed_with` instead of `have_performed_job`.'
+          MSG_HAVE_PERFORMED_JOB = 'Use `assert_performed_jobs(count)` or `assert_performed_with` ' \
+                                   'instead of `have_performed_job`.'
           MSG_HAVE_BEEN_PERFORMED = 'Use `assert_performed_with` instead of `have_been_performed`.'
           MSG_PERFORM_JOB = 'Use `assert_performed_jobs` with a block instead of `perform_job`.'
 

@@ -6,8 +6,10 @@ module RuboCop
       module Rspec
         # letを参照するだけの無意味な処理を検出し、let!の使用や直接セットアップを推奨する。
         class RedundantLetReference < Base
-          MSG_BEFORE = 'Use `let!` instead of referencing `let` in `before` block, or move the setup directly into `before`.'
-          MSG_IT = 'Use `let!` for eager evaluation or move the setup directly into the test block instead of just referencing `let`.'
+          MSG_BEFORE = 'Use `let!` instead of referencing `let` in `before` block, ' \
+                       'or move the setup directly into `before`.'
+          MSG_IT = 'Use `let!` for eager evaluation or move the setup directly into the test block ' \
+                   'instead of just referencing `let`.'
 
           def_node_matcher :before_block?, <<~PATTERN
             (block

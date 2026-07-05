@@ -6,7 +6,8 @@ module RuboCop
       module Rspec
         # ActionMailer::TestHelperメソッドとperform_enqueued_jobsの冗長な使用を防止する。
         class RedundantPerformEnqueuedJobs < Base
-          MSG = '`%<method>s` internally uses `perform_enqueued_jobs`, so the outer `perform_enqueued_jobs` is redundant.'
+          MSG = '`%<method>s` internally uses `perform_enqueued_jobs`, ' \
+                'so the outer `perform_enqueued_jobs` is redundant.'
 
           def_node_matcher :perform_enqueued_jobs_block?, <<~PATTERN
             (block
