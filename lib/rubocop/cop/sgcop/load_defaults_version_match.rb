@@ -14,7 +14,10 @@ module RuboCop
         def on_send(node)
           load_defaults_version(node) do |version|
             gemfile_version = extract_rails_version
-            add_offense(node, message: format(MSG, version:, gemfile_version:)) if gemfile_version && gemfile_version != Gem::Version.new(version)
+            if gemfile_version && gemfile_version != Gem::Version.new(version)
+              add_offense(node,
+                          message: format(MSG, version:, gemfile_version:))
+            end
           end
         end
 
