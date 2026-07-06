@@ -151,7 +151,7 @@ gh skill install SonicGarden/sgcop
 
 > `gh skill` は GitHub CLI のプレビュー機能。
 
-また、[bundler-skills](https://github.com/aki77/bundler-skills) gem を使うと、sgcop を更新するたびに `bundle install` でスキルを自動同期できる。
+また、[bundler-skills](https://github.com/aki77/bundler-skills) gem を使うと、sgcop を更新するたびにスキルを同期できる。
 
 いずれのスキルも自動発火はしないため、Claude Code 上で `/sgcop-setup` や `/rubocop-todo-fix` のように明示的に呼び出す。
 
