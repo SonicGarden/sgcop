@@ -205,6 +205,11 @@ Cop はまとめてバッチ処理し、unsafe autocorrect や手動修正が必
 
 ### 7. todo を再生成して停止する
 
+- **注意: ここでの再生成は「todo からエントリが消えて空いた分を綺麗にする」ためだけの操作。
+  手順 5 で決めた Exclude / 無効化の設定内容そのものは `.rubocop.yml` に書くのであって、
+  `--auto-gen-config` の出力（`.rubocop_todo.yml`）に理由コメントを足して着地させるものではない。**
+  `--auto-gen-config` は実行のたびに Exclude/無効化していない残存違反を全部拾い直して
+  `.rubocop_todo.yml` を丸ごと作り直すため、`.rubocop.yml` 側に書いた恒久設定と混同しないこと。
 - 手順 5 で **Exclude / 無効化した場合**、その Cop の項目が `.rubocop_todo.yml` に残って紛らわしいので
   `bundle exec rubocop --auto-gen-config` で作り直す。
   - 違反を全部修正しきった（Exclude/無効化していない）場合は、その Cop のエントリは手順 3 で既に
