@@ -29,3 +29,8 @@ Sgcop/Rspec/ActiveJobTestHelper:
 # https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/no_method_call_in_expectation.rb
 Sgcop/Rspec/NoMethodCallInExpectation:
   Enabled: true
+
+# 子コンテキストで親の let/let!/subject をオーバーライドせず独立定義を推奨
+# https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/no_let_override.rb
+Sgcop/Rspec/NoLetOverride:
+  Enabled: true

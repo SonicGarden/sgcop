@@ -217,6 +217,14 @@ Sgcop/Rspec/RedundantLetReference:
   Include:
     - "spec/**/*_spec.rb"
 
+Sgcop/Rspec/NoLetOverride:
+  Description: "子コンテキストで親のlet/let!/subjectをオーバーライドせず、各コンテキストで独立に定義することを推奨"
+  Enabled: false
+  Include:
+    - "spec/**/*_spec.rb"
+  Reference:
+    - https://toppa.com/2026/rspec-5-rules-for-using-let-effectively/
+
 Sgcop/Rspec/ConditionalExample:
   Description: "条件付きexpectを避け、常に無条件でアサーションを行うことを推奨"
   Enabled: true

@@ -47,7 +47,6 @@ Style/DoubleNegation:
 # undefined method `begin_pos' for #<Parser::Source::Map::Condition:0x007f4ebf1974a8>
 # で落ちることがあるのでコメントアウト
 ## elseの中に明示的にnilを書くのを許可する
-# https://docs.rubocop.org/rubocop/latest/cops_#style.html##styleemptyelse
 #Style/EmptyElse:
 #  EnforcedStyle: nil
 
