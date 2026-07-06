@@ -1,12 +1,6 @@
 require 'spec_helper'
 
-describe RuboCop::Cop::Sgcop::NoModelMethodsInMigration do
-  subject(:cop) { described_class.new(config) }
-
-  let(:config) { RuboCop::Config.new(cop_config) }
-  let(:cop_config) { { 'Sgcop/NoModelMethodsInMigration' => { 'AllowedConstants' => allowed_constants } } }
-  let(:allowed_constants) { [] }
-
+describe RuboCop::Cop::Sgcop::NoModelMethodsInMigration, :config do
   it 'registers an offense for a model method call' do
     expect_offense(<<~RUBY)
       User.delete_all
@@ -93,7 +87,7 @@ describe RuboCop::Cop::Sgcop::NoModelMethodsInMigration do
   end
 
   context 'when the constant is allowed via AllowedConstants' do
-    let(:allowed_constants) { ['User'] }
+    let(:cop_config) { { 'AllowedConstants' => ['User'] } }
 
     it 'does not register an offense' do
       expect_no_offenses(<<~RUBY)

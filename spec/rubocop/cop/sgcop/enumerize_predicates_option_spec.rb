@@ -1,13 +1,9 @@
 require 'spec_helper'
 
-describe RuboCop::Cop::Sgcop::EnumerizePredicatesOption do
-  subject(:cop) { described_class.new(config) }
-
-  let(:config) { RuboCop::Config.new(cop_config) }
-  let(:cop_config) { { 'Sgcop/EnumerizePredicatesOption' => { 'AllowWithPrefix' => allow_with_prefix } } }
-  let(:allow_with_prefix) { false }
-
+describe RuboCop::Cop::Sgcop::EnumerizePredicatesOption, :config do
   context 'when AllowWithPrefix is false' do
+    let(:cop_config) { { 'AllowWithPrefix' => false } }
+
     it 'registers an offense when using predicates: true' do
       expect_offense(<<~RUBY)
         enumerize :status, in: %w[active inactive], predicates: true
@@ -65,7 +61,7 @@ describe RuboCop::Cop::Sgcop::EnumerizePredicatesOption do
   end
 
   context 'when AllowWithPrefix is true' do
-    let(:allow_with_prefix) { true }
+    let(:cop_config) { { 'AllowWithPrefix' => true } }
 
     it 'registers an offense with message suggesting prefix when using predicates: true' do
       expect_offense(<<~RUBY)

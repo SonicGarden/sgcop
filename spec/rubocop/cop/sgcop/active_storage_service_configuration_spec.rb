@@ -3,9 +3,6 @@ require 'spec_helper'
 describe RuboCop::Cop::Sgcop::ActiveStorageServiceConfiguration do
   subject(:cop) { described_class.new }
 
-  let(:storage_yml) { "test:\n  service: Disk\nlocal:\n  service: Disk\namazon:\n  service: S3\n" }
-  let(:storage_yml_exists) { true }
-
   before do
     allow(Dir).to receive(:pwd).and_return('/fakepath')
     allow(File).to receive(:exist?).and_call_original
@@ -15,6 +12,9 @@ describe RuboCop::Cop::Sgcop::ActiveStorageServiceConfiguration do
   end
 
   context 'when storage.yml has a cloud service' do
+    let(:storage_yml) { "test:\n  service: Disk\nlocal:\n  service: Disk\namazon:\n  service: S3\n" }
+    let(:storage_yml_exists) { true }
+
     it 'registers an offense for service = :local' do
       expect_offense(<<~RUBY, 'config/environments/production.rb')
         Rails.application.configure do
@@ -44,6 +44,7 @@ describe RuboCop::Cop::Sgcop::ActiveStorageServiceConfiguration do
 
   context 'when storage.yml only has Disk services' do
     let(:storage_yml) { "test:\n  service: Disk\nlocal:\n  service: Disk\n" }
+    let(:storage_yml_exists) { true }
 
     it 'does not register an offense even when the service setting is missing' do
       expect_no_offenses(<<~RUBY, 'config/environments/production.rb')
@@ -55,6 +56,7 @@ describe RuboCop::Cop::Sgcop::ActiveStorageServiceConfiguration do
   end
 
   context 'when storage.yml does not exist' do
+    let(:storage_yml) { "test:\n  service: Disk\nlocal:\n  service: Disk\namazon:\n  service: S3\n" }
     let(:storage_yml_exists) { false }
 
     it 'does not register an offense' do
@@ -67,6 +69,9 @@ describe RuboCop::Cop::Sgcop::ActiveStorageServiceConfiguration do
   end
 
   context 'when the file is not production.rb' do
+    let(:storage_yml) { "test:\n  service: Disk\nlocal:\n  service: Disk\namazon:\n  service: S3\n" }
+    let(:storage_yml_exists) { true }
+
     it 'does not register an offense' do
       expect_no_offenses(<<~RUBY, 'config/environments/development.rb')
         Rails.application.configure do

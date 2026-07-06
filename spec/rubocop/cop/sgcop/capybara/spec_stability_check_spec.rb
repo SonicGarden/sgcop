@@ -2,14 +2,12 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::Sgcop::Capybara::SpecStabilityCheck do
-  subject(:cop) { RuboCop::Cop::Sgcop::Capybara::SpecStabilityCheck.new }
-
+describe RuboCop::Cop::Sgcop::Capybara::SpecStabilityCheck, :config do
   context 'with default configuration' do
     it 'registers an offense when assert_enqueued_emails block lacks wait matcher' do
       expect_offense(<<~RUBY)
         assert_enqueued_emails 1 do
-        ^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/Capybara/SpecStabilityCheck: ページの変化を伴う非同期処理後には、適切な待機処理（例: expect(page).to have_content('更新しました。')）を追加してテストを安定させましょう
+        ^^^^^^^^^^^^^^^^^^^^^^^^ ページの変化を伴う非同期処理後には、適切な待機処理（例: expect(page).to have_content('更新しました。')）を追加してテストを安定させましょう
           within('tbody tr', text: '第2希望') do
             click_button '確定する'
           end
@@ -31,7 +29,7 @@ describe RuboCop::Cop::Sgcop::Capybara::SpecStabilityCheck do
     it 'registers an offense for form submission without wait matcher' do
       expect_offense(<<~RUBY)
         assert_enqueued_emails 1 do
-        ^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/Capybara/SpecStabilityCheck: ページの変化を伴う非同期処理後には、適切な待機処理（例: expect(page).to have_content('更新しました。')）を追加してテストを安定させましょう
+        ^^^^^^^^^^^^^^^^^^^^^^^^ ページの変化を伴う非同期処理後には、適切な待機処理（例: expect(page).to have_content('更新しました。')）を追加してテストを安定させましょう
           fill_in 'Email', with: 'user@example.com'
           click_button '送信'
         end
@@ -51,7 +49,7 @@ describe RuboCop::Cop::Sgcop::Capybara::SpecStabilityCheck do
     it 'registers an offense for cancellation action without wait matcher' do
       expect_offense(<<~RUBY)
         assert_no_emails do
-        ^^^^^^^^^^^^^^^^ Sgcop/Capybara/SpecStabilityCheck: ページの変化を伴う非同期処理後には、適切な待機処理（例: expect(page).to have_content('更新しました。')）を追加してテストを安定させましょう
+        ^^^^^^^^^^^^^^^^ ページの変化を伴う非同期処理後には、適切な待機処理（例: expect(page).to have_content('更新しました。')）を追加してテストを安定させましょう
           click_button 'キャンセル'
         end
       RUBY
@@ -86,14 +84,11 @@ describe RuboCop::Cop::Sgcop::Capybara::SpecStabilityCheck do
   end
 
   context 'with custom configuration' do
-    subject(:cop) do
-      config = RuboCop::Config.new(
-        'Sgcop/Capybara/SpecStabilityCheck' => {
-          'WatchedMethods' => %w[assert_enqueued_jobs],
-          'WaitMatcherPatterns' => ['^have_text$', '^custom_matcher$'],
-        }
-      )
-      RuboCop::Cop::Sgcop::Capybara::SpecStabilityCheck.new(config)
+    let(:cop_config) do
+      {
+        'WatchedMethods' => %w[assert_enqueued_jobs],
+        'WaitMatcherPatterns' => ['^have_text$', '^custom_matcher$'],
+      }
     end
 
     it 'works with custom watched methods for background jobs' do
