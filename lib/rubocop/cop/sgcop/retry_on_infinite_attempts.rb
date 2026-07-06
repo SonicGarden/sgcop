@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # retry_onでの無限リトライを防止する。
       class RetryOnInfiniteAttempts < Base
         MSG = 'Avoid using `Float::INFINITY` or `:unlimited` for attempts in `retry_on` method.'
 
@@ -14,9 +15,9 @@ module RuboCop
           retry_on_with_infinite_attempts?(node) do |pairs|
             pairs.each do |pair|
               key, value = *pair
-              if key.value == :attempts && ((value.const_type? && value.source == 'Float::INFINITY') || (value.sym_type? && value.value == :unlimited))
-                add_offense(pair)
-              end
+              infinite_value = (value.const_type? && value.source == 'Float::INFINITY') ||
+                               (value.sym_type? && value.value == :unlimited)
+              add_offense(pair) if key.value == :attempts && infinite_value
             end
           end
         end

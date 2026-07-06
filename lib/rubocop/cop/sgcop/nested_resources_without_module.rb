@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # ネストされたルーティングでmoduleオプションの使用を推奨する。
       class NestedResourcesWithoutModule < Base
         MSG = 'Use `module:` option in nested resource/resources routing.'
 
@@ -27,9 +28,7 @@ module RuboCop
               next
             end
 
-            if parent.block_type? && resources_method?(parent.send_node)
-              return true
-            end
+            return true if parent.block_type? && resources_method?(parent.send_node)
 
             parent = parent.parent
           end

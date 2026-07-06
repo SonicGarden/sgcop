@@ -3,8 +3,10 @@
 module RuboCop
   module Cop
     module Sgcop
+      # resourcesルーティングでonlyオプションの使用を推奨する。
       class ResourcesWithoutOnly < Base
         extend AutoCorrector
+
         MSG = 'Use `only:` option in resource/resources routing.'
 
         def on_send(node)
@@ -34,41 +36,32 @@ module RuboCop
           false
         end
 
-        def autocorrect(corrector, node) # rubocop:disable Metrics/PerceivedComplexity
-          method_name = node.method_name
-          default_actions = default_actions_for(method_name)
+        def autocorrect(corrector, node)
+          hash_node = node.arguments.find(&:hash_type?)
+          except_values = hash_node && extract_except_values(hash_node)
 
-          except_values = extract_except_values(node)
-          only_actions = if except_values
-                           default_actions - except_values
-                         else
-                           default_actions
-                         end
-
-          if node.arguments.any?(&:hash_type?)
-            # 既存のハッシュオプションがある場合
-            hash_node = node.arguments.find(&:hash_type?)
-
-            if except_values
-              # except:を削除してonly:に置き換える
-              replace_except_with_only(corrector, hash_node, only_actions)
-            else
-              # only:を追加
-              corrector.insert_after(hash_node.source_range.end.adjust(begin_pos: -1), ", only: #{format_actions(only_actions)}")
-            end
+          if except_values
+            # except:を削除してonly:に置き換える
+            only_actions = default_actions_for(node.method_name) - except_values
+            replace_except_with_only(corrector, hash_node, only_actions)
           else
-            # オプションがない場合
-            corrector.insert_after(node.first_argument.source_range, ", only: #{format_actions(only_actions)}")
+            # only:を追加
+            add_only_option(corrector, node, hash_node)
           end
         end
 
-        def extract_except_values(node)
-          node.each_child_node(:hash) do |hash_node|
-            hash_node.each_pair do |key_node, value_node|
-              next unless key_node.sym_type? && key_node.value == :except
+        def add_only_option(corrector, node, hash_node)
+          only_actions = default_actions_for(node.method_name)
+          target = hash_node ? hash_node.source_range.end.adjust(begin_pos: -1) : node.first_argument.source_range
 
-              return extract_action_symbols(value_node)
-            end
+          corrector.insert_after(target, ", only: #{format_actions(only_actions)}")
+        end
+
+        def extract_except_values(hash_node)
+          hash_node.each_pair do |key_node, value_node|
+            next unless key_node.sym_type? && key_node.value == :except
+
+            return extract_action_symbols(value_node)
           end
           nil
         end
@@ -78,9 +71,9 @@ module RuboCop
           when :sym
             [value_node.value]
           when :array
-            value_node.children.map do |child|
+            value_node.children.map { |child|
               child.value if child.sym_type?
-            end.compact
+            }.compact
           else
             []
           end

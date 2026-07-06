@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # Enumerizeのdefaultオプションの使用をチェックする。
       class EnumerizeDefaultOption < Base
         MSG = 'Do not use `default` option in `enumerize`. Use database-level default values instead.'
 
@@ -14,9 +15,7 @@ module RuboCop
           enumerize_with_default?(node) do |pairs|
             pairs.each do |pair|
               key, _value = *pair
-              if key.sym_type? && key.value == :default
-                add_offense(pair)
-              end
+              add_offense(pair) if key.sym_type? && key.value == :default
             end
           end
         end

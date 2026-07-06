@@ -23,6 +23,15 @@ RSpec:
       - assert_enqueued_jobs
       - assert_no_enqueued_jobs
 
+# it/context の説明文は日本語や引用符を含み長くなりがちなので対象外にする
+# https://docs.rubocop.org/rubocop/latest/cops_layout.html#layoutlinelength
+Layout/LineLength:
+  inherit_mode:
+    merge:
+      - AllowedPatterns
+  AllowedPatterns:
+    - '^\s*(it|context)\s+[''"]'
+
 # backgroundとかであるクラスの全インスタンスをstubしてるなど意図してやると思うので
 # https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecanyinstance
 RSpec/AnyInstance:

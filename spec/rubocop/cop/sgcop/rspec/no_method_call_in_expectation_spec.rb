@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe RuboCop::Cop::Sgcop::Rspec::NoMethodCallInExpectation do
   subject(:cop) { RuboCop::Cop::Sgcop::Rspec::NoMethodCallInExpectation.new(config) }
+
   let(:config) do
     RuboCop::Config.new(
       'Sgcop/Rspec/NoMethodCallInExpectation' => {

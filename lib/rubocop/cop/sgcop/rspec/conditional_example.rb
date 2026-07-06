@@ -4,6 +4,7 @@ module RuboCop
   module Cop
     module Sgcop
       module Rspec
+        # 条件付きexpectを避け、常に無条件でアサーションを行うことを推奨する。
         class ConditionalExample < Base
           MSG = 'Avoid conditional expectations. Always assert expectations unconditionally.'
 

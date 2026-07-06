@@ -94,3 +94,8 @@ Style/IfUnlessModifier:
 # https://docs.rubocop.org/rubocop/latest/cops_style.html#styledocumentation
 Style/Documentation:
   Enabled: true
+
+# 1行の長さを120文字に制限する
+# https://docs.rubocop.org/rubocop/latest/cops_layout.html#layoutlinelength
+Layout/LineLength:
+  Max: 120

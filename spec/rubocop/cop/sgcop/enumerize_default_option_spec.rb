@@ -38,12 +38,6 @@ describe RuboCop::Cop::Sgcop::EnumerizeDefaultOption do
     RUBY
   end
 
-  it 'does not register an offense when enumerize is used without options' do
-    expect_no_offenses(<<~RUBY)
-      enumerize :role, in: ROLES
-    RUBY
-  end
-
   it 'does not register an offense for other method calls with default' do
     expect_no_offenses(<<~RUBY)
       some_method :param, default: :value

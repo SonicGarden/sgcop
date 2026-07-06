@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # Rails UJSオプションの適切な使用を確認する。
       class UjsOptions < Base
         MSG = 'Deprecated: Rails UJS Attributes.'
 

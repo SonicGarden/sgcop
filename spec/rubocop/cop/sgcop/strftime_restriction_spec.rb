@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe RuboCop::Cop::Sgcop::StrftimeRestriction do
   subject(:cop) { described_class.new(config) }
+
   let(:config) { RuboCop::Config.new(cop_config) }
   let(:cop_config) { { 'Sgcop/StrftimeRestriction' => {} } }
 

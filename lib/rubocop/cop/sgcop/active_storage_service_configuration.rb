@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # Active Storageでクラウドストレージを使う場合、本番のservice設定が無い・`:local`のままになっていないか確認する。
       class ActiveStorageServiceConfiguration < Base
         MSG_MISSING = 'Set config.active_storage.service for production. Active Storage uses local disk by default.'
         MSG_LOCAL = 'Do not use :local for config.active_storage.service in production.'
@@ -42,9 +43,10 @@ module RuboCop
         # 欠如時の offense は Rails.application.configure の呼び出し部分を指す。
         # configure ブロックが無ければ AST 全体にフォールバックする。
         def missing_offense_range(ast)
-          configure_node = ast.each_node(:block).find do |block|
-            block.send_node.method?(:configure)
-          end
+          configure_node =
+            ast.each_node(:block).find do |block|
+              block.send_node.method?(:configure)
+            end
           (configure_node&.send_node || ast).source_range
         end
 

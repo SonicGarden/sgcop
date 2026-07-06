@@ -3,8 +3,13 @@
 module RuboCop
   module Cop
     module Sgcop
+      # ActiveJobのキューアダプタ設定をチェックする。
       class ActiveJobQueueAdapter < Base
         MSG = 'Do not set config.active_job.queue_adapter in config/initializers.'
+
+        def_node_matcher :active_job_adapter_set?, <<~PATTERN
+          (send (send (lvar :config) :active_job) :queue_adapter= ...)
+        PATTERN
 
         def on_send(node)
           return unless in_initializers_directory?
@@ -17,15 +22,6 @@ module RuboCop
 
         def in_initializers_directory?
           processed_source.file_path.include?('config/initializers/')
-        end
-
-        def active_job_adapter_set?(node)
-          return unless node.send_type?
-          return unless node.method_name == :queue_adapter=
-          return unless node.receiver&.method_name == :active_job
-          return unless node.receiver.receiver&.type == :lvar && node.receiver.receiver&.children&.first == :config
-
-          true
         end
       end
     end

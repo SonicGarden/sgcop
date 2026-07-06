@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # I18n.lのformatオプションで文字列使用を制限し、シンボル使用を推奨する。
       class I18nLocalizeFormatString < Base
         MSG = 'I18n.lのformatオプションには文字列ではなくシンボルを使用してください。ロケールファイルに定義してシンボルで参照することで、ロケールごとの切り替えが可能になります。'
 
@@ -13,9 +14,7 @@ module RuboCop
           return unless format_arg
 
           # 文字列でフォーマットが指定されている場合は警告
-          if format_arg.str_type?
-            add_offense(format_arg)
-          end
+          add_offense(format_arg) if format_arg.str_type?
         end
 
         private

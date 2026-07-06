@@ -4,6 +4,7 @@ module RuboCop
   module Cop
     module Sgcop
       module Capybara
+        # 非同期処理テストで適切な待機マッチャーの使用を強制してテストを安定化する。
         class SpecStabilityCheck < Base
           MSG = 'ページの変化を伴う非同期処理後には、適切な待機処理（例: expect(page).to have_content(\'更新しました。\')）を追加してテストを安定させましょう'
 

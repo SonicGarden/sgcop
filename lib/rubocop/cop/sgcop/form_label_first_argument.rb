@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module Sgcop
+      # f.labelの第一引数にはテキストではなく属性名（Symbol）を指定することを強制する。
       class FormLabelFirstArgument < Base
         MSG = 'f.label の第一引数には属性名(Symbol)を渡してください。' \
               'ラベルテキストは第二引数に渡します(例: `f.label :name, t("...")`)。'

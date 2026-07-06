@@ -3,8 +3,10 @@
 module RuboCop
   module Cop
     module Sgcop
+      # config.load_defaultsのバージョンがRailsバージョンと一致することを確認する。
       class LoadDefaultsVersionMatch < Base
-        MSG = 'The load_defaults version (%<version>s) does not match the Rails version (%<gemfile_version>s) specified in the Gemfile.'
+        MSG = 'The load_defaults version (%<version>s) does not match the Rails version ' \
+              '(%<gemfile_version>s) specified in the Gemfile.'
 
         def_node_matcher :load_defaults_version, <<-PATTERN
           (send (send nil? :config) :load_defaults (float $_))
@@ -14,7 +16,8 @@ module RuboCop
           load_defaults_version(node) do |version|
             gemfile_version = extract_rails_version
             if gemfile_version && gemfile_version != Gem::Version.new(version)
-              add_offense(node, message: format(MSG, version: version, gemfile_version: gemfile_version))
+              add_offense(node,
+                          message: format(MSG, version:, gemfile_version:))
             end
           end
         end
