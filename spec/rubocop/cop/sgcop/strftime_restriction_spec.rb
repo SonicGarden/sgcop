@@ -1,11 +1,6 @@
 require 'spec_helper'
 
-describe RuboCop::Cop::Sgcop::StrftimeRestriction do
-  subject(:cop) { described_class.new(config) }
-
-  let(:config) { RuboCop::Config.new(cop_config) }
-  let(:cop_config) { { 'Sgcop/StrftimeRestriction' => {} } }
-
+describe RuboCop::Cop::Sgcop::StrftimeRestriction, :config do
   context '指定子と区切り記号のみで構成される場合は許容される' do
     it 'ハイフン区切り（%Y-%m-%d）は警告されない' do
       expect_no_offenses(<<~RUBY)
@@ -188,7 +183,7 @@ describe RuboCop::Cop::Sgcop::StrftimeRestriction do
   end
 
   context 'AllowedPatternsに完全一致を指定した場合（後方互換）' do
-    let(:cop_config) { { 'Sgcop/StrftimeRestriction' => { 'AllowedPatterns' => ['%Y年%m月%d日'] } } }
+    let(:cop_config) { { 'AllowedPatterns' => ['%Y年%m月%d日'] } }
 
     it '完全一致するリテラル入りフォーマットは警告されない' do
       expect_no_offenses(<<~RUBY)
