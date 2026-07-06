@@ -1,0 +1,96 @@
+# sgcop 厳格版（strict）設定 — 純 Ruby プロジェクト向け
+#
+# 通常版 (rubocop.yml) を継承したうえで、sgcop 標準ではデフォルト無効／未設定だが
+# コードの一貫性をより高めるためにおすすめの汎用 Cop を有効化する。
+#
+# 純 Ruby プロジェクトは `inherit_gem: sgcop: ruby/rubocop_strict.yml` で一括適用できる。
+inherit_from: rubocop.yml
+
+# クラス内の定義順を一定に
+# https://docs.rubocop.org/rubocop/latest/cops_layout.html#layoutclassstructure
+Layout/ClassStructure:
+  Enabled: true
+
+# 自動的にリソースのクリーンアップを行ってくれる方を推奨
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#styleautoresourcecleanup
+Style/AutoResourceCleanup:
+  Enabled: true
+
+# 複数行の配列を書くときは、最初の要素の前に改行を入れる
+# https://docs.rubocop.org/rubocop/latest/cops_layout.html#layoutfirstarrayelementlinebreak
+Layout/FirstArrayElementLineBreak:
+  Enabled: true
+
+# 複数行のハッシュを書くときは、最初の要素の前に改行を入れる
+# https://docs.rubocop.org/rubocop/latest/cops_layout.html#layoutfirsthashelementlinebreak
+Layout/FirstHashElementLineBreak:
+  Enabled: true
+
+# ヒアドキュメントを引数として渡す際の閉じ括弧の位置を統一する
+# https://docs.rubocop.org/rubocop/latest/cops_layout.html#layoutheredocargumentclosingparenthesis
+Layout/HeredocArgumentClosingParenthesis:
+  Enabled: true
+
+# 複数行に渡る代入において、代入演算子の後ろに改行を入れる
+# https://docs.rubocop.org/rubocop/latest/cops_layout.html#layoutmultilineassignmentlayout
+Layout/MultilineAssignmentLayout:
+  Enabled: true
+
+# 複数行に渡るメソッド呼び出しでは、一行に複数の引数を入れてはならない
+# https://docs.rubocop.org/rubocop/latest/cops_layout.html#layoutmultilinemethodargumentlinebreaks
+Layout/MultilineMethodArgumentLineBreaks:
+  Enabled: true
+
+# do-end ブロックにメソッドチェーンするのは可読性が悪い
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#stylemethodcalledondoendblock
+Style/MethodCalledOnDoEndBlock:
+  Enabled: true
+
+# 引数を伴うメソッド呼び出しの括弧は必要（マクロは無視）
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#stylemethodcallwithargsparentheses
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+
+# ハッシュは短縮構文（Ruby 3.1+）で統一する
+# （Cop 自体は本体デフォルトで有効だが、短縮構文の常用を強制するオプションを足す）
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#stylehashsyntax
+Style/HashSyntax:
+  Enabled: true
+  EnforcedShorthandSyntax: always
+
+# クラスメソッドは self.xxx 形式で統一する（レビュー時に差分を把握しやすい）
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#styleclassmethodsdefinitions
+Style/ClassMethodsDefinitions:
+  Enabled: true
+
+# IP アドレスのベタ書きを禁止する
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#styleipaddresses
+Style/IpAddresses:
+  Enabled: true
+  Exclude:
+    - "spec/**/*"
+
+# self. の付与を一貫させる（ローカル変数とメソッド呼び出しの区別をつける）
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#styleredundantself
+Style/RedundantSelf:
+  Enabled: true
+
+# 安全参照（&.）チェーンを長くしすぎない（可読性）
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#stylesafenavigationchainlength
+Style/SafeNavigationChainLength:
+  Enabled: true
+
+# eval などで動的に定義するメソッドにはコメントで定義内容を明示する
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#styledocumentdynamicevaldefinition
+Style/DocumentDynamicEvalDefinition:
+  Enabled: true
+
+# 後置 if / unless を一貫させる
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#styleifunlessmodifier
+Style/IfUnlessModifier:
+  Enabled: true
+
+# public なクラス・モジュールにはドキュメントコメントを付ける
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#styledocumentation
+Style/Documentation:
+  Enabled: true

@@ -26,6 +26,42 @@ inherit_gem:
   sgcop: rails/rubocop.yml
 ```
 
+RSpec を使うが Rails ではないプロジェクトの場合は、`ruby/rubocop.yml` に加えて RSpec 関連の推奨設定
+（`RSpec/*`, `Sgcop/Rspec/*`）を取り込む `ruby/rubocop_rspec.yml` も併せて指定する。`rails/rubocop.yml`
+はこの `ruby/rubocop_rspec.yml` を内部で継承しているため、Rails プロジェクトでは何もしなくても RSpec
+関連設定が適用される。
+
+```
+inherit_gem:
+  sgcop:
+    - ruby/rubocop.yml
+    - ruby/rubocop_rspec.yml
+```
+
+### 厳格版（strict）設定
+
+標準設定ではデフォルト無効にしている汎用 Cop のうち、コードの一貫性をより高めるためにおすすめの Cop（`Layout/ClassStructure`, `Style/MethodCallWithArgsParentheses`, `Style/ClassMethodsDefinitions`, `Rails/WhereRange` など）をまとめて有効化する「厳格版」設定を用意しています。新規プロジェクトや、より統一感を重視したいプロジェクトにおすすめです。
+
+`rubocop.yml` の代わりに `rubocop_strict.yml` を参照すると一括で有効化できます。
+
+```
+# Rails ではないプロジェクト
+inherit_gem:
+  sgcop: ruby/rubocop_strict.yml
+
+# RSpec を使うが Rails ではないプロジェクト
+inherit_gem:
+  sgcop:
+    - ruby/rubocop_strict.yml
+    - ruby/rubocop_rspec_strict.yml
+
+# Rails プロジェクト
+inherit_gem:
+  sgcop: rails/rubocop_strict.yml
+```
+
+一括ではなく個別に取り込みたい場合は、通常版を継承したうえで必要な Cop だけを `.rubocop.yml` にコピーする。導入を対話的に進めたい場合は `sgcop-setup` スキル（`skills/sgcop-setup/`）が利用できる。
+
 そして実行。
 
 ```
@@ -74,12 +110,12 @@ sgcopが提供するカスタムCopの一覧です。
 
 | Cop名 | 説明 | デフォルト |
 |-------|------|:----------:|
-| [`Sgcop/RSpec/ActionMailerTestHelper`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/action_mailer_test_helper.rb) | ActionMailer::Base.deliveriesやhave_enqueued_mailの代わりにActionMailer::TestHelperの適切な使用を確認 | ❌ |
-| [`Sgcop/RSpec/ActiveJobTestHelper`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/active_job_test_helper.rb) | RSpecのActiveJobマッチャーの代わりにActiveJob::TestHelperのメソッド使用を推奨 | ❌ |
-| [`Sgcop/RSpec/ConditionalExample`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/conditional_example.rb) | 条件付きexpectを避け、常に無条件でアサーションを行うことを推奨 | ✅ |
-| [`Sgcop/RSpec/RedundantLetReference`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/redundant_let_reference.rb) | letを参照するだけの無意味な処理を検出し、let!の使用や直接セットアップを推奨 | ✅ |
-| [`Sgcop/RSpec/RedundantPerformEnqueuedJobs`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/redundant_perform_enqueued_jobs.rb) | ActionMailer::TestHelperメソッドとperform_enqueued_jobsの冗長な使用を防止 | ✅ |
-| [`Sgcop/RSpec/NoMethodCallInExpectation`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/no_method_call_in_expectation.rb) | RSpecのexpectationでメソッド呼び出しではなくリテラル値の使用を推奨 | ❌ |
+| [`Sgcop/Rspec/ActionMailerTestHelper`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/action_mailer_test_helper.rb) | ActionMailer::Base.deliveriesやhave_enqueued_mailの代わりにActionMailer::TestHelperの適切な使用を確認 | ❌ |
+| [`Sgcop/Rspec/ActiveJobTestHelper`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/active_job_test_helper.rb) | RSpecのActiveJobマッチャーの代わりにActiveJob::TestHelperのメソッド使用を推奨 | ❌ |
+| [`Sgcop/Rspec/ConditionalExample`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/conditional_example.rb) | 条件付きexpectを避け、常に無条件でアサーションを行うことを推奨 | ✅ |
+| [`Sgcop/Rspec/RedundantLetReference`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/redundant_let_reference.rb) | letを参照するだけの無意味な処理を検出し、let!の使用や直接セットアップを推奨 | ✅ |
+| [`Sgcop/Rspec/RedundantPerformEnqueuedJobs`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/redundant_perform_enqueued_jobs.rb) | ActionMailer::TestHelperメソッドとperform_enqueued_jobsの冗長な使用を防止 | ✅ |
+| [`Sgcop/Rspec/NoMethodCallInExpectation`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/rspec/no_method_call_in_expectation.rb) | RSpecのexpectationでメソッド呼び出しではなくリテラル値の使用を推奨 | ❌ |
 
 ### その他
 
@@ -95,22 +131,32 @@ sgcopが提供するカスタムCopの一覧です。
 | [`Sgcop/RestrictedViewHelpers`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/restricted_view_helpers.rb) | 特定のビューヘルパーメソッドの使用を制限（設定でカスタマイズ可能） | ✅ |
 | [`Sgcop/StrftimeRestriction`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/strftime_restriction.rb) | リテラル単語を含むstrftimeの使用を制限し、I18n.lの使用を推奨（指定子と区切り記号 `- / : . 空白` のみのフォーマットは許容） | ✅ |
 
-## しつけ方
+## Agent Skill
 
-http://blog.onk.ninja/2015/10/27/rubocop-getting-started
+sgcop は Claude Code 向けの Agent Skill を同梱しています。導入や `.rubocop_todo.yml` の解消を対話的に進められます。
 
-自動修正して楽したいならこちら
+| スキル名 | 説明 |
+|----------|------|
+| [`sgcop-setup`](skills/sgcop-setup/SKILL.md) | 導入先プロジェクトの `.rubocop.yml` に sgcop をセットアップ・更新する。標準/厳格版の方針決定、既存設定との重複整理、`.rubocop_todo.yml` の生成までを支援 |
+| [`rubocop-todo-fix`](skills/rubocop-todo-fix/SKILL.md) | `.rubocop_todo.yml` に残った違反を段階的に潰す。safe autocorrect だけで完結する Cop はまとめてバッチ、それ以外は1つずつ |
 
-http://blog.onk.ninja/2015/10/27/rubocop-getting-started#治安の悪いアプリに-rubocop-を導入する
+### インストール方法
 
-### 参考サイト
+GitHub CLI で導入先プロジェクトにインストールする。
 
-- Rubocop チートシート http://qiita.com/kitaro_tn/items/abb881c098b3df3f9871
-- 設定一覧(本家) https://github.com/bbatsov/rubocop/tree/master/config
+```sh
+gh skill install SonicGarden/sgcop
+```
+
+> `gh skill` は GitHub CLI のプレビュー機能。
+
+また、[bundler-skills](https://github.com/aki77/bundler-skills) gem を使うと、sgcop を更新するたびに `bundle install` でスキルを自動同期できる。
+
+いずれのスキルも自動発火はしないため、Claude Code 上で `/sgcop-setup` や `/rubocop-todo-fix` のように明示的に呼び出す。
 
 ## 設定ファイルにドキュメントのリンクを付加するスクリプト(sgcop 開発者向け)
 
-ruby/rubocop.yml, rails/rubocop.yml に新しい cop(ルール)設定を追加した後、以下のコマンドを実行すると、rubocop の cop のドキュメントへのリンクをコメントとして追加します。
+ruby/rubocop.yml, ruby/rubocop_rspec.yml, rails/rubocop.yml, ruby/rubocop_strict.yml, ruby/rubocop_rspec_strict.yml, rails/rubocop_strict.yml に新しい cop(ルール)設定を追加した後、以下のコマンドを実行すると、rubocop の cop のドキュメントへのリンクをコメントとして追加します。
 
 ```
 ruby add_doc_links.rb
