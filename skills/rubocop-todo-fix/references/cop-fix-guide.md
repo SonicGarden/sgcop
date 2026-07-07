@@ -1,9 +1,10 @@
 # Cop 修正ガイド
 
 `.rubocop_todo.yml` の違反を潰すときの補助資料。safe autocorrect だけで完結する Cop の
-バッチ処理（経路A）と、それ以外の Cop を Tier 順に潰す進め方（経路B）を扱う。SKILL.md 本体を
-肥大化させないため、判断材料や具体的な書き方はここに切り出す。実行コマンド・コーディング規約・
-コミット記法は **そのプロジェクトの流儀を優先**し、ここに書いた一般論で上書きしない。
+バッチ処理（経路A）と、unsafe autocorrect・手動修正が必要な Cop を Tier ごとの基準で
+バッチにまとめて潰す進め方（経路B）を扱う。SKILL.md 本体を肥大化させないため、判断材料や
+具体的な書き方はここに切り出す。実行コマンド・コーディング規約・コミット記法は
+**そのプロジェクトの流儀を優先**し、ここに書いた一般論で上書きしない。
 
 ## autocorrect 対応の見分け方
 
@@ -58,10 +59,43 @@ bundle exec rubocop --only Style/StringLiterals,Layout/TrailingWhitespace,Style/
 「新しい Cop が未設定」といった無関係な警告がまとまって出力されることがあるが、これは offense 報告
 ではないので無視してよい。
 
-## Tier 別の進め方（経路B: 従来の1 Cop）
+## Tier 別の進め方（経路B: unsafe/手動修正のバッチ）
 
-対象 Cop を todo から削除したあと（SKILL.md 手順 3）、その Cop に絞って実行するのが基本。
-**`--only <Cop>` を付ける**と、まだ todo に残した他 Cop の出力が混ざらず進捗が見やすい。
+対象 Cop を todo から削除したあと（SKILL.md 手順 3）、バッチ対象の Cop に絞って実行するのが基本。
+**`--only <Cop1>,<Cop2>,...` を付ける**と、まだ todo に残した他 Cop の出力が混ざらず進捗が見やすい。
+
+### Tier 2 バッチの組み方（unsafe autocorrect）
+
+- **選定**: 経路A（safe バッチ）と同じく `# Offense count` を Cop ごとに積み上げるが、
+  しきい値は経路Aより狭い**目安30件**に収める。unsafe autocorrect はコードの意味が変わりうる
+  ため、100件単位でまとめると `-A` 適用後にテストが落ちたときの原因切り分け・目視確認の
+  負荷が大きくなりすぎる。「レビュアーが差分を読み切れる量」を安全側に見積もった結果が30件の
+  目安であり、プロジェクトの変更の複雑さに応じて調整してよい。
+- **一括適用**: `bundle exec rubocop --only <Cop1>,<Cop2>,... -A` をバッチ全体に一度に当てる。
+- **一部残った・テストで問題が出た場合**: その Cop だけバッチから切り離し、Tier 3（手動修正）に
+  回す。切り離した Cop は `--auto-gen-config` で todo に戻す（SKILL.md 手順 4 参照）。
+
+```bash
+bundle exec rubocop --only Lint/SomeCop,Style/AnotherCop -A
+```
+
+### Tier 3 バッチの組み方（手動修正）
+
+- **選定基準は件数ではなく性質の近さ**。手動修正は1件ずつ人が意味を読んで直すため、件数を
+  積み上げても負荷の目安にならない（1件が複雑なら1件でも重いし、機械的な書き換えなら
+  数十件でも軽い）。代わりに次のような「同じ意図で語れるか」を基準にする。
+  - **同じ箇所に重なって出る Cop**: 例えば `Metrics/MethodLength` と `Metrics/AbcSize` は
+    どちらも「このメソッドが長すぎる／複雑すぎる」という同じ問題を指しており、メソッド分割で
+    まとめて解消できることが多い。
+  - **影響ファイルが重なる Cop**: 同じファイル群を触ることになる Cop 同士は、1回のレビューで
+    まとめて見てもらう方が文脈を追いやすい。
+  - 上記の目安として**2〜3 Cop 程度**に収める。関連が薄い Cop まで混ぜると、経路Bバッチ化前の
+    「複数 Cop を一度に潰すとレビュー・切り戻しが難しくなる」という問題がそのまま再発するので、
+    「関連性があるから一つの意図として読める」という条件を満たさない Cop は無理に混ぜない。
+- **進め方**: バッチ内の Cop を続けて直してよいが、Cop ごとに一区切りつけながら進め、
+  どの修正がどの Cop 由来か差分から追えるようにする（SKILL.md 手順4 Tier3 参照）。
+- **バッチ全体をまとめて検証**: SKILL.md 手順6のとおり、バッチ内の変更ファイルをまとめて
+  1回の関連テスト実行で検証すればよい（Cop ごとに個別実行する必要はない）。
 
 **Tier の起点ルール**:
 
@@ -73,23 +107,24 @@ bundle exec rubocop --only Style/StringLiterals,Layout/TrailingWhitespace,Style/
 
 「unsafe autocorrect 対応」でも Tier 1（`-a`）を最初に試すのは、一部の違反は safe で直せる場合があるため。
 `rubocop_todo.yml` の `unsafe` 表記は「最高品質の Tier」を示すだけで、safe が使えないという意味ではない。
-なお「safe autocorrecting のみ」の Cop は経路Aのバッチ対象になるので、ここで単体処理するのは
-主に unsafe・autocorrect 非対応の Cop（経路B）になる。
+なお「safe autocorrecting のみ」の Cop は経路Aのバッチ対象になるので、ここで扱うのは
+主に unsafe・autocorrect 非対応の Cop（経路B）になる。バッチの選定基準は上記の
+「Tier 2 バッチの組み方」「Tier 3 バッチの組み方」を参照し、以下は各 Tier の具体的な進め方。
 
 ### Tier 1: safe autocorrect
 
 ```bash
-bundle exec rubocop --only Style/StringLiterals -a
+bundle exec rubocop --only Style/StringLiterals,Lint/SomeCop -a
 ```
 
 - `-a`（`--autocorrect`）は **safe な修正だけ** を当てる。挙動は変わらない前提なので、結果は
-  基本的にそのまま信頼してよい。
-- これで違反ゼロになれば、その Cop はこれで完了（SKILL.md 手順 6 の確認へ）。
+  基本的にそのまま信頼してよい。バッチ対象の Cop 全体に一括で当ててよい。
+- これで違反ゼロになれば、そのバッチはこれで完了（SKILL.md 手順 6 の確認へ）。
 
 ### Tier 2: unsafe autocorrect
 
 ```bash
-bundle exec rubocop --only Lint/SomeCop -A
+bundle exec rubocop --only Lint/SomeCop,Style/AnotherCop -A
 ```
 
 - `-A`（`--autocorrect-all`）は **unsafe な修正も含めて** 当てる。コードの意味が変わる可能性がある。
@@ -100,10 +135,39 @@ bundle exec rubocop --only Lint/SomeCop -A
 ### Tier 3: 手動修正
 
 - autocorrect 非対応の Cop、または `-a` / `-A` を当てても残った違反は、1 件ずつ手で直す。
-- `bundle exec rubocop --only <Cop>` で残った違反のファイル・行・メッセージを確認し、
+- `bundle exec rubocop --only <Cop1>,<Cop2>,...` で残った違反のファイル・行・メッセージを確認し、
   **意味を変えない範囲**でリファクタする。
 - どう直すべきか分からない Cop は、メッセージ末尾の Cop 名（例 `Metrics/MethodLength`）で
   RuboCop 公式ドキュメントを引くと、目的と推奨される直し方が分かる。
+
+### Metrics 系（複雑度・長さ）Cop は「直せるか」ではなく「直した方が読みやすいか」で判断する
+
+`Metrics/ClassLength` `Metrics/CyclomaticComplexity` `Metrics/MethodLength`
+`Metrics/PerceivedComplexity` `Metrics/BlockLength` などは、他の Tier 3 Cop と違って
+「機械的に分割すれば必ず解消できる」わけではない。分割してみて初めて、それが可読性を上げるのか
+下げるのか分かることが多い。
+
+- **まず分割を試す**。ガード節の抽出・処理のまとまりごとのメソッド抽出など、意味の通る単位に
+  分けられないか検討する。分割後に元のメソッドと比べて素直に読めるなら、それが正解。
+- **分割してみて、元のコードより読みにくくなったら元に戻して `# rubocop:disable` に倒してよい**。
+  例えば「Hash か否かの判定を複数メソッドにまたがって繰り返す」「単一責任のクラス（HTTP通信、
+  プロセスフック登録、DSL的なブロック定義など）を無理に小さく割る」といった分割は、Cop の数値は
+  下がってもコードの理解しやすさは下がる。この場合は分割を諦めて disable する方が良い。
+  - 判断に迷う分割（1回試してみないと読みやすさが分からない）は、実際に一度書いてみてから
+    判断してよい。試した結果が良くなければ、そのコミットに含めず元のコードに戻す。
+  - クラス全体の `Metrics/ClassLength` は、そのクラスが単一責任にまとまっている
+    （メソッド郡が1つの目的のために存在する）なら、クラス定義行に
+    `# rubocop:disable Metrics/ClassLength` を付けるだけで十分なことが多い。無理に責務を
+    2つのクラスに割ると、かえって呼び出し側が追いにくくなる。
+  - WHY: Metrics 系は「複雑さ・長さの見積もり値」を機械的に測っているだけで、それを下げる
+    唯一の手段がコード分割とは限らない。分割してもロジックの本質的な複雑さ自体は
+    変わらないことが多く、その場合はメソッド間を移動しただけで可読性は上がらない
+    （むしろ判定条件などを複数箇所に散らして下がることもある）。「Cop が黙るかどうか」ではなく
+    「このコードを初めて読む人が理解しやすいか」を判断基準にする。
+- disable にする場合も、[理由コメントは必ず残す](#理由コメントは必ず残す) の原則は変わらない。
+  「なぜ分割しなかったか」（例: 単一責任のクラスで分割すると責務が散る、DSL的なブロック定義で
+  構造上分割できない、等）が一言添えてあると、後から見た人が「サボった disable」と
+  「検討した上での disable」を区別できる。
 
 ## Exclude vs 無効化の使い分け
 
