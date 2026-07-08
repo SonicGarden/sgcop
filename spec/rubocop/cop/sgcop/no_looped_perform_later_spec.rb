@@ -26,6 +26,23 @@ describe RuboCop::Cop::Sgcop::NoLoopedPerformLater do
     RUBY
   end
 
+  it 'registers an offense when a receiverless call precedes perform_later in the block body' do
+    expect_offense(<<~RUBY)
+      users.each do |u|
+        log(u)
+        NotifyJob.perform_later(u)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/NoLoopedPerformLater: Avoid calling `perform_later` one-by-one inside a loop. Use `perform_all_later` to enqueue jobs in bulk.
+      end
+    RUBY
+  end
+
+  it 'registers an offense for a namespaced job constant' do
+    expect_offense(<<~RUBY)
+      users.each { |u| Notifications::NotifyJob.perform_later(u) }
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/NoLoopedPerformLater: Avoid calling `perform_later` one-by-one inside a loop. Use `perform_all_later` to enqueue jobs in bulk.
+    RUBY
+  end
+
   it 'does not register an offense for perform_all_later' do
     expect_no_offenses(<<~RUBY)
       users.each { |u| NotifyJob.perform_all_later(u) }

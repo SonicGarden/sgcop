@@ -15,7 +15,7 @@ module RuboCop
         PATTERN
 
         def_node_matcher :perform_later_call?, <<~PATTERN
-          (send const_type? :perform_later ...)
+          (send (const _ _) :perform_later ...)
         PATTERN
 
         def on_block(node)
