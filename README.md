@@ -80,6 +80,7 @@ sgcopが提供するカスタムCopの一覧です。
 | [`Sgcop/LoadDefaultsVersionMatch`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/load_defaults_version_match.rb) | config.load_defaultsのバージョンがRailsバージョンと一致することを確認 | ✅ |
 | [`Sgcop/NestedResourcesWithoutModule`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/nested_resources_without_module.rb) | ネストされたルーティングでmoduleオプションの使用を推奨 | ❌ |
 | [`Sgcop/NoAcceptsNestedAttributesFor`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/no_accepts_nested_attributes_for.rb) | accepts_nested_attributes_forの使用を制限 | ❌ |
+| [`Sgcop/NoLoopedPerformLater`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/no_looped_perform_later.rb) | ループ内で1件ずつperform_laterを呼ばずperform_all_laterを推奨 | ❌ |
 | [`Sgcop/NoModelMethodsInMigration`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/no_model_methods_in_migration.rb) | マイグレーションでモデルのメソッド呼び出しを検出 | ✅ |
 | [`Sgcop/ErrorMessageFormat`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/error_message_format.rb) | エラーメッセージはシンボルを使用することを強制 | ❌ |
 | [`Sgcop/FormLabelFirstArgument`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/form_label_first_argument.rb) | f.labelの第一引数にはテキストではなく属性名（Symbol）を指定することを強制 | ✅ |
