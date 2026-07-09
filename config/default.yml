@@ -107,6 +107,14 @@ Sgcop/RetryOnInfiniteAttempts:
     - "app/jobs/*.rb"
     - "config/initializers/*.rb"
 
+Sgcop/NoLoopedPerformLater:
+  Description: "ループ内で1件ずつperform_laterを呼ばずperform_all_laterでまとめてenqueueしよう"
+  Enabled: false
+  Include:
+    - "app/**/*.rb"
+  Reference:
+    - https://api.rubyonrails.org/classes/ActiveJob/Enqueuing/ClassMethods.html#method-i-perform_all_later
+
 Sgcop/Capybara/Sleep:
   Description: "sleepに頼らない安定したspecを書こう"
   Enabled: true

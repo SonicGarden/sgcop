@@ -69,6 +69,11 @@ Sgcop/Capybara/FillInArgument:
 Sgcop/Capybara/FragileSelector:
   Enabled: true
 
+# ループ内で1件ずつperform_laterを呼ばずperform_all_laterでまとめてenqueue
+# https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/no_looped_perform_later.rb
+Sgcop/NoLoopedPerformLater:
+  Enabled: true
+
 # ============================================================
 # sgcop カスタム Cop（特定 gem 依存 — 使用する場合はコメントを外す）
 # ============================================================
