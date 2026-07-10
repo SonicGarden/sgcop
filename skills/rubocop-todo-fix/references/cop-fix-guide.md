@@ -46,6 +46,14 @@ Cop（= safe autocorrect だけで完結する Cop）は、複数まとめてバ
 - **一部残った場合**: 上記の結果、違反ゼロにならなかった Cop があれば、**その Cop だけ
   バッチから切り離し**、経路B（Tier 2 → Tier 3）の通常フローに回す。バッチ自体は safe で
   完結した Cop だけでサイクルを完了させる。
+- **可読性の判定は `--only` を外した結果で行う**: `--only <Cop>` に絞った単体実行では、
+  本来その崩れを均すはずの別 Cop（インデント系など）が働かないため、autocorrect 後の見た目
+  だけで「可読性が悪化する」と判断すると誤る。例えば `Layout/MultilineAssignmentLayout` を
+  単体で `-a` すると改行後のブロック本体が1スペースしか字下げされず崩れて見えるが、`--only`
+  を外して対象ファイルに `-a` を当てると `Layout/IndentationWidth` 等が連動して正しく
+  字下げされる。ある Cop の autocorrect 結果を可読性の悪化と見なして手順5（Exclude/無効化・
+  要判断）に倒す前に、**同じファイルに対して `--only` を外した `-a`（または関連しそうな
+  Layout 系 Cop を含めた `--only` 指定）で再確認**し、それでも崩れる場合だけ要判断とする。
 
 ```bash
 bundle exec rubocop --only Style/StringLiterals,Layout/TrailingWhitespace,Style/FrozenStringLiteralComment -a
