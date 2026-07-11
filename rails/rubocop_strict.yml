@@ -15,6 +15,19 @@ inherit_from:
   - ../ruby/rubocop_strict.yml
   - ../ruby/rubocop_rspec_strict.yml
 
+# マイグレーションはテーブル操作が自明でありドキュメントコメントの実益が薄いため対象外とする。
+# dekiru-data_migrationのスクリプトも一度限りの機械的なデータ移行処理であり同様の理由で対象外とする。
+# NOTE: ruby strict 側で Style/Documentation を Enabled: true のみで再定義しており、
+#       Exclude を持たないため通常の継承では rails.yml 由来の Exclude が丸ごと上書きされて消える。
+#       inherit_mode: merge を指定し、ここで書く Exclude が既存の Exclude に合流するようにする。
+Style/Documentation:
+  inherit_mode:
+    merge:
+      - Exclude
+  Exclude:
+    - 'db/migrate/*.rb'
+    - 'scripts/*.rb'
+
 # SQL ヒアドキュメントは squish して整形する
 # https://docs.rubocop.org/rubocop-rails/latest/cops_rails.html#railssquishedsqlheredocs
 Rails/SquishedSQLHeredocs:

@@ -39,16 +39,41 @@ Cop（= safe autocorrect だけで完結する Cop）は、複数まとめてバ
   （1 Cop は差分の由来を追跡できる最小単位なので、バッチの中でも分割しない）。
 - **混在**: 系統の異なる Cop（`Style/*` と `Layout/*` など）を混ぜてよい。全て `-a` だけで
   挙動を変えずに完結するため、混在させても切り分けの支障が少ない。
-- **実行と判定を1回で済ませる**: `-a` の実行結果（残った offense の一覧）がそのまま
-  Cop 別の残違反判定になる。同じ `--only` 指定での再実行や、SKILL.md 手順 6 の検証のための
-  別実行は不要——バッチが1コマンドで選定〜検証まで完結するのが、1 Cop ずつ処理するより
-  サイクル数を減らせる理由でもある。
+- **実行と判定を1回で済ませる**: `--only` なしの `-a` の実行結果（残った offense の一覧）が
+  そのまま残違反判定になり、かつ SKILL.md 手順 6 の最終検証も兼ねる——バッチが1コマンドで
+  選定〜検証まで完結するのが、1 Cop ずつ処理するよりサイクル数を減らせる理由でもある。
 - **一部残った場合**: 上記の結果、違反ゼロにならなかった Cop があれば、**その Cop だけ
   バッチから切り離し**、経路B（Tier 2 → Tier 3）の通常フローに回す。バッチ自体は safe で
-  完結した Cop だけでサイクルを完了させる。
+  完結した Cop だけでサイクルを完了させる。出力に残る Cop は、todo に載っていた対象 Cop
+  （→切り離して別サイクル）と、autocorrect が引き金で新規発生した別 Cop（→切り離さず
+  このサイクル内の副作用処理に含める。SKILL.md 手順6参照）の2種類がありうるので区別して読む。
+
+### autocorrect は `--only` を付けない（検出・検証時だけ付ける）
+
+autocorrect（`-a`/`-A`）コマンドには `--only <Cop1>,<Cop2>,...` を **付けない**。理由は2点:
+
+1. **連鎖違反の取りこぼし防止**: `--only` を付けると対象 Cop 以外の autocorrect が走らない。
+   ある Cop の修正が引き金になって新規発生する別 Cop の違反（連鎖違反）が、`--only` の対象外
+   として自動修正されずに残ってしまう。外せば連鎖修正まで一括で当たる。
+2. **`--only` なしでも安全（todo がマスク役）**: SKILL.md 手順3で対象 Cop のエントリだけ
+   todo から削除済みなので、todo に残る他 Cop の既存違反は `inherit_from: .rubocop_todo.yml`
+   で抑制され autocorrect の対象にならない。`--only` を外しても実際に触れるのは、削除した
+   対象 Cop の違反と、その修正で連鎖発生した新規違反だけ。
+
+逆に、**残違反の検出・検証（autocorrect を伴わない実行）のときは `--only` を付ける**——他
+Cop の出力が混ざらず、対象 Cop の進捗が見やすくなるため。
+
+この原則の具体例が可読性判定: `--only <Cop>` に絞った単体の `-a` では、本来その崩れを
+均すはずの別 Cop（インデント系など）が働かないため、autocorrect 後の見た目だけで
+「可読性が悪化する」と判断すると誤る。例えば `Layout/MultilineAssignmentLayout` を
+`--only` 付きで単体 `-a` すると改行後のブロック本体が1スペースしか字下げされず崩れて
+見えるが、`--only` を外して対象ファイルに `-a` を当てると `Layout/IndentationWidth` 等が
+連動して正しく字下げされる。ある Cop の autocorrect 結果を可読性の悪化と見なして手順5
+（Exclude/無効化・要判断）に倒す前に、**同じファイルに対して `--only` を外した `-a` で
+再確認**し、それでも崩れる場合だけ要判断とする。
 
 ```bash
-bundle exec rubocop --only Style/StringLiterals,Layout/TrailingWhitespace,Style/FrozenStringLiteralComment -a
+bundle exec rubocop -a
 ```
 
 不安なら実行前に対象 Cop 一覧と合計件数をユーザーに提示して合意を取ってから適用する。ただし
@@ -61,8 +86,10 @@ bundle exec rubocop --only Style/StringLiterals,Layout/TrailingWhitespace,Style/
 
 ## Tier 別の進め方（経路B: unsafe/手動修正のバッチ）
 
-対象 Cop を todo から削除したあと（SKILL.md 手順 3）、バッチ対象の Cop に絞って実行するのが基本。
-**`--only <Cop1>,<Cop2>,...` を付ける**と、まだ todo に残した他 Cop の出力が混ざらず進捗が見やすい。
+対象 Cop を todo から削除したあと（SKILL.md 手順 3）、**残違反の確認・検証（autocorrect を
+伴わない実行）は `--only <Cop1>,<Cop2>,...` を付ける**——まだ todo に残した他 Cop の出力が
+混ざらず進捗が見やすい。**一方、autocorrect（`-a`/`-A`）本体には `--only` を付けない**
+（連鎖違反を取りこぼさないため。上記「autocorrect は `--only` を付けない」参照）。
 
 ### Tier 2 バッチの組み方（unsafe autocorrect）
 
@@ -71,12 +98,12 @@ bundle exec rubocop --only Style/StringLiterals,Layout/TrailingWhitespace,Style/
   ため、100件単位でまとめると `-A` 適用後にテストが落ちたときの原因切り分け・目視確認の
   負荷が大きくなりすぎる。「レビュアーが差分を読み切れる量」を安全側に見積もった結果が30件の
   目安であり、プロジェクトの変更の複雑さに応じて調整してよい。
-- **一括適用**: `bundle exec rubocop --only <Cop1>,<Cop2>,... -A` をバッチ全体に一度に当てる。
+- **一括適用**: `bundle exec rubocop -A`（`--only` は付けない）をバッチ全体に一度に当てる。
 - **一部残った・テストで問題が出た場合**: その Cop だけバッチから切り離し、Tier 3（手動修正）に
   回す。切り離した Cop は `--auto-gen-config` で todo に戻す（SKILL.md 手順 4 参照）。
 
 ```bash
-bundle exec rubocop --only Lint/SomeCop,Style/AnotherCop -A
+bundle exec rubocop -A
 ```
 
 ### Tier 3 バッチの組み方（手動修正）
@@ -114,17 +141,18 @@ bundle exec rubocop --only Lint/SomeCop,Style/AnotherCop -A
 ### Tier 1: safe autocorrect
 
 ```bash
-bundle exec rubocop --only Style/StringLiterals,Lint/SomeCop -a
+bundle exec rubocop -a
 ```
 
 - `-a`（`--autocorrect`）は **safe な修正だけ** を当てる。挙動は変わらない前提なので、結果は
-  基本的にそのまま信頼してよい。バッチ対象の Cop 全体に一括で当ててよい。
+  基本的にそのまま信頼してよい。`--only` は付けずにバッチ対象の Cop 全体に一括で当てる
+  （連鎖違反を取りこぼさないため。上記「autocorrect は `--only` を付けない」参照）。
 - これで違反ゼロになれば、そのバッチはこれで完了（SKILL.md 手順 6 の確認へ）。
 
 ### Tier 2: unsafe autocorrect
 
 ```bash
-bundle exec rubocop --only Lint/SomeCop,Style/AnotherCop -A
+bundle exec rubocop -A
 ```
 
 - `-A`（`--autocorrect-all`）は **unsafe な修正も含めて** 当てる。コードの意味が変わる可能性がある。
