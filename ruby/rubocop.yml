@@ -6,6 +6,10 @@ AllCops:
   DisplayStyleGuide: true
   StyleGuideBaseURL: https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md
   ExtraDetails: true
+  Exclude:
+    - "apm_modules/**/*"
+    - "node_modules/**/*"
+    - ".claude/**/*"
 
 # ============================================================
 # Style
