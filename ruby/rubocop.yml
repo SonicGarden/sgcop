@@ -1,6 +1,3 @@
-# Cop name を常に表示する
-# - 名前がわからないと rubocop の設定がしづらい
-# - 名前がわからないと disable コメントも書けない
 AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
@@ -10,6 +7,7 @@ AllCops:
     - "apm_modules/**/*"
     - "node_modules/**/*"
     - ".claude/**/*"
+    - "vendor/**/*"
 
 # ============================================================
 # Style
