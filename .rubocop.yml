@@ -9,6 +9,3 @@ AllCops:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
-
-RSpec/Output:
-  Enabled: true

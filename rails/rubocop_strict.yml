@@ -20,6 +20,7 @@ inherit_from:
 # NOTE: ruby strict 側で Style/Documentation を Enabled: true のみで再定義しており、
 #       Exclude を持たないため通常の継承では rails.yml 由来の Exclude が丸ごと上書きされて消える。
 #       inherit_mode: merge を指定し、ここで書く Exclude が既存の Exclude に合流するようにする。
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#styledocumentation
 Style/Documentation:
   inherit_mode:
     merge:
