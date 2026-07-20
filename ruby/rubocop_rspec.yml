@@ -172,6 +172,9 @@ RSpec/IncludeExamples: # new in 3.6
 # https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecleakylocalvariable
 RSpec/LeakyLocalVariable: # new in 3.8
   Enabled: true
+# https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecoutput
+RSpec/Output:
+  Enabled: true
 # https://docs.rubocop.org/rubocop-rspec/latest/cops_rspec.html#rspecdiscardedmatcher
 RSpec/DiscardedMatcher: # new in 3.10
   Enabled: true
