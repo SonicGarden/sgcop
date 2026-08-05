@@ -642,6 +642,12 @@ Style/TallyMethod: # new in 1.85
 Style/MutableConstant:
   Enabled: true
   Recursive: true
+# https://docs.rubocop.org/rubocop/latest/cops_lint.html#lintdeprecatedreference
+Lint/DeprecatedReference: # new in 1.89
+  Enabled: false
+# https://docs.rubocop.org/rubocop/latest/cops_lint.html#lintnametypo
+Lint/NameTypo: # new in 1.89
+  Enabled: true
 
 # ============================================================
 # Lint
