@@ -77,6 +77,7 @@ sgcopが提供するカスタムCopの一覧です。
 | Cop名 | 説明 | デフォルト |
 |-------|------|:----------:|
 | [`Sgcop/ActiveJobQueueAdapter`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/active_job_queue_adapter.rb) | ActiveJobのキューアダプタ設定をチェック | ✅ |
+| [`Sgcop/IndexInCreateTable`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/index_in_create_table.rb) | create_table直後のadd_indexをブロック内のt.indexにまとめることを推奨（autocorrect対応） | ❌ |
 | [`Sgcop/LoadDefaultsVersionMatch`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/load_defaults_version_match.rb) | config.load_defaultsのバージョンがRailsバージョンと一致することを確認 | ✅ |
 | [`Sgcop/NestedResourcesWithoutModule`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/nested_resources_without_module.rb) | ネストされたルーティングでmoduleオプションの使用を推奨 | ❌ |
 | [`Sgcop/NoAcceptsNestedAttributesFor`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/no_accepts_nested_attributes_for.rb) | accepts_nested_attributes_forの使用を制限 | ❌ |

@@ -115,6 +115,14 @@ Sgcop/NoLoopedPerformLater:
   Reference:
     - https://api.rubyonrails.org/classes/ActiveJob/Enqueuing/ClassMethods.html#method-i-perform_all_later
 
+Sgcop/IndexInCreateTable:
+  Description: "create_table直後のadd_indexはブロック内のt.indexにまとめよう"
+  Enabled: false
+  Include:
+    - "db/migrate/*.rb"
+  Reference:
+    - https://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/TableDefinition.html#method-i-index
+
 Sgcop/Capybara/Sleep:
   Description: "sleepに頼らない安定したspecを書こう"
   Enabled: true
