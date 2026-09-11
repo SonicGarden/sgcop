@@ -88,6 +88,11 @@ Sgcop/Capybara/FragileSelector:
 Sgcop/NoLoopedPerformLater:
   Enabled: true
 
+# create_table 直後の add_index はブロック内の t.index にまとめる
+# https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/index_in_create_table.rb
+Sgcop/IndexInCreateTable:
+  Enabled: true
+
 # ============================================================
 # sgcop カスタム Cop（特定 gem 依存 — 使用する場合はコメントを外す）
 # ============================================================

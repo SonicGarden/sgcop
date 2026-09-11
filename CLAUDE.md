@@ -23,7 +23,7 @@ ruby add_doc_links.rb      # rubocop.yml に cop ドキュメントリンクを�
 1. `lib/rubocop/cop/sgcop/` に Cop ファイルを作成（クラス/モジュールに日本語 doc comment を付ける。`Style/Documentation` が有効なため必須）
 2. `lib/sgcop.rb` に `require` を追加
 3. `spec/rubocop/cop/sgcop/` に対応するテストを追加
-4. `rails/rubocop.yml` または `ruby/rubocop.yml` に設定を追加
+4. `config/default.yml` に設定を追加（デフォルト無効なら strict 設定で有効化。Rails 向けは `rails/rubocop_strict.yml`、RSpec 向けは `ruby/rubocop_rspec_strict.yml`）
 5. `ruby add_doc_links.rb` でドキュメントリンクを付加
 6. `README.md` のカスタムCop一覧テーブルを更新
 
