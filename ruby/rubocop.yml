@@ -648,6 +648,18 @@ Lint/DeprecatedReference: # new in 1.89
 # https://docs.rubocop.org/rubocop/latest/cops_lint.html#lintnametypo
 Lint/NameTypo: # new in 1.89
   Enabled: true
+# https://docs.rubocop.org/rubocop/latest/cops_lint.html#lintargumentmismatch
+Lint/ArgumentMismatch: # new in 1.90
+  Enabled: true
+# https://docs.rubocop.org/rubocop/latest/cops_lint.html#lintsuperargumentmismatch
+Lint/SuperArgumentMismatch: # new in 1.90
+  Enabled: true
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#styledirectivescope
+Style/DirectiveScope: # new in 1.90
+  Enabled: false
+# https://docs.rubocop.org/rubocop/latest/cops_style.html#styletimenow
+Style/TimeNow: # new in 1.90
+  Enabled: true
 
 # ============================================================
 # Lint
