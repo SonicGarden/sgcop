@@ -85,6 +85,52 @@ describe RuboCop::Cop::Sgcop::StrictLoadingRequired do
     end
   end
 
+  context '同じ変数への再代入の場合' do
+    it 'インスタンス変数への自己再代入は警告されない' do
+      expect_no_offenses(<<~RUBY)
+        @students = @students.preload(:review)
+      RUBY
+    end
+
+    it 'ローカル変数への自己再代入は警告されない' do
+      expect_no_offenses(<<~RUBY)
+        users = users.includes(:posts)
+      RUBY
+    end
+
+    it '複数行チェーンの自己再代入は警告されない' do
+      expect_no_offenses(<<~RUBY)
+        @students = @search_form.search.strict_loading.preload(user: :company)
+        @students = @students
+          .preload(:review)
+          .order(:created_at)
+      RUBY
+    end
+
+    it '起点にstrict_loadingがない場合は起点だけが警告される' do
+      expect_offense(<<~RUBY)
+        @students = @search_form.search.preload(user: :company)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sgcop/StrictLoadingRequired: Add `.strict_loading` when using `includes` or `preload` with variable assignment
+        @students = @students.preload(:review)
+      RUBY
+    end
+
+    it '別名の変数を起点にした代入は警告される' do
+      expect_offense(<<~RUBY)
+        users = User.all
+        filtered = users.includes(:posts)
+                   ^^^^^^^^^^^^^^^^^^^^^^ Sgcop/StrictLoadingRequired: Add `.strict_loading` when using `includes` or `preload` with variable assignment
+      RUBY
+    end
+
+    it 'レシーバのないメソッド呼び出しを起点にした代入は警告される' do
+      expect_offense(<<~RUBY)
+        users = other.includes(:posts)
+                ^^^^^^^^^^^^^^^^^^^^^^ Sgcop/StrictLoadingRequired: Add `.strict_loading` when using `includes` or `preload` with variable assignment
+      RUBY
+    end
+  end
+
   context '複数のアソシエーションを含む場合' do
     it 'includesで複数のアソシエーションを指定してもstrict_loadingがない場合は警告される' do
       expect_offense(<<~RUBY)
