@@ -93,6 +93,11 @@ Sgcop/NoLoopedPerformLater:
 Sgcop/IndexInCreateTable:
   Enabled: true
 
+# Time.zone.local の数値羅列より日時文字列の .in_time_zone を推奨
+# https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/time_zone_local.rb
+Sgcop/TimeZoneLocal:
+  Enabled: true
+
 # ============================================================
 # sgcop カスタム Cop（特定 gem 依存 — 使用する場合はコメントを外す）
 # ============================================================
