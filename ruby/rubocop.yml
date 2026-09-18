@@ -660,6 +660,9 @@ Style/DirectiveScope: # new in 1.90
 # https://docs.rubocop.org/rubocop/latest/cops_style.html#styletimenow
 Style/TimeNow: # new in 1.90
   Enabled: true
+# https://docs.rubocop.org/rubocop/latest/cops_lint.html#lintmisplacedmagiccomment
+Lint/MisplacedMagicComment: # new in 1.91
+  Enabled: true
 
 # ============================================================
 # Lint
