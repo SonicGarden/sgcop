@@ -379,3 +379,8 @@ Sgcop/NoModelMethodsInMigration:
   AllowedConstants: []
   Include:
     - "db/migrate/*.rb"
+
+Sgcop/TimeZoneLocal:
+  Description: "Time.zone.localの数値羅列より日時文字列の.in_time_zoneの方が読みやすいよ"
+  Enabled: false
+  SafeAutoCorrect: false

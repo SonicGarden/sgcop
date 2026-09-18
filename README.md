@@ -94,6 +94,7 @@ sgcopが提供するカスタムCopの一覧です。
 | [`Sgcop/SimpleFormat`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/simple_format.rb) | simple_formatメソッドの安全な使用を確認 | ✅ |
 | [`Sgcop/SimpleFormAssociation`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/simple_form_association.rb) | SimpleFormのassociationメソッドの適切な使用をチェック | ✅ |
 | [`Sgcop/StrictLoadingRequired`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/strict_loading_required.rb) | N+1問題を防ぐstrict_loadingの使用を推奨 | ❌ |
+| [`Sgcop/TimeZoneLocal`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/time_zone_local.rb) | Time.zone.localの数値羅列より日時文字列の.in_time_zoneを推奨（autocorrect対応） | ❌ |
 | [`Sgcop/TransactionRequiresNew`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/transaction_requires_new.rb) | requires_new: trueを使用したトランザクションをチェック | ✅ |
 | [`Sgcop/UjsOptions`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/ujs_options.rb) | Rails UJSオプションの適切な使用を確認 | ✅ |
 | [`Sgcop/Unscoped`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/unscoped.rb) | unscopedメソッドの使用を制限 | ✅ |
