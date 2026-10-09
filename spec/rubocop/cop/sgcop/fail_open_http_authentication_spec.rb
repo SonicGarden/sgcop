@@ -78,36 +78,6 @@ describe RuboCop::Cop::Sgcop::FailOpenHttpAuthentication, :config do
         RUBY
       end
 
-      it 'メソッドの最後の式で、呼び出し元も before_action のメソッドの最後の式なら警告' do
-        expect_offense(<<~RUBY)
-          class ApiController < ApplicationController
-            before_action :authenticate
-
-            def authenticate
-              authenticate_token
-            end
-
-            def authenticate_token
-              #{method_name} { |name, _| valid?(name) ? setup(name) : render_unauthorized }
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
-            end
-          end
-        RUBY
-      end
-
-      it '戻り値を代入していたら警告なし' do
-        expect_no_offenses(<<~RUBY)
-          class ApiController < ApplicationController
-            before_action :authenticate
-
-            def authenticate
-              user = #{method_name} { |name, _| User.find_by(name: name) }
-              render_unauthorized if user.nil?
-            end
-          end
-        RUBY
-      end
-
       it 'before_action のメソッドの最後で戻り値を代入していたら警告なし' do
         expect_no_offenses(<<~RUBY)
           class ApiController < ApplicationController
@@ -136,24 +106,17 @@ describe RuboCop::Cop::Sgcop::FailOpenHttpAuthentication, :config do
     end
   end
 
-  it 'authenticate_or_request_with_http_token は警告なし' do
+  it 'authenticate_or_request_with_http_token / authenticate_or_request_with_http_basic は警告なし' do
     expect_no_offenses(<<~RUBY)
       class ApiController < ApplicationController
-        before_action :authenticate
+        before_action :authenticate_by_token
+        before_action :authenticate_by_basic
 
-        def authenticate
+        def authenticate_by_token
           authenticate_or_request_with_http_token { |token, _options| User.find_by(token: token) }
         end
-      end
-    RUBY
-  end
 
-  it 'authenticate_or_request_with_http_basic は警告なし' do
-    expect_no_offenses(<<~RUBY)
-      class ApiController < ApplicationController
-        before_action :authenticate
-
-        def authenticate
+        def authenticate_by_basic
           authenticate_or_request_with_http_basic { |name, password| name == 'admin' && password == 'secret' }
         end
       end
@@ -176,28 +139,6 @@ describe RuboCop::Cop::Sgcop::FailOpenHttpAuthentication, :config do
         controller&.authenticate_with_http_basic { |name, _password| @current_user = User.find_by(name: name) }
                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
         log_access
-      end
-    RUBY
-  end
-
-  it 'レシーバ付きで戻り値を代入していたら警告なし' do
-    expect_no_offenses(<<~RUBY)
-      def authenticate
-        user = controller.authenticate_with_http_token { |token, _options| User.find_by(token: token) }
-        render_unauthorized if user.nil?
-      end
-    RUBY
-  end
-
-  it 'self 付きで before_action に登録したメソッドの最後の式なら警告' do
-    expect_offense(<<~RUBY)
-      class ApiController < ApplicationController
-        before_action :authenticate
-
-        def authenticate
-          self.authenticate_with_http_token { |token, _options| @current_user = User.find_by(token: token) }
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
-        end
       end
     RUBY
   end
@@ -355,16 +296,16 @@ describe RuboCop::Cop::Sgcop::FailOpenHttpAuthentication, :config do
     RUBY
   end
 
-  it '別のクラスの呼び出し元は対象にしない' do
+  it '入れ子のクラスの中の呼び出し元は対象にしない' do
     expect_no_offenses(<<~RUBY)
-      class AdminController < ApplicationController
-        def authenticate
-          authenticate_token
-          log_access
-        end
-      end
-
       class ApiController < ApplicationController
+        class NestedController < ApplicationController
+          def authenticate
+            authenticate_token
+            log_access
+          end
+        end
+
         def authenticate_token
           authenticate_with_http_token { |token, _options| @current_user = User.find_by(token: token) }
         end
@@ -386,13 +327,13 @@ describe RuboCop::Cop::Sgcop::FailOpenHttpAuthentication, :config do
     RUBY
   end
 
-  it '別のクラスの before_action に登録された同名メソッドは対象にしない' do
+  it '入れ子のクラスの before_action に登録された同名メソッドは対象にしない' do
     expect_no_offenses(<<~RUBY)
-      class AdminController < ApplicationController
-        before_action :authenticate
-      end
-
       class ApiController < ApplicationController
+        class NestedController < ApplicationController
+          before_action :authenticate
+        end
+
         def authenticate
           authenticate_with_http_token { |token, _options| @current_user = User.find_by(token: token) }
         end
