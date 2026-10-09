@@ -57,14 +57,15 @@ module RuboCop
           (send nil? CALLBACK_METHODS $...)
         PATTERN
 
+        # `controller.authenticate_with_http_token` のようにレシーバ付きで呼んでも fail-open なのは同じなので、
+        # レシーバの有無では除外しない
         def on_send(node)
-          return if node.receiver
-
           expression = node.block_node || node
           return if expression.value_used? && !discarded_after_return?(expression)
 
           add_offense(node.loc.selector)
         end
+        alias on_csend on_send
 
         private
 
@@ -126,7 +127,8 @@ module RuboCop
 
         def callers(class_node, method_name)
           sends_in_class(class_node).select do |send_node|
-            send_node.receiver.nil? && send_node.method?(method_name)
+            # レシーバが self 以外なら別オブジェクトのメソッドなので、この def の呼び出し元ではない
+            (send_node.receiver.nil? || send_node.receiver.self_type?) && send_node.method?(method_name)
           end
         end
 

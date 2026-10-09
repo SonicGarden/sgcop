@@ -160,11 +160,75 @@ describe RuboCop::Cop::Sgcop::FailOpenHttpAuthentication, :config do
     RUBY
   end
 
-  it 'レシーバ付きの呼び出しは警告なし' do
+  it 'レシーバ付きで戻り値を捨てていたら警告' do
+    expect_offense(<<~RUBY)
+      def authenticate
+        controller.authenticate_with_http_token { |token, _options| @current_user = User.find_by(token: token) }
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
+        log_access
+      end
+    RUBY
+  end
+
+  it 'safe navigation で戻り値を捨てていたら警告' do
+    expect_offense(<<~RUBY)
+      def authenticate
+        controller&.authenticate_with_http_basic { |name, _password| @current_user = User.find_by(name: name) }
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
+        log_access
+      end
+    RUBY
+  end
+
+  it 'レシーバ付きで戻り値を代入していたら警告なし' do
     expect_no_offenses(<<~RUBY)
       def authenticate
-        controller.authenticate_with_http_token { |token, _options| User.find_by(token: token) }
-        log_access
+        user = controller.authenticate_with_http_token { |token, _options| User.find_by(token: token) }
+        render_unauthorized if user.nil?
+      end
+    RUBY
+  end
+
+  it 'self 付きで before_action に登録したメソッドの最後の式なら警告' do
+    expect_offense(<<~RUBY)
+      class ApiController < ApplicationController
+        before_action :authenticate
+
+        def authenticate
+          self.authenticate_with_http_token { |token, _options| @current_user = User.find_by(token: token) }
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
+        end
+      end
+    RUBY
+  end
+
+  it '呼び出し元が self 付きで戻り値を捨てていたら警告' do
+    expect_offense(<<~RUBY)
+      class ApiController < ApplicationController
+        def authenticate
+          self.authenticate_token
+          log_access
+        end
+
+        def authenticate_token
+          authenticate_with_http_token { |token, _options| @current_user = User.find_by(token: token) }
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
+        end
+      end
+    RUBY
+  end
+
+  it '別オブジェクトの同名メソッドの呼び出しは呼び出し元として数えない' do
+    expect_no_offenses(<<~RUBY)
+      class ApiController < ApplicationController
+        def authenticate
+          legacy_client.authenticate_token
+          log_access
+        end
+
+        def authenticate_token
+          authenticate_with_http_token { |token, _options| User.find_by(token: token) }
+        end
       end
     RUBY
   end
