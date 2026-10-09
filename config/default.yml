@@ -28,6 +28,12 @@ Sgcop/RequestRemoteIp:
   Reference:
     - https://api.rubyonrails.org/classes/ActionDispatch/Request.html#method-i-remote_ip-3D
 
+Sgcop/FailOpenHttpAuthentication:
+  Description: "authenticate_with_http_token/basicは資格情報が無いとnilを返すだけで拒否しないよ。戻り値を受け取ってnilのときに拒否するか、authenticate_or_request_with_http_*を使おう"
+  Enabled: true
+  Reference:
+    - https://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Token.html
+
 Sgcop/UjsOptions:
   Description: "Rails UJS Attributesは非推奨となっているよ"
   Enabled: true
