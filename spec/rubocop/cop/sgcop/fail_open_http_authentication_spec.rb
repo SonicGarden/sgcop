@@ -296,23 +296,6 @@ describe RuboCop::Cop::Sgcop::FailOpenHttpAuthentication, :config do
     RUBY
   end
 
-  it '入れ子のクラスの中の呼び出し元は対象にしない' do
-    expect_no_offenses(<<~RUBY)
-      class ApiController < ApplicationController
-        class NestedController < ApplicationController
-          def authenticate
-            authenticate_token
-            log_access
-          end
-        end
-
-        def authenticate_token
-          authenticate_with_http_token { |token, _options| @current_user = User.find_by(token: token) }
-        end
-      end
-    RUBY
-  end
-
   it '同名メソッドを再定義していて呼び出しが循環しても停止する' do
     expect_no_offenses(<<~RUBY)
       class ApiController < ApplicationController
@@ -322,20 +305,6 @@ describe RuboCop::Cop::Sgcop::FailOpenHttpAuthentication, :config do
 
         def authenticate_token
           authenticate_token
-        end
-      end
-    RUBY
-  end
-
-  it '入れ子のクラスの before_action に登録された同名メソッドは対象にしない' do
-    expect_no_offenses(<<~RUBY)
-      class ApiController < ApplicationController
-        class NestedController < ApplicationController
-          before_action :authenticate
-        end
-
-        def authenticate
-          authenticate_with_http_token { |token, _options| @current_user = User.find_by(token: token) }
         end
       end
     RUBY

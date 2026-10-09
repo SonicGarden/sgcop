@@ -119,23 +119,16 @@ module RuboCop
         end
 
         def callback_names(class_node)
-          sends_in_class(class_node).flat_map do |send_node|
+          class_node.each_descendant(:send).flat_map do |send_node|
             args = callback_method_names(send_node) || []
             args.select(&:sym_type?).map(&:value)
           end
         end
 
         def callers(class_node, method_name)
-          sends_in_class(class_node).select do |send_node|
+          class_node.each_descendant(:send).select do |send_node|
             # レシーバが self 以外なら別オブジェクトのメソッドなので、この def の呼び出し元ではない
             (send_node.receiver.nil? || send_node.receiver.self_type?) && send_node.method?(method_name)
-          end
-        end
-
-        def sends_in_class(class_node)
-          # 入れ子のクラスの中の呼び出しは別クラスのものなので数えない
-          class_node.each_descendant(:send).select do |send_node|
-            send_node.each_ancestor(:class).first.equal?(class_node)
           end
         end
       end
