@@ -34,7 +34,7 @@ describe RuboCop::Cop::Sgcop::FailOpenHttpAuthentication, :config do
         RUBY
       end
 
-      it 'before_action ではないメソッドの最後の式なら警告なし' do
+      it 'before_action ではないメソッドの最後の式で、同じクラスの呼び出し元が戻り値を使っていたら警告なし' do
         expect_no_offenses(<<~RUBY)
           class ApiController < ApplicationController
             before_action :authenticate
@@ -45,6 +45,51 @@ describe RuboCop::Cop::Sgcop::FailOpenHttpAuthentication, :config do
 
             def authenticate_token
               #{method_name} { |name, _| @current_user = User.find_by(name: name) }
+            end
+          end
+        RUBY
+      end
+
+      it 'before_action ではないメソッドの最後の式で、同じクラスに呼び出し元が無ければ警告なし' do
+        expect_no_offenses(<<~RUBY)
+          class ApiController < ApplicationController
+            def authenticate_token
+              #{method_name} { |name, _| User.find_by(name: name) }
+            end
+          end
+        RUBY
+      end
+
+      it 'メソッドの最後の式で、同じクラスの呼び出し元が戻り値を捨てていたら警告' do
+        expect_offense(<<~RUBY)
+          class ApiController < ApplicationController
+            before_action :authenticate
+
+            def authenticate
+              authenticate_token
+              log_access
+            end
+
+            def authenticate_token
+              #{method_name} { |name, _| valid?(name) ? setup(name) : render_unauthorized }
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
+            end
+          end
+        RUBY
+      end
+
+      it 'メソッドの最後の式で、呼び出し元も before_action のメソッドの最後の式なら警告' do
+        expect_offense(<<~RUBY)
+          class ApiController < ApplicationController
+            before_action :authenticate
+
+            def authenticate
+              authenticate_token
+            end
+
+            def authenticate_token
+              #{method_name} { |name, _| valid?(name) ? setup(name) : render_unauthorized }
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
             end
           end
         RUBY
@@ -198,6 +243,80 @@ describe RuboCop::Cop::Sgcop::FailOpenHttpAuthentication, :config do
         def authenticate
           authenticate_with_http_basic { |name, _password| @current_user = User.find_by(name: name) }
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
+        end
+      end
+    RUBY
+  end
+
+  it '呼び出し元を複数段たどって before_action に行き着いたら警告' do
+    expect_offense(<<~RUBY)
+      class ApiController < ApplicationController
+        before_action :authenticate
+
+        def authenticate
+          return if skip_authentication?
+
+          current_user_from_token
+        end
+
+        def current_user_from_token
+          authenticate_token
+        end
+
+        def authenticate_token
+          authenticate_with_http_token { |token, _options| @current_user = User.find_by(token: token) }
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
+        end
+      end
+    RUBY
+  end
+
+  it '呼び出し元が複数あり、どれか 1 つでも戻り値を捨てていたら警告' do
+    expect_offense(<<~RUBY)
+      class ApiController < ApplicationController
+        def show
+          render_unauthorized unless authenticate_token
+        end
+
+        def update
+          authenticate_token
+          save_record
+        end
+
+        def authenticate_token
+          authenticate_with_http_token { |token, _options| @current_user = User.find_by(token: token) }
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
+        end
+      end
+    RUBY
+  end
+
+  it '別のクラスの呼び出し元は対象にしない' do
+    expect_no_offenses(<<~RUBY)
+      class AdminController < ApplicationController
+        def authenticate
+          authenticate_token
+          log_access
+        end
+      end
+
+      class ApiController < ApplicationController
+        def authenticate_token
+          authenticate_with_http_token { |token, _options| @current_user = User.find_by(token: token) }
+        end
+      end
+    RUBY
+  end
+
+  it '同名メソッドを再定義していて呼び出しが循環しても停止する' do
+    expect_no_offenses(<<~RUBY)
+      class ApiController < ApplicationController
+        def authenticate_token
+          authenticate_with_http_token { |token, _options| User.find_by(token: token) }
+        end
+
+        def authenticate_token
+          authenticate_token
         end
       end
     RUBY
