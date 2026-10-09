@@ -253,6 +253,107 @@ describe RuboCop::Cop::Sgcop::FailOpenHttpAuthentication, :config do
     RUBY
   end
 
+  it 'before_action のメソッドで if の分岐の最後の式なら警告' do
+    expect_offense(<<~RUBY)
+      class ApiController < ApplicationController
+        before_action :authenticate
+
+        def authenticate
+          if request.format.json?
+            authenticate_with_http_token { |token, _options| valid?(token) ? setup(token) : render_unauthorized }
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
+          else
+            authenticate_user!
+          end
+        end
+      end
+    RUBY
+  end
+
+  it 'before_action のメソッドで後置 if の最後の式なら警告' do
+    expect_offense(<<~RUBY)
+      class ApiController < ApplicationController
+        before_action :authenticate
+
+        def authenticate
+          authenticate_with_http_token { |token, _options| @current_user = User.find_by(token: token) } if api_request?
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
+        end
+      end
+    RUBY
+  end
+
+  it 'before_action のメソッドで case の分岐の最後の式なら警告' do
+    expect_offense(<<~RUBY)
+      class ApiController < ApplicationController
+        before_action :authenticate
+
+        def authenticate
+          case request.format
+          when Mime[:json]
+            authenticate_with_http_token { |token, _options| valid?(token) ? setup(token) : render_unauthorized }
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
+          else
+            authenticate_with_http_basic { |name, _password| valid?(name) ? setup(name) : render_unauthorized }
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
+          end
+        end
+      end
+    RUBY
+  end
+
+  it 'if の分岐の最後の式で、呼び出し元が戻り値を使っていたら警告なし' do
+    expect_no_offenses(<<~RUBY)
+      class ApiController < ApplicationController
+        before_action :authenticate
+
+        def authenticate
+          authenticate_token || render_unauthorized
+        end
+
+        def authenticate_token
+          if api_request?
+            authenticate_with_http_token { |token, _options| User.find_by(token: token) }
+          end
+        end
+      end
+    RUBY
+  end
+
+  it 'ブロック形式の before_action の最後の式なら警告' do
+    expect_offense(<<~RUBY)
+      class ApiController < ApplicationController
+        before_action do
+          authenticate_with_http_token { |token, _options| @current_user = User.find_by(token: token) }
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
+        end
+      end
+    RUBY
+  end
+
+  it 'ラムダ形式の before_action から呼んだメソッドの最後の式なら警告' do
+    expect_offense(<<~RUBY)
+      class ApiController < ApplicationController
+        before_action -> { authenticate_token }, only: :index
+
+        def authenticate_token
+          authenticate_with_http_token { |token, _options| @current_user = User.find_by(token: token) }
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #{msg}
+        end
+      end
+    RUBY
+  end
+
+  it 'before_action ではないブロックの最後の式なら警告なし' do
+    expect_no_offenses(<<~RUBY)
+      class ApiController < ApplicationController
+        def current_user
+          @current_user ||= fetch_user { authenticate_with_http_token { |token, _options| User.find_by(token: token) } }
+        end
+      end
+    RUBY
+  end
+
   it '呼び出し元を複数段たどって before_action に行き着いたら警告' do
     expect_offense(<<~RUBY)
       class ApiController < ApplicationController

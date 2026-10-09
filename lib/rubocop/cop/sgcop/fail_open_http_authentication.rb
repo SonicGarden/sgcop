@@ -14,8 +14,11 @@ module RuboCop
       # - 戻り値を捨てている（メソッドの途中の文になっている）
       # - 同じクラスで `before_action` / `prepend_before_action` / `append_before_action` に
       #   登録したメソッドの最後の式として返している（Rails はコールバックの戻り値を見ないため）
+      # - `before_action { ... }` / `before_action -> { ... }` のブロックの最後の式として返している
       # - メソッドの最後の式として返していて、同じクラスの呼び出し元のどれかが戻り値を捨てている
-      #   （呼び出し元がさらにメソッドの最後の式なら、同じ判定を再帰的にたどる）
+      #   （呼び出し元がさらにメソッドやブロックの最後の式なら、同じ判定を再帰的にたどる）
+      #
+      # 「最後の式」には、`if` / `unless` / `case` の分岐の最後の式や、`rescue` / `ensure` の本体も含む。
       #
       # 既知の限界:
       #
@@ -69,14 +72,15 @@ module RuboCop
 
         private
 
-        def discarded_after_return?(expression)
-          def_node = def_node_returning(expression)
-          return false unless def_node
+        def discarded_after_return?(expression, visited = Set.new)
+          scope = returning_scope(expression)
+          return false unless scope
+          return callback_block?(scope) unless scope.def_type?
 
-          class_node = def_node.each_ancestor(:class).first
+          class_node = scope.each_ancestor(:class).first
           return false unless class_node
 
-          return_value_discarded?(def_node, class_node, Set.new)
+          return_value_discarded?(scope, class_node, visited)
         end
 
         # 同名メソッドを再定義していると、呼び出し元をたどる経路が循環しうるので visited で打ち切る
@@ -86,21 +90,20 @@ module RuboCop
 
           callers(class_node, def_node.method_name).any? do |call|
             expression = call.block_node || call
-            next true unless expression.value_used?
-
-            caller_def_node = def_node_returning(expression)
-            caller_def_node && return_value_discarded?(caller_def_node, class_node, visited)
+            !expression.value_used? || discarded_after_return?(expression, visited)
           end
         end
 
-        # `if` の分岐などまで追うと判定が複雑になるので、def の本体そのもの・begin の最後の子・
-        # rescue / ensure の本体だけを「最後の式」として扱う。
-        def def_node_returning(expression)
+        # expression を最後の式として値を返す def またはブロックを返す。
+        # `&&` の右辺や途中の `return` はまず書かないので、たどらない。明示的な `begin` も、メソッド本体が
+        # `begin` だけなら Style/RedundantBegin で def 直下の `rescue` に直されるので扱わない。
+        def returning_scope(expression)
           node = expression
           loop do
             parent = node.parent
             return nil unless parent
             return parent if parent.def_type?
+            return (parent.body.equal?(node) ? parent : nil) if parent.block_type? || parent.numblock_type?
             return nil unless last_expression_of?(parent, node)
 
             node = parent
@@ -113,9 +116,19 @@ module RuboCop
             parent.children.last.equal?(node)
           when :rescue, :ensure
             parent.children.first.equal?(node)
+          when :if, :case
+            !parent.condition.equal?(node)
+          when :when
+            parent.body.equal?(node)
           else
             false
           end
+        end
+
+        # `before_action { ... }` と `before_action -> { ... }` のブロックかどうか
+        def callback_block?(block_node)
+          send_node = block_node.lambda? ? block_node.parent : block_node.send_node
+          send_node&.send_type? && callback_method_names(send_node) ? true : false
         end
 
         def callback_names(class_node)
