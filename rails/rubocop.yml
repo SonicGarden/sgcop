@@ -544,6 +544,12 @@ RSpecRails/NegationBeValid: # new in 2.23
 # https://docs.rubocop.org/rubocop-rspec_rails/latest/cops_rspecrails.html#rspecrailshttpstatusnameconsistency
 RSpecRails/HttpStatusNameConsistency: # new in 2.32
   Enabled: true
+# https://docs.rubocop.org/rubocop-rspec_rails/latest/cops_rspecrails.html#rspecrailsfilefixture
+RSpecRails/FileFixture: # new in 2.33
+  Enabled: true
+# https://docs.rubocop.org/rubocop-rspec_rails/latest/cops_rspecrails.html#rspecrailsreceiveperformlater
+RSpecRails/ReceivePerformLater: # new in 2.33
+  Enabled: true
 
 # https://docs.rubocop.org/rubocop-factory_bot/latest/cops_factorybot.html#factorybotassociationstyle
 FactoryBot/AssociationStyle: # new in 2.23
