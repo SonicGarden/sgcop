@@ -84,6 +84,7 @@ sgcopが提供するカスタムCopの一覧です。
 | [`Sgcop/NoLoopedPerformLater`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/no_looped_perform_later.rb) | ループ内で1件ずつperform_laterを呼ばずperform_all_laterを推奨 | ❌ |
 | [`Sgcop/NoModelMethodsInMigration`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/no_model_methods_in_migration.rb) | マイグレーションでモデルのメソッド呼び出しを検出 | ✅ |
 | [`Sgcop/ErrorMessageFormat`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/error_message_format.rb) | エラーメッセージはシンボルを使用することを強制 | ❌ |
+| [`Sgcop/FailOpenHttpAuthentication`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/fail_open_http_authentication.rb) | authenticate_with_http_token/basicの戻り値を使わない（資格情報が無いと素通りする）呼び出しを検出。親クラスやconcernで登録したbefore_actionは判定できない | ✅ |
 | [`Sgcop/FormLabelFirstArgument`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/form_label_first_argument.rb) | f.labelの第一引数にはテキストではなく属性名（Symbol）を指定することを強制 | ✅ |
 | [`Sgcop/OnLoadArguments`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/on_load_arguments.rb) | on_loadブロックの引数使用をチェック | ✅ |
 | [`Sgcop/PreferAbsolutePathPartial`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/prefer_absolute_path_partial.rb) | パーシャルファイルのrenderは絶対パスで指定（autocorrect対応） | ✅ |
