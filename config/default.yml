@@ -335,13 +335,6 @@ Sgcop/I18nLazyLookup:
   Reference:
     - https://guides.rubyonrails.org/i18n.html#lazy-lookup
 
-Sgcop/PreferAbsolutePathPartial:
-  Description: "パーシャルファイルのrenderは絶対パスで指定しよう"
-  Enabled: true
-  Include:
-    - "app/views/**/*"
-    - "app/components/**/*"
-
 Sgcop/Capybara/SpecStabilityCheck:
   Description: "非同期処理を伴うテストでは適切な待機処理を追加してテストを安定させよう"
   Enabled: true
