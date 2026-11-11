@@ -87,7 +87,6 @@ sgcopが提供するカスタムCopの一覧です。
 | [`Sgcop/FailOpenHttpAuthentication`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/fail_open_http_authentication.rb) | authenticate_with_http_token/basicの戻り値を使わない（資格情報が無いと素通りする）呼び出しを検出。親クラスやconcernで登録したbefore_actionは判定できない | ✅ |
 | [`Sgcop/FormLabelFirstArgument`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/form_label_first_argument.rb) | f.labelの第一引数にはテキストではなく属性名（Symbol）を指定することを強制 | ✅ |
 | [`Sgcop/OnLoadArguments`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/on_load_arguments.rb) | on_loadブロックの引数使用をチェック | ✅ |
-| [`Sgcop/PreferAbsolutePathPartial`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/prefer_absolute_path_partial.rb) | パーシャルファイルのrenderは絶対パスで指定（autocorrect対応） | ✅ |
 | [`Sgcop/RequestRemoteIp`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/request_remote_ip.rb) | request.remote_ipの適切な使用を確認 | ✅ |
 | [`Sgcop/ResourceActionOrder`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/resource_action_order.rb) | resourcesルーティングのアクション順序を統一 | ✅ |
 | [`Sgcop/ResourcesWithoutOnly`](https://github.com/SonicGarden/sgcop/blob/main/lib/rubocop/cop/sgcop/resources_without_only.rb) | resourcesルーティングでonlyオプションの使用を推奨 | ✅ |
