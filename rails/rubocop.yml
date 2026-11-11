@@ -593,3 +593,33 @@ Capybara/FindAllFirst: # new in 2.22
 # https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara_rspec.html#capybararspecnegationmatcheraftervisit
 Capybara/RSpec/NegationMatcherAfterVisit: # new in 2.22
   Enabled: true
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara.html#capybaraabsolutexpathinelementscope
+Capybara/AbsoluteXPathInElementScope: # new in 3.1
+  Enabled: true
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara.html#capybaraalwaystruecountquery
+Capybara/AlwaysTrueCountQuery: # new in 3.1
+  Enabled: true
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara.html#capybarachainedfind
+Capybara/ChainedFind: # new in 3.1
+  Enabled: true
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara.html#capybaraignoredqueryoption
+Capybara/IgnoredQueryOption: # new in 3.1
+  Enabled: true
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara.html#capybaramodalmethodwithoutblock
+Capybara/ModalMethodWithoutBlock: # new in 3.1
+  Enabled: true
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara.html#capybaranativeattribute
+Capybara/NativeAttribute: # new in 3.1
+  Enabled: true
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara.html#capybaraunorderedwindowaccess
+Capybara/UnorderedWindowAccess: # new in 3.1
+  Enabled: true
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara.html#capybaravisibilityoption
+Capybara/VisibilityOption: # new in 3.1
+  Enabled: true
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara_rspec.html#capybararspeccurrenturlexpectation
+Capybara/RSpec/CurrentUrlExpectation: # new in 3.1
+  Enabled: true
+# https://docs.rubocop.org/rubocop-capybara/latest/cops_capybara_rspec.html#capybararspecfindelementvalueeq
+Capybara/RSpec/FindElementValueEq: # new in 3.1
+  Enabled: true
